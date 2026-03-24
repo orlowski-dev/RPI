@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gaphor xmlns="https://gaphor.org/model" xmlns:Core="https://gaphor.org/modelinglanguage/Core" xmlns:UML="https://gaphor.org/modelinglanguage/UML" version="4" gaphor-version="3.2.0">
+<model>
+<Core:StyleSheet id="58d6989a-66f8-11ec-b4c8-0456e5e540ed">
+<styleSheet>
+<val>diagram {
+ /* line-style: sloppy 0.3; */
+}
+
+controlflow {
+  dash-style: 0;
+}
+</val>
+</styleSheet>
+</Core:StyleSheet>
+<UML:Package id="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed">
+<name>
+<val>RPI</val>
+</name>
+<nestedPackage>
+<reflist>
+<ref refid="9de90659-2750-11f1-8eff-73526b1cd52f"/>
+</reflist>
+</nestedPackage>
+<packagedElement>
+<reflist>
+<ref refid="9de90659-2750-11f1-8eff-73526b1cd52f"/>
+</reflist>
+</packagedElement>
+</UML:Package>
+<UML:ClassDiagram id="9849a300-2750-11f1-8550-73526b1cd52f">
+<element>
+<ref refid="9de90659-2750-11f1-8eff-73526b1cd52f"/>
+</element>
+<name>
+<val>Postacie</val>
+</name>
+<ownedPresentation>
+<reflist>
+<ref refid="adf941ef-2750-11f1-8510-73526b1cd52f"/>
+<ref refid="0b7b67f7-2751-11f1-bf67-73526b1cd52f"/>
+<ref refid="94f626a1-2751-11f1-9223-73526b1cd52f"/>
+</reflist>
+</ownedPresentation>
+</UML:ClassDiagram>
+<UML:Package id="9de90659-2750-11f1-8eff-73526b1cd52f">
+<name>
+<val>Klasy</val>
+</name>
+<nestingPackage>
+<ref refid="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed"/>
+</nestingPackage>
+<ownedDiagram>
+<reflist>
+<ref refid="9849a300-2750-11f1-8550-73526b1cd52f"/>
+</reflist>
+</ownedDiagram>
+<ownedType>
+<reflist>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</reflist>
+</ownedType>
+<owningPackage>
+<ref refid="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed"/>
+</owningPackage>
+<packagedElement>
+<reflist>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</reflist>
+</packagedElement>
+</UML:Package>
+<UML:Class id="adf76ed6-2750-11f1-bacc-73526b1cd52f">
+<isAbstract>
+<val>True</val>
+</isAbstract>
+<name>
+<val>&lt;&lt;abstract&gt;&gt; BaseCharacter</val>
+</name>
+<note>
+<val>Bazowa klasa dla wszystkich postaci w grze.  
+Definiuje podstawowe statystyki używane w systemie walki.
+
+`BaseCharacter` jest klasą abstrakcyjną, która przechowuje wspólne właściwości postaci.</val>
+</note>
+<ownedAttribute>
+<reflist>
+<ref refid="d7efc64b-2750-11f1-a1f5-73526b1cd52f"/>
+<ref refid="e4ae5c00-2750-11f1-93c9-73526b1cd52f"/>
+<ref refid="e7dc2f83-2750-11f1-9d4f-73526b1cd52f"/>
+<ref refid="eab0a788-2750-11f1-bdc7-73526b1cd52f"/>
+<ref refid="ed0c6463-2750-11f1-9874-73526b1cd52f"/>
+<ref refid="f0619ff5-2750-11f1-a82f-73526b1cd52f"/>
+</reflist>
+</ownedAttribute>
+<ownedOperation>
+<reflist>
+<ref refid="f9531800-2750-11f1-9e2c-73526b1cd52f"/>
+</reflist>
+</ownedOperation>
+<owningPackage>
+<ref refid="9de90659-2750-11f1-8eff-73526b1cd52f"/>
+</owningPackage>
+<package>
+<ref refid="9de90659-2750-11f1-8eff-73526b1cd52f"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="adf941ef-2750-11f1-8510-73526b1cd52f"/>
+</reflist>
+</presentation>
+<specialization>
+<reflist>
+<ref refid="957e0fc1-2751-11f1-858a-73526b1cd52f"/>
+</reflist>
+</specialization>
+</UML:Class>
+<UML:ClassItem id="adf941ef-2750-11f1-8510-73526b1cd52f">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, -186.00003814697266, 381.8866729736328)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>209.0</val>
+</width>
+<height>
+<val>193.0</val>
+</height>
+<diagram>
+<ref refid="9849a300-2750-11f1-8550-73526b1cd52f"/>
+</diagram>
+<subject>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+</subject>
+</UML:ClassItem>
+<UML:Property id="d7efc64b-2750-11f1-a1f5-73526b1cd52f">
+<name>
+<val>Name</val>
+</name>
+<structuredClassifier>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+</structuredClassifier>
+<typeValue>
+<val>string</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="e4ae5c00-2750-11f1-93c9-73526b1cd52f">
+<name>
+<val>HP</val>
+</name>
+<structuredClassifier>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+</structuredClassifier>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="e7dc2f83-2750-11f1-9d4f-73526b1cd52f">
+<name>
+<val>Attack</val>
+</name>
+<structuredClassifier>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+</structuredClassifier>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="eab0a788-2750-11f1-bdc7-73526b1cd52f">
+<name>
+<val>Defense</val>
+</name>
+<structuredClassifier>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+</structuredClassifier>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="ed0c6463-2750-11f1-9874-73526b1cd52f">
+<name>
+<val>Luck</val>
+</name>
+<structuredClassifier>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+</structuredClassifier>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="f0619ff5-2750-11f1-a82f-73526b1cd52f">
+<name>
+<val>CritChance</val>
+</name>
+<structuredClassifier>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+</structuredClassifier>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Operation id="f9531800-2750-11f1-9e2c-73526b1cd52f">
+<class_>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+</class_>
+<name>
+<val>BaseCharacter</val>
+</name>
+<visibility>
+<val>protected</val>
+</visibility>
+</UML:Operation>
+<UML:Class id="0b7a20fd-2751-11f1-92fc-73526b1cd52f">
+<generalization>
+<reflist>
+<ref refid="957e0fc1-2751-11f1-858a-73526b1cd52f"/>
+</reflist>
+</generalization>
+<name>
+<val>PlayerCharacter</val>
+</name>
+<note>
+<val>Reprezentuje postać gracza w grze.  
+Dziedziczy po klasie `BaseCharacter` i rozszerza ją o funkcjonalności specyficzne dla gracza.
+
+`PlayerCharacter` przechowuje podstawowe statystyki gracza i w przyszłości będzie
+rozszerzona o dodatkowe elementy, takie jak:</val>
+</note>
+<ownedAttribute>
+<reflist>
+<ref refid="2210fe20-2751-11f1-9140-73526b1cd52f"/>
+<ref refid="2473ba63-2751-11f1-a7f7-73526b1cd52f"/>
+<ref refid="2708bfd3-2751-11f1-b880-73526b1cd52f"/>
+</reflist>
+</ownedAttribute>
+<ownedOperation>
+<reflist>
+<ref refid="30fac3ac-2751-11f1-b014-73526b1cd52f"/>
+<ref refid="80b31ea5-2757-11f1-a46d-110ff2502a01"/>
+<ref refid="7a78b8a3-2758-11f1-88a7-110ff2502a01"/>
+<ref refid="7f19e5e5-2759-11f1-a09f-110ff2502a01"/>
+</reflist>
+</ownedOperation>
+<owningPackage>
+<ref refid="9de90659-2750-11f1-8eff-73526b1cd52f"/>
+</owningPackage>
+<package>
+<ref refid="9de90659-2750-11f1-8eff-73526b1cd52f"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="0b7b67f7-2751-11f1-bf67-73526b1cd52f"/>
+</reflist>
+</presentation>
+</UML:Class>
+<UML:ClassItem id="0b7b67f7-2751-11f1-bf67-73526b1cd52f">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 152.91969648254334, 390.3866729736328)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>216.0</val>
+</width>
+<height>
+<val>176.0</val>
+</height>
+<diagram>
+<ref refid="9849a300-2750-11f1-8550-73526b1cd52f"/>
+</diagram>
+<subject>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</subject>
+</UML:ClassItem>
+<UML:Property id="2210fe20-2751-11f1-9140-73526b1cd52f">
+<name>
+<val>Level</val>
+</name>
+<structuredClassifier>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</structuredClassifier>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="2473ba63-2751-11f1-a7f7-73526b1cd52f">
+<name>
+<val>Exp</val>
+</name>
+<structuredClassifier>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</structuredClassifier>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="2708bfd3-2751-11f1-b880-73526b1cd52f">
+<name>
+<val>ExpNextLvl</val>
+</name>
+<structuredClassifier>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</structuredClassifier>
+</UML:Property>
+<UML:Operation id="30fac3ac-2751-11f1-b014-73526b1cd52f">
+<class_>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</class_>
+<name>
+<val>+ PlayerCharacter() : base()</val>
+</name>
+</UML:Operation>
+<UML:GeneralizationItem id="94f626a1-2751-11f1-9223-73526b1cd52f">
+<diagram>
+<ref refid="9849a300-2750-11f1-8550-73526b1cd52f"/>
+</diagram>
+<horizontal>
+<val>False</val>
+</horizontal>
+<orthogonal>
+<val>False</val>
+</orthogonal>
+<subject>
+<ref refid="957e0fc1-2751-11f1-858a-73526b1cd52f"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 160.0, 292.88671875)</val>
+</matrix>
+<points>
+<val>[(-7.080303517456656, 185.4999542236328), (-137.00003814697266, 185.4999542236328)]</val>
+</points>
+<head-connection>
+<ref refid="0b7b67f7-2751-11f1-bf67-73526b1cd52f"/>
+</head-connection>
+<tail-connection>
+<ref refid="adf941ef-2750-11f1-8510-73526b1cd52f"/>
+</tail-connection>
+</UML:GeneralizationItem>
+<UML:Generalization id="957e0fc1-2751-11f1-858a-73526b1cd52f">
+<general>
+<ref refid="adf76ed6-2750-11f1-bacc-73526b1cd52f"/>
+</general>
+<presentation>
+<reflist>
+<ref refid="94f626a1-2751-11f1-9223-73526b1cd52f"/>
+</reflist>
+</presentation>
+<specific>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</specific>
+</UML:Generalization>
+<UML:Operation id="80b31ea5-2757-11f1-a46d-110ff2502a01">
+<class_>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</class_>
+<name>
+<val>CalculateExpToNextLevel</val>
+</name>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Operation>
+<UML:Operation id="7a78b8a3-2758-11f1-88a7-110ff2502a01">
+<class_>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</class_>
+<name>
+<val>LevelUp</val>
+</name>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Operation>
+<UML:Operation id="7f19e5e5-2759-11f1-a09f-110ff2502a01">
+<class_>
+<ref refid="0b7a20fd-2751-11f1-92fc-73526b1cd52f"/>
+</class_>
+<name>
+<val>AddExp</val>
+</name>
+</UML:Operation>
+</model>
+</gaphor>

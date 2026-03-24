@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "157270bac38df16d",
@@ -185,6 +186,14 @@
   },
   "active": "2983cf32106dde66",
   "lastOpenFiles": [
+    "attachements/Pasted image 20260324091512.png.import",
+    "attachements/Pasted image 20260324091512.png",
+    "attachements/Pasted image 20260324090110.png.import",
+    "attachements/Pasted image 20260324090110.png",
+    "attachements/Pasted image 20260324081909.png.import",
+    "uml.gaphor",
+    "attachements/Pasted image 20260324081909.png",
+    "attachements",
     "Dokumentacja projektu.md"
   ]
 }

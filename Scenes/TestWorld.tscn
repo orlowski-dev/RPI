@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dletqmfqn1dr1"]
+
+[ext_resource type="Texture2D" uid="uid://0k12hscapm7v" path="res://Assets/Prototype/Sprites/bgTile.png" id="1_k2eo1"]
+[ext_resource type="PackedScene" uid="uid://fkyr6o76cn3i" path="res://Scenes/Player.tscn" id="2_se0eo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_se0eo"]
+size = Vector2(100, 5000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4snwc"]
+size = Vector2(9.648224, 132.6181)
+
+[node name="TestWorld" type="Node2D" unique_id=1060880773]
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1719126295]
+texture_repeat = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_k2eo1")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 10000)
+region_filter_clip_enabled = true
+
+[node name="TestPlayer" parent="." unique_id=2005437664 instance=ExtResource("2_se0eo")]
+position = Vector2(-2196, -1438)
+Speed = 300
+RotationSpeed = 10
+
+[node name="Camera2D" type="Camera2D" parent="TestPlayer" unique_id=407866879]
+
+[node name="wall" type="StaticBody2D" parent="." unique_id=27108995]
+position = Vector2(-2452, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="wall" unique_id=1335173016]
+texture = SubResource("PlaceholderTexture2D_se0eo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=1190172790]
+scale = Vector2(10, 38)
+shape = SubResource("RectangleShape2D_4snwc")
+
+[node name="wall2" type="StaticBody2D" parent="." unique_id=234431812]
+position = Vector2(2448, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="wall2" unique_id=137499290]
+texture = SubResource("PlaceholderTexture2D_se0eo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=977891751]
+scale = Vector2(10, 38)
+shape = SubResource("RectangleShape2D_4snwc")
+
+[node name="wall3" type="StaticBody2D" parent="." unique_id=474000057]
+position = Vector2(14, 2450)
+rotation = 1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="wall3" unique_id=1271915341]
+texture = SubResource("PlaceholderTexture2D_se0eo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3" unique_id=888770574]
+scale = Vector2(10, 38)
+shape = SubResource("RectangleShape2D_4snwc")
+
+[node name="wall4" type="StaticBody2D" parent="." unique_id=275459068]
+position = Vector2(-10, -2483)
+rotation = 1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="wall4" unique_id=1426667180]
+texture = SubResource("PlaceholderTexture2D_se0eo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4" unique_id=584001620]
+scale = Vector2(10, 38)
+shape = SubResource("RectangleShape2D_4snwc")

@@ -1,5 +1,8 @@
 using Godot;
 
+/// <summary>
+/// Odpowiada za sterowanie postacią gracza.
+/// </summary>
 public partial class PlayerController : CharacterBody2D
 {
     [Export]

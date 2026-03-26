@@ -3,10 +3,10 @@ using Godot;
 public partial class PlayerController : CharacterBody2D
 {
     [Export]
-    public int Speed { get; set; }
+    public int Speed { get; set; } = 300;
 
     [Export]
-    public int RotationSpeed { get; set; }
+    public int RotationSpeed { get; set; } = 10;
 
     public override void _Ready() { }
 

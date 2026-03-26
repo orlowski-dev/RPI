@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://fkyr6o76cn3i"]
 
 [ext_resource type="Script" uid="uid://nbnja2i3tbbk" path="res://Scripts/PlayerController.cs" id="1_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://bkc70xxtkvlio" path="res://Assets/Prototype/Sprites/player.png" id="1_rpqav"]
+[ext_resource type="Texture2D" uid="uid://bq1vsrrp86u6j" path="res://Assets/Prototype/Sprites/player.png" id="1_rpqav"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kyqiw"]
 animations = [{
@@ -17,7 +17,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
 size = Vector2(68, 68)
 
-[node name="Player" type="CharacterBody2D" unique_id=2005437664]
+[node name="Player" type="CharacterBody2D" unique_id=2005437664 groups=["player"]]
 collision_mask = 3
 script = ExtResource("1_kyqiw")
 metadata/_edit_group_ = true

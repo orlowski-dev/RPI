@@ -136,3 +136,113 @@ Dodaje punkty doświadczenia i zwiększa Level jeśli potrzeba.
 | amount   | int | Ilość Exp do dodania |
 
 ---
+
+## PlayerController
+
+Odpowiada za sterowanie postacią gracza.
+
+### Dziedziczenie
+
+Klasa dziedziczy po `CharacterBody2D`. Wykorzystuje system fizyki.
+
+```csharp
+public partial class PlayerController : CharacterBody2D
+```
+
+### Parametry
+
+| Parametr          | Typ | Opis                                   |
+| ----------------- | --- | -------------------------------------- |
+| [E] Speed         | int | Prędkość poruszania się postaci (px/s) |
+| [E] RotationSpeed | int | Prędkość rotacji postaci               |
+
+### Logika
+
+```bash
+Wejścuie
+	|
+Kierunek
+	|
+Prędkość
+	|
+Rotacja
+	|
+MoveAndSlide()
+```
+
+### Metody
+
+#### MovePlayer()
+
+```csharp
+private void MovePlayer(ref double delta)
+```
+
+Metoda odpowiedzialna za:
+
+- pobieranie wejścia gracza,
+- poruszanie się postacią,
+- płynną rotację postaci,
+- wywołanie fizyki ruchu.
+
+Pobiera kierunek z `InputMap`. Akcje:
+
+- moveLeft
+- moveRight
+- moveUp
+- moveDown
+
+Oblicza rotację dla domyślnej orientacji sprajta w górę.
+
+---
+
+## PlayerRunCamera
+
+Odpowiada za śledzenie gracza w lochach. Kamera płynnie podąża za postacią gracza.
+
+### Dziedziczenie
+
+Klasa dziedziczy po `Camera2D` i automatycznie wyszukuje obiekt `Player` w drzewie sceny.
+
+```csharp
+public partial class PlayerRunCamera : Camera2D
+```
+
+> [!WARNING]
+> Nie należy "dopinac" kamery do player node!
+
+### Logika
+
+```bash
+Pozycja gracza
+	|
+Lerp
+	|
+Pozycja kamery
+```
+
+> [!CAUTION]
+> Jeżeli Player nie zostanie znaleziony to wypisze błąd w konsoli i skrypt zostanie przerwany.
+>
+> -   player node musi mieć nazwę "Player"
+> -   kamera musi być w tym samym `RootNode`
+
+### Parametry
+
+| Parametr        | Typ    | Opis                         |
+| --------------- | ------ | ---------------------------- |
+| [E] CameraDelay | int    | Płynność ruchu kamery        |
+| \_playerNode    | Node2D | Referencja do obiektu gracza |
+
+### Metody
+
+#### MoveCamera()
+
+```csharp
+private void MoveCamera(ref double delta)
+```
+
+Metoda odpowiada za:
+
+- śledzenie gracza,
+- płynny ruch kamery.

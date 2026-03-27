@@ -1,3 +1,31 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Godot UID
+**/*.uid
+
+# Cache
+*.tmp
+*.log
+
+# Śmieci VisualStudio
+.vs/
+*.suo
+*.user
+*.userprefs
+*.csproj.user
+_ReSharper*/
+*.DotSettings.user
+
+# Śmieci VSCode
+.vscode/
+.history/
+*.code-workspace
+
+# inne Śmieci
+Thumbs.db
+*.swp
+*.bak
+*.tmp
+*.log

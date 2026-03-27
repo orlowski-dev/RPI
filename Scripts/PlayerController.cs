@@ -5,37 +5,33 @@ using Godot;
 /// </summary>
 public partial class PlayerController : CharacterBody2D
 {
-	[Export]
-	public int Speed { get; set; } = 300;
+    [Export]
+    public int Speed { get; set; } = 300;
 
-	[Export]
-	public int RotationSpeed { get; set; } = 10;
-	
-	
-	public override void _Ready() { }
+    [Export]
+    public int RotationSpeed { get; set; } = 10;
 
-	public override void _PhysicsProcess(double delta)
-	{
-		MovePlayer(ref delta);
-	}
+    public override void _Ready() { }
 
-	private void MovePlayer(ref double delta)
-	{
-		var direction = Input.GetVector("moveLeft", "moveRight", "moveUp", "moveDown");
+    public override void _PhysicsProcess(double delta)
+    {
+        MovePlayer(ref delta);
+    }
 
-		// poruszanie
-		Velocity = direction * Speed;
+    private void MovePlayer(ref double delta)
+    {
+        var direction = Input.GetVector("moveLeft", "moveRight", "moveUp", "moveDown");
 
-		//płynna rotacja
-		if (direction != Vector2.Zero)
-		{
-			var targetRotation = direction.Angle() + Mathf.Pi / 2; // domyślnie sprite patrzy w góręę
-			Rotation = Mathf.LerpAngle(Rotation, targetRotation, RotationSpeed * (float)delta);
-		}
+        // poruszanie
+        Velocity = direction * Speed;
 
-		MoveAndSlide();
-		
-		
-	}
-	
+        //płynna rotacja
+        if (direction != Vector2.Zero)
+        {
+            var targetRotation = direction.Angle() + Mathf.Pi / 2; // domyślnie sprite patrzy w góręę
+            Rotation = Mathf.LerpAngle(Rotation, targetRotation, RotationSpeed * (float)delta);
+        }
+
+        MoveAndSlide();
+    }
 }

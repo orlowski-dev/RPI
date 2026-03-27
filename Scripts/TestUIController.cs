@@ -1,48 +1,51 @@
-using Godot;
 using System;
+using Godot;
 
 public partial class TestUIController : Node
 {
-	private Button increase_health;
-	private Button decrease_health;
-	private ProgressBar progress_bar;
-	
+    [Export]
+    Button IncreaseHealthBtn;
 
-	public override void _Ready()
-	{
-		increase_health = GetNode<Button>("HBoxContainer/IncreaseHealth");
-		decrease_health = GetNode<Button>("HBoxContainer/DecreaseHealth");
-		progress_bar = GetNode<ProgressBar>("ProgressBar");
+    [Export]
+    Button DecreaseHealthBtn;
 
-		progress_bar.MaxValue = GameController.Instance.MaxHealth;
-		progress_bar.Value = GameController.Instance.Health;
-		
-		GameController.Instance.HealthChanged += OnHealthChanged;
-		
-		increase_health.Pressed += IncreaseHealthPressed;
-		decrease_health.Pressed += DecreaseHealthPressed;
-	}
+    [Export]
+    ProgressBar HpProgressB;
 
-	public override void _ExitTree()
-	{
-		// Odsubskrybuj sygnał przy usunięciu węzła
-		GameController.Instance.HealthChanged -= OnHealthChanged;
-	}
+    private GameController _gc => GameController.Instance;
+    private PlayerCharacter _pc => _gc.PlayerCharacter;
 
-	private void OnHealthChanged(int newHealth)
-	{
-		progress_bar.Value = newHealth;
-	}
+    public override void _Ready()
+    {
+        _gc.StartNewGame();
 
+        HpProgressB.MaxValue = _pc.MaxHP;
+        HpProgressB.Value = _pc.HP;
 
-	
-		private void IncreaseHealthPressed()
-		{
-			progress_bar.Value += 10;
-		}
+        _pc.HpChanged += OnHealthChanged;
 
-		private void DecreaseHealthPressed()
-		{
-			progress_bar.Value -= 10;	
-		}
-	}
+        IncreaseHealthBtn.Pressed += IncreaseHealthPressed;
+        DecreaseHealthBtn.Pressed += DecreaseHealthPressed;
+    }
+
+    public override void _ExitTree()
+    {
+        // Odsubskrybuj sygnał przy usunięciu węzła - AI :/
+        _pc.HpChanged -= OnHealthChanged;
+    }
+
+    private void OnHealthChanged(int newHealth)
+    {
+        HpProgressB.Value = newHealth;
+    }
+
+    private void IncreaseHealthPressed()
+    {
+        _pc.Heal(10);
+    }
+
+    private void DecreaseHealthPressed()
+    {
+        _pc.TakeDamage(10);
+    }
+}

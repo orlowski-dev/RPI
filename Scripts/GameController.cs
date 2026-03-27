@@ -1,33 +1,33 @@
 using Godot;
-using System;
 
+[GlobalClass]
 public partial class GameController : Node
 {
-	public static GameController Instance { get; private set; }
+    public static GameController Instance { get; private set; }
+    public PlayerCharacter PlayerCharacter { get; private set; }
 
-	private int _health = 100;
-	public int Health
-	{
-		get => _health;
-		set
-		{
-			_health = Mathf.Clamp(value, 0, MaxHealth);
-			EmitSignal(SignalName.HealthChanged, _health);
-		}
-	}
+    public override void _EnterTree()
+    {
+        if (Instance != null)
+        {
+            GD.PushError("GameManager już istnieje!");
+            QueueFree();
+            return;
+        }
 
-	public int MaxHealth { get; set; } = 100;
+        Instance = this;
+    }
 
-	[Signal]
-	public delegate void HealthChangedEventHandler(int newHealth);
-
-	public override void _Ready()
-	{
-		if (Instance != null)
-		{
-			QueueFree(); // już istnieje – usuń duplikat
-			return;
-		}
-		Instance = this;
-	}
+    public void StartNewGame()
+    {
+        GD.Print("starting new game..");
+        PlayerCharacter = new(
+            name: "Character name",
+            maxHp: 100,
+            attack: 50,
+            defense: 10,
+            luck: 10,
+            critChance: 2
+        );
+    }
 }

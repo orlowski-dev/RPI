@@ -1,24 +1,51 @@
-using Godot;
 using System;
+using Godot;
 
 public partial class TestUIController : Node
 {
     [Export]
-    public Button ClickMeButton;
+    Button IncreaseHealthBtn;
 
-    // Called when the node enters the scene tree for the first time.
+    [Export]
+    Button DecreaseHealthBtn;
+
+    [Export]
+    ProgressBar HpProgressB;
+
+    private GameController _gc => GameController.Instance;
+    private PlayerCharacter _pc => _gc.PlayerCharacter;
+
     public override void _Ready()
     {
-        ClickMeButton.Pressed += ButtonPressed;
+        _gc.StartNewGame();
+
+        HpProgressB.MaxValue = _pc.MaxHP;
+        HpProgressB.Value = _pc.HP;
+
+        _pc.HpChanged += OnHealthChanged;
+
+        IncreaseHealthBtn.Pressed += IncreaseHealthPressed;
+        DecreaseHealthBtn.Pressed += DecreaseHealthPressed;
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+    public override void _ExitTree()
     {
+        // Odsubskrybuj sygnał przy usunięciu węzła - AI :/
+        _pc.HpChanged -= OnHealthChanged;
     }
 
-    private void ButtonPressed()
+    private void OnHealthChanged(int newHealth)
     {
-        GD.Print("Hello, World!");
+        HpProgressB.Value = newHealth;
+    }
+
+    private void IncreaseHealthPressed()
+    {
+        _pc.Heal(10);
+    }
+
+    private void DecreaseHealthPressed()
+    {
+        _pc.TakeDamage(10);
     }
 }

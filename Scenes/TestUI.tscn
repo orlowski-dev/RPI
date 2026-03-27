@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcibkcwgc7f0v"]
+[gd_scene format=3 uid="uid://bcibkcwgc7f0v"]
 
-[ext_resource type="Script" path="res://Scripts/TestUIController.cs" id="1_goond"]
+[ext_resource type="Script" uid="uid://ck0jejqyhvyg4" path="res://Scripts/TestUIController.cs" id="1_goond"]
 
-[node name="TestUI" type="Control" node_paths=PackedStringArray("ClickMeButton")]
+[node name="TestUI" type="Control" unique_id=1577627899 node_paths=PackedStringArray("IncreaseHealthBtn", "DecreaseHealthBtn", "HpProgressB")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,9 +12,11 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_goond")
-ClickMeButton = NodePath("CenterContainer/Button")
+IncreaseHealthBtn = NodePath("CenterContainer/VBoxContainer/IBtn")
+DecreaseHealthBtn = NodePath("CenterContainer/VBoxContainer/Dbtn")
+HpProgressB = NodePath("CenterContainer/VBoxContainer/ProgressBar")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=287065068]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +24,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=988930453]
 layout_mode = 2
-text = "Click me!"
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/VBoxContainer" unique_id=288666571]
+custom_minimum_size = Vector2(150, 28)
+layout_mode = 2
+show_percentage = false
+
+[node name="IBtn" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1348084278]
+layout_mode = 2
+text = "Increment HP"
+
+[node name="Dbtn" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1294640828]
+layout_mode = 2
+text = "Decrement HP"

@@ -1,4 +1,5 @@
 using System;
+using Godot;
 
 /// <summary>
 /// Postać gracza - jej statystki, umiejętności ..?
@@ -6,6 +7,7 @@ using System;
 /// <param name="Level">Poziom postaci gracza</param>
 /// <param name="Exp">Punkty doświadczenia gracza</param>
 /// <param name="ExpNextLvl">Pułap exp do następnego poziomu</param>
+[GlobalClass]
 public partial class PlayerCharacter : BaseCharacter
 {
     public int Level { get; private set; }
@@ -14,8 +16,15 @@ public partial class PlayerCharacter : BaseCharacter
 
     // TODO: dodać później umiejętności etc tutaj
 
-    public PlayerCharacter(string name, int hP, int attack, int defense, int luck, int critChance)
-        : base(name, hP, attack, defense, luck, critChance)
+    public PlayerCharacter(
+        string name,
+        int maxHp,
+        int attack,
+        int defense,
+        int luck,
+        int critChance
+    )
+        : base(name, maxHp, attack, defense, luck, critChance)
     {
         Level = 1;
         ExpNextLvl = CalculateExpToNextLevel();

@@ -8,58 +8,58 @@ using System;
 /// <param name="ExpNextLvl">Pułap exp do następnego poziomu</param>
 public partial class PlayerCharacter : BaseCharacter
 {
-    public int Level { get; private set; }
-    public int Exp { get; private set; }
-    public int ExpNextLvl { get; private set; }
+	public int Level { get; private set; }
+	public int Exp { get; private set; }
+	public int ExpNextLvl { get; private set; }
 
-    // TODO: dodać później umiejętności etc tutaj
+	// TODO: dodać później umiejętności etc tutaj
 
-    public PlayerCharacter(string name, int hP, int attack, int defense, int luck, int critChance)
-        : base(name, hP, attack, defense, luck, critChance)
-    {
-        Level = 1;
-        ExpNextLvl = CalculateExpToNextLevel();
-        Exp = 0;
-    }
+	public PlayerCharacter(string name, int hP, int attack, int defense, int luck, int critChance)
+		: base(name, hP, attack, defense, luck, critChance)
+	{
+		Level = 1;
+		ExpNextLvl = CalculateExpToNextLevel();
+		Exp = 0;
+	}
 
-    /// <summary>
-    /// Oblicza ilość doświadczenia wymaganą do osiągnięcia następnego poziomu.
-    /// </summary>
-    /// <returns>Ilość doświadczenia wymagana do następnego poziomu</returns>
-    /// <remarks>
-    /// wzór: 100 * level^1.4
-    /// </remarks>
-    private int CalculateExpToNextLevel()
-    {
-        return (int)Math.Floor(100 * Math.Pow(Level, 1.4));
-    }
+	/// <summary>
+	/// Oblicza ilość doświadczenia wymaganą do osiągnięcia następnego poziomu.
+	/// </summary>
+	/// <returns>Ilość doświadczenia wymagana do następnego poziomu</returns>
+	/// <remarks>
+	/// wzór: 100 * level^1.4
+	/// </remarks>
+	private int CalculateExpToNextLevel()
+	{
+		return (int)Math.Floor(100 * Math.Pow(Level, 1.4));
+	}
 
-    /// <summary>
-    /// Zwiększa poziom postaci o 1 oraz aktualizuje wymagane doświadczenie
-    /// do osiągnięcia następnego poziomu.
-    /// </summary>
-    /// <remarks>
-    /// Metoda powinna być wywoływana po osiągnięciu wymaganego doświadczenia.
-    /// </remarks>
-    private void LevelUp()
-    {
-        Level += 1;
-        ExpNextLvl = CalculateExpToNextLevel();
+	/// <summary>
+	/// Zwiększa poziom postaci o 1 oraz aktualizuje wymagane doświadczenie
+	/// do osiągnięcia następnego poziomu.
+	/// </summary>
+	/// <remarks>
+	/// Metoda powinna być wywoływana po osiągnięciu wymaganego doświadczenia.
+	/// </remarks>
+	private void LevelUp()
+	{
+		Level += 1;
+		ExpNextLvl = CalculateExpToNextLevel();
 
-        // TODO: Wytriggerować UI - jakieś fajerwerki czy coś..
-    }
+		// TODO: Wytriggerować UI - jakieś fajerwerki czy coś..
+	}
 
-    /// <summary>
-    /// Dodaje punkty doświadczenia i zwiększa Level jeśli potrzeba.
-    /// </summary>
-    /// <param name="amount">Ilość Exp do dodatnia</param>
-    public void AddExp(int amount)
-    {
-        Exp += amount;
+	/// <summary>
+	/// Dodaje punkty doświadczenia i zwiększa Level jeśli potrzeba.
+	/// </summary>
+	/// <param name="amount">Ilość Exp do dodatnia</param>
+	public void AddExp(int amount)
+	{
+		Exp += amount;
 
-        if (Exp > ExpNextLvl)
-        {
-            LevelUp();
-        }
-    }
+		if (Exp > ExpNextLvl)
+		{
+			LevelUp();
+		}
+	}
 }

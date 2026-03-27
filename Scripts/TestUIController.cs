@@ -3,22 +3,46 @@ using System;
 
 public partial class TestUIController : Node
 {
-    [Export]
-    public Button ClickMeButton;
+	private Button increase_health;
+	private Button decrease_health;
+	private ProgressBar progress_bar;
+	
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        ClickMeButton.Pressed += ButtonPressed;
-    }
+	public override void _Ready()
+	{
+		increase_health = GetNode<Button>("HBoxContainer/IncreaseHealth");
+		decrease_health = GetNode<Button>("HBoxContainer/DecreaseHealth");
+		progress_bar = GetNode<ProgressBar>("ProgressBar");
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
-    }
+		progress_bar.MaxValue = GameController.Instance.MaxHealth;
+		progress_bar.Value = GameController.Instance.Health;
+		
+		GameController.Instance.HealthChanged += OnHealthChanged;
+		
+		increase_health.Pressed += IncreaseHealthPressed;
+		decrease_health.Pressed += DecreaseHealthPressed;
+	}
 
-    private void ButtonPressed()
-    {
-        GD.Print("Hello, World!");
-    }
-}
+	public override void _ExitTree()
+	{
+		// Odsubskrybuj sygnał przy usunięciu węzła
+		GameController.Instance.HealthChanged -= OnHealthChanged;
+	}
+
+	private void OnHealthChanged(int newHealth)
+	{
+		progress_bar.Value = newHealth;
+	}
+
+
+	
+		private void IncreaseHealthPressed()
+		{
+			progress_bar.Value += 10;
+		}
+
+		private void DecreaseHealthPressed()
+		{
+			progress_bar.Value -= 10;	
+		}
+	}

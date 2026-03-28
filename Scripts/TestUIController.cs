@@ -14,10 +14,14 @@ public partial class TestUIController : Node
 
     private GameController _gc => GameController.Instance;
     private PlayerCharacter _pc => _gc.PlayerCharacter;
+    private Signals _signals => Signals.Instance;
 
     public override void _Ready()
     {
         _gc.StartNewGame();
+
+        _signals.EmitSetGameState(GameState.TestingOnly);
+        GD.Print(_gc.GameState);
 
         HpProgressB.MaxValue = _pc.MaxHP;
         HpProgressB.Value = _pc.HP;

@@ -7,6 +7,7 @@
 
 Niniejszy dokument jest dokumentacją gry RPG typu roguelite, która jest produkcją 2D z widokiem top-down, inspirowaną mechanikami znanymi z gier.
 
+
 ## Opis gry
 
 Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turowym, zdobywa loot, złoto i rozwija swoją postać. Po śmierci postaci, gracz wraca do miasta (safe house), zachowując część postępów. Gracz kończy grę po ukończeniu pięciu lochów.
@@ -29,6 +30,8 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 - **repozytorium**: [GitHub](https://github.com/orlowski-dev/RPI)
 - **zarządzanie zadaniami zespołu**: [Trello](https://trello.com/b/MF4QbxrJ/rpi)
 
+
+
 ---
 
 ## BaseCharacter
@@ -36,76 +39,127 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 Bazowa klasa dla wszystkich postaci w grze.  
 Definiuje podstawowe statystyki używane w systemie walki.
 
+```csharp
+public abstract partial class BaseCharacter : Resource
+```
+
 ### Opis
 
-`BaseCharacter` jest klasą abstrakcyjną, która przechowuje wspólne właściwości postaci.
+`BaseCharacter` jest klasą abstrakcyjną przechowującą wspólne właściwości postaci oraz  
+podstawową logikę związaną z:
+
+- obrażeniami
+- leczeniem
+- aktualizacją HP
+- sygnałami zmian HP
+
+### Sygnały
+
+| Nazwa     | Parametr | Opis                                  |
+| --------- | -------- | ------------------------------------- |
+| HpChanged | int hp   | Wywoływany przy zmianie punktów życia |
 
 ### Właściwości
 
-| Właściwość | Typ    | Opis                                     |
-| ---------- | ------ | ---------------------------------------- |
-| Name       | string | Nazwa/imię postaci                       |
-| HP         | int    | Punkty życia postaci                     |
-| Attack     | int    | Siła ataku                               |
-| Defense    | int    | Obrona postaci                           |
-| Luck       | int    | Szczęście wpływające na losowe zdarzenia |
-| CritChance | int    | Szansa na trafienie krytyczne (w %)      |
+| Właściwość | Typ    | Dostęp   | Opis                              |
+| ---------- | ------ | -------- | --------------------------------- |
+| Name       | string | readonly | Nazwa postaci                     |
+| MaxHP      | int    | readonly | Maksymalne punkty życia           |
+| HP         | int    | readonly | Aktualne punkty życia             |
+| Attack     | int    | readonly | Siła ataku                        |
+| Defense    | int    | readonly | Obrona                            |
+| Luck       | int    | readonly | Szczęście                         |
+| CritChance | int    | readonly | Szansa na trafienie krytyczne (%) |
 
-### Konstruktor
+### Konstruktory
 
 | Parametr   | Typ    | Opis                          |
 | ---------- | ------ | ----------------------------- |
 | name       | string | Nazwa postaci                 |
-| hp         | int    | Punkty życia                  |
+| maxHp      | int    | Maksymalne HP                 |
 | attack     | int    | Siła ataku                    |
 | defense    | int    | Obrona                        |
 | luck       | int    | Szczęście                     |
 | critChance | int    | Szansa na trafienie krytyczne |
 
+### Metody
+
+#### TakeDamage
+
+```csharp
+public virtual void TakeDamage(int amount)
+```
+
+Zmniejsza HP postaci o podaną wartość.
+
+##### Parametry
+
+| Parametr | Typ | Opis          |
+| -------- | --- | ------------- |
+| amount   | int | Ilość obrażeń |
+
+#### Heal
+
+```csharp
+public virtual void Heal(int amount)
+```
+
+Leczy postać o podaną wartość.
+
+##### Parametry
+
+| Parametr | Typ | Opis           |
+| -------- | --- | -------------- |
+| amount   | int | Ilość leczenia |
+
 ---
 
 ## PlayerCharacter
 
-Reprezentuje postać gracza w grze.  
-Dziedziczy po klasie `BaseCharacter` i rozszerza ją o funkcjonalności specyficzne dla gracza.
+Reprezentuje postać gracza w grze.
+
+```csharp
+public partial class PlayerCharacter : BaseCharacter
+```
 
 ### Opis
 
-`PlayerCharacter` przechowuje podstawowe statystyki gracza i w przyszłości będzie
-rozszerzona o dodatkowe elementy, takie jak:
-
-- umiejętności,
-- ekwipunek,
-- rozwój postaci.
+`PlayerCharacter` przechowuje podstawowe statystyki gracza.
 
 ### Dziedziczenie
 
-![[Pasted image 20260324091512.png]]
+Dziedziczy po klasie `BaseCharacter`.
+
+```bash
+BaseCharacter <-- PlayerCharacter
+```
 
 ### Statystyki bazowe (dziedziczone)
 
-| Właściwość | Typ | Opis                          |
-| ---------- | --- | ----------------------------- |
-| HP         | int | Punkty życia                  |
-| Attack     | int | Siła ataku                    |
-| Defense    | int | Obrona                        |
-| Luck       | int | Szczęście                     |
-| CritChance | int | Szansa na trafienie krytyczne |
+| Właściwość | Typ    | Dostęp   | Opis                              |
+| ---------- | ------ | -------- | --------------------------------- |
+| Name       | string | readonly | Nazwa postaci                     |
+| MaxHP      | int    | readonly | Maksymalne punkty życia           |
+| HP         | int    | readonly | Aktualne punkty życia             |
+| Attack     | int    | readonly | Siła ataku                        |
+| Defense    | int    | readonly | Obrona                            |
+| Luck       | int    | readonly | Szczęście                         |
+| CritChance | int    | readonly | Szansa na trafienie krytyczne (%) |
 
 ### Statystyki gracza
 
-| Właściwość | Typ | Opis                                     |
-| ---------- | --- | ---------------------------------------- |
-| Level      | int | Poziom postaci gracza                    |
-| Exp        | int | Aktualne punkty doświadczenia            |
-| ExpNextLvl | int | Wymagana ilość EXP do następnego poziomu |
+| Właściwość | Typ | Dostęp   | Opis                                     |
+| ---------- | --- | -------- | ---------------------------------------- |
+| Level      | int | readonly | Poziom postaci gracza                    |
+| Exp        | int | readonly | Aktualne punkty doświadczenia            |
+| ExpNextLvl | int | readonly | Wymagana ilość EXP do następnego poziomu |
 
 ### Konstruktor
 
 | Parametr   | Typ    | Opis                          |
 | ---------- | ------ | ----------------------------- |
 | name       | string | Nazwa postaci                 |
-| hp         | int    | Punkty życia                  |
+| maxHp      | int    | Maksymalne HP                 |
 | attack     | int    | Siła ataku                    |
 | defense    | int    | Obrona                        |
 | luck       | int    | Szczęście                     |
@@ -115,17 +169,25 @@ rozszerzona o dodatkowe elementy, takie jak:
 
 #### CalculateExpToNextLevel
 
+```csharp
+private int CalculateExpToNextLevel()
+```
+
 Oblicza ilość doświadczenia wymaganą do osiągnięcia następnego poziomu.
 
-##### Zwraca
-
-`int` — ilość doświadczenia wymagana do następnego poziomu
-
 #### LevelUp
+
+```csharp
+private void LevelUp()
+```
 
 Zwiększa poziom postaci oraz aktualizuje wymagane doświadczenie do następnego poziomu.
 
 #### AddExp
+
+```csharp
+public void AddExp(int amount)
+```
 
 Dodaje punkty doświadczenia i zwiększa Level jeśli potrzeba.
 
@@ -141,34 +203,26 @@ Dodaje punkty doświadczenia i zwiększa Level jeśli potrzeba.
 
 Odpowiada za sterowanie postacią gracza.
 
-### Dziedziczenie
-
-Klasa dziedziczy po `CharacterBody2D`. Wykorzystuje system fizyki.
-
 ```csharp
 public partial class PlayerController : CharacterBody2D
 ```
 
+### Dziedziczenie
+
+Klasa dziedziczy po `CharacterBody2D`. Wykorzystuje system fizyki.
+Obsługuje:
+
+- ruch gracza
+- rotację
+- fizykę ruchu
+- pobieranie inputu
+
 ### Parametry
 
-| Parametr          | Typ | Opis                                   |
-| ----------------- | --- | -------------------------------------- |
-| [E] Speed         | int | Prędkość poruszania się postaci (px/s) |
-| [E] RotationSpeed | int | Prędkość rotacji postaci               |
-
-### Logika
-
-```bash
-Wejścuie
-	|
-Kierunek
-	|
-Prędkość
-	|
-Rotacja
-	|
-MoveAndSlide()
-```
+| Parametr      | Typ | Opis             |
+| ------------- | --- | ---------------- |
+| Speed         | int | Prędkość ruchu   |
+| RotationSpeed | int | Prędkość rotacji |
 
 ### Metody
 
@@ -200,26 +254,17 @@ Oblicza rotację dla domyślnej orientacji sprajta w górę.
 
 Odpowiada za śledzenie gracza w lochach. Kamera płynnie podąża za postacią gracza.
 
-### Dziedziczenie
-
-Klasa dziedziczy po `Camera2D` i automatycznie wyszukuje obiekt `Player` w drzewie sceny.
-
 ```csharp
 public partial class PlayerRunCamera : Camera2D
 ```
 
-> [!WARNING]
-> Nie należy "dopinac" kamery do player node!
+### Opis
 
-### Logika
+Kamera automatycznie wyszukuje obiekt `Player` w drzewie sceny.
 
-```bash
-Pozycja gracza
-	|
-Lerp
-	|
-Pozycja kamery
-```
+### Dziedziczenie
+
+Klasa dziedziczy po `Camera2D` i automatycznie wyszukuje obiekt `Player` w drzewie sceny.
 
 > [!CAUTION]
 > Jeżeli Player nie zostanie znaleziony to wypisze błąd w konsoli i skrypt zostanie przerwany.
@@ -229,10 +274,10 @@ Pozycja kamery
 
 ### Parametry
 
-| Parametr        | Typ    | Opis                         |
-| --------------- | ------ | ---------------------------- |
-| [E] CameraDelay | int    | Płynność ruchu kamery        |
-| \_playerNode    | Node2D | Referencja do obiektu gracza |
+| Parametr        | Typ    | Dostęp     | Opis                         |
+| --------------- | ------ | ---------- | ---------------------------- |
+| [E] CameraDelay | int    | public set | Płynność ruchu kamery        |
+| \_playerNode    | Node2D | private    | Referencja do obiektu gracza |
 
 ### Metody
 
@@ -246,3 +291,91 @@ Metoda odpowiada za:
 
 - śledzenie gracza,
 - płynny ruch kamery.
+
+---
+
+## GameController
+
+Główny kontroler gry.
+
+```csharp
+public partial class GameController : Node
+```
+
+### Opis
+
+Singleton zarządzający logiką gry. Zapewnia globalny dostęp do kontrolera gry.
+
+Klasa wykorzystuje:
+
+- Singleton Pattern
+- EventBus (`Signals`)
+- Globalny stan gry (`GameState`)
+
+Odpowiada za:
+
+- zarządzanie stanem gry
+- przechowywanie danych gracza
+- start nowej gry
+- komunikację globalną
+
+### Właściwości
+
+| Właściwość      | Typ             | Dostęp   | Opis                   |
+| --------------- | --------------- | -------- | ---------------------- |
+| Instance        | GameController  | readonly | Singleton              |
+| PlayerCharacter | PlayerCharacter | readonly | Aktualna postać gracza |
+| GameState       | GameState       | readonly | Aktualny stan gry      |
+| \_signals       | Signals         | private  | Referencja do EventBus |
+
+### Metody
+
+#### OnSetGameState
+
+```csharp
+private void OnSetGameState(GameState newState)
+```
+
+Obsługuje zmianę stanu gry.
+
+---
+
+## Signals
+
+Globalny EventBus aplikacji.
+
+```csharp
+public partial class Signals : Node
+```
+
+### Opis
+
+centralny system komunikacji pomiędzy modelami i kontrolerami.
+
+### Sygnały
+
+#### SetGameState
+
+```csharp
+[Signal]
+public delegate void SetGameStateEventHandler(GameState newState);
+```
+
+Zmienia stan gry.
+
+### Metody
+
+#### EmitSetGameState
+
+```csharp
+public void EmitSetGameState(GameState newState)
+```
+
+Emituje sygnał zmiany stanu gry.
+
+---
+## Enums
+
+### GameState
+
+Enum określający aktualny stan gry.

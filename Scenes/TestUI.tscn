@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcibkcwgc7f0v"]
 
-[ext_resource type="Script" uid="uid://ck0jejqyhvyg4" path="res://Scripts/TestUIController.cs" id="1_goond"]
+[ext_resource type="Script" uid="uid://m4bxuuyu1v6g" path="res://Scripts/TestUIController.cs" id="1_goond"]
 
 [node name="TestUI" type="Control" unique_id=1577627899 node_paths=PackedStringArray("IncreaseHealthBtn", "DecreaseHealthBtn", "HpProgressB")]
 layout_mode = 3

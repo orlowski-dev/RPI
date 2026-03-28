@@ -2,9 +2,6 @@
 .godot/
 /android/
 
-# Godot UID
-**/*.uid
-
 # Cache
 *.tmp
 *.log

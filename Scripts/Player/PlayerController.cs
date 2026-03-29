@@ -3,6 +3,9 @@ using Godot;
 /// <summary>
 /// Odpowiada za sterowanie postacią gracza.
 /// </summary>
+/// <remarks>
+/// Wykorzystuje system fizyki do kolizji
+/// </remarks>
 public partial class PlayerController : CharacterBody2D
 {
     [Export]
@@ -18,6 +21,13 @@ public partial class PlayerController : CharacterBody2D
         MovePlayer(ref delta);
     }
 
+    /// <summary>
+    /// Odpowiada za poruszanie się postacią gracza
+    /// </summary>
+    /// <param name=""></param>
+    /// <remarks>
+    /// Pobiera kierunek z InputMap
+    /// </remarks>
     private void MovePlayer(ref double delta)
     {
         var direction = Input.GetVector("moveLeft", "moveRight", "moveUp", "moveDown");

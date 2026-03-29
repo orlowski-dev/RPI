@@ -1,9 +1,14 @@
 using Godot;
 
+/// <summary>
+/// Główny kontroler gry.
+/// </summary>
+/// <remarks>
+/// Singleton zarządzający logiką gry. Zapewnia globalny dostęp do kontrolera gry.
+/// </remarks>
 [GlobalClass]
 public partial class GameController : BaseSingleton<GameController>
 {
-    // public static GameController Instance { get; private set; }
     public PlayerCharacter PlayerCharacter { get; private set; }
     public GameState GameState { get; private set; }
     private Signals _signals => Signals.Instance;
@@ -39,6 +44,10 @@ public partial class GameController : BaseSingleton<GameController>
         );
     }
 
+    /// <summary>
+    /// Obsługuje zmianę stanu gry.
+    /// </summary>
+    /// <param name="newState">Nowy stan</param>
     private void OnSetGameState(GameState newState)
     {
         GameState = newState;

@@ -8,9 +8,10 @@ using Godot;
 /// Bazowa klasa singleton dla systemów globalnych w grze.
 /// </summary>
 /// <remarks>
-/// `BaseSingleton<T>` to generyczna klasa abstrakcyjna implementująca
-/// wzorzec **Singleton** dla klas dziedziczących po `Node`.
+/// Generyczna klasa abstrakcyjna implementująca
+/// wzorzec Singleton dla klas dziedziczących po Node.
 /// </remarks>
+[GlobalClass]
 public abstract partial class BaseSingleton<T> : Node
     where T : Node
 {

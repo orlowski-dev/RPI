@@ -20,9 +20,6 @@ public partial class TestUIController : Node
     {
         _gc.StartNewGame();
 
-        _signals.EmitSetGameState(GameState.TestingOnly);
-        GD.Print(_gc.GameState);
-
         HpProgressB.MaxValue = _pc.MaxHP;
         HpProgressB.Value = _pc.HP;
 

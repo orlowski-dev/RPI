@@ -50,11 +50,19 @@ public abstract partial class BaseCharacter : Resource
         CritChance = critChance;
     }
 
+    /// <summary>
+    /// Zmniejsza HP postaci o podaną wartość.
+    /// </summary>
+    /// <param name="amount">Ilość obrażeń</param>
     public virtual void TakeDamage(int amount)
     {
         HP = Mathf.Max(0, HP - amount);
     }
 
+    /// <summary>
+    /// Leczy postać o podaną wartość.
+    /// </summary>
+    /// <param name="amount">Ilość leczenia</param>
     public virtual void Heal(int amount)
     {
         if (HP + amount > MaxHP)

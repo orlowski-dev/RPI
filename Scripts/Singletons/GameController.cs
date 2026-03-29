@@ -1,33 +1,33 @@
 using Godot;
 
+/// <summary>
+/// Główny kontroler gry.
+/// </summary>
+/// <remarks>
+/// Singleton zarządzający logiką gry. Zapewnia globalny dostęp do kontrolera gry.
+/// </remarks>
 [GlobalClass]
-public partial class GameController : Node
+public partial class GameController : BaseSingleton<GameController>
 {
-    public static GameController Instance { get; private set; }
     public PlayerCharacter PlayerCharacter { get; private set; }
     public GameState GameState { get; private set; }
     private Signals _signals => Signals.Instance;
 
     public override void _EnterTree()
     {
-        if (Instance != null)
-        {
-            GD.PushError("GameController już istnieje!");
-            QueueFree();
-            return;
-        }
-
-        Instance = this;
+        base._EnterTree();
     }
 
     public override void _Ready()
     {
+        base._Ready();
         GameState = GameState.MainMenu;
         _signals.SetGameState += OnSetGameState;
     }
 
     public override void _ExitTree()
     {
+        base._ExitTree();
         _signals.SetGameState -= OnSetGameState;
     }
 
@@ -44,6 +44,10 @@ public partial class GameController : Node
         );
     }
 
+    /// <summary>
+    /// Obsługuje zmianę stanu gry.
+    /// </summary>
+    /// <param name="newState">Nowy stan</param>
     private void OnSetGameState(GameState newState)
     {
         GameState = newState;

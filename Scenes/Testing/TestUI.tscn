@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcibkcwgc7f0v"]
 
-[ext_resource type="Script" uid="uid://m4bxuuyu1v6g" path="res://Scripts/TestUIController.cs" id="1_goond"]
+[ext_resource type="Script" uid="uid://m4bxuuyu1v6g" path="res://Scripts/Testing/TestUIController.cs" id="1_pg2db"]
 
 [node name="TestUI" type="Control" unique_id=1577627899 node_paths=PackedStringArray("IncreaseHealthBtn", "DecreaseHealthBtn", "HpProgressB")]
 layout_mode = 3
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_goond")
+script = ExtResource("1_pg2db")
 IncreaseHealthBtn = NodePath("CenterContainer/VBoxContainer/IBtn")
 DecreaseHealthBtn = NodePath("CenterContainer/VBoxContainer/Dbtn")
 HpProgressB = NodePath("CenterContainer/VBoxContainer/ProgressBar")

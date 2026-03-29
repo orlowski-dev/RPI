@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://0k12hscapm7v" path="res://Assets/Prototype/Sprites/bgTile.png" id="1_k2eo1"]
 [ext_resource type="PackedScene" uid="uid://fkyr6o76cn3i" path="res://Scenes/Player/Player.tscn" id="2_se0eo"]
 [ext_resource type="PackedScene" uid="uid://dj6o4ib2wc1rf" path="res://Scenes/Player/PlayerRunCamera.tscn" id="3_4snwc"]
+[ext_resource type="PackedScene" uid="uid://c0h078in2nq2b" path="res://Scenes/UI/HudTestWorld.tscn" id="4_2n0ak"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_se0eo"]
 size = Vector2(100, 5000)
@@ -11,6 +12,10 @@ size = Vector2(100, 5000)
 size = Vector2(9.648224, 132.6181)
 
 [node name="TestWorld" type="Node2D" unique_id=1060880773]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=146379395]
+
+[node name="HudTestWorld" parent="CanvasLayer" unique_id=1724553302 instance=ExtResource("4_2n0ak")]
 
 [node name="BG" type="Sprite2D" parent="." unique_id=1719126295]
 texture_repeat = 2

@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 /// <summary>
 /// Główny kontroler gry.
@@ -12,6 +13,10 @@ public partial class GameController : BaseSingleton<GameController>
     public PlayerCharacter PlayerCharacter { get; private set; }
     public GameState GameState { get; private set; }
     private Signals _signals => Signals.Instance;
+    private Dictionary<string, string> _scenesMap = new()
+    {
+        { "testWorld", "res://Scenes/Testing/TestWorld.tscn" },
+    };
 
     public override void _EnterTree()
     {
@@ -52,5 +57,15 @@ public partial class GameController : BaseSingleton<GameController>
     {
         GameState = newState;
         GD.Print($"Game state changed to: {GameState}");
+
+        switch (GameState)
+        {
+            case GameState.TestingPlayerMovement:
+                GetTree().ChangeSceneToFile(_scenesMap["testWorld"]);
+                return;
+            default:
+                GD.PrintErr("Invalid GameState value!");
+                return;
+        }
     }
 }

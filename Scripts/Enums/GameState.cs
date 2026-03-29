@@ -7,5 +7,5 @@ public enum GameState
     City,
     Dungeon,
     Combat,
-    TestingOnly,
+    TestingPlayerMovement,
 }

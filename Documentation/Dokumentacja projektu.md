@@ -7,7 +7,6 @@
 
 Niniejszy dokument jest dokumentacją gry RPG typu roguelite, która jest produkcją 2D z widokiem top-down, inspirowaną mechanikami znanymi z gier.
 
-
 ## Opis gry
 
 Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turowym, zdobywa loot, złoto i rozwija swoją postać. Po śmierci postaci, gracz wraca do miasta (safe house), zachowując część postępów. Gracz kończy grę po ukończeniu pięciu lochów.
@@ -29,8 +28,6 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 - **system kontroli wersji**: git
 - **repozytorium**: [GitHub](https://github.com/orlowski-dev/RPI)
 - **zarządzanie zadaniami zespołu**: [Trello](https://trello.com/b/MF4QbxrJ/rpi)
-
-
 
 ---
 
@@ -294,6 +291,52 @@ Metoda odpowiada za:
 
 ---
 
+## BaseSingleton
+
+Bazowa klasa singleton dla systemów globalnych w grze.
+
+```csharp
+public abstract partial class BaseSingleton<T> : Node where T : Node
+```
+
+### Opis
+
+`BaseSingleton<T>` to generyczna klasa abstrakcyjna implementująca wzorzec **Singleton**  
+dla klas dziedziczących po `Node`.
+
+Klasa automatycznie:
+
+- pilnuje jednej instancji
+- ustawia `Instance`
+- usuwa duplikaty
+- czyści referencję przy usuwaniu node
+
+Klasa implementuje:
+
+- Singleton Pattern
+- Generic Singleton
+
+### Właściwości
+
+| Właściwość | Typ | Dostęp | Opis                          |
+| ---------- | --- | ------ | ----------------------------- |
+| Instance   | T   | static | Globalna instancja singletona |
+
+### Przykład użycia
+
+```csharp
+public partial class GameController : BaseSingleton<GameController>
+{
+	public override void _EnterTree()
+    {
+        base._EnterTree();
+        // dalsza implementacja
+    }
+}
+```
+
+---
+
 ## GameController
 
 Główny kontroler gry.
@@ -374,6 +417,7 @@ public void EmitSetGameState(GameState newState)
 Emituje sygnał zmiany stanu gry.
 
 ---
+
 ## Enums
 
 ### GameState

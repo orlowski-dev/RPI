@@ -4,23 +4,16 @@ using Godot;
 /// <summary>
 /// Globalny EventBus
 /// </summary>
-public partial class Signals : Node
+public partial class Signals : BaseSingleton<Signals>
 {
     [Signal]
     public delegate void SetGameStateEventHandler(GameState newState);
 
-    public static Signals Instance { get; private set; }
+    // public static Signals Instance { get; private set; }
 
     public override void _EnterTree()
     {
-        if (Instance != null)
-        {
-            GD.PushError("Signals już istnieje!");
-            QueueFree();
-            return;
-        }
-
-        Instance = this;
+        base._EnterTree();
     }
 
     public void EmitSetGameState(GameState newState)

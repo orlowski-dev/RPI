@@ -67,6 +67,5 @@ public partial class GameController : BaseSingleton<GameController>
                 GD.PrintErr("Invalid GameState value!");
                 return;
         }
-        ;
     }
 }

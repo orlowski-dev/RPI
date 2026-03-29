@@ -3,7 +3,9 @@
 
 ---
 
-## Wprowadzenie
+---
+
+# Wprowadzenie
 
 Niniejszy dokument jest dokumentacją gry RPG typu roguelite, która jest produkcją 2D z widokiem top-down, inspirowaną mechanikami znanymi z gier.
 
@@ -31,6 +33,7 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 
 ---
 
+# Klasy
 ## BaseCharacter
 
 Bazowa klasa dla wszystkich postaci w grze.  
@@ -49,13 +52,12 @@ podstawową logikę związaną z:
 - leczeniem
 - aktualizacją HP
 - sygnałami zmian HP
-### Dziedziczenie
 
+### Dziedziczenie
 
 ```bash
 Resource <-- PlayerCharacter
 ```
-
 
 ### Sygnały
 
@@ -131,7 +133,6 @@ public partial class PlayerCharacter : BaseCharacter
 `PlayerCharacter` przechowuje podstawowe statystyki gracza.
 
 ### Dziedziczenie
-
 
 ```bash
 Resource <-- BaseCharacter <-- PlayerCharacter
@@ -390,12 +391,13 @@ Odpowiada za:
 
 ### Właściwości
 
-| Właściwość      | Typ             | Dostęp   | Opis                   |
-| --------------- | --------------- | -------- | ---------------------- |
-| Instance        | GameController  | readonly | Singleton              |
-| PlayerCharacter | PlayerCharacter | readonly | Aktualna postać gracza |
-| GameState       | GameState       | readonly | Aktualny stan gry      |
-| \_signals       | Signals         | private  | Referencja do EventBus |
+| Właściwość      | Typ             | Dostęp   | Opis                                   |
+| --------------- | --------------- | -------- | -------------------------------------- |
+| Instance        | GameController  | readonly | Singleton                              |
+| PlayerCharacter | PlayerCharacter | readonly | Aktualna postać gracza                 |
+| GameState       | GameState       | readonly | Aktualny stan gry                      |
+| \_signals       | Signalsq        | private  | Referencja do EventBus                 |
+| \_scenesMap     | Dict<str,str>   | private  | Mapa nazw scen ze ścieżkami źródłowymi |
 
 ### Metody
 
@@ -427,7 +429,6 @@ Centralny system komunikacji pomiędzy modelami i kontrolerami.
 Node <-- BaseSingleton <-- Signals
 ```
 
-
 ### Sygnały
 
 #### SetGameState
@@ -451,8 +452,143 @@ Emituje sygnał zmiany stanu gry.
 
 ---
 
-## Enums
+## UIManager
+
+```csharp
+public partial class UIManager : BaseSingleton<UIManager>
+```
+
+### Dziedziczenie
+
+```bash
+Node <-- BaseSingleton <-- UIManager
+```
+
+---
+
+# Wyliczniki
 
 ### GameState
 
 Enum określający aktualny stan gry.
+
+---
+
+# Jak używać Custom Singals?
+
+Czyli takie luźne powiązanie systemów. Zamiast robić referencje do kontrolerów itd to możemy sobie puścić sygnał i go łatwo obsłużyć.
+
+Custom signals pozwalają:
+- oddzielić logikę systemów  
+- uniknąć bezpośrednich zależności  
+- łatwo komunikować się między scenami  
+- tworzyć skalowalną architekturę
+
+### Rejestracja nowego sygnału
+
+Należy dodać **sygnał** do klasy `Signals`
+
+```csharp
+// plik: Signals.cs
+
+[Signal]  
+public delegate void NazwaSygnałuEventHandler(<lista parametrów lub bez>);
+```
+
+> [!WARNING]
+> Nazwa sygnału musi kończyć się na **EventHandler** - inaczej nie zadziała!
+
+## Metoda emitująca sygnał
+
+Należy utworzyć metodą, która wyemituje ten sygnał.
+
+```csharp
+// plik: Signals.cs
+
+public void EmitNazwaSygnału(int value)  
+{  
+	EmitSignal(SignalName.NazwaSygnału, value);  
+}
+```
+
+## Nasłuchiwanie sygnału
+
+### Utworzenie referencji do `Signal`
+
+```csharp
+// plik: twój, w którym chcesz skorzystać z sygnału
+private Signals _signals => Signals.Instance;
+```
+
+### Utworzenie metody obsługującej sygnał
+
+Trzeba utworzyć metodę, która zostanie "podpięta" do sygnały i zostanie wykonana kiedy sygnał się pojawi.
+
+```csharp
+// plik: twój, w którym chcesz skorzystać z sygnału
+
+private void OnNazwaSygnału(GameState newState)
+{
+    GD.Print($"Custom Signal został wykonany!");
+}
+```
+
+### Subskrybcja sygnału
+
+Tearaz metodę obsługującą sygnał trzeba podpiąć do `OnNazwaSygnału` - nazwa metody `NazwaSygnałuEventHandler` bez sufixu - z instancji klasy `Signals` - dostępna przez referencję dodaną wcześniej.
+
+```csharp
+// plik: twój, w którym chcesz skorzystać z sygnału
+
+public override void _Ready()  
+{  
+	_signals.NazwaSygnału += OnNazwaSygnału;  
+}
+```
+
+
+### Usunięcie subskrypcji
+
+```csharp
+// plik: twój, w którym chcesz skorzystać z sygnału
+
+public override void _ExitTree()  
+{  
+	_signals.NazwaSygnału -= OnNazwaSygnału;  
+}
+```
+
+> [!WARNING]
+> Trzeba bo bez tego pojawią się błędy!
+
+### Wysyłanie sygnału
+
+Sygnał można wysłać z dowolnego miejsca :)
+
+Wystarczy w skrypcie:
+
+```csharp
+Signals.Instance.EmitNazwaSygnału(1234);
+
+// lub utworzyć referencję i tak samo
+private Signals _signals => Signals.Instance;
+// ..
+	_signals.EmitNazwaSygnału(1234);
+```
+
+
+## Flow
+
+Dla przykłądu jak chcemy po kliknięciu w przycisk rozpocząć nową grę (zmienić GameState) to przepływ wygląda tak:
+
+```bash
+Button
+	|
+EmitSignal
+	|
+Signals
+	|
+GameController
+	|
+Zmiana GameState
+```

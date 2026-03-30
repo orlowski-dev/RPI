@@ -12,6 +12,19 @@ public static class Logger
             timestamp: DateTime.Now
         );
 
-        GD.Print(log.OneLine);
+        FileSystem.Write("user://logs/log.txt", log.OneLine);
+
+        switch (level)
+        {
+            case LogLevel.Info:
+                GD.Print(log.OneLine);
+                break;
+            case LogLevel.Warning:
+                GD.PushWarning(log.OneLine);
+                break;
+            default:
+                GD.PushError(log.OneLine);
+                break;
+        }
     }
 }

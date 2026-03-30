@@ -15,5 +15,5 @@ public readonly struct Log
         Service = service;
     }
 
-    public string OneLine => $"{Timestamp.ToString()} | {Level} | {Service} | {Message}";
+    public string OneLine => $"{Timestamp.ToString()} | {Level} | {Service} | {Message}\n";
 }

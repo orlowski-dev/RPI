@@ -284,7 +284,7 @@ Klasa dziedziczy po `Camera2D` i automatycznie wyszukuje obiekt `Player` w drzew
 > -   player node musi mieć nazwę "Player"
 > -   kamera musi być w tym samym `RootNode`
 
-### Parametry
+### Właściwości
 
 | Parametr        | Typ    | Dostęp     | Opis                         |
 | --------------- | ------ | ---------- | ---------------------------- |
@@ -465,6 +465,36 @@ Node <-- BaseSingleton <-- UIManager
 ```
 
 ---
+
+## FileSystem
+
+Statyczna klasa odpowiedzialna za pracę z plikami.
+
+```csharp
+public static class FileSystem
+```
+
+### Metody
+
+#### Write
+
+Metoda odpowiada za zapis danych do pliku. Tworzenie pliku jeśli plik nie istnieje lub
+ dopisuje dane do istniejącego wskazanego pliku.
+
+```csharp
+public static void Write(...args)
+```
+
+##### Parametry
+
+| Parametr | Typ    | Opis                           |
+| -------- | ------ | ------------------------------ |
+| path     | string | Ścieżka do pliku               |
+| content  | string | Zawartość do zapisania w pliku |
+
+
+---
+
 
 # Wyliczniki
 

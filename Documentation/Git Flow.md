@@ -179,7 +179,7 @@ Nie trzeba wypychać kodu po każdym commitcie.
 ## Przesyłanie kodu na GitHub
 
 ```bash
-git push -u origin <branch_name>
+git push -u origin <branch_name> --force-with-lease
 ```
 
 ## Aktualizacja branch

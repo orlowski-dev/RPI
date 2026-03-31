@@ -8,6 +8,11 @@ using Godot;
 /// </remarks>
 public static class FileSystem
 {
+    /// /// <summary>
+    /// Metoda odpowiada za zapis danych do pliku. Tworzenie pliku jeśli plik nie istnieje lub dopisuje dane do istniejącego wskazanego pliku.
+    /// </summary>
+    /// <param name="path">Ścieżka do pliku</param>
+    /// <param name="content">Zawartość do zapisanua</param>
     public static void Write(string path, string content)
     {
         var fileExists = false;

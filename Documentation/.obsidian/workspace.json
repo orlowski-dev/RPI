@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Git Flow.md",
+                "file": "Dokumentacja projektu.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git Flow"
+              "title": "Dokumentacja projektu"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "157270bac38df16d",
@@ -185,8 +186,8 @@
   },
   "active": "2983cf32106dde66",
   "lastOpenFiles": [
-    "Dokumentacja projektu.md",
     "Git Flow.md",
+    "Dokumentacja projektu.md",
     "attachements/Pasted image 20260324091512.png.import",
     "attachements/Pasted image 20260324091512.png",
     "attachements/Pasted image 20260324090110.png.import",

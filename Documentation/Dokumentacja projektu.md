@@ -474,6 +474,8 @@ Statyczna klasa odpowiedzialna za pracę z plikami.
 public static class FileSystem
 ```
 
+Implementacja wykorzystuje `Godot.FileAccess`.
+
 ### Metody
 
 #### Write
@@ -492,6 +494,29 @@ public static void Write(...args)
 | path     | string | Ścieżka do pliku               |
 | content  | string | Zawartość do zapisania w pliku |
 
+---
+
+# Logger
+
+Klasa statyczna odpowiadająca za obsługę logów.
+
+```cs
+public static class Logger
+```
+
+### Metody
+
+#### Write
+
+Metoda opowiadająca za zapis logu do pliku i wypisanie go w konsoli.
+
+##### Parametry
+
+| Parametr | Typ      | Opis                  |
+| -------- | -------- | --------------------- |
+| level    | LogLevel | Rodzaj logu           |
+| service  | string   | Nazwa serwisu/skryptu |
+| message  | string   | Treść wiadomości      |
 
 ---
 

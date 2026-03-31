@@ -19,9 +19,6 @@ public partial class TestUIController : Node
     public override void _Ready()
     {
         _gc.StartNewGame();
-        Logger.Write(LogLevel.Info, this.GetType().Name, "To jest zwykła informacja");
-        Logger.Write(LogLevel.Warning, this.GetType().Name, "To jest ostatnie ostrzeżenie!");
-        Logger.Write(LogLevel.Error, this.GetType().Name, "To jest błąd.");
 
         HpProgressB.MaxValue = _pc.MaxHP;
         HpProgressB.Value = _pc.HP;

@@ -24,6 +24,7 @@ Wprowadza się następującą strukturę branchy:
     - feature/\*
     - bug/\*
     - hotfix/\*
+    - docs/\*
 
 ## Branch main
 
@@ -36,6 +37,9 @@ Zasady:
 - brak bezpośrednich commitów
 - merge tylko przez Pull Request
 - merge wykonuje Team Leader
+
+> [!WARNING]
+> Merge na `main` robimy tylko z `devel` i `hotfix`!
 
 ## Branch devel
 
@@ -71,7 +75,7 @@ feature/45-inventory-ui
 ```
 
 > [!TIP]
-> Numer taska jest dostępny po wejściu w tak w adresie url. Np. nr 50: https://trello.com/c/5rgyQEzU/50-zainstalowa%C4%87-obsydian
+> Numer taska jest dostępny po wejściu w task w adresie url. Np. nr 50: https:// trello .com/c/5rgyQEzU/--->50<---zainstalowa%C4%87-obsydian
 
 Zasady:
 
@@ -108,11 +112,13 @@ Zasady:
 Hotfix branch służy do szybkiej naprawy błędów w branchu `main`.
 
 Format:
+
 ```bash
 hotfix/<nr_taska>-<opis>
 ```
 
 Przykład:
+
 ```bash
 hotfix/88-save-crash
 hotfix/91-build-error
@@ -124,6 +130,13 @@ Zasady:
 - merge do `main`
 - merge do `devel`
 - usuwany po merge
+
+> [!CAUTION]
+> Ważne żeby zrobić merge do `main` i `devel`!
+
+# Docs branch
+
+Branch służy do osobnej aktualizacji dokumentacji i innych dokumentów.
 
 # Workflow pracy
 
@@ -139,34 +152,62 @@ git pull
 > [!CAUTION]
 > Ważne!
 
+Następnie utworzyć swojego brancha.
+
 ## Utworzenie brancha
 
 Tworzymy branch dla taska:
+
 ```bash
-git checkout -b feature/42-player-movement
+git checkout -b <branch_name>
 ```
 
-
-## 3. Praca i commit
+## Praca i commit
 
 Podczas pracy wykonujemy małe, czytelne commity. Zmiany w jednym w dwóch plikach.
 
 ```bash
 git add .
-git commit -m "ft(player): dodano poruszanie się postacią"
-git push -u origin feature/42-player-movement
+git commit -m "typ(zakres): opis krótki"
 ```
 
+Nie trzeba wypychać kodu po każdym commitcie.
+
 > [!NOTE]
-> Im lepiej opisane tym bardziej ułatwi nam pracę
+> Im lepiej opisane tym bardziej ułatwi nam pracę. Tytuł commitu powinien być napisany w stylu "Ten commit..." np. dodaje coś => "ft(player): dodaje movement postaci".
 
-## 4. Aktualizacja branch
+## Przesyłanie kodu na GitHub
 
-Regularnie aktualizujemy branch.
+```bash
+git push -u origin <branch_name>
+```
+
+## Aktualizacja branch
+
+Regularnie aktualizujemy branch. Swój o zamiany na `devel`.
 
 ```bash
 git fetch origin
 git rebase origin/devel
+
+# jeśli konflikt:
+# - rozwiązaujemy
+# potem
+git add .
+git rebase --continue
+```
+
+## Konflikt przy merge
+
+Podobnie jak z aktualizacją brancha, tylko na końcu trzeba wypchnąć na zdalne repo.
+
+```bash
+git fetch origin
+git rebase origin/devel
+# rozwiązujemy konflikt
+git add .
+git rebase --continue
+git push --force-with-lease
 ```
 
 # Merge workflow
@@ -179,36 +220,34 @@ Po zakończeniu pracy:
 4. Merge
 5. Usuń branch
 
-
 # Konwencja nazewnictwa commitów
 
 Używamy formatów:
+
 ```bash
 typ(zakres): opis
 ```
 
 Typy commitów:
 
-- ft — nowa funkcjonalność
-- fix — poprawka błędu
-- ref — refaktoryzacja kodu
-- cht — zmiany techniczne
-- docs — dokumentacja
-- art — assety
-- ui — UI
+- ft - nowa funkcjonalność
+- fix - poprawka błędu
+- ref - refaktoryzacja kodu
+- cht - zmiany techniczne
+- docs - dokumentacja
+- art - assety
+- ui - UI
 
-Na przhkład:
+Na przykład:
 
 ```bash
 ft(player): dodano movement postaci
-fix(inventory): vrash przy włączeniu gry
+fix(inventory): crash przy włączeniu gry
 ref(player): refaktoryzacja klasy BaseCharacter
 ```
 
-
 # Code Style
 
-Używamy Godot C# Style Guide.
+Używamy [Godot C# Style Guide](https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_style_guide.html#doc-c-sharp-styleguide).
 
 Lepiej coś popsuć i się czegoś nauczyć niż wkleić syf z AI.
-

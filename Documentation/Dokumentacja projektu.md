@@ -34,6 +34,7 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 ---
 
 # Klasy
+
 ## BaseCharacter
 
 Bazowa klasa dla wszystkich postaci w grze.  
@@ -79,14 +80,14 @@ Resource <-- PlayerCharacter
 
 ### Konstruktory
 
-| Parametr   | Typ    | Opis                          |
-| ---------- | ------ | ----------------------------- |
-| name       | string | Nazwa postaci                 |
-| maxHp      | int    | Maksymalne HP                 |
-| attack     | int    | Siła ataku                    |
-| defense    | int    | Obrona                        |
-| luck       | int    | Szczęście                     |
-| critChance | int    | Szansa na trafienie krytyczne |
+| Parametr   | Typ    | Opis                          |     |
+| ---------- | ------ | ----------------------------- | --- |
+| name       | string | Nazwa postaci                 |     |
+| maxHp      | int    | Maksymalne HP                 |     |
+| attack     | int    | Siła ataku                    |     |
+| defense    | int    | Obrona                        |     |
+| luck       | int    | Szczęście                     |     |
+| critChance | int    | Szansa na trafienie krytyczne |     |
 
 ### Metody
 
@@ -481,7 +482,7 @@ Implementacja wykorzystuje `Godot.FileAccess`.
 #### Write
 
 Metoda odpowiada za zapis danych do pliku. Tworzenie pliku jeśli plik nie istnieje lub
- dopisuje dane do istniejącego wskazanego pliku.
+dopisuje dane do istniejącego wskazanego pliku.
 
 ```csharp
 public static void Write(...args)
@@ -496,7 +497,7 @@ public static void Write(...args)
 
 ---
 
-# Logger
+## Logger
 
 Klasa statyczna odpowiadająca za obsługę logów.
 
@@ -520,12 +521,66 @@ Metoda opowiadająca za zapis logu do pliku i wypisanie go w konsoli.
 
 ---
 
-
 # Wyliczniki
 
-### GameState
+## GameState
 
 Enum określający aktualny stan gry.
+
+## LogLevel
+
+Enum określający typ logu
+
+# Struktury
+
+## Log
+
+Struktura reprezentująca pojedynczy wpis logu systemowego.
+
+```cs
+public readonly struct Log
+```
+
+### Właściwości
+
+| Właściwość | Typ      | Dostęp | Opis                                          |
+| ---------- | -------- | ------ | --------------------------------------------- |
+| Level      | LogLevel | public | Rodzaj logu                                   |
+| Message    | string   | public | Treść wiadomości                              |
+| Timestamp  | string   | public | Data i czas utworzenia                        |
+| Service    | string   | public | Nazwa systemu lub komponentu generującego log |
+
+### Konstruktory
+
+| Parametr  | Typ      | Opis                                          |
+| --------- | -------- | --------------------------------------------- |
+| level     | string   | Rodzaj logu                                   |
+| message   | int      | Treść wiadomości                              |
+| timestamp | DateTime | Data i czas utworzenia                        |
+| service   | string   | Nazwa systemu lub komponentu generującego log |
+
+### Metody
+
+#### OneLine
+
+Zwraca log w formacie jednej linii tekstu.
+
+```cs
+public string OneLine => ()
+```
+
+W formacie:
+
+```
+Timestamp | Level | Service | Message
+```
+
+### Przykład użycia
+
+```cs
+Logger.Write(LogLevel.Info, this.GetType().Name, "To jest zwykła informacja");
+// 31.03.2026 20:32:30 | Info | TestUIController | To jest zwykła informacja
+```
 
 ---
 
@@ -534,9 +589,10 @@ Enum określający aktualny stan gry.
 Czyli takie luźne powiązanie systemów. Zamiast robić referencje do kontrolerów itd to możemy sobie puścić sygnał i go łatwo obsłużyć.
 
 Custom signals pozwalają:
-- oddzielić logikę systemów  
-- uniknąć bezpośrednich zależności  
-- łatwo komunikować się między scenami  
+
+- oddzielić logikę systemów
+- uniknąć bezpośrednich zależności
+- łatwo komunikować się między scenami
 - tworzyć skalowalną architekturę
 
 ### Rejestracja nowego sygnału
@@ -546,7 +602,7 @@ Należy dodać **sygnał** do klasy `Signals`
 ```csharp
 // plik: Signals.cs
 
-[Signal]  
+[Signal]
 public delegate void NazwaSygnałuEventHandler(<lista parametrów lub bez>);
 ```
 
@@ -560,9 +616,9 @@ Należy utworzyć metodą, która wyemituje ten sygnał.
 ```csharp
 // plik: Signals.cs
 
-public void EmitNazwaSygnału(int value)  
-{  
-	EmitSignal(SignalName.NazwaSygnału, value);  
+public void EmitNazwaSygnału(int value)
+{
+	EmitSignal(SignalName.NazwaSygnału, value);
 }
 ```
 
@@ -595,21 +651,20 @@ Tearaz metodę obsługującą sygnał trzeba podpiąć do `OnNazwaSygnału` - na
 ```csharp
 // plik: twój, w którym chcesz skorzystać z sygnału
 
-public override void _Ready()  
-{  
-	_signals.NazwaSygnału += OnNazwaSygnału;  
+public override void _Ready()
+{
+	_signals.NazwaSygnału += OnNazwaSygnału;
 }
 ```
-
 
 ### Usunięcie subskrypcji
 
 ```csharp
 // plik: twój, w którym chcesz skorzystać z sygnału
 
-public override void _ExitTree()  
-{  
-	_signals.NazwaSygnału -= OnNazwaSygnału;  
+public override void _ExitTree()
+{
+	_signals.NazwaSygnału -= OnNazwaSygnału;
 }
 ```
 
@@ -630,7 +685,6 @@ private Signals _signals => Signals.Instance;
 // ..
 	_signals.EmitNazwaSygnału(1234);
 ```
-
 
 ## Flow
 

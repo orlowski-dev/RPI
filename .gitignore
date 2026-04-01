@@ -12,9 +12,6 @@
 
 # katalogi testowe
 *Testing/
-*testing/
-*Test/
-*test/
 
 # Śmieci VisualStudio
 .vs/

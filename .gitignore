@@ -6,6 +6,10 @@
 *.tmp
 *.log
 
+# testy i classlib
+*bin/
+*obj/
+
 # Śmieci VisualStudio
 .vs/
 *.suo

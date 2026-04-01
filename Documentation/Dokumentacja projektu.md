@@ -41,7 +41,7 @@ Bazowa klasa dla wszystkich postaci w grze.
 Definiuje podstawowe statystyki używane w systemie walki.
 
 ```csharp
-public abstract partial class BaseCharacter : Resource
+public abstract partial class BaseCharacter
 ```
 
 ### Opis
@@ -54,40 +54,31 @@ podstawową logikę związaną z:
 - aktualizacją HP
 - sygnałami zmian HP
 
-### Dziedziczenie
-
-```bash
-Resource <-- PlayerCharacter
-```
-
-### Sygnały
-
-| Nazwa     | Parametr | Opis                                  |
-| --------- | -------- | ------------------------------------- |
-| HpChanged | int hp   | Wywoływany przy zmianie punktów życia |
-
 ### Właściwości
 
-| Właściwość | Typ    | Dostęp   | Opis                              |
-| ---------- | ------ | -------- | --------------------------------- |
-| Name       | string | readonly | Nazwa postaci                     |
-| MaxHP      | int    | readonly | Maksymalne punkty życia           |
-| HP         | int    | readonly | Aktualne punkty życia             |
-| Attack     | int    | readonly | Siła ataku                        |
-| Defense    | int    | readonly | Obrona                            |
-| Luck       | int    | readonly | Szczęście                         |
-| CritChance | int    | readonly | Szansa na trafienie krytyczne (%) |
+| Właściwość | Typ       | Dostęp            | Opis                              |
+| ---------- | --------- | ----------------- | --------------------------------- |
+| Name       | string    | public            | Nazwa postaci                     |
+| MaxHP      | int       | public            | Maksymalne punkty życia           |
+| HP         | int       | public            | Aktualne punkty życia             |
+| Attack     | int       | public            | Siła ataku                        |
+| Defense    | int       | public            | Obrona                            |
+| Luck       | int       | public            | Szczęście                         |
+| CritChance | int       | public            | Szansa na trafienie krytyczne (%) |
+| \_hp       | int       | private           | Zmienna potrzebna dla settera HP  |
+| \_signals  | ISignals? | readonly, private | Referencja do instancji Signal    |
 
 ### Konstruktory
 
-| Parametr   | Typ    | Opis                          |     |
-| ---------- | ------ | ----------------------------- | --- |
-| name       | string | Nazwa postaci                 |     |
-| maxHp      | int    | Maksymalne HP                 |     |
-| attack     | int    | Siła ataku                    |     |
-| defense    | int    | Obrona                        |     |
-| luck       | int    | Szczęście                     |     |
-| critChance | int    | Szansa na trafienie krytyczne |     |
+| Parametr   | Typ       | Opis                           |
+| ---------- | --------- | ------------------------------ |
+| name       | string    | Nazwa postaci                  |
+| maxHp      | int       | Maksymalne HP                  |
+| attack     | int       | Siła ataku                     |
+| defense    | int       | Obrona                         |
+| luck       | int       | Szczęście                      |
+| critChance | int       | Szansa na trafienie krytyczne  |
+| signals    | ISignals? | Referencja do instancji Signal |
 
 ### Metody
 
@@ -136,7 +127,7 @@ public partial class PlayerCharacter : BaseCharacter
 ### Dziedziczenie
 
 ```bash
-Resource <-- BaseCharacter <-- PlayerCharacter
+BaseCharacter <-- PlayerCharacter
 ```
 
 ### Statystyki bazowe (dziedziczone)
@@ -161,14 +152,15 @@ Resource <-- BaseCharacter <-- PlayerCharacter
 
 ### Konstruktor
 
-| Parametr   | Typ    | Opis                          |
-| ---------- | ------ | ----------------------------- |
-| name       | string | Nazwa postaci                 |
-| maxHp      | int    | Maksymalne HP                 |
-| attack     | int    | Siła ataku                    |
-| defense    | int    | Obrona                        |
-| luck       | int    | Szczęście                     |
-| critChance | int    | Szansa na trafienie krytyczne |
+| Parametr   | Typ       | Opis                           |
+| ---------- | --------- | ------------------------------ |
+| name       | string    | Nazwa postaci                  |
+| maxHp      | int       | Maksymalne HP                  |
+| attack     | int       | Siła ataku                     |
+| defense    | int       | Obrona                         |
+| luck       | int       | Szczęście                      |
+| critChance | int       | Szansa na trafienie krytyczne  |
+| signals    | ISignals? | Referencja do instancji Signal |
 
 ### Metody
 
@@ -417,7 +409,7 @@ Obsługuje zmianę stanu gry.
 Globalny EventBus aplikacji.
 
 ```csharp
-public partial class Signals : BaseSingleton<Signals>
+public partial class Signals : BaseSingleton<Signals>, ISignals
 ```
 
 ### Opis
@@ -441,6 +433,15 @@ public delegate void SetGameStateEventHandler(GameState newState);
 
 Zmienia stan gry.
 
+#### CharacterHpChangedEventHandler
+
+```cs
+[Signal]
+public delegate void CharacterHpChangedEventHandler(int hp);
+```
+
+Wywoływany przy zmianie punktów życia
+
 ### Metody
 
 #### EmitSetGameState
@@ -450,6 +451,17 @@ public void EmitSetGameState(GameState newState)
 ```
 
 Emituje sygnał zmiany stanu gry.
+
+#### EmitSetCharacterHpChanged
+
+```cs
+public void EmitSetCharacterHpChanged(int newHp)
+{
+    EmitSignal(SignalName.CharacterHpChanged, newHp);
+}
+```
+
+Emituje sygnał zmiany wartości hp postaci.
 
 ---
 
@@ -531,6 +543,8 @@ Enum określający aktualny stan gry.
 
 Enum określający typ logu
 
+---
+
 # Struktury
 
 ## Log
@@ -581,6 +595,17 @@ Timestamp | Level | Service | Message
 Logger.Write(LogLevel.Info, this.GetType().Name, "To jest zwykła informacja");
 // 31.03.2026 20:32:30 | Info | TestUIController | To jest zwykła informacja
 ```
+
+---
+
+# Interfejsy
+
+## ISignals
+
+Interfejs sygnałów globalnych.
+
+> [!WARNING]
+> Każdy sygnał i metoda emitująca muszą zostać zdefiniowane najpierw tutaj i potem zaimplementowane w EventBus (Signals)
 
 ---
 

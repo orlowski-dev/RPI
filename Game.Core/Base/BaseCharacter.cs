@@ -9,7 +9,7 @@
 /// <param name="CritChance">Szansa na trafienie krytyczne (%)</param>
 public abstract partial class BaseCharacter
 {
-    private readonly ISignals _signals;
+    private readonly ISignals? _signals;
     private int _hp;
 
     public string Name { get; private set; }
@@ -20,7 +20,7 @@ public abstract partial class BaseCharacter
         private set
         {
             _hp = value;
-            _signals.EmitSetCharacterHpChanged(_hp);
+            _signals?.EmitSetCharacterHpChanged(_hp);
         }
     }
     public int Attack { get; private set; }
@@ -29,16 +29,15 @@ public abstract partial class BaseCharacter
     public int CritChance { get; private set; }
 
     protected BaseCharacter(
-        ISignals signals,
         string name,
         int maxHp,
         int attack,
         int defense,
         int luck,
-        int critChance
+        int critChance,
+        ISignals? signals
     )
     {
-        _signals = signals;
         Name = name;
         MaxHP = maxHp;
         HP = MaxHP;
@@ -46,6 +45,7 @@ public abstract partial class BaseCharacter
         Defense = defense;
         Luck = luck;
         CritChance = critChance;
+        _signals = signals;
     }
 
     /// <summary>

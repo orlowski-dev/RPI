@@ -12,15 +12,15 @@ public partial class PlayerCharacter : BaseCharacter
     // TODO: dodać później umiejętności etc tutaj
 
     public PlayerCharacter(
-        ISignals signals,
         string name,
         int maxHp,
         int attack,
         int defense,
         int luck,
-        int critChance
+        int critChance,
+        ISignals? signals = null
     )
-        : base(signals, name, maxHp, attack, defense, luck, critChance)
+        : base(name, maxHp, attack, defense, luck, critChance, signals)
     {
         Level = 1;
         ExpNextLvl = CalculateExpToNextLevel();

@@ -10,6 +10,12 @@
 *bin/
 *obj/
 
+# katalogi testowe
+*Testing/
+*testing/
+*Test/
+*test/
+
 # Śmieci VisualStudio
 .vs/
 *.suo

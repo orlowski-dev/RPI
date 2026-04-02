@@ -19,8 +19,8 @@ public partial class PlayerCharacter : BaseCharacter
         int defense,
         int luck,
         int critChance,
-        int level,
-        ISignals? signals = null
+        ISignals? signals = null,
+        int level = 1
     )
         : base(name, maxHp, attack, defense, critChance, level, signals)
     {

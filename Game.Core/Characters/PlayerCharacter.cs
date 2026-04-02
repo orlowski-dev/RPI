@@ -2,12 +2,15 @@
 /// Postać gracza - jej statystki, umiejętności ..?
 /// </summary>
 /// <param name="Level">Poziom postaci gracza</param>
-/// <param name="Exp">Punkty doświadczenia gracza</param>
+/// <param name="Exp">Aktualne punkty doświadczenia</param>
+/// <param name="ExpNextLvl">Wymagana ilość EXP do następnego poziomu</param>
+/// <param name="Luck">Szczęście</param>
 public partial class PlayerCharacter : BaseCharacter
 {
     public int Level { get; private set; }
     public int Exp { get; private set; }
     public int ExpNextLvl { get; private set; }
+    public int Luck { get; private set; }
 
     // TODO: dodać później umiejętności etc tutaj
 

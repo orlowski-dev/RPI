@@ -63,7 +63,6 @@ podstawową logikę związaną z:
 | HP         | int       | public            | Aktualne punkty życia             |
 | Attack     | int       | public            | Siła ataku                        |
 | Defense    | int       | public            | Obrona                            |
-| Luck       | int       | public            | Szczęście                         |
 | CritChance | int       | public            | Szansa na trafienie krytyczne (%) |
 | \_hp       | int       | private           | Zmienna potrzebna dla settera HP  |
 | \_signals  | ISignals? | readonly, private | Referencja do instancji Signal    |
@@ -149,6 +148,7 @@ BaseCharacter <-- PlayerCharacter
 | Level      | int | readonly | Poziom postaci gracza                    |
 | Exp        | int | readonly | Aktualne punkty doświadczenia            |
 | ExpNextLvl | int | readonly | Wymagana ilość EXP do następnego poziomu |
+| Luck       | int | public   | Szczęście                                |
 
 ### Konstruktor
 

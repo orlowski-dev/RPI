@@ -3,9 +3,9 @@
 /// </summary>
 /// <param name="Name">Nazwa postaci</param>
 /// <param name="HP">Punkty życia</param>
-/// <param name="Attack">Punkty życia</param>
-/// <param name="Defense">Punkty życia</param>
-/// <param name="Luck">Punkty życia</param>
+/// <param name="HP">Maksymalne punkty życia</param>
+/// <param name="Attack">Siła ataku</param>
+/// <param name="Defense">Obrona</param>
 /// <param name="CritChance">Szansa na trafienie krytyczne (%)</param>
 public abstract partial class BaseCharacter
 {
@@ -25,7 +25,6 @@ public abstract partial class BaseCharacter
     }
     public int Attack { get; private set; }
     public int Defense { get; private set; }
-    public int Luck { get; private set; }
     public int CritChance { get; private set; }
 
     protected BaseCharacter(

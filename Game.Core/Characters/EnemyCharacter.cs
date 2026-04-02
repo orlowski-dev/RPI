@@ -10,7 +10,7 @@ public partial class EnemyCharacter : BaseCharacter
         int critChance,
         EnemyType enemyType,
         int level,
-        ISignals? signals
+        ISignals? signals = null
     )
         : base(name, maxHp, attack, defense, critChance, level, signals)
     {

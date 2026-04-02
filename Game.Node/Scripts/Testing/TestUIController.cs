@@ -23,7 +23,7 @@ public partial class TestUIController : Node
         HpProgressB.MaxValue = _pc.MaxHP;
         HpProgressB.Value = _pc.HP;
 
-        _pc.HpChanged += OnHealthChanged;
+        _signals.CharacterHpChanged += OnHealthChanged;
 
         IncreaseHealthBtn.Pressed += IncreaseHealthPressed;
         DecreaseHealthBtn.Pressed += DecreaseHealthPressed;
@@ -32,7 +32,7 @@ public partial class TestUIController : Node
     public override void _ExitTree()
     {
         // Odsubskrybuj sygnał przy usunięciu węzła - AI :/
-        _pc.HpChanged -= OnHealthChanged;
+        _signals.CharacterHpChanged -= OnHealthChanged;
     }
 
     private void OnHealthChanged(int newHealth)

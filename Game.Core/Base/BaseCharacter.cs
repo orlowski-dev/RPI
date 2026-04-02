@@ -1,5 +1,3 @@
-using Godot;
-
 /// <summary>
 /// Struktra bazowa dla postaci gracza i przeciwników
 /// </summary>
@@ -9,11 +7,9 @@ using Godot;
 /// <param name="Defense">Punkty życia</param>
 /// <param name="Luck">Punkty życia</param>
 /// <param name="CritChance">Szansa na trafienie krytyczne (%)</param>
-public abstract partial class BaseCharacter : Resource
+public abstract partial class BaseCharacter
 {
-    [Signal]
-    public delegate void HpChangedEventHandler(int hp);
-
+    private readonly ISignals? _signals;
     private int _hp;
 
     public string Name { get; private set; }
@@ -24,7 +20,7 @@ public abstract partial class BaseCharacter : Resource
         private set
         {
             _hp = value;
-            EmitSignal(SignalName.HpChanged, _hp);
+            _signals?.EmitSetCharacterHpChanged(_hp);
         }
     }
     public int Attack { get; private set; }
@@ -38,7 +34,8 @@ public abstract partial class BaseCharacter : Resource
         int attack,
         int defense,
         int luck,
-        int critChance
+        int critChance,
+        ISignals? signals
     )
     {
         Name = name;
@@ -48,6 +45,7 @@ public abstract partial class BaseCharacter : Resource
         Defense = defense;
         Luck = luck;
         CritChance = critChance;
+        _signals = signals;
     }
 
     /// <summary>
@@ -56,7 +54,7 @@ public abstract partial class BaseCharacter : Resource
     /// <param name="amount">Ilość obrażeń</param>
     public virtual void TakeDamage(int amount)
     {
-        HP = Mathf.Max(0, HP - amount);
+        HP = Math.Max(0, HP - amount);
     }
 
     /// <summary>

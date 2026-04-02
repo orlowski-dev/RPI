@@ -21,10 +21,10 @@ Wprowadza się następującą strukturę branchy:
 
 - main
 - devel
-    - feature/\*
-    - bug/\*
-    - hotfix/\*
-    - docs/\*
+  - feature/\*
+  - bug/\*
+  - hotfix/\*
+  - docs/\*
 
 ## Branch main
 
@@ -237,6 +237,7 @@ Typy commitów:
 - docs - dokumentacja
 - art - assety
 - ui - UI
+- test - testy
 
 Na przykład:
 

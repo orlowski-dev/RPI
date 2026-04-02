@@ -63,8 +63,8 @@ podstawową logikę związaną z:
 | HP         | int       | public            | Aktualne punkty życia             |
 | Attack     | int       | public            | Siła ataku                        |
 | Defense    | int       | public            | Obrona                            |
-| Luck       | int       | public            | Szczęście                         |
 | CritChance | int       | public            | Szansa na trafienie krytyczne (%) |
+| Level      | int       | public            | Poziom przeciwnika                |
 | \_hp       | int       | private           | Zmienna potrzebna dla settera HP  |
 | \_signals  | ISignals? | readonly, private | Referencja do instancji Signal    |
 
@@ -78,6 +78,7 @@ podstawową logikę związaną z:
 | defense    | int       | Obrona                         |
 | luck       | int       | Szczęście                      |
 | critChance | int       | Szansa na trafienie krytyczne  |
+| level      | int       | Poziom postaci                 |
 | signals    | ISignals? | Referencja do instancji Signal |
 
 ### Metody
@@ -110,11 +111,25 @@ Leczy postać o podaną wartość.
 | -------- | --- | -------------- |
 | amount   | int | Ilość leczenia |
 
+#### SetLevel
+
+Setter dla Level
+
+```cs
+protected void SetLevel(int newLvl)
+```
+
+##### Parametry
+
+| Parametr | Typ | Opis               |
+| -------- | --- | ------------------ |
+| newLvl   | int | Nowa wartość (lvl) |
+
 ---
 
 ## PlayerCharacter
 
-Reprezentuje postać gracza w grze.
+Reprezentuje statystyki postaci gracza w grze.
 
 ```csharp
 public partial class PlayerCharacter : BaseCharacter
@@ -132,23 +147,24 @@ BaseCharacter <-- PlayerCharacter
 
 ### Statystyki bazowe (dziedziczone)
 
-| Właściwość | Typ    | Dostęp   | Opis                              |
-| ---------- | ------ | -------- | --------------------------------- |
-| Name       | string | readonly | Nazwa postaci                     |
-| MaxHP      | int    | readonly | Maksymalne punkty życia           |
-| HP         | int    | readonly | Aktualne punkty życia             |
-| Attack     | int    | readonly | Siła ataku                        |
-| Defense    | int    | readonly | Obrona                            |
-| Luck       | int    | readonly | Szczęście                         |
-| CritChance | int    | readonly | Szansa na trafienie krytyczne (%) |
+| Właściwość | Typ    | Dostęp | Opis                              |
+| ---------- | ------ | ------ | --------------------------------- |
+| Name       | string | public | Nazwa postaci                     |
+| MaxHP      | int    | public | Maksymalne punkty życia           |
+| HP         | int    | public | Aktualne punkty życia             |
+| Attack     | int    | public | Siła ataku                        |
+| Defense    | int    | public | Obrona                            |
+| Luck       | int    | public | Szczęście                         |
+| CritChance | int    | public | Szansa na trafienie krytyczne (%) |
+| Level      | int    | public | Poziom postaci                    |
 
 ### Statystyki gracza
 
-| Właściwość | Typ | Dostęp   | Opis                                     |
-| ---------- | --- | -------- | ---------------------------------------- |
-| Level      | int | readonly | Poziom postaci gracza                    |
-| Exp        | int | readonly | Aktualne punkty doświadczenia            |
-| ExpNextLvl | int | readonly | Wymagana ilość EXP do następnego poziomu |
+| Właściwość | Typ | Dostęp | Opis                                     |
+| ---------- | --- | ------ | ---------------------------------------- |
+| Exp        | int | public | Aktualne punkty doświadczenia            |
+| ExpNextLvl | int | public | Wymagana ilość EXP do następnego poziomu |
+| Luck       | int | public | Szczęście                                |
 
 ### Konstruktor
 
@@ -160,6 +176,7 @@ BaseCharacter <-- PlayerCharacter
 | defense    | int       | Obrona                         |
 | luck       | int       | Szczęście                      |
 | critChance | int       | Szansa na trafienie krytyczne  |
+| level      | int       | Poziom postaci                 |
 | signals    | ISignals? | Referencja do instancji Signal |
 
 ### Metody
@@ -175,10 +192,16 @@ Oblicza ilość doświadczenia wymaganą do osiągnięcia następnego poziomu.
 #### LevelUp
 
 ```csharp
-private void LevelUp()
+private void LevelUp(int levels = 1)
 ```
 
-Zwiększa poziom postaci oraz aktualizuje wymagane doświadczenie do następnego poziomu.
+Zwiększa poziom postaci oraz aktualizuje wymagane doświadczenie do osiągnięcia następnego poziomu.
+
+##### Parametry
+
+| Parametr | Typ | Opis           |
+| -------- | --- | -------------- |
+| levels   | int | Ilość poziomów |
 
 #### AddExp
 
@@ -193,6 +216,57 @@ Dodaje punkty doświadczenia i zwiększa Level jeśli potrzeba.
 | Parametr | Typ | Opis                 |
 | -------- | --- | -------------------- |
 | amount   | int | Ilość Exp do dodania |
+
+---
+
+## EnemyCharacter
+
+Reprezentuje statystyki przeciwnika w grze.
+
+```csharp
+public partial class EnemyCharacter : BaseCharacter
+```
+
+### Opis
+
+`EnemyCharacter` przechowuje podstawowe statystyki przeciwnika.
+
+### Dziedziczenie
+
+```bash
+BaseCharacter <-- EnemyCharacter
+```
+
+### Statystyki bazowe (dziedziczone)
+
+| Właściwość | Typ    | Dostęp | Opis                              |
+| ---------- | ------ | ------ | --------------------------------- |
+| Name       | string | public | Nazwa postaci                     |
+| MaxHP      | int    | public | Maksymalne punkty życia           |
+| HP         | int    | public | Aktualne punkty życia             |
+| Attack     | int    | public | Siła ataku                        |
+| Defense    | int    | public | Obrona                            |
+| CritChance | int    | public | Szansa na trafienie krytyczne (%) |
+| Level      | int    | public | Poziom przeciwnika                |
+
+### Statystyki
+
+| Właściwość | Typ       | Dostęp | Opis            |
+| ---------- | --------- | ------ | --------------- |
+| EnemyType  | EnemyType | public | Typ przeciwnika |
+
+### Konstruktor
+
+| Parametr   | Typ       | Opis                           |
+| ---------- | --------- | ------------------------------ |
+| name       | string    | Nazwa przeciwnika              |
+| maxHp      | int       | Maksymalne HP                  |
+| attack     | int       | Siła ataku                     |
+| defense    | int       | Obrona                         |
+| critChance | int       | Szansa na trafienie krytyczne  |
+| enemyType  | EnemyType | Typ przeciwnika                |
+| level      | int       | Poziom postaci                 |
+| signals    | ISignals? | Referencja do instancji Signal |
 
 ---
 
@@ -384,13 +458,13 @@ Odpowiada za:
 
 ### Właściwości
 
-| Właściwość      | Typ             | Dostęp   | Opis                                   |
-| --------------- | --------------- | -------- | -------------------------------------- |
-| Instance        | GameController  | readonly | Singleton                              |
-| PlayerCharacter | PlayerCharacter | readonly | Aktualna postać gracza                 |
-| GameState       | GameState       | readonly | Aktualny stan gry                      |
-| \_signals       | Signalsq        | private  | Referencja do EventBus                 |
-| \_scenesMap     | Dict<str,str>   | private  | Mapa nazw scen ze ścieżkami źródłowymi |
+| Właściwość      | Typ             | Dostęp  | Opis                                   |
+| --------------- | --------------- | ------- | -------------------------------------- |
+| Instance        | GameController  | public  | Singleton                              |
+| PlayerCharacter | PlayerCharacter | public  | Aktualna postać gracza                 |
+| GameState       | GameState       | public  | Aktualny stan gry                      |
+| \_signals       | Signalsq        | private | Referencja do EventBus                 |
+| \_scenesMap     | Dict<str,str>   | private | Mapa nazw scen ze ścieżkami źródłowymi |
 
 ### Metody
 
@@ -542,6 +616,10 @@ Enum określający aktualny stan gry.
 ## LogLevel
 
 Enum określający typ logu
+
+## EnemyType
+
+Enum określający typ przeciwnika.
 
 ---
 

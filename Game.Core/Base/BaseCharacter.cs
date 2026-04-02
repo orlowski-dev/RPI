@@ -7,6 +7,7 @@
 /// <param name="Attack">Siła ataku</param>
 /// <param name="Defense">Obrona</param>
 /// <param name="CritChance">Szansa na trafienie krytyczne (%)</param>
+/// <param name="Level">Poziom postaci</param>
 public abstract partial class BaseCharacter
 {
     private readonly ISignals? _signals;
@@ -26,14 +27,15 @@ public abstract partial class BaseCharacter
     public int Attack { get; private set; }
     public int Defense { get; private set; }
     public int CritChance { get; private set; }
+    public int Level { get; private set; }
 
     protected BaseCharacter(
         string name,
         int maxHp,
         int attack,
         int defense,
-        int luck,
         int critChance,
+        int level,
         ISignals? signals
     )
     {
@@ -42,8 +44,8 @@ public abstract partial class BaseCharacter
         HP = MaxHP;
         Attack = attack;
         Defense = defense;
-        Luck = luck;
         CritChance = critChance;
+        Level = level;
         _signals = signals;
     }
 
@@ -70,5 +72,14 @@ public abstract partial class BaseCharacter
         {
             HP += amount;
         }
+    }
+
+    // <summary>
+    /// Setter dla Level
+    /// </summary>
+    /// <param name="newLvl">Nowa wartość (lvl)</param>
+    protected void SetLevel(int newLvl)
+    {
+        Level = newLvl;
     }
 }

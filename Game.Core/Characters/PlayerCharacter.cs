@@ -1,13 +1,11 @@
 /// <summary>
 /// Postać gracza - jej statystki, umiejętności ..?
 /// </summary>
-/// <param name="Level">Poziom postaci gracza</param>
 /// <param name="Exp">Aktualne punkty doświadczenia</param>
 /// <param name="ExpNextLvl">Wymagana ilość EXP do następnego poziomu</param>
 /// <param name="Luck">Szczęście</param>
 public partial class PlayerCharacter : BaseCharacter
 {
-    public int Level { get; private set; }
     public int Exp { get; private set; }
     public int ExpNextLvl { get; private set; }
     public int Luck { get; private set; }
@@ -21,13 +19,14 @@ public partial class PlayerCharacter : BaseCharacter
         int defense,
         int luck,
         int critChance,
+        int level,
         ISignals? signals = null
     )
-        : base(name, maxHp, attack, defense, luck, critChance, signals)
+        : base(name, maxHp, attack, defense, critChance, level, signals)
     {
-        Level = 1;
-        ExpNextLvl = CalculateExpToNextLevel();
         Exp = 0;
+        ExpNextLvl = CalculateExpToNextLevel();
+        Luck = luck;
     }
 
     /// <summary>
@@ -43,16 +42,20 @@ public partial class PlayerCharacter : BaseCharacter
     }
 
     /// <summary>
-    /// Zwiększa poziom postaci o 1 oraz aktualizuje wymagane doświadczenie
+    /// Zwiększa poziom postaci oraz aktualizuje wymagane doświadczenie
     /// do osiągnięcia następnego poziomu.
     /// </summary>
+    /// <param name="levels">Ilość poziomów (def: 1)</param>
     /// <remarks>
-    /// Metoda powinna być wywoływana po osiągnięciu wymaganego doświadczenia.
+    /// Zwiększa poziom gracza aż do momentu gdy Exp < ExpNextLvl
     /// </remarks>
-    private void LevelUp()
+    public void LevelUp(int levels = 1)
     {
-        Level += 1;
-        ExpNextLvl = CalculateExpToNextLevel();
+        while (Exp >= ExpNextLvl)
+        {
+            SetLevel(levels);
+            ExpNextLvl = CalculateExpToNextLevel();
+        }
 
         // TODO: Wytriggerować UI - jakieś fajerwerki czy coś..
     }

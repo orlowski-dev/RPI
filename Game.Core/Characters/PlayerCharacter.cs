@@ -34,28 +34,27 @@ public partial class PlayerCharacter : BaseCharacter
     /// </summary>
     /// <returns>Ilość doświadczenia wymagana do następnego poziomu</returns>
     /// <remarks>
-    /// wzór: 100 * level^1.4
+    /// wzór: 100 * level^1.5
     /// </remarks>
     private int CalculateExpToNextLevel()
     {
-        return (int)Math.Floor(100 * Math.Pow(Level, 1.4));
+        return (int)Math.Floor(100 * Math.Pow(Level, 1.5));
     }
 
     /// <summary>
     /// Zwiększa poziom postaci oraz aktualizuje wymagane doświadczenie
     /// do osiągnięcia następnego poziomu.
     /// </summary>
-    /// <param name="levels">Ilość poziomów (def: 1)</param>
     /// <remarks>
     /// Zwiększa poziom gracza aż do momentu gdy Exp < ExpNextLvl
     /// </remarks>
-    public void LevelUp(int levels = 1)
+    private void LevelUp()
     {
-        while (Exp >= ExpNextLvl)
+        do
         {
-            SetLevel(levels);
+            SetLevel(Level + 1);
             ExpNextLvl = CalculateExpToNextLevel();
-        }
+        } while (Exp > ExpNextLvl);
 
         // TODO: Wytriggerować UI - jakieś fajerwerki czy coś..
     }
@@ -68,7 +67,7 @@ public partial class PlayerCharacter : BaseCharacter
     {
         Exp += amount;
 
-        if (Exp > ExpNextLvl)
+        if (Exp >= ExpNextLvl)
         {
             LevelUp();
         }

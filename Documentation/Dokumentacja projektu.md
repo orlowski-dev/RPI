@@ -125,7 +125,6 @@ protected void SetLevel(int newLvl)
 | -------- | --- | ------------------ |
 | newLvl   | int | Nowa wartość (lvl) |
 
-
 ---
 
 ## PlayerCharacter
@@ -204,7 +203,6 @@ Zwiększa poziom postaci oraz aktualizuje wymagane doświadczenie do osiągnięc
 | -------- | --- | -------------- |
 | levels   | int | Ilość poziomów |
 
-
 #### AddExp
 
 ```csharp
@@ -251,13 +249,11 @@ BaseCharacter <-- EnemyCharacter
 | CritChance | int    | public | Szansa na trafienie krytyczne (%) |
 | Level      | int    | public | Poziom przeciwnika                |
 
-
 ### Statystyki
 
-| Właściwość | Typ       | Dostęp | Opis               |
-| ---------- | --------- | ------ | ------------------ |
-| EnemyType  | EnemyType | public | Typ przeciwnika    |
-
+| Właściwość | Typ       | Dostęp | Opis            |
+| ---------- | --------- | ------ | --------------- |
+| EnemyType  | EnemyType | public | Typ przeciwnika |
 
 ### Konstruktor
 
@@ -272,8 +268,8 @@ BaseCharacter <-- EnemyCharacter
 | level      | int       | Poziom postaci                 |
 | signals    | ISignals? | Referencja do instancji Signal |
 
-
 ---
+
 ## PlayerController
 
 Odpowiada za sterowanie postacią gracza.

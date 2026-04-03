@@ -1,4 +1,3 @@
-using System;
 using Godot;
 
 public partial class CombatSignals : BaseSingleton<CombatSignals>
@@ -7,16 +6,15 @@ public partial class CombatSignals : BaseSingleton<CombatSignals>
     public delegate void TurnEndedEventHandler();
 
     [Signal]
-    public delegate void TurnChangedEventHandler(bool playerTurn);
+    public delegate void TurnChangedEventHandler(CombatData combatInitData);
 
     public void EmitTurnEnded()
     {
         EmitSignal(SignalName.TurnEnded);
-        GD.Print("TurnEnded signal emited");
     }
 
-    public void EmitTurnChanged(bool playerTurn)
+    public void EmitTurnChanged(CombatData combatData)
     {
-        EmitSignal(SignalName.TurnChanged, playerTurn);
+        EmitSignal(SignalName.TurnChanged, combatData);
     }
 }

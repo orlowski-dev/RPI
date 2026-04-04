@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxgf2rmqkfke8" path="res://Scripts/Prototype/HUD/CombatHUD.cs" id="1_xwtk5"]
 
-[node name="CombatHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("EndTurnBtn", "TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL")]
+[node name="CombatHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL", "PlayerActionsCont", "PlayerActionsBtns")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xwtk5")
-EndTurnBtn = NodePath("EntdTurnContainer/VBoxContainer/EndTurnBtn")
 TurnLabel = NodePath("TurnContiner/VBoxContainer/TurnLabel")
 PlayerNameL = NodePath("PlayerStats/VBoxContainer2/PlayerNameL")
 PlayerHpPB = NodePath("PlayerStats/VBoxContainer2/VBoxContainer/PlayerHpPB")
@@ -18,6 +17,13 @@ PlayerHpL = NodePath("PlayerStats/VBoxContainer2/VBoxContainer/HpL")
 EnemyNameL = NodePath("EnemiesStats/VBoxContainer2/EnemyNameL")
 EnemyHpPB = NodePath("EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpPB")
 EnemyHpL = NodePath("EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpL")
+PlayerActionsCont = NodePath("PlayerActionsCont")
+PlayerActionsBtns = {
+"attack": NodePath("PlayerActionsCont/VBoxContainer/AttackBtn"),
+"defense": NodePath("PlayerActionsCont/VBoxContainer/DefenseBtn"),
+"skipTurn": NodePath("PlayerActionsCont/VBoxContainer/SkipTurnBtn"),
+"useItem": NodePath("PlayerActionsCont/VBoxContainer/UseItemBtn")
+}
 
 [node name="TurnContiner" type="MarginContainer" parent="." unique_id=194589187]
 layout_mode = 1
@@ -36,27 +42,6 @@ layout_mode = 2
 [node name="TurnLabel" type="Label" parent="TurnContiner/VBoxContainer" unique_id=1236618589]
 layout_mode = 2
 text = "Turn"
-
-[node name="EntdTurnContainer" type="MarginContainer" parent="." unique_id=436849447]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -55.0
-offset_right = 54.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_bottom = 24
-
-[node name="VBoxContainer" type="VBoxContainer" parent="EntdTurnContainer" unique_id=407926965]
-layout_mode = 2
-
-[node name="EndTurnBtn" type="Button" parent="EntdTurnContainer/VBoxContainer" unique_id=42354181]
-layout_mode = 2
-text = "Zakończ turę"
 
 [node name="PlayerStats" type="MarginContainer" parent="." unique_id=1596455284]
 layout_mode = 0
@@ -116,3 +101,34 @@ show_percentage = false
 layout_mode = 2
 text = "100/100"
 horizontal_alignment = 2
+
+[node name="PlayerActionsCont" type="MarginContainer" parent="." unique_id=1924045364]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerActionsCont" unique_id=397645132]
+layout_mode = 2
+
+[node name="AttackBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=1899620242]
+layout_mode = 2
+text = "Atak
+"
+
+[node name="DefenseBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=528711708]
+layout_mode = 2
+text = "Obrona"
+
+[node name="UseItemBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=845124900]
+layout_mode = 2
+text = "Użyj przedmiotu"
+
+[node name="SkipTurnBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=42354181]
+layout_mode = 2
+text = "Pomiń turę"

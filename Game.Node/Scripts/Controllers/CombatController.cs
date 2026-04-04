@@ -1,5 +1,8 @@
 using Godot;
 
+/// <summary>
+/// Kontroler zarządzający przebiegiem walki.
+/// </summary>
 public partial class CombatController : Node
 {
     private CombatService _service;
@@ -39,12 +42,18 @@ public partial class CombatController : Node
         _combatSignals.DefenseAction -= OnDefenseAction;
     }
 
+    /// <summary>
+    /// Kończy turę i wysyła dane.
+    /// </summary>
     private void OnTurnEnded()
     {
         _service.ChangeTurn();
         _combatSignals.EmitDataSender(GetData());
     }
 
+    /// <summary>
+    /// Tworzy obiekt danych walki.
+    /// </summary>
     private CombatData GetData()
     {
         return new(
@@ -54,11 +63,17 @@ public partial class CombatController : Node
         );
     }
 
+    /// <summary>
+    /// Wysyła dane walki do UI.
+    /// </summary>
     private void SendData()
     {
         _combatSignals.EmitDataSender(GetData());
     }
 
+    /// <summary>
+    /// Obsługuje atak gracza.
+    /// </summary>
     private void OnAttackAction()
     {
         var damageTaken = _service.Attack(_service.PlayerCharacter, _service.Enemy);
@@ -78,6 +93,9 @@ public partial class CombatController : Node
         DoEnemyMove();
     }
 
+    /// <summary>
+    /// Wykonuje ruch przeciwnika.
+    /// </summary>
     private async void DoEnemyMove(bool defenseAction = false)
     {
         await ToSignal(GetTree().CreateTimer(1), "timeout");
@@ -97,6 +115,9 @@ public partial class CombatController : Node
         OnTurnEnded();
     }
 
+    /// <summary>
+    /// Sprawdza zakończenie walki.
+    /// </summary>
     private bool CheckIfCombatEnded()
     {
         if (_service.CombatEnded)
@@ -108,12 +129,18 @@ public partial class CombatController : Node
         return false;
     }
 
+    /// <summary>
+    /// Obsługa obrony gracza.
+    /// </summary>
     private void OnDefenseAction()
     {
         OnTurnEnded();
         DoEnemyMove(defenseAction: true);
     }
 
+    /// <summary>
+    /// Obsługa pominięcia tury.
+    /// </summary>
     private void OnSkipTurnAction()
     {
         OnTurnEnded();

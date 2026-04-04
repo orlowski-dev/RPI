@@ -1,5 +1,11 @@
 using Godot;
 
+/// <summary>
+/// Singleton odpowiedzialny za komunikację pomiędzy komponentami systemu walki.
+/// </summary>
+/// <remarks>
+/// Pełni rolę EventBus dla systemu walki.
+/// </remarks>
 public partial class CombatSignals : BaseSingleton<CombatSignals>
 {
     [Signal]

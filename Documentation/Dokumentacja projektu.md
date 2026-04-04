@@ -348,8 +348,8 @@ Klasa dziedziczy po `Camera2D` i automatycznie wyszukuje obiekt `Player` w drzew
 > [!CAUTION]
 > Jeżeli Player nie zostanie znaleziony to wypisze błąd w konsoli i skrypt zostanie przerwany.
 >
-> -   player node musi mieć nazwę "Player"
-> -   kamera musi być w tym samym `RootNode`
+> - player node musi mieć nazwę "Player"
+> - kamera musi być w tym samym `RootNode`
 
 ### Właściwości
 
@@ -607,6 +607,311 @@ Metoda opowiadająca za zapis logu do pliku i wypisanie go w konsoli.
 
 ---
 
+## CombatService
+
+Serwis odpowiedzialny za logikę walki w grze.  
+Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.
+
+### Właściwości
+
+| Właściwość      | Typ             | Dostęp | Opis                             |
+| --------------- | --------------- | ------ | -------------------------------- |
+| State           | CombatState     | public | Aktualny stan walki              |
+| PlayerCharacter | PlayerCharacter | public | Statystyki postaci gracza gracza |
+| Enemy           | EnemyCharacter  | public | Przeciwnik                       |
+| CombatEnded     | bool            | public | Czy walka została zakończona     |
+
+### Konstruktor
+
+```cs
+public CombatService(
+    PlayerCharacter playerCharacter,
+    EnemyCharacter enemy,
+    bool playerBegins = true
+)
+```
+
+| Parametr        | Typ             | Opis                                        |
+| --------------- | --------------- | ------------------------------------------- |
+| playerCharacter | PlayerCharacter | Postać gracza                               |
+| enemy           | EnemyCharacter  | Przeciwnik                                  |
+| playerBegins    | bool            | Określa kto zaczyna walkę (domyślnie gracz) |
+
+### Metody
+
+#### ChangeTurn
+
+```cs
+public void ChangeTurn()
+```
+
+Zmienia turę pomiędzy graczem a przeciwnikiem.
+
+#### Attack
+
+```cs
+public int Attack<A, E>(A attacker, E enemy, bool defenseAction = false, bool crit = false)
+    where A : BaseCharacter
+    where E : BaseCharacter
+```
+
+Wykonuje atak pomiędzy postaciami i oblicza obrażenia.
+
+##### Parametry
+
+| Parametr      | Typ           | Opis                        |
+| ------------- | ------------- | --------------------------- |
+| attacker      | BaseCharacter | Atakująca postać            |
+| enemy         | BaseCharacter | Postać broniąca się         |
+| defenseAction | bool          | Czy przeciwnik używa obrony |
+| crit          | bool          | Czy atak jest krytyczny     |
+
+##### Zwraca
+
+| Typ | Opis             |
+| --- | ---------------- |
+| int | Zadane obrażenia |
+
+##### Logika obrażeń
+
+- Bazowe obrażenia = Attack
+- Jeśli obrona to obrażenia \* 0.5
+- Odejmowana jest połowa Defense przeciwnika
+- Jeśli trafienie krytyczne to obrażenia \* 1.5
+- Obrażenia są aplikowane do przeciwnika
+
+#### CheckIfCombatEnded
+
+```cs
+private void CheckIfCombatEnded()
+```
+
+Sprawdza czy walka została zakończona.
+
+---
+
+## CombatSignals
+
+Singleton odpowiedzialny za komunikację pomiędzy komponentami systemu walki.
+
+```cs
+public partial class CombatSignals : BaseSingleton<CombatSignals>
+```
+
+Pełni rolę EventBus dla systemu walki.
+
+### Sygnały
+
+#### AttackAction
+
+```cs
+[Signal]
+public delegate void AttackActionEventHandler();
+```
+
+Emitowany gdy gracz wybierze atak.
+
+#### DefenseAction
+
+```cs
+[Signal]
+public delegate void DefenseActionEventHandler();
+```
+
+Emitowany gdy gracz wybierze obronę.
+
+#### SkipTurn
+
+```cs
+[Signal]
+public delegate void SkipTurnEventHandler();
+```
+
+Emitowany gdy gracz pominie turę.
+
+#### DataSender
+
+```cs
+[Signal]
+public delegate void DataSenderEventHandler(CombatData combatData);
+```
+
+Wysyła dane walki do UI.
+
+### Emitery
+
+#### EmitAttackAction
+
+```cs
+public void EmitAttackAction()
+```
+
+Emitowanie ataku.
+
+#### EmitDefenseAction
+
+```cs
+public void EmitDefenseAction()
+```
+
+Emitowanie obrany,
+
+#### EmitSkipTurn
+
+```cs
+public void EmitSkipTurn()
+```
+
+Emitowanie pominięcia tury.
+
+#### EmitDataSender
+
+```cs
+public void EmitDataSender(CombatData combatData)
+```
+
+Wysyłanie danych walki.
+
+---
+
+## CombatController
+
+Kontroler zarządzający przebiegiem walki.
+
+```cs
+public partial class CombatController : Node
+```
+
+### Właściwości
+
+| Pole            | Typ            | Opis             |
+| --------------- | -------------- | ---------------- |
+| \_service       | CombatService  | Logika walki     |
+| \_signals       | Signals        | Globalne sygnały |
+| \_combatSignals | CombatSignals  | Sygnały walki    |
+| \_gc            | GameController | GameController   |
+| \_scriptName    | string         | Nazwa skryptu    |
+
+### Metody
+
+#### GetData
+
+```cs
+private CombatData GetData()
+```
+
+Tworzy obiekt danych walki.
+
+#### SendData
+
+```cs
+private void SendData()
+```
+
+Wysyła dane walki do UI.
+
+#### OnTurnEnded
+
+```cs
+private void OnTurnEnded()
+```
+
+Kończy turę i wysyła dane.
+
+#### OnAttackAction
+
+```cs
+private void OnAttackAction()
+```
+
+Obsługuje atak gracza.
+
+#### DoEnemyMove
+
+```cs
+private async void DoEnemyMove(bool defenseAction = false)
+```
+
+Wykonuje ruch przeciwnika.
+
+#### OnDefenseAction
+
+```cs
+private void OnDefenseAction()
+```
+
+Obsługa obrony gracza.
+
+#### OnSkipTurnAction
+
+```cs
+private void OnSkipTurnAction()
+```
+
+Obsługa pominięcia tury.
+
+#### CheckIfCombatEnded
+
+```cs
+private bool CheckIfCombatEnded()
+```
+
+Sprawdza zakończenie walki.
+
+---
+
+## CombatData
+
+Obiekt danych wykorzystywany do przekazywania aktualnego stanu walki pomiędzy komponentami systemu walki.
+
+```cs
+public partial class CombatData : GodotObject
+```
+
+Klasa DTO przechowującą dane potrzebne do:
+
+- aktualizacji UI walki
+- synchronizacji stanu walki
+- komunikacji CombatController → CombatHUD
+
+Klasa nie zawiera logiki.
+
+### Dziedziczenie
+
+```bash
+GodotObject <-- CombatData
+```
+
+Klasa dziedziczy po GodotObject poniważ umożliwia to przekazywanie klasy przez sygnały.
+
+### Właściwości
+
+| Właściwość      | Typ             | Dostęp | Opis                      |
+| --------------- | --------------- | ------ | ------------------------- |
+| State           | CombatState     | public | Aktualny stan walki       |
+| PlayerCharacter | PlayerCharacter | public | Statystyki postaci gracza |
+| Enemy           | EnemyCharacter  | public | Przeciwnik                |
+
+### Konstruktor
+
+```cs
+public CombatData(
+    CombatState state,
+    PlayerCharacter playerCharacter,
+    EnemyCharacter enemy
+)
+```
+
+#### Parametry
+
+| Parametr        | Typ             | Opis                |
+| --------------- | --------------- | ------------------- |
+| state           | CombatState     | Aktualny stan walki |
+| playerCharacter | PlayerCharacter | Postać gracza       |
+| enemy           | EnemyCharacter  | Przeciwnik          |
+
+---
+
 # Wyliczniki
 
 ## GameState
@@ -620,6 +925,31 @@ Enum określający typ logu
 ## EnemyType
 
 Enum określający typ przeciwnika.
+
+## CombatState
+
+Enum definiujący aktualny stan walki.
+
+```cs
+public enum CombatState
+{
+	PlayerMove,
+	EnemyMove,
+	PlayerWon,
+	EnemyWon,
+}
+```
+
+### Opis
+
+`CombatState` określa aktualną fazę walki:
+
+| Wartość    | Opis                    |
+| ---------- | ----------------------- |
+| PlayerMove | Tura gracza             |
+| EnemyMove  | Tura przeciwnika        |
+| PlayerWon  | Gracz wygrał walkę      |
+| EnemyWon   | Przeciwnik wygrał walkę |
 
 ---
 

@@ -1,5 +1,5 @@
 public enum CombatTurn
 {
     Player,
-    Opponent,
+    Enemy,
 }

@@ -11,6 +11,9 @@ public partial class CombatSignals : BaseSingleton<CombatSignals>
     [Signal]
     public delegate void AttackActionEventHandler();
 
+    [Signal]
+    public delegate void DefenseActionEventHandler();
+
     public void EmitTurnEnded()
     {
         EmitSignal(SignalName.TurnEnded);
@@ -24,5 +27,10 @@ public partial class CombatSignals : BaseSingleton<CombatSignals>
     public void EmitAttackAction()
     {
         EmitSignal(SignalName.AttackAction);
+    }
+
+    public void EmitDefenseAction()
+    {
+        EmitSignal(SignalName.DefenseAction);
     }
 }

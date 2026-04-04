@@ -1,23 +1,12 @@
+using Game.Tests.Shared;
 using Xunit;
 
 public class PlayerCharacterTest
 {
-    public PlayerCharacter GetNewPlayer()
-    {
-        return new PlayerCharacter(
-            name: "Test Character",
-            maxHp: 100,
-            attack: 50,
-            defense: 30,
-            luck: 10,
-            critChance: 1
-        );
-    }
-
     [Fact]
     public void CreationTest()
     {
-        var player = GetNewPlayer();
+        var player = Shared.GetNewPlayer();
         Assert.Equal("Test Character", player.Name);
         Assert.Equal(1, player.Level);
     }
@@ -25,7 +14,7 @@ public class PlayerCharacterTest
     [Fact]
     public void ExpToNextLvlTest()
     {
-        var player = GetNewPlayer();
+        var player = Shared.GetNewPlayer();
         // początkowe expNextLevel
         Assert.Equal(100, player.ExpNextLvl);
 

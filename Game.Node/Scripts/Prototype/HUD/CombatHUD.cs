@@ -59,6 +59,7 @@ public partial class CombatHUD : Node
 
         PlayerActionsBtns["skipTurn"].Pressed += OnSkipBtnPressed;
         PlayerActionsBtns["attack"].Pressed += OnAttackBtnPressed;
+        PlayerActionsBtns["defense"].Pressed += OnDefenseBtnPressed;
 
         _combatSignals.TurnChanged += OnTurnChanged;
     }
@@ -107,5 +108,10 @@ public partial class CombatHUD : Node
     private void OnAttackBtnPressed()
     {
         _combatSignals.EmitAttackAction();
+    }
+
+    private void OnDefenseBtnPressed()
+    {
+        _combatSignals.EmitDefenseAction();
     }
 }

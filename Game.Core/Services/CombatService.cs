@@ -27,23 +27,22 @@ public partial class CombatService
 
     public void ChangeTurn()
     {
-        Turn = Turn == CombatTurn.Player ? CombatTurn.Opponent : CombatTurn.Player;
+        Turn = Turn == CombatTurn.Player ? CombatTurn.Enemy : CombatTurn.Player;
     }
 
-    public int Attack<A, O>(A attacker, O opponent)
+    public int Attack<A, E>(A attacker, E enemy, bool defenseAction = false, bool crit = false)
         where A : BaseCharacter
-        where O : BaseCharacter
+        where E : BaseCharacter
     {
-        var isCrit = false;
+        var damage = defenseAction ? attacker.Attack * .5 : attacker.Attack;
+        damage -= (enemy.Defense * .5);
 
-        var damage = attacker.Attack - (opponent.Defense * .5);
-
-        if (isCrit)
+        if (crit)
         {
             damage *= 1.5;
         }
 
-        opponent.TakeDamage((int)damage);
+        enemy.TakeDamage((int)damage);
 
         return (int)damage;
     }

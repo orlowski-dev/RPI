@@ -14,20 +14,8 @@ public partial class CombatController : Node
         _scriptName = "(Prototype)" + this.GetType().Name;
         _combatSignals.TurnEnded += OnTurnEnded;
         _combatSignals.AttackAction += OnAttackAction;
-        // _service = new CombatService(
-        //     enemies:
-        //     [
-        //         new EnemyCharacter(
-        //             name: "Kuba",
-        //             maxHp: 300,
-        //             attack: 30,
-        //             defense: 10,
-        //             critChance: 1,
-        //             level: _gc.PlayerCharacter.Level,
-        //             enemyType: EnemyType.Normal
-        //         ),
-        //     ]
-        // );
+        _combatSignals.DefenseAction += OnDefenseAction;
+
         _service = new CombatService(
             playerCharacter: _gc.PlayerCharacter,
             enemy: new(
@@ -52,6 +40,8 @@ public partial class CombatController : Node
     public override void _ExitTree()
     {
         _combatSignals.TurnEnded -= OnTurnEnded;
+        _combatSignals.AttackAction -= OnAttackAction;
+        _combatSignals.DefenseAction -= OnDefenseAction;
     }
 
     private void OnTurnEnded()
@@ -78,15 +68,21 @@ public partial class CombatController : Node
         DoEnemyMove();
     }
 
-    private async void DoEnemyMove()
+    private async void DoEnemyMove(bool defenseAction = false)
     {
         await ToSignal(GetTree().CreateTimer(1), "timeout");
-        var damageTaken = _service.Attack(_service.Enemy, _service.PlayerCharacter);
+        var damageTaken = _service.Attack(_service.Enemy, _service.PlayerCharacter, defenseAction);
         Logger.Write(
             LogLevel.Info,
             _scriptName,
             $"Przeciwnik zadaje {damageTaken} obrażeń graczowi."
         );
         OnTurnEnded();
+    }
+
+    private void OnDefenseAction()
+    {
+        OnTurnEnded();
+        DoEnemyMove(defenseAction: true);
     }
 }

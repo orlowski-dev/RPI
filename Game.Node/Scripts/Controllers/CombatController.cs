@@ -19,7 +19,7 @@ public partial class CombatController : Node
         _service = new CombatService(
             playerCharacter: _gc.PlayerCharacter,
             enemy: new(
-                name: "Kuba",
+                name: "Wróg publiczny",
                 maxHp: 300,
                 attack: 30,
                 defense: 10,
@@ -28,13 +28,7 @@ public partial class CombatController : Node
                 enemyType: EnemyType.Normal
             )
         );
-        _combatSignals.EmitTurnChanged(
-            new(
-                turn: _service.Turn,
-                playerCharacter: _service.PlayerCharacter,
-                enemy: _service.Enemy
-            )
-        );
+        _combatSignals.EmitTurnChanged(GetData());
     }
 
     public override void _ExitTree()
@@ -47,12 +41,15 @@ public partial class CombatController : Node
     private void OnTurnEnded()
     {
         _service.ChangeTurn();
-        _combatSignals.EmitTurnChanged(
-            new(
-                turn: _service.Turn,
-                playerCharacter: _service.PlayerCharacter,
-                enemy: _service.Enemy
-            )
+        _combatSignals.EmitTurnChanged(GetData());
+    }
+
+    private CombatData GetData()
+    {
+        return new(
+            state: _service.State,
+            playerCharacter: _service.PlayerCharacter,
+            enemy: _service.Enemy
         );
     }
 

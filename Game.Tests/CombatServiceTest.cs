@@ -15,9 +15,9 @@ public class CombatServiceTest
     {
         var (player, enemy, service) = InitData();
 
-        Assert.Equal(CombatTurn.Player, service.Turn);
+        Assert.Equal(CombatState.PlayerMove, service.State);
         service.ChangeTurn();
-        Assert.Equal(CombatTurn.Enemy, service.Turn);
+        Assert.Equal(CombatState.EnemyMove, service.State);
     }
 
     [Fact]

@@ -78,7 +78,7 @@ public partial class CombatHUD : Node
         PlayerHpPB.Value = _combatData.PlayerCharacter.HP;
         PlayerHpL.Text = $"{_combatData.PlayerCharacter.HP}/{_combatData.PlayerCharacter.MaxHP}";
 
-        if (_combatData.Turn == CombatTurn.Player)
+        if (_combatData.State == CombatState.PlayerMove)
         {
             TurnLabel.Text = "Tura gracza";
             PlayerActionsCont.Visible = true;

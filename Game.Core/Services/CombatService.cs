@@ -1,7 +1,6 @@
 public partial class CombatService
 {
-    // public bool PlayerTurn { get; private set; }
-    public CombatTurn Turn { get; private set; }
+    public CombatState State { get; private set; }
 
     public PlayerCharacter PlayerCharacter { get; init; }
 
@@ -17,17 +16,17 @@ public partial class CombatService
     public CombatService(
         PlayerCharacter playerCharacter,
         EnemyCharacter enemy,
-        CombatTurn turn = CombatTurn.Player
+        bool playerBegins = true
     )
     {
         PlayerCharacter = playerCharacter;
         Enemy = enemy;
-        Turn = turn;
+        State = playerBegins ? CombatState.PlayerMove : CombatState.EnemyMove;
     }
 
     public void ChangeTurn()
     {
-        Turn = Turn == CombatTurn.Player ? CombatTurn.Enemy : CombatTurn.Player;
+        State = State == CombatState.PlayerMove ? CombatState.EnemyMove : CombatState.PlayerMove;
     }
 
     public int Attack<A, E>(A attacker, E enemy, bool defenseAction = false, bool crit = false)

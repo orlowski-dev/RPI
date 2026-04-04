@@ -52,7 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=1555005979]
-custom_minimum_size = Vector2(1000, 500)
+custom_minimum_size = Vector2(1000, 450)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/HBoxContainer" unique_id=1378480954]
@@ -69,7 +69,7 @@ ECHOES  "
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 10
-size_flags_vertical = 0
+size_flags_vertical = 4
 theme_override_constants/separation = 25
 
 [node name="NewGameBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=28027550]
@@ -96,19 +96,6 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_jex3y")
 theme_override_styles/hover = SubResource("StyleBoxFlat_72sra")
 text = "WCZYTAJ"
-
-[node name="SettingsBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=1666992680]
-custom_minimum_size = Vector2(428, 80)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_constants/h_separation = 10
-theme_override_constants/line_spacing = 20
-theme_override_fonts/font = ExtResource("3_t6w0q")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_jex3y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_72sra")
-text = "ustawienia"
 
 [node name="CreditsBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=934349641]
 custom_minimum_size = Vector2(428, 80)

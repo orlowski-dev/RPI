@@ -1,33 +1,137 @@
 [gd_scene format=3 uid="uid://b4lvjlil8h1iu"]
 
 [ext_resource type="Script" uid="uid://p4o8s6fwqfew" path="res://Scripts/UI/MainMenu.cs" id="1_g18y6"]
+[ext_resource type="Texture2D" uid="uid://ihyao8akgqt0" path="res://Assets/Prototype/Sprites/menu_bg.png" id="2_72sra"]
+[ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="3_t6w0q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8um8"]
+texture = ExtResource("2_72sra")
+modulate_color = Color(0.86036915, 0.8603692, 0.8603692, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jex3y"]
+bg_color = Color(0.64705884, 0.7764706, 0.7294118, 0.6509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72sra"]
+bg_color = Color(0.64705884, 0.7764706, 0.7294118, 1)
+border_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
+shadow_color = Color(0.03958524, 0.03958524, 0.03958524, 0.7411765)
+shadow_size = 2
 
 [node name="MainMenu" type="Control" unique_id=1551038310 node_paths=PackedStringArray("NewGameButton")]
+custom_minimum_size = Vector2(1440, 1024)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = -0.125
+anchor_top = -0.29000002
+anchor_right = 1.125
+anchor_bottom = 1.2900001
+offset_left = 144.0
+offset_top = 187.92001
+offset_right = -144.0
+offset_bottom = -187.92004
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g18y6")
-NewGameButton = NodePath("CenterContainer/VBoxContainer/NewGameBtn")
+NewGameButton = NodePath("CenterContainer/HBoxContainer/VBoxContainer/NewGameBtn")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=13517489]
+[node name="Panel" type="Panel" parent="." unique_id=2117605773]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k8um8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=332062504]
-layout_mode = 2
-theme_override_constants/separation = 24
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=13517489]
+custom_minimum_size = Vector2(1440, 1024)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1378480954]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=1555005979]
+custom_minimum_size = Vector2(1000, 500)
 layout_mode = 2
-text = "Main Menu"
 
-[node name="NewGameBtn" type="Button" parent="CenterContainer/VBoxContainer" unique_id=28027550]
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer" unique_id=1378480954]
 layout_mode = 2
-text = "Nowa gra"
+theme_override_colors/font_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
+theme_override_colors/font_shadow_color = Color(0.1728327, 0.17283267, 0.17283267, 0)
+theme_override_fonts/font = ExtResource("3_t6w0q")
+theme_override_font_sizes/font_size = 90
+text = "ABYSS
+OF 
+ECHOES  "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer" unique_id=332062504]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_constants/separation = 25
+
+[node name="NewGameBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=28027550]
+custom_minimum_size = Vector2(428, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t6w0q")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jex3y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_72sra")
+text = "START
+"
+
+[node name="LoadGameBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=388899775]
+custom_minimum_size = Vector2(428, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 10
+theme_override_constants/line_spacing = 20
+theme_override_fonts/font = ExtResource("3_t6w0q")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jex3y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_72sra")
+text = "WCZYTAJ"
+
+[node name="SettingsBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=1666992680]
+custom_minimum_size = Vector2(428, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 10
+theme_override_constants/line_spacing = 20
+theme_override_fonts/font = ExtResource("3_t6w0q")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jex3y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_72sra")
+text = "ustawienia"
+
+[node name="CreditsBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=934349641]
+custom_minimum_size = Vector2(428, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 10
+theme_override_constants/line_spacing = 20
+theme_override_fonts/font = ExtResource("3_t6w0q")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jex3y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_72sra")
+text = "CREDITS"
+
+[node name="ExitBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=901865936]
+custom_minimum_size = Vector2(428, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 10
+theme_override_constants/line_spacing = 20
+theme_override_fonts/font = ExtResource("3_t6w0q")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jex3y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_72sra")
+text = "WYJŚCIE"

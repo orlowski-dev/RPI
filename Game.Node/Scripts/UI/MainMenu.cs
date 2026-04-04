@@ -3,18 +3,18 @@ using Godot;
 
 public partial class MainMenu : Node
 {
-    [Export]
-    public Button NewGameButton { get; set; }
+	[Export]
+	public Button NewGameButton { get; set; }
 
-    private Signals _signals => Signals.Instance;
+	private Signals _signals => Signals.Instance;
 
-    public override void _Ready()
-    {
-        NewGameButton.Pressed += StartNewGame;
-    }
+	public override void _Ready()
+	{
+		NewGameButton.Pressed += StartNewGame;
+	}
 
-    private void StartNewGame()
-    {
-        _signals.EmitSetGameState(GameState.TestingPlayerMovement);
-    }
+	private void StartNewGame()
+	{
+		_signals.EmitSetGameState(GameState.TestingPlayerMovement);
+	}
 }

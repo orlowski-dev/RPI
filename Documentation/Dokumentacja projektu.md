@@ -416,10 +416,10 @@ Klasa implementuje:
 public partial class GameController : BaseSingleton<GameController>
 {
 	public override void _EnterTree()
-    {
-        base._EnterTree();
-        // dalsza implementacja
-    }
+	{
+		base._EnterTree();
+		// dalsza implementacja
+	}
 }
 ```
 
@@ -1073,7 +1073,7 @@ Trzeba utworzyć metodę, która zostanie "podpięta" do sygnały i zostanie wyk
 
 private void OnNazwaSygnału(GameState newState)
 {
-    GD.Print($"Custom Signal został wykonany!");
+	GD.Print($"Custom Signal został wykonany!");
 }
 ```
 

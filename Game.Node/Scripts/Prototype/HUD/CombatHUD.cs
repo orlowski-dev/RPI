@@ -39,14 +39,12 @@ public partial class CombatHUD : Node
         };
 
     private CombatSignals _combatSignals => CombatSignals.Instance;
-    private GameController _gc => GameController.Instance;
-    private PlayerCharacter _playerStats => _gc.PlayerCharacter;
     private CombatData _combatData;
     private string _scriptName;
 
     public override void _Ready()
     {
-        _scriptName = this.GetType().Name;
+        _scriptName = "(Prototype)" + this.GetType().Name;
 
         // sprawdza czy wszystkie przyciski ustawione w GUI
         if (PlayerActionsBtns.Values.Contains(null))
@@ -58,7 +56,10 @@ public partial class CombatHUD : Node
             );
             return;
         }
-        InitUI();
+
+        PlayerActionsBtns["skipTurn"].Pressed += OnSkipBtnPressed;
+        PlayerActionsBtns["attack"].Pressed += OnAttackBtnPressed;
+
         _combatSignals.TurnChanged += OnTurnChanged;
     }
 
@@ -67,18 +68,16 @@ public partial class CombatHUD : Node
         _combatSignals.TurnChanged -= OnTurnChanged;
     }
 
-    private void InitUI()
-    {
-        PlayerNameL.Text = _playerStats.Name;
-        PlayerHpPB.MaxValue = _playerStats.MaxHP;
-        PlayerHpPB.Value = _playerStats.HP;
-        PlayerHpL.Text = $"{_playerStats.HP}/{_playerStats.MaxHP}";
-    }
+    private void InitUI() { }
 
     private void UpdateEnemiesUI()
     {
-        InitUI();
-        if (_combatData.PlayerTurn)
+        PlayerNameL.Text = _combatData.PlayerCharacter.Name;
+        PlayerHpPB.MaxValue = _combatData.PlayerCharacter.MaxHP;
+        PlayerHpPB.Value = _combatData.PlayerCharacter.HP;
+        PlayerHpL.Text = $"{_combatData.PlayerCharacter.HP}/{_combatData.PlayerCharacter.MaxHP}";
+
+        if (_combatData.Turn == CombatTurn.Player)
         {
             TurnLabel.Text = "Tura gracza";
             PlayerActionsCont.Visible = true;
@@ -88,15 +87,25 @@ public partial class CombatHUD : Node
             TurnLabel.Text = "Tura przeciwnika";
             PlayerActionsCont.Visible = false;
         }
-        EnemyNameL.Text = _combatData.Enemies[0].Name;
-        EnemyHpPB.MaxValue = _combatData.Enemies[0].MaxHP;
-        EnemyHpPB.Value = _combatData.Enemies[0].HP;
-        EnemyHpL.Text = $"{_combatData.Enemies[0].MaxHP}/{_combatData.Enemies[0].HP}";
+        EnemyNameL.Text = _combatData.Enemy.Name;
+        EnemyHpPB.MaxValue = _combatData.Enemy.MaxHP;
+        EnemyHpPB.Value = _combatData.Enemy.HP;
+        EnemyHpL.Text = $"{_combatData.Enemy.HP}/{_combatData.Enemy.MaxHP}";
     }
 
     private void OnTurnChanged(CombatData combatData)
     {
         _combatData = combatData;
         UpdateEnemiesUI();
+    }
+
+    private void OnSkipBtnPressed()
+    {
+        _combatSignals.EmitTurnEnded();
+    }
+
+    private void OnAttackBtnPressed()
+    {
+        _combatSignals.EmitAttackAction();
     }
 }

@@ -11,22 +11,39 @@ public partial class CombatController : Node
     public override void _Ready()
     {
         _combatSignals.TurnEnded += OnTurnEnded;
+        _combatSignals.AttackAction += OnAttackAction;
+        // _service = new CombatService(
+        //     enemies:
+        //     [
+        //         new EnemyCharacter(
+        //             name: "Kuba",
+        //             maxHp: 300,
+        //             attack: 30,
+        //             defense: 10,
+        //             critChance: 1,
+        //             level: _gc.PlayerCharacter.Level,
+        //             enemyType: EnemyType.Normal
+        //         ),
+        //     ]
+        // );
         _service = new CombatService(
-            enemies:
-            [
-                new EnemyCharacter(
-                    name: "Kuba",
-                    maxHp: 300,
-                    attack: 30,
-                    defense: 10,
-                    critChance: 1,
-                    level: _gc.PlayerCharacter.Level,
-                    enemyType: EnemyType.Normal
-                ),
-            ]
+            playerCharacter: _gc.PlayerCharacter,
+            enemy: new(
+                name: "Kuba",
+                maxHp: 300,
+                attack: 30,
+                defense: 10,
+                critChance: 1,
+                level: _gc.PlayerCharacter.Level,
+                enemyType: EnemyType.Normal
+            )
         );
         _combatSignals.EmitTurnChanged(
-            new(playerTurn: _service.PlayerTurn, enemies: _service.Enemies)
+            new(
+                turn: _service.Turn,
+                playerCharacter: _service.PlayerCharacter,
+                enemy: _service.Enemy
+            )
         );
     }
 
@@ -39,7 +56,17 @@ public partial class CombatController : Node
     {
         _service.ChangeTurn();
         _combatSignals.EmitTurnChanged(
-            new(playerTurn: _service.PlayerTurn, enemies: _service.Enemies)
+            new(
+                turn: _service.Turn,
+                playerCharacter: _service.PlayerCharacter,
+                enemy: _service.Enemy
+            )
         );
+    }
+
+    private void OnAttackAction()
+    {
+        _service.Enemy.TakeDamage(10);
+        OnTurnEnded();
     }
 }

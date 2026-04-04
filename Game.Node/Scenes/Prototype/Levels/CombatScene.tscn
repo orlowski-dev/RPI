@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cfhiyogqrff72"]
+
+[ext_resource type="PackedScene" uid="uid://bxlojd3s2ho15" path="res://Scenes/Prototype/HUD/CombatHUD.tscn" id="1_bro1e"]
+[ext_resource type="Script" uid="uid://ck7s8pr7vbwb0" path="res://Scripts/Controllers/CombatController.cs" id="1_qw1aw"]
+
+[node name="CombatScene" type="Node2D" unique_id=1790587015]
+script = ExtResource("1_qw1aw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1514944732]
+
+[node name="CombatHud" parent="CanvasLayer" unique_id=2047079096 node_paths=PackedStringArray("PlayerActionsBtns") instance=ExtResource("1_bro1e")]
+PlayerActionsBtns = {
+"attack": NodePath("PlayerActionsCont/VBoxContainer/AttackBtn"),
+"defense": NodePath("PlayerActionsCont/VBoxContainer/DefenseBtn"),
+"skipTurn": NodePath("PlayerActionsCont/VBoxContainer/SkipTurnBtn"),
+"useItem": NodePath("PlayerActionsCont/VBoxContainer/UseItemBtn")
+}

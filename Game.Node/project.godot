@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameController="*uid://bmp0fg0rw6r5u"
 Signals="*uid://byusc6f178ex5"
 UiManager="*uid://83t1asqgm4ww"
+CombatSignals="*uid://d2jfmo1aymyyu"
 
 [dotnet]
 

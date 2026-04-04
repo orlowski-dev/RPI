@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://bxlojd3s2ho15"]
+
+[ext_resource type="Script" uid="uid://cxgf2rmqkfke8" path="res://Scripts/Prototype/HUD/CombatHUD.cs" id="1_xwtk5"]
+
+[node name="CombatHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL", "PlayerActionsCont", "PlayerActionsBtns")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xwtk5")
+TurnLabel = NodePath("TurnContiner/VBoxContainer/TurnLabel")
+PlayerNameL = NodePath("PlayerStats/VBoxContainer2/PlayerNameL")
+PlayerHpPB = NodePath("PlayerStats/VBoxContainer2/VBoxContainer/PlayerHpPB")
+PlayerHpL = NodePath("PlayerStats/VBoxContainer2/VBoxContainer/HpL")
+EnemyNameL = NodePath("EnemiesStats/VBoxContainer2/EnemyNameL")
+EnemyHpPB = NodePath("EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpPB")
+EnemyHpL = NodePath("EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpL")
+PlayerActionsCont = NodePath("PlayerActionsCont")
+PlayerActionsBtns = {
+"attack": NodePath("PlayerActionsCont/VBoxContainer/AttackBtn"),
+"defense": NodePath("PlayerActionsCont/VBoxContainer/DefenseBtn"),
+"skipTurn": NodePath("PlayerActionsCont/VBoxContainer/SkipTurnBtn"),
+"useItem": NodePath("PlayerActionsCont/VBoxContainer/UseItemBtn")
+}
+
+[node name="TurnContiner" type="MarginContainer" parent="." unique_id=194589187]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TurnContiner" unique_id=1271403741]
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="TurnContiner/VBoxContainer" unique_id=1236618589]
+layout_mode = 2
+text = "Turn"
+
+[node name="PlayerStats" type="MarginContainer" parent="." unique_id=1596455284]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PlayerStats" unique_id=200098817]
+layout_mode = 2
+
+[node name="PlayerNameL" type="Label" parent="PlayerStats/VBoxContainer2" unique_id=1335425602]
+layout_mode = 2
+text = "PlayerName"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerStats/VBoxContainer2" unique_id=2130890181]
+layout_mode = 2
+
+[node name="PlayerHpPB" type="ProgressBar" parent="PlayerStats/VBoxContainer2/VBoxContainer" unique_id=259561477]
+custom_minimum_size = Vector2(256, 30)
+layout_mode = 2
+show_percentage = false
+
+[node name="HpL" type="Label" parent="PlayerStats/VBoxContainer2/VBoxContainer" unique_id=1338414149]
+layout_mode = 2
+text = "100/100"
+horizontal_alignment = 2
+
+[node name="EnemiesStats" type="MarginContainer" parent="." unique_id=2122388138]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_bottom = 108.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="EnemiesStats" unique_id=2081319528]
+layout_mode = 2
+
+[node name="EnemyNameL" type="Label" parent="EnemiesStats/VBoxContainer2" unique_id=1480009700]
+layout_mode = 2
+text = "EnemyName"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnemiesStats/VBoxContainer2" unique_id=1348017018]
+layout_mode = 2
+
+[node name="EnemyHpPB" type="ProgressBar" parent="EnemiesStats/VBoxContainer2/VBoxContainer" unique_id=1951442021]
+custom_minimum_size = Vector2(256, 30)
+layout_mode = 2
+show_percentage = false
+
+[node name="EnemyHpL" type="Label" parent="EnemiesStats/VBoxContainer2/VBoxContainer" unique_id=456855259]
+layout_mode = 2
+text = "100/100"
+horizontal_alignment = 2
+
+[node name="PlayerActionsCont" type="MarginContainer" parent="." unique_id=1924045364]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerActionsCont" unique_id=397645132]
+layout_mode = 2
+
+[node name="AttackBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=1899620242]
+layout_mode = 2
+text = "Atak
+"
+
+[node name="DefenseBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=528711708]
+layout_mode = 2
+text = "Obrona"
+
+[node name="UseItemBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=845124900]
+layout_mode = 2
+text = "Użyj przedmiotu"
+
+[node name="SkipTurnBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=42354181]
+layout_mode = 2
+text = "Pomiń turę"

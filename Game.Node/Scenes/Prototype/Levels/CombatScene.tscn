@@ -8,4 +8,10 @@ script = ExtResource("1_qw1aw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1514944732]
 
-[node name="CombatHud" parent="CanvasLayer" unique_id=2047079096 instance=ExtResource("1_bro1e")]
+[node name="CombatHud" parent="CanvasLayer" unique_id=2047079096 node_paths=PackedStringArray("PlayerActionsBtns") instance=ExtResource("1_bro1e")]
+PlayerActionsBtns = {
+"attack": NodePath("PlayerActionsCont/VBoxContainer/AttackBtn"),
+"defense": NodePath("PlayerActionsCont/VBoxContainer/DefenseBtn"),
+"skipTurn": NodePath("PlayerActionsCont/VBoxContainer/SkipTurnBtn"),
+"useItem": NodePath("PlayerActionsCont/VBoxContainer/UseItemBtn")
+}

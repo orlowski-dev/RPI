@@ -7,11 +7,7 @@ public partial class CombatService
     // public EnemyCharacter[] Enemies { get; private set; } // później
     public EnemyCharacter Enemy { get; init; }
 
-    // public CombatService(EnemyCharacter[] enemies, bool playerTurn = true)
-    // {
-    //     Enemies = enemies;
-    //     PlayerTurn = playerTurn;
-    // }
+    public bool CombatEnded { get; private set; } = false;
 
     public CombatService(
         PlayerCharacter playerCharacter,
@@ -43,6 +39,23 @@ public partial class CombatService
 
         enemy.TakeDamage((int)damage);
 
+        CheckIfCombatEnded();
+
         return (int)damage;
+    }
+
+    private void CheckIfCombatEnded()
+    {
+        if (PlayerCharacter.HP == 0)
+        {
+            State = CombatState.EnemyWon;
+            CombatEnded = true;
+        }
+
+        if (Enemy.HP == 0)
+        {
+            State = CombatState.PlayerWon;
+            CombatEnded = true;
+        }
     }
 }

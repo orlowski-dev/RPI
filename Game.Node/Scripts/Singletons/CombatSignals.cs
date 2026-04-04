@@ -3,9 +3,6 @@ using Godot;
 public partial class CombatSignals : BaseSingleton<CombatSignals>
 {
     [Signal]
-    public delegate void TurnEndedEventHandler();
-
-    [Signal]
     public delegate void TurnChangedEventHandler(CombatData combatInitData);
 
     [Signal]
@@ -14,10 +11,8 @@ public partial class CombatSignals : BaseSingleton<CombatSignals>
     [Signal]
     public delegate void DefenseActionEventHandler();
 
-    public void EmitTurnEnded()
-    {
-        EmitSignal(SignalName.TurnEnded);
-    }
+    [Signal]
+    public delegate void SkipTurnEventHandler();
 
     public void EmitTurnChanged(CombatData combatData)
     {
@@ -32,5 +27,10 @@ public partial class CombatSignals : BaseSingleton<CombatSignals>
     public void EmitDefenseAction()
     {
         EmitSignal(SignalName.DefenseAction);
+    }
+
+    public void EmitSkipTurn()
+    {
+        EmitSignal(SignalName.SkipTurn);
     }
 }

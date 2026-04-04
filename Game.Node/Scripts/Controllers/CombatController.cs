@@ -1,4 +1,3 @@
-using System;
 using Godot;
 
 public partial class CombatController : Node
@@ -12,7 +11,7 @@ public partial class CombatController : Node
     public override void _Ready()
     {
         _scriptName = "(Prototype)" + this.GetType().Name;
-        _combatSignals.TurnEnded += OnTurnEnded;
+        _combatSignals.SkipTurn += OnSkipTurnAction;
         _combatSignals.AttackAction += OnAttackAction;
         _combatSignals.DefenseAction += OnDefenseAction;
 
@@ -33,7 +32,7 @@ public partial class CombatController : Node
 
     public override void _ExitTree()
     {
-        _combatSignals.TurnEnded -= OnTurnEnded;
+        _combatSignals.SkipTurn -= OnSkipTurnAction;
         _combatSignals.AttackAction -= OnAttackAction;
         _combatSignals.DefenseAction -= OnDefenseAction;
     }
@@ -61,6 +60,12 @@ public partial class CombatController : Node
             _scriptName,
             $"Gracz zadaje {damageTaken} obrażeń przeciwnikowi."
         );
+
+        if (CheckIfCombatEnded())
+        {
+            return;
+        }
+
         OnTurnEnded();
         DoEnemyMove();
     }
@@ -74,12 +79,35 @@ public partial class CombatController : Node
             _scriptName,
             $"Przeciwnik zadaje {damageTaken} obrażeń graczowi."
         );
+
+        if (CheckIfCombatEnded())
+        {
+            return;
+        }
+
         OnTurnEnded();
+    }
+
+    private bool CheckIfCombatEnded()
+    {
+        if (_service.CombatEnded)
+        {
+            // emit (_service.CombatState)
+            return true;
+        }
+        // wyświetl UI - UIController
+        return false;
     }
 
     private void OnDefenseAction()
     {
         OnTurnEnded();
         DoEnemyMove(defenseAction: true);
+    }
+
+    private void OnSkipTurnAction()
+    {
+        OnTurnEnded();
+        DoEnemyMove();
     }
 }

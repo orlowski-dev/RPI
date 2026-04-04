@@ -102,7 +102,7 @@ public partial class CombatHUD : Node
 
     private void OnSkipBtnPressed()
     {
-        _combatSignals.EmitTurnEnded();
+        _combatSignals.EmitSkipTurn();
     }
 
     private void OnAttackBtnPressed()

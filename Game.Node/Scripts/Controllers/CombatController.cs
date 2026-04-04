@@ -11,6 +11,7 @@ public partial class CombatController : Node
     public override void _Ready()
     {
         _scriptName = "(Prototype)" + this.GetType().Name;
+
         _combatSignals.SkipTurn += OnSkipTurnAction;
         _combatSignals.AttackAction += OnAttackAction;
         _combatSignals.DefenseAction += OnDefenseAction;
@@ -27,7 +28,8 @@ public partial class CombatController : Node
                 enemyType: EnemyType.Normal
             )
         );
-        _combatSignals.EmitTurnChanged(GetData());
+
+        _combatSignals.EmitDataSender(GetData());
     }
 
     public override void _ExitTree()
@@ -40,7 +42,7 @@ public partial class CombatController : Node
     private void OnTurnEnded()
     {
         _service.ChangeTurn();
-        _combatSignals.EmitTurnChanged(GetData());
+        _combatSignals.EmitDataSender(GetData());
     }
 
     private CombatData GetData()
@@ -50,6 +52,11 @@ public partial class CombatController : Node
             playerCharacter: _service.PlayerCharacter,
             enemy: _service.Enemy
         );
+    }
+
+    private void SendData()
+    {
+        _combatSignals.EmitDataSender(GetData());
     }
 
     private void OnAttackAction()
@@ -63,6 +70,7 @@ public partial class CombatController : Node
 
         if (CheckIfCombatEnded())
         {
+            _combatSignals.EmitDataSender(GetData());
             return;
         }
 
@@ -82,6 +90,7 @@ public partial class CombatController : Node
 
         if (CheckIfCombatEnded())
         {
+            _combatSignals.EmitDataSender(GetData());
             return;
         }
 

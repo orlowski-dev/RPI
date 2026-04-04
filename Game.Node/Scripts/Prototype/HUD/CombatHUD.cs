@@ -61,17 +61,17 @@ public partial class CombatHUD : Node
         PlayerActionsBtns["attack"].Pressed += OnAttackBtnPressed;
         PlayerActionsBtns["defense"].Pressed += OnDefenseBtnPressed;
 
-        _combatSignals.TurnChanged += OnTurnChanged;
+        _combatSignals.DataSender += OnDataReceived;
     }
 
     public override void _ExitTree()
     {
-        _combatSignals.TurnChanged -= OnTurnChanged;
+        _combatSignals.DataSender -= OnDataReceived;
     }
 
     private void InitUI() { }
 
-    private void UpdateEnemiesUI()
+    private void UpdateUI()
     {
         PlayerNameL.Text = _combatData.PlayerCharacter.Name;
         PlayerHpPB.MaxValue = _combatData.PlayerCharacter.MaxHP;
@@ -94,12 +94,6 @@ public partial class CombatHUD : Node
         EnemyHpL.Text = $"{_combatData.Enemy.HP}/{_combatData.Enemy.MaxHP}";
     }
 
-    private void OnTurnChanged(CombatData combatData)
-    {
-        _combatData = combatData;
-        UpdateEnemiesUI();
-    }
-
     private void OnSkipBtnPressed()
     {
         _combatSignals.EmitSkipTurn();
@@ -113,5 +107,11 @@ public partial class CombatHUD : Node
     private void OnDefenseBtnPressed()
     {
         _combatSignals.EmitDefenseAction();
+    }
+
+    private void OnDataReceived(CombatData combatData)
+    {
+        _combatData = combatData;
+        UpdateUI();
     }
 }

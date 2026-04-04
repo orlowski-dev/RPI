@@ -30,11 +30,21 @@ public partial class CombatService
         Turn = Turn == CombatTurn.Player ? CombatTurn.Opponent : CombatTurn.Player;
     }
 
-    public void Attack<A, O>(A attacker, O opponent)
+    public int Attack<A, O>(A attacker, O opponent)
         where A : BaseCharacter
         where O : BaseCharacter
     {
-        // atakujący to gracz
-        if (attacker.GetType() == typeof(PlayerCharacter)) { }
+        var isCrit = false;
+
+        var damage = attacker.Attack - (opponent.Defense * .5);
+
+        if (isCrit)
+        {
+            damage *= 1.5;
+        }
+
+        opponent.TakeDamage((int)damage);
+
+        return (int)damage;
     }
 }

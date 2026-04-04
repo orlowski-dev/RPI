@@ -7,9 +7,11 @@ public partial class CombatController : Node
     private Signals _signals => Signals.Instance;
     private CombatSignals _combatSignals => CombatSignals.Instance;
     private GameController _gc => GameController.Instance;
+    private string _scriptName;
 
     public override void _Ready()
     {
+        _scriptName = "(Prototype)" + this.GetType().Name;
         _combatSignals.TurnEnded += OnTurnEnded;
         _combatSignals.AttackAction += OnAttackAction;
         // _service = new CombatService(
@@ -66,7 +68,25 @@ public partial class CombatController : Node
 
     private void OnAttackAction()
     {
-        _service.Enemy.TakeDamage(10);
+        var damageTaken = _service.Attack(_service.PlayerCharacter, _service.Enemy);
+        Logger.Write(
+            LogLevel.Info,
+            _scriptName,
+            $"Gracz zadaje {damageTaken} obrażeń przeciwnikowi."
+        );
+        OnTurnEnded();
+        DoEnemyMove();
+    }
+
+    private async void DoEnemyMove()
+    {
+        await ToSignal(GetTree().CreateTimer(1), "timeout");
+        var damageTaken = _service.Attack(_service.Enemy, _service.PlayerCharacter);
+        Logger.Write(
+            LogLevel.Info,
+            _scriptName,
+            $"Przeciwnik zadaje {damageTaken} obrażeń graczowi."
+        );
         OnTurnEnded();
     }
 }

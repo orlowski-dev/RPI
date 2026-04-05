@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c1wt3l102634m"
-path="res://.godot/imported/Cinzel-VariableFont_wght.ttf-f8e910fa483046e494f7b49879dfb26d.fontdata"
+path="res://.godot/imported/Cinzel-VariableFont_wght.ttf-0a98efb748b789eea78f7107650b81d1.fontdata"
 
 [deps]
 
-source_file="res://Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf"
-dest_files=["res://.godot/imported/Cinzel-VariableFont_wght.ttf-f8e910fa483046e494f7b49879dfb26d.fontdata"]
+source_file="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf"
+dest_files=["res://.godot/imported/Cinzel-VariableFont_wght.ttf-0a98efb748b789eea78f7107650b81d1.fontdata"]
 
 [params]
 

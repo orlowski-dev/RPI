@@ -10,7 +10,13 @@ public static class Shared
             attack: 50,
             defense: 30,
             luck: 10,
-            critChance: 1
+            critChance: 1,
+            characterClass: new CharacterClass(
+                name: "Warrior",
+                hpBonus: 20,
+                attackBonus: 3,
+                defenseBonus: 3
+            )
         );
     }
 

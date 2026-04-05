@@ -82,4 +82,11 @@ public abstract partial class BaseCharacter
     {
         Level = newLvl;
     }
+
+    protected void ApplyLevelUpBonusses(CharacterClass characterClass)
+    {
+        HP += characterClass.HpBonus;
+        Attack += characterClass.AttackBonus;
+        Defense += characterClass.DefenseBonus;
+    }
 }

@@ -9,6 +9,7 @@ public partial class PlayerCharacter : BaseCharacter
     public int Exp { get; private set; }
     public int ExpNextLvl { get; private set; }
     public int Luck { get; private set; }
+    public CharacterClass CharacterClass { get; private set; }
 
     // TODO: dodać później umiejętności etc tutaj
 
@@ -17,16 +18,18 @@ public partial class PlayerCharacter : BaseCharacter
         int maxHp,
         int attack,
         int defense,
-        int luck,
         int critChance,
-        ISignals? signals = null,
-        int level = 1
+        int luck,
+        CharacterClass characterClass,
+        int level = 1,
+        ISignals? signals = null
     )
         : base(name, maxHp, attack, defense, critChance, level, signals)
     {
         Exp = 0;
         ExpNextLvl = CalculateExpToNextLevel();
         Luck = luck;
+        CharacterClass = characterClass;
     }
 
     /// <summary>
@@ -53,6 +56,7 @@ public partial class PlayerCharacter : BaseCharacter
         do
         {
             SetLevel(Level + 1);
+            ApplyLevelUpBonusses(CharacterClass);
             ExpNextLvl = CalculateExpToNextLevel();
         } while (Exp > ExpNextLvl);
 

@@ -17,12 +17,14 @@ public class PlayerCharacterTest
         var player = Shared.GetNewPlayer();
         // początkowe expNextLevel
         Assert.Equal(100, player.ExpNextLvl);
+        var lvl1Hp = player.HP;
 
         player.AddExp(100);
 
         // dodaję 100 exa i wbijam drugi level
         Assert.Equal(100, player.Exp);
         Assert.Equal(2, player.Level);
+        Assert.Equal(lvl1Hp + player.CharacterClass.HpBonus, player.HP);
 
         // sprawdzam czy expNextLvl = 282 - wdł tabelki
         Assert.Equal(282, player.ExpNextLvl);

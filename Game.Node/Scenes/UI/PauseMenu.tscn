@@ -112,7 +112,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_72sra")
 text = "Restart
 "
 
-[node name="CreditsBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=934349641]
+[node name="BackBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=934349641]
 custom_minimum_size = Vector2(428, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -123,7 +123,7 @@ theme_override_fonts/font = ExtResource("3_238ko")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_jex3y")
 theme_override_styles/hover = SubResource("StyleBoxFlat_72sra")
-text = "CREDITS"
+text = "Wróć"
 
 [node name="ExitBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=901865936]
 custom_minimum_size = Vector2(428, 80)

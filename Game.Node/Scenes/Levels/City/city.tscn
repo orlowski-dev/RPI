@@ -143,6 +143,7 @@ offset_bottom = 4.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" index="1" unique_id=1965048236]
 position = Vector2(-3, 2)
+scale = Vector2(0.16861174, 0.16861174)
 sprite_frames = SubResource("SpriteFrames_4nckd")
-frame_progress = 0.15367968
+frame_progress = 0.56571555
 speed_scale = 3.0

@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://b1157n4jxars3"]
+
+[ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="1_rnod3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_et4y8"]
+bg_color = Color(0.05882353, 0.05490196, 0.039215688, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ocrn"]
+bg_color = Color(0.38039216, 0.3529412, 0.32156864, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oik4b"]
+bg_color = Color(0.38039216, 0.3529412, 0.32156864, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v76bk"]
+bg_color = Color(0.81718373, 0.7600781, 0.6967363, 1)
+border_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
+
+[node name="BatlleSummaryVictory" type="CanvasLayer" unique_id=1893629249]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1719022209]
+offset_right = 653.0
+offset_bottom = 647.0
+size_flags_horizontal = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1242661990]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_et4y8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1382271783]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VictoryTitle" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1216740240]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_rnod3")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ocrn")
+text = "Wygrałeś"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=2096309972]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rnod3")
+text = "Wygraleś z <EnemyName>"
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1787434886]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rnod3")
+text = "int/5 na int lvl
+"
+
+[node name="YourStats" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=2120770658]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_rnod3")
+text = "
+Twoje statystyki:
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1296297681]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1219556430]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rnod3")
+text = "Zdobyte doświadczenie: 
+"
+
+[node name="YourStats2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1672012928]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_rnod3")
+text = "
+Zdobyte przedmioty:
+"
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=734327613]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1681505644]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rnod3")
+text = "Pozostałe życie: "
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1220454014]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rnod3")
+text = "złoto:"
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=449786007]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rnod3")
+text = "loot"
+
+[node name="Button" type="Button" parent="." unique_id=1276427942]
+anchors_preset = -1
+anchor_right = 0.123
+anchor_bottom = 0.093
+offset_left = 426.0
+offset_top = 542.0
+offset_right = 460.88
+offset_bottom = 512.736
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
+theme_override_fonts/font = ExtResource("1_rnod3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_oik4b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_v76bk")
+text = "Zamknij"

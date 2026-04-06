@@ -411,6 +411,7 @@ animations = [{
 
 [node name="Orc" type="CharacterBody2D" unique_id=822514758]
 collision_layer = 4
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240862241]
 scale = Vector2(3.8854978, 3.8854978)

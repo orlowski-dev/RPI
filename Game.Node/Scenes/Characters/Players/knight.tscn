@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dod3pfsysib2j"]
 
+[ext_resource type="Script" uid="uid://bo0fysasmjsfu" path="res://Scripts/Player/PlayerController.cs" id="1_6mnwy"]
 [ext_resource type="Texture2D" uid="uid://dt0dqisamwbj5" path="res://Assets/Prototype/Sprites/Player/Knight/Attack/Knight_01__ATTACK_000.png" id="1_cqkig"]
 [ext_resource type="Texture2D" uid="uid://dxmuphqn0ekms" path="res://Assets/Prototype/Sprites/Player/Knight/Attack/Knight_01__ATTACK_001.png" id="2_6mnwy"]
 [ext_resource type="Texture2D" uid="uid://diafebkc48yvm" path="res://Assets/Prototype/Sprites/Player/Knight/Attack/Knight_01__ATTACK_002.png" id="3_6yrhv"]
@@ -279,6 +280,8 @@ animations = [{
 }]
 
 [node name="Knight" type="CharacterBody2D" unique_id=802040328]
+collision_mask = 6
+script = ExtResource("1_6mnwy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908186859]
 shape = SubResource("CapsuleShape2D_oonvv")

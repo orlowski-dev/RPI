@@ -1,3 +1,363 @@
 [gd_scene format=3 uid="uid://drsf62lnleovg"]
 
-[node name="Goblin" type="Node2D" unique_id=524773819]
+[ext_resource type="Texture2D" uid="uid://cnp5jnoipngcw" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_000.png" id="1_s6yqq"]
+[ext_resource type="Texture2D" uid="uid://cl2phcqdgsdac" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_001.png" id="2_7mfr2"]
+[ext_resource type="Texture2D" uid="uid://h3y5r4n6kksf" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_002.png" id="3_q7siy"]
+[ext_resource type="Texture2D" uid="uid://d1q83wavg4r35" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_003.png" id="4_db78l"]
+[ext_resource type="Texture2D" uid="uid://if8l7rgd0vgc" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_004.png" id="5_6ia06"]
+[ext_resource type="Texture2D" uid="uid://dbhw4e51cp5df" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_005.png" id="6_46lkr"]
+[ext_resource type="Texture2D" uid="uid://bpkqapx56kuvf" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_006.png" id="7_mykmq"]
+[ext_resource type="Texture2D" uid="uid://ch126brllmr28" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_007.png" id="8_shxa3"]
+[ext_resource type="Texture2D" uid="uid://2ohhb861w6ve" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_008.png" id="9_8g0t6"]
+[ext_resource type="Texture2D" uid="uid://btjdhjutqb6rt" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_009.png" id="10_0xeih"]
+[ext_resource type="Texture2D" uid="uid://dwc0keqxsnrls" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_010.png" id="11_21utj"]
+[ext_resource type="Texture2D" uid="uid://lfa3trijtx80" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_011.png" id="12_ln7f0"]
+[ext_resource type="Texture2D" uid="uid://dng81to32fih0" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_000.png" id="13_s2q0m"]
+[ext_resource type="Texture2D" uid="uid://2cyyyjwdmv6s" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_001.png" id="14_2yvu8"]
+[ext_resource type="Texture2D" uid="uid://drxp8p38ddbls" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_002.png" id="15_203ui"]
+[ext_resource type="Texture2D" uid="uid://bbj0nuxh73hdj" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_003.png" id="16_cthn1"]
+[ext_resource type="Texture2D" uid="uid://mq4xlgoe53qe" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_004.png" id="17_1cnhn"]
+[ext_resource type="Texture2D" uid="uid://cvqrvsmehk48m" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_005.png" id="18_tgo4r"]
+[ext_resource type="Texture2D" uid="uid://cwjfolvdmhsq5" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_006.png" id="19_l8scg"]
+[ext_resource type="Texture2D" uid="uid://b05x2wa6uoj7h" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_007.png" id="20_0mxym"]
+[ext_resource type="Texture2D" uid="uid://b4xqy3trfrya3" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_008.png" id="21_wuqh4"]
+[ext_resource type="Texture2D" uid="uid://xoojlnywn7j8" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_009.png" id="22_bik47"]
+[ext_resource type="Texture2D" uid="uid://yo32ks0fh77u" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_010.png" id="23_ldb0e"]
+[ext_resource type="Texture2D" uid="uid://cry4p24rrpf48" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_011.png" id="24_0qcdt"]
+[ext_resource type="Texture2D" uid="uid://b567e4qggbtyj" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_012.png" id="25_dvsfa"]
+[ext_resource type="Texture2D" uid="uid://dp0ir75ku0ykg" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_013.png" id="26_1elok"]
+[ext_resource type="Texture2D" uid="uid://dcbq5pudl8gee" path="res://Assets/Prototype/Sprites/Enemy/Goblin/die/0_Goblin_Dying_014.png" id="27_leu61"]
+[ext_resource type="Texture2D" uid="uid://ca1rwkjgbe6u2" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_000.png" id="28_n746v"]
+[ext_resource type="Texture2D" uid="uid://ctltr52risy8m" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_001.png" id="29_fb0a5"]
+[ext_resource type="Texture2D" uid="uid://tiapyb4gjbh3" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_002.png" id="30_4ik6f"]
+[ext_resource type="Texture2D" uid="uid://mf26ajiden6u" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_003.png" id="31_h5cqt"]
+[ext_resource type="Texture2D" uid="uid://2p3cn3pv0tn8" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_004.png" id="32_0hte7"]
+[ext_resource type="Texture2D" uid="uid://b264lcotxhf1p" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_005.png" id="33_y2w0d"]
+[ext_resource type="Texture2D" uid="uid://be5vr53aco27q" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_006.png" id="34_47tc3"]
+[ext_resource type="Texture2D" uid="uid://yndok1f3uw6a" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_007.png" id="35_yl36r"]
+[ext_resource type="Texture2D" uid="uid://nkjx45acvgsl" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_008.png" id="36_wn4t1"]
+[ext_resource type="Texture2D" uid="uid://dkyuucmf6lptn" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_009.png" id="37_us0yh"]
+[ext_resource type="Texture2D" uid="uid://dbtkkm3yup0qy" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_010.png" id="38_tp6ek"]
+[ext_resource type="Texture2D" uid="uid://b6h6lyl0faa8p" path="res://Assets/Prototype/Sprites/Enemy/Goblin/hurt/0_Goblin_Hurt_011.png" id="39_7er40"]
+[ext_resource type="Texture2D" uid="uid://bvcvbtg8kpa6i" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_000.png" id="40_pvh36"]
+[ext_resource type="Texture2D" uid="uid://c5s61uvsdqee1" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_001.png" id="41_cf75l"]
+[ext_resource type="Texture2D" uid="uid://o12r8dnn1axh" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_002.png" id="42_2f1hl"]
+[ext_resource type="Texture2D" uid="uid://cviunq28vhipk" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_003.png" id="43_8u020"]
+[ext_resource type="Texture2D" uid="uid://b4p7iijlafwwa" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_004.png" id="44_7dc60"]
+[ext_resource type="Texture2D" uid="uid://dt2aq17gjtqid" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_005.png" id="45_liib4"]
+[ext_resource type="Texture2D" uid="uid://4kipamtal2h0" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_006.png" id="46_e8f2v"]
+[ext_resource type="Texture2D" uid="uid://ckxfrgfjtgb2f" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_007.png" id="47_y326y"]
+[ext_resource type="Texture2D" uid="uid://cckw7rw2rk07x" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_008.png" id="48_u1ba1"]
+[ext_resource type="Texture2D" uid="uid://bklhj0s4h4qtq" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_009.png" id="49_lmgwn"]
+[ext_resource type="Texture2D" uid="uid://sntjy7j64v45" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_010.png" id="50_ftftq"]
+[ext_resource type="Texture2D" uid="uid://bkaqkekw8hg0a" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_011.png" id="51_177lw"]
+[ext_resource type="Texture2D" uid="uid://de7icaejdp2os" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_012.png" id="52_l7wbu"]
+[ext_resource type="Texture2D" uid="uid://btadt6tiqw3i0" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_013.png" id="53_0x224"]
+[ext_resource type="Texture2D" uid="uid://otmypbj68yyq" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_014.png" id="54_fir2o"]
+[ext_resource type="Texture2D" uid="uid://dvtfvu3n6gtox" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_015.png" id="55_53i64"]
+[ext_resource type="Texture2D" uid="uid://km53b3acnu8r" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_016.png" id="56_qa4jh"]
+[ext_resource type="Texture2D" uid="uid://bc0axwn47ufyj" path="res://Assets/Prototype/Sprites/Enemy/Goblin/idle/0_Goblin_Idle_017.png" id="57_e63en"]
+[ext_resource type="Texture2D" uid="uid://bkpptey6t17pu" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_000.png" id="58_3x54k"]
+[ext_resource type="Texture2D" uid="uid://cku4dpcwmxydw" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_001.png" id="59_ct3ri"]
+[ext_resource type="Texture2D" uid="uid://bvx7enby2nn4u" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_002.png" id="60_v4nan"]
+[ext_resource type="Texture2D" uid="uid://b2mlhk5w83fof" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_003.png" id="61_jhh58"]
+[ext_resource type="Texture2D" uid="uid://dn8cnt1rccn87" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_004.png" id="62_3kv3n"]
+[ext_resource type="Texture2D" uid="uid://qxuh3c0vo1la" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_005.png" id="63_pfsys"]
+[ext_resource type="Texture2D" uid="uid://btdu5eke31t4j" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_006.png" id="64_4qld0"]
+[ext_resource type="Texture2D" uid="uid://bb8vkkje1p0hq" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_007.png" id="65_gb4jl"]
+[ext_resource type="Texture2D" uid="uid://dj730h1t2unvr" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_008.png" id="66_ugw8o"]
+[ext_resource type="Texture2D" uid="uid://b73hywrhc1fw4" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_009.png" id="67_bf5vk"]
+[ext_resource type="Texture2D" uid="uid://d1imo5gygn3r4" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_010.png" id="68_8lrfm"]
+[ext_resource type="Texture2D" uid="uid://d06m0rtql0738" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_011.png" id="69_8octl"]
+[ext_resource type="Texture2D" uid="uid://btkuaqp6rsgky" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_012.png" id="70_2wqj6"]
+[ext_resource type="Texture2D" uid="uid://ceffe67mpwvkk" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_013.png" id="71_gl7iq"]
+[ext_resource type="Texture2D" uid="uid://ob1v6v1rnh10" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_014.png" id="72_m2rxk"]
+[ext_resource type="Texture2D" uid="uid://hkvvfu6veuuh" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_015.png" id="73_cbr43"]
+[ext_resource type="Texture2D" uid="uid://c2aj3xdwwnt1x" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_016.png" id="74_ms8py"]
+[ext_resource type="Texture2D" uid="uid://coycxo1icd5sg" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_017.png" id="75_h4pwg"]
+[ext_resource type="Texture2D" uid="uid://csni82tlv8q67" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_018.png" id="76_n30lx"]
+[ext_resource type="Texture2D" uid="uid://c0qpjwvmkbsyn" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_019.png" id="77_2j8t7"]
+[ext_resource type="Texture2D" uid="uid://ds4xi0l2gp6jk" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_020.png" id="78_goftv"]
+[ext_resource type="Texture2D" uid="uid://bmjxsmc4fh8w0" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_021.png" id="79_1ulux"]
+[ext_resource type="Texture2D" uid="uid://cxftr67gh3p1y" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_022.png" id="80_7m4mx"]
+[ext_resource type="Texture2D" uid="uid://d01lyx6oarqjt" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_023.png" id="81_qgr11"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csoed"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s6yqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7mfr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q7siy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_db78l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6ia06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_46lkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mykmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_shxa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8g0t6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0xeih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_21utj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ln7f0")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_s2q0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2yvu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_203ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cthn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_1cnhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_tgo4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_l8scg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0mxym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wuqh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_bik47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ldb0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_0qcdt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_dvsfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1elok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_leu61")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_n746v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_fb0a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_4ik6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_h5cqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_0hte7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_y2w0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_47tc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_yl36r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_wn4t1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_us0yh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_tp6ek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_7er40")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_pvh36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_cf75l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_2f1hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_8u020")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_7dc60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_liib4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_e8f2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_y326y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_u1ba1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_lmgwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_ftftq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_177lw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_l7wbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_0x224")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_fir2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_53i64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_qa4jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_e63en")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("58_3x54k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_ct3ri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_v4nan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_jhh58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_3kv3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_pfsys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_4qld0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_gb4jl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_ugw8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_bf5vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_8lrfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_8octl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_2wqj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_gl7iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_m2rxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_cbr43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_ms8py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_h4pwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_n30lx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_2j8t7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_goftv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_1ulux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_7m4mx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_qgr11")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Goblin" type="CharacterBody2D" unique_id=1755493283]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216266320]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1489971868]
+sprite_frames = SubResource("SpriteFrames_csoed")
+animation = &"idle"
+autoplay = "idle"

@@ -11,10 +11,14 @@ public partial class PlayerController : CharacterBody2D
 	[Export]
 	public int Speed { get; set; } = 300;
 
-	[Export]
-	public int RotationSpeed { get; set; } = 10;
+	private AnimatedSprite2D _sprite;
+	//[Export]
+	//public int RotationSpeed { get; set; } = 10;
 
-	public override void _Ready() { }
+	public override void _Ready()
+	{
+		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+	 }
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -35,12 +39,20 @@ public partial class PlayerController : CharacterBody2D
 		// poruszanie
 		Velocity = direction * Speed;
 
-		//płynna rotacja
-		if (direction != Vector2.Zero)
+		if (direction.X < 0)
 		{
-			var targetRotation = direction.Angle() + Mathf.Pi / 2; // domyślnie sprite patrzy w góręę
-			Rotation = Mathf.LerpAngle(Rotation, targetRotation, RotationSpeed * (float)delta);
+			_sprite.FlipH = true;
 		}
+		else if (direction.X > 0)
+		{
+			_sprite.FlipH = false;
+		}
+		//płynna rotacja
+		//if (direction != Vector2.Zero)
+		//{
+			//var targetRotation = direction.Angle() + Mathf.Pi / 2; // domyślnie sprite patrzy w góręę
+			//Rotation = Mathf.LerpAngle(Rotation, targetRotation, RotationSpeed * (float)delta);
+		//}
 
 		MoveAndSlide();
 	}

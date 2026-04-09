@@ -56,6 +56,76 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("31_msj0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_tm5xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_brjbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_j1gu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_xi03u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_2f76v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_nw6wt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_8eh6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_smxoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_jq413")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_0801v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_j2ev7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_p0dll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_q72ft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_00ysg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_27not")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_6wuq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_d505g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ggd6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_qdjum")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_y7gir")
 }, {
 "duration": 1.0,
@@ -158,76 +228,6 @@ animations = [{
 "loop": false,
 "name": &"hurt",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("31_msj0r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_tm5xt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_brjbt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_j1gu6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_xi03u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("36_2f76v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("37_nw6wt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("38_8eh6w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_smxoc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("40_jq413")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("41_0801v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("42_j2ev7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("43_p0dll")
-}, {
-"duration": 1.0,
-"texture": ExtResource("44_q72ft")
-}, {
-"duration": 1.0,
-"texture": ExtResource("45_00ysg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("46_27not")
-}, {
-"duration": 1.0,
-"texture": ExtResource("47_6wuq5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("48_d505g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("49_ggd6q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("50_qdjum")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
 }]
 
 [node name="mag" type="CharacterBody2D" unique_id=1798945074]
@@ -236,7 +236,9 @@ script = ExtResource("1_opncd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1708820153]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1674264614]
+position = Vector2(723.4047, 518.25)
+scale = Vector2(0.31259525, 0.30333334)
 sprite_frames = SubResource("SpriteFrames_a70wj")
-animation = &"idle"
-autoplay = "idle"
+animation = &"Idle"
+autoplay = "Idle"
 speed_scale = 2.5

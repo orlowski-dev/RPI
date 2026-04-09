@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bx1x2k16gb5uf"]
 
 [ext_resource type="Texture2D" uid="uid://djxvpmjcvyt6j" path="res://Assets/Prototype/Sprites/Player/archer/attack/Elf_01__ATTACK_000.png" id="1_ebiuj"]
+[ext_resource type="Script" uid="uid://bo0fysasmjsfu" path="res://Scripts/Player/PlayerController.cs" id="1_ew7ey"]
 [ext_resource type="Texture2D" uid="uid://c76swxwkgckss" path="res://Assets/Prototype/Sprites/Player/archer/attack/Elf_01__ATTACK_001.png" id="2_ew7ey"]
 [ext_resource type="Texture2D" uid="uid://duyf8iei6vha4" path="res://Assets/Prototype/Sprites/Player/archer/attack/Elf_01__ATTACK_002.png" id="3_h18gh"]
 [ext_resource type="Texture2D" uid="uid://ebd01hfpgrfc" path="res://Assets/Prototype/Sprites/Player/archer/attack/Elf_01__ATTACK_003.png" id="4_wextu"]
@@ -55,111 +56,6 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ebiuj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_ew7ey")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_h18gh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_wextu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_5tc31")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_mepky")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_p17rq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_3ww0r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_8p5kh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_l3rbu")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_kjpo0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_mv2tc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_u670k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_utufq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_t7308")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_1qvlv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_snb3s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_0673q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_teymq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_rrp3y")
-}],
-"loop": true,
-"name": &"die",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("21_t83qq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_ckj4j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_skuw1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_hasec")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_iwyxx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_5gpkb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_ltt1y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_kl10o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_o7sn3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_ufeig")
-}],
-"loop": true,
-"name": &"hurt",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("31_v0n1t")
 }, {
 "duration": 1.0,
@@ -190,7 +86,7 @@ animations = [{
 "texture": ExtResource("40_5mub0")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"Idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -225,15 +121,124 @@ animations = [{
 "texture": ExtResource("50_kk22b")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"Walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ebiuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ew7ey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h18gh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wextu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5tc31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mepky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p17rq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3ww0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8p5kh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l3rbu")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_kjpo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mv2tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_u670k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_utufq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_t7308")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1qvlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_snb3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0673q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_teymq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rrp3y")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_t83qq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ckj4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_skuw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_hasec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_iwyxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_5gpkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ltt1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_kl10o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_o7sn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ufeig")
+}],
+"loop": false,
+"name": &"hurt",
 "speed": 5.0
 }]
 
 [node name="łucznik" type="CharacterBody2D" unique_id=489137578]
+script = ExtResource("1_ew7ey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=688339545]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1138878809]
+position = Vector2(677.8571, 480.25)
+scale = Vector2(0.25666672, 0.25666666)
 sprite_frames = SubResource("SpriteFrames_yjx8t")
-animation = &"idle"
-autoplay = "idle"
+animation = &"Idle"
+autoplay = "Idle"
+speed_scale = 2.5

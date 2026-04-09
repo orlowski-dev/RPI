@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3fddxfoi4686"]
 
 [ext_resource type="Texture2D" uid="uid://c61h38s8ib8dp" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_000.png" id="1_35imw"]
+[ext_resource type="Script" uid="uid://bo0fysasmjsfu" path="res://Scripts/Player/PlayerController.cs" id="1_p3rxj"]
 [ext_resource type="Texture2D" uid="uid://cvcl4nkgwk66c" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_001.png" id="2_ipos5"]
 [ext_resource type="Texture2D" uid="uid://cpak8u3qcrd5g" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_002.png" id="3_mb66h"]
 [ext_resource type="Texture2D" uid="uid://co5gu7n0es2p0" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_003.png" id="4_laq5i"]
@@ -57,18 +58,6 @@
 [ext_resource type="Texture2D" uid="uid://b1n4pc8vng4wd" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_015.png" id="55_e5d07"]
 [ext_resource type="Texture2D" uid="uid://trny1hb0c7s" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_016.png" id="56_3axcn"]
 [ext_resource type="Texture2D" uid="uid://dbjgigodhbflg" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_017.png" id="57_dqqdq"]
-[ext_resource type="Texture2D" uid="uid://dy7vcu7ujb8n8" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_000.png" id="58_2teoo"]
-[ext_resource type="Texture2D" uid="uid://c21h7tboh7fr7" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_001.png" id="59_oc0uu"]
-[ext_resource type="Texture2D" uid="uid://dbhtwstw6sgm3" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_002.png" id="60_nnl8t"]
-[ext_resource type="Texture2D" uid="uid://7i5l8p13kp7g" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_003.png" id="61_nowul"]
-[ext_resource type="Texture2D" uid="uid://ccn07wsn4n7b8" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_004.png" id="62_q0f6e"]
-[ext_resource type="Texture2D" uid="uid://bx0eyop65vnhm" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_005.png" id="63_8c7gk"]
-[ext_resource type="Texture2D" uid="uid://do47u12m74qhh" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_006.png" id="64_rxevo"]
-[ext_resource type="Texture2D" uid="uid://bftvcb4vlx8v2" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_007.png" id="65_bn0af"]
-[ext_resource type="Texture2D" uid="uid://d03wajk63reu0" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_008.png" id="66_0r68w"]
-[ext_resource type="Texture2D" uid="uid://cfoqi8k170b0m" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_009.png" id="67_80nva"]
-[ext_resource type="Texture2D" uid="uid://co3l53xugeqbm" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_010.png" id="68_gc2ib"]
-[ext_resource type="Texture2D" uid="uid://dqdrujn38a04d" path="res://Assets/Prototype/Sprites/Enemy/Orc/Run/0_Orc_Running_011.png" id="69_0fwlh"]
 [ext_resource type="Texture2D" uid="uid://1pfbr4iij812" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_000.png" id="70_cpcy6"]
 [ext_resource type="Texture2D" uid="uid://bv8a1fihi04md" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_001.png" id="71_1de0s"]
 [ext_resource type="Texture2D" uid="uid://cer5dtmvsaw1f" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_002.png" id="72_pe5dg"]
@@ -136,7 +125,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_wuuqk")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 5.0
 }, {
@@ -186,7 +175,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_ox7f2")
 }],
-"loop": true,
+"loop": false,
 "name": &"Die",
 "speed": 5.0
 }, {
@@ -227,7 +216,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("39_15c43")
 }],
-"loop": true,
+"loop": false,
 "name": &"Hurt",
 "speed": 5.0
 }, {
@@ -288,47 +277,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("58_2teoo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("59_oc0uu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("60_nnl8t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("61_nowul")
-}, {
-"duration": 1.0,
-"texture": ExtResource("62_q0f6e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("63_8c7gk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("64_rxevo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("65_bn0af")
-}, {
-"duration": 1.0,
-"texture": ExtResource("66_0r68w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("67_80nva")
-}, {
-"duration": 1.0,
-"texture": ExtResource("68_gc2ib")
-}, {
-"duration": 1.0,
-"texture": ExtResource("69_0fwlh")
-}],
-"loop": true,
-"name": &"Run",
 "speed": 5.0
 }, {
 "frames": [{
@@ -412,6 +360,7 @@ animations = [{
 [node name="Orc" type="CharacterBody2D" unique_id=822514758]
 collision_layer = 4
 collision_mask = 7
+script = ExtResource("1_p3rxj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240862241]
 scale = Vector2(3.8854978, 3.8854978)
@@ -420,6 +369,6 @@ shape = SubResource("CircleShape2D_6d4of")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2071525896]
 scale = Vector2(0.12601271, 0.12601271)
 sprite_frames = SubResource("SpriteFrames_wq0ek")
-animation = &"Walking"
+animation = &"Hurt"
 autoplay = "Idle"
 speed_scale = 5.0

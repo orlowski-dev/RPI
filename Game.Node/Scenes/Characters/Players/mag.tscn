@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c0cmpf513hyfu"]
 
+[ext_resource type="Script" uid="uid://bo0fysasmjsfu" path="res://Scripts/Player/PlayerController.cs" id="1_opncd"]
 [ext_resource type="Texture2D" uid="uid://bxmfhhovmd6qu" path="res://Assets/Prototype/Sprites/Player/Mag/attack/Elf_03__ATTACK_000.png" id="1_y7gir"]
 [ext_resource type="Texture2D" uid="uid://clyjcxk43t1qa" path="res://Assets/Prototype/Sprites/Player/Mag/attack/Elf_03__ATTACK_001.png" id="2_opncd"]
 [ext_resource type="Texture2D" uid="uid://csv5knsna2asw" path="res://Assets/Prototype/Sprites/Player/Mag/attack/Elf_03__ATTACK_002.png" id="3_bn0an"]
@@ -84,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_xfpde")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -119,7 +120,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("20_nf70v")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -154,7 +155,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("30_5d1vj")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -230,6 +231,7 @@ animations = [{
 }]
 
 [node name="mag" type="CharacterBody2D" unique_id=1798945074]
+script = ExtResource("1_opncd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1708820153]
 
@@ -237,3 +239,4 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_a70wj")
 animation = &"idle"
 autoplay = "idle"
+speed_scale = 2.5

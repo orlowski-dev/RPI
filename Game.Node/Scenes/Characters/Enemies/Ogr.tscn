@@ -121,7 +121,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_g7tjm")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -171,7 +171,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_aeqli")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -212,7 +212,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("39_q8355")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -359,5 +359,5 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=206800082]
 sprite_frames = SubResource("SpriteFrames_x3lvc")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"

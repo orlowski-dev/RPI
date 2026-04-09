@@ -12,6 +12,7 @@ public partial class PlayerController : CharacterBody2D
 	public int Speed { get; set; } = 300;
 
 	private AnimatedSprite2D _sprite;
+	
 	//[Export]
 	//public int RotationSpeed { get; set; } = 10;
 
@@ -35,10 +36,9 @@ public partial class PlayerController : CharacterBody2D
 	private void MovePlayer(ref double delta)
 	{
 		var direction = Input.GetVector("moveLeft", "moveRight", "moveUp", "moveDown");
-
 		// poruszanie
 		Velocity = direction * Speed;
-
+		
 		if (direction.X < 0)
 		{
 			_sprite.FlipH = true;
@@ -47,6 +47,15 @@ public partial class PlayerController : CharacterBody2D
 		{
 			_sprite.FlipH = false;
 		}
+		if (direction == Vector2.Zero)
+		{
+			_sprite.Play("Idle");
+		}
+		else
+		{
+			_sprite.Play("Walking");
+		}
+		
 		//płynna rotacja
 		//if (direction != Vector2.Zero)
 		//{

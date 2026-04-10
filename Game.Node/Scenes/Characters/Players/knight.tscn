@@ -41,16 +41,6 @@
 [ext_resource type="Texture2D" uid="uid://dpgmjam4mds70" path="res://Assets/Prototype/Sprites/Player/Knight/Idle/Knight_01__IDLE_007.png" id="38_p1emj"]
 [ext_resource type="Texture2D" uid="uid://dkaceptec4fpa" path="res://Assets/Prototype/Sprites/Player/Knight/Idle/Knight_01__IDLE_008.png" id="39_g33xy"]
 [ext_resource type="Texture2D" uid="uid://chjmu26coh5wc" path="res://Assets/Prototype/Sprites/Player/Knight/Idle/Knight_01__IDLE_009.png" id="40_ypop0"]
-[ext_resource type="Texture2D" uid="uid://gjorbd1vvdcd" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_000.png" id="41_7fu7c"]
-[ext_resource type="Texture2D" uid="uid://dgda5vw2x73tt" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_001.png" id="42_tfg0a"]
-[ext_resource type="Texture2D" uid="uid://div51cgcoakp6" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_002.png" id="43_ex8sp"]
-[ext_resource type="Texture2D" uid="uid://crtto34ajypg2" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_003.png" id="44_27ti4"]
-[ext_resource type="Texture2D" uid="uid://cm2j5n6hd3gtr" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_004.png" id="45_xqm4t"]
-[ext_resource type="Texture2D" uid="uid://bi72t1r5eligb" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_005.png" id="46_dwxru"]
-[ext_resource type="Texture2D" uid="uid://bs8wsplyegqb4" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_006.png" id="47_dqjft"]
-[ext_resource type="Texture2D" uid="uid://bw7j00d4xswxx" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_007.png" id="48_ceas8"]
-[ext_resource type="Texture2D" uid="uid://bp8q55jva862l" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_008.png" id="49_w6q6q"]
-[ext_resource type="Texture2D" uid="uid://biu2401d8eigo" path="res://Assets/Prototype/Sprites/Player/Knight/Run/Knight_01__RUN_009.png" id="50_t5w45"]
 [ext_resource type="Texture2D" uid="uid://djjjiddloeva4" path="res://Assets/Prototype/Sprites/Player/Knight/Walk/Knight_01__WALK_000.png" id="51_5imk2"]
 [ext_resource type="Texture2D" uid="uid://dqj4080vu1qog" path="res://Assets/Prototype/Sprites/Player/Knight/Walk/Knight_01__WALK_001.png" id="52_i4avh"]
 [ext_resource type="Texture2D" uid="uid://bk17fxe5gn6ud" path="res://Assets/Prototype/Sprites/Player/Knight/Walk/Knight_01__WALK_002.png" id="53_dy6sc"]
@@ -210,41 +200,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("41_7fu7c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("42_tfg0a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("43_ex8sp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("44_27ti4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("45_xqm4t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("46_dwxru")
-}, {
-"duration": 1.0,
-"texture": ExtResource("47_dqjft")
-}, {
-"duration": 1.0,
-"texture": ExtResource("48_ceas8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("49_w6q6q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("50_t5w45")
-}],
-"loop": true,
-"name": &"Run",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("51_5imk2")
 }, {
 "duration": 1.0,
@@ -289,6 +244,6 @@ shape = SubResource("CapsuleShape2D_oonvv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2106383370]
 scale = Vector2(0.13979055, 0.12278968)
 sprite_frames = SubResource("SpriteFrames_sm1t8")
-animation = &"Walk"
+animation = &"Attack"
 autoplay = "Idle"
 speed_scale = 2.5

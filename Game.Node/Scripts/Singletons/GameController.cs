@@ -39,15 +39,15 @@ public partial class GameController : BaseSingleton<GameController>
     public void StartNewGame()
     {
         GD.Print("starting new game..");
-        PlayerCharacter = new(
-            signals: _signals,
-            name: "Character name",
-            maxHp: 100,
-            attack: 50,
-            defense: 10,
-            luck: 10,
-            critChance: 2
-        );
+        // PlayerCharacter = new(
+        //     signals: _signals,
+        //     name: "Character name",
+        //     maxHp: 100,
+        //     attack: 50,
+        //     defense: 10,
+        //     luck: 10,
+        //     critChance: 2
+        // );
     }
 
     /// <summary>

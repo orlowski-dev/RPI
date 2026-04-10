@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxgf2rmqkfke8" path="res://Scripts/Prototype/HUD/CombatHUD.cs" id="1_xwtk5"]
 
-[node name="CombatHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL", "PlayerActionsCont", "PlayerActionsBtns")]
+[node name="CombatHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL", "PlayerActionsCont")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,12 +18,6 @@ EnemyNameL = NodePath("EnemiesStats/VBoxContainer2/EnemyNameL")
 EnemyHpPB = NodePath("EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpPB")
 EnemyHpL = NodePath("EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpL")
 PlayerActionsCont = NodePath("PlayerActionsCont")
-PlayerActionsBtns = {
-"attack": NodePath("PlayerActionsCont/VBoxContainer/AttackBtn"),
-"defense": NodePath("PlayerActionsCont/VBoxContainer/DefenseBtn"),
-"skipTurn": NodePath("PlayerActionsCont/VBoxContainer/SkipTurnBtn"),
-"useItem": NodePath("PlayerActionsCont/VBoxContainer/UseItemBtn")
-}
 
 [node name="TurnContiner" type="MarginContainer" parent="." unique_id=194589187]
 layout_mode = 1

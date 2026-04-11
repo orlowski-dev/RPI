@@ -33,6 +33,104 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 
 ---
 
+# UML
+
+![[Game_Core.jpeg]]
+
+![[Game_Node.jpeg]]
+
+---
+
+# Architektura
+
+## Diagram mentalny
+
+![[Pasted image 20260411125250.png]]
+
+## Ogólna idea architektury
+
+Aby ułatwić sobie życie wprowadzamy podział architektury na warstwy:
+
+- `service` - logika komponentu
+- `controller` - pośrednik pomiędzy UI i logiką
+- `data` - transport danych
+- `signals` - komunikacja
+- `ui` - interfejs użytkownika
+
+Każda z tych warstw ma swoją konkretną odpowiedzialność, dzięki czemu kod jest czytelny, modularny i skalowalny.
+
+### Przepływ danych
+
+Rdzeń architektury.
+
+![[Pasted image 20260411125441.png]]
+
+Dla przykładu kliknięci w przycisk w UI, obliczenie danych i wypisanie w UI
+
+```bash
+UI wysyła sygnał → Controller odbiera → Controller wywołuje Service → Service zwraca wynik → Controller wysyła sygnał (dane) → UI aktualizuje widok
+```
+
+## Implementacja architektury
+
+### Service - logika
+
+Tutaj znajduje się sama logika. `Service` nie może znać `UI` i `Godot`. To musi być czysty `C#`.
+Umożliwia nam to pisanie testów jednostkowych i uzywanie logiki gdziekolwiek.
+
+Przykład:
+
+W przypadku walki oblicza obrażenia, sprawdza stan walki i przejścia tur. Nie interesuje go, czy dane są wyświetlane w `HUD`, `logów` czy animacji.
+
+Service przyjmuje dane i zwraca wynik.
+
+### Data - transport danych (DTO)
+
+Skoro Service nie zna UI, potrzebujemy struktury danych, która będzie przenosić informacje między systemami, dlatego tworzymy klasę Data.
+
+Przykład:
+
+CombatData może zawierać:
+
+- stan walki
+- gracza
+- przeciwnika
+- informacje o turze
+
+Ta klasa nie powinna zawierać logiki. To tylko kontener danych.
+
+### Signals - komunikacja
+
+Signals odpowiadają za komunikację między systemami, dzięki czemu `UI` nie musi znać `Controllera` - więc nie ma tutaj zależności.
+
+`UI` wysyła signał, a `Controller` go odbiera.
+
+Sygnały nie powinny zawierać logiki. To tylko komunikacja.
+
+### Controller - bridge
+
+Controller to most między Godot a Core.
+
+- odbiera sygnały
+- wywołuje `service`
+- wysyła sygnały
+
+`Controller` nie powinien zawierać logiki gry, to tylko koordynator.
+
+`Controller` musi posiada instancję `Service`:
+
+```cs
+private readonly CombatService _service = new();
+```
+
+to ona zarządza logiką.
+
+### UI
+
+`UI` nie może znać logiki, wywoływać `service` i znać `controlera`. Wysyła tylko sygnały, odbieraj je, aktualizuje widok itd.
+
+---
+
 # Klasy
 
 ## BaseCharacter
@@ -67,6 +165,7 @@ podstawową logikę związaną z:
 | Level      | int       | public            | Poziom przeciwnika                |
 | \_hp       | int       | private           | Zmienna potrzebna dla settera HP  |
 | \_signals  | ISignals? | readonly, private | Referencja do instancji Signal    |
+| \_logger   | ILogger?  | readonly, private | Referencja do instancji Logger    |
 
 ### Konstruktory
 
@@ -147,16 +246,18 @@ BaseCharacter <-- PlayerCharacter
 
 ### Statystyki bazowe (dziedziczone)
 
-| Właściwość | Typ    | Dostęp | Opis                              |
-| ---------- | ------ | ------ | --------------------------------- |
-| Name       | string | public | Nazwa postaci                     |
-| MaxHP      | int    | public | Maksymalne punkty życia           |
-| HP         | int    | public | Aktualne punkty życia             |
-| Attack     | int    | public | Siła ataku                        |
-| Defense    | int    | public | Obrona                            |
-| Luck       | int    | public | Szczęście                         |
-| CritChance | int    | public | Szansa na trafienie krytyczne (%) |
-| Level      | int    | public | Poziom postaci                    |
+| Właściwość | Typ       | Dostęp            | Opis                              |
+| ---------- | --------- | ----------------- | --------------------------------- |
+| Name       | string    | public            | Nazwa postaci                     |
+| MaxHP      | int       | public            | Maksymalne punkty życia           |
+| HP         | int       | public            | Aktualne punkty życia             |
+| Attack     | int       | public            | Siła ataku                        |
+| Defense    | int       | public            | Obrona                            |
+| CritChance | int       | public            | Szansa na trafienie krytyczne (%) |
+| Level      | int       | public            | Poziom przeciwnika                |
+| \_hp       | int       | private           | Zmienna potrzebna dla settera HP  |
+| \_signals  | ISignals? | readonly, private | Referencja do instancji Signal    |
+| \_logger   | ILogger?  | readonly, private | Referencja do instancji Logger    |
 
 ### Statystyki gracza
 
@@ -178,6 +279,7 @@ BaseCharacter <-- PlayerCharacter
 | critChance | int       | Szansa na trafienie krytyczne  |
 | level      | int       | Poziom postaci                 |
 | signals    | ISignals? | Referencja do instancji Signal |
+| logger     | ILogger?  | Referencja do instancji Logger |
 
 ### Metody
 
@@ -239,15 +341,18 @@ BaseCharacter <-- EnemyCharacter
 
 ### Statystyki bazowe (dziedziczone)
 
-| Właściwość | Typ    | Dostęp | Opis                              |
-| ---------- | ------ | ------ | --------------------------------- |
-| Name       | string | public | Nazwa postaci                     |
-| MaxHP      | int    | public | Maksymalne punkty życia           |
-| HP         | int    | public | Aktualne punkty życia             |
-| Attack     | int    | public | Siła ataku                        |
-| Defense    | int    | public | Obrona                            |
-| CritChance | int    | public | Szansa na trafienie krytyczne (%) |
-| Level      | int    | public | Poziom przeciwnika                |
+| Właściwość | Typ       | Dostęp            | Opis                              |
+| ---------- | --------- | ----------------- | --------------------------------- |
+| Name       | string    | public            | Nazwa postaci                     |
+| MaxHP      | int       | public            | Maksymalne punkty życia           |
+| HP         | int       | public            | Aktualne punkty życia             |
+| Attack     | int       | public            | Siła ataku                        |
+| Defense    | int       | public            | Obrona                            |
+| CritChance | int       | public            | Szansa na trafienie krytyczne (%) |
+| Level      | int       | public            | Poziom przeciwnika                |
+| \_hp       | int       | private           | Zmienna potrzebna dla settera HP  |
+| \_signals  | ISignals? | readonly, private | Referencja do instancji Signal    |
+| \_logger   | ILogger?  | readonly, private | Referencja do instancji Logger    |
 
 ### Statystyki
 
@@ -348,8 +453,8 @@ Klasa dziedziczy po `Camera2D` i automatycznie wyszukuje obiekt `Player` w drzew
 > [!CAUTION]
 > Jeżeli Player nie zostanie znaleziony to wypisze błąd w konsoli i skrypt zostanie przerwany.
 >
-> - player node musi mieć nazwę "Player"
-> - kamera musi być w tym samym `RootNode`
+> -   player node musi mieć nazwę "Player"
+> -   kamera musi być w tym samym `RootNode`
 
 ### Właściwości
 

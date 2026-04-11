@@ -585,10 +585,14 @@ public static void Write(...args)
 
 ## Logger
 
-Klasa statyczna odpowiadająca za obsługę logów.
-
 ```cs
-public static class Logger
+public partial class Logger : BaseSingleton<Logger>, ILogger
+```
+
+### Dziedziczenie
+
+```bash
+Node <-- BaseSingleton <-- Logger
 ```
 
 ### Metody
@@ -1014,6 +1018,17 @@ Interfejs sygnałów globalnych.
 
 > [!WARNING]
 > Każdy sygnał i metoda emitująca muszą zostać zdefiniowane najpierw tutaj i potem zaimplementowane w EventBus (Signals)
+
+## ILogger
+
+Interfejs dla Logger.
+
+```cs
+public interface ILogger
+{
+    public void Write(LogLevel level, string service, string message);
+}
+```
 
 ---
 

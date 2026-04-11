@@ -38,6 +38,7 @@ public partial class CombatHUD : Node
         };
 
     private CombatSignals _combatSignals => CombatSignals.Instance;
+    private Logger _logger => Logger.Instance;
     private CombatData _combatData;
     private string _scriptName;
 
@@ -48,7 +49,7 @@ public partial class CombatHUD : Node
         // sprawdza czy wszystkie przyciski ustawione w GUI
         if (PlayerActionsBtns.Values.Contains(null))
         {
-            Logger.Write(
+            _logger.Write(
                 LogLevel.Error,
                 _scriptName,
                 "Ustaw wszytkie przyciski dla PlayerActions!"

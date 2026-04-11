@@ -11,6 +11,7 @@
 public abstract partial class BaseCharacter
 {
     private readonly ISignals? _signals;
+    private readonly ILogger? _logger;
     private int _hp;
 
     public string Name { get; private set; }
@@ -22,6 +23,11 @@ public abstract partial class BaseCharacter
         {
             _hp = value;
             _signals?.EmitSetCharacterHpChanged(_hp);
+            _logger?.Write(
+                LogLevel.Info,
+                this.GetType().Name,
+                "HP postaci zostało ustawione na: " + _hp
+            );
         }
     }
     public int Attack { get; private set; }
@@ -36,7 +42,8 @@ public abstract partial class BaseCharacter
         int defense,
         int critChance,
         int level,
-        ISignals? signals
+        ISignals? signals = null,
+        ILogger? logger = null
     )
     {
         Name = name;
@@ -47,6 +54,7 @@ public abstract partial class BaseCharacter
         CritChance = critChance;
         Level = level;
         _signals = signals;
+        _logger = logger;
     }
 
     /// <summary>

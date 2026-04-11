@@ -9,6 +9,7 @@ public partial class CombatController : Node
     private Signals _signals => Signals.Instance;
     private CombatSignals _combatSignals => CombatSignals.Instance;
     private GameController _gc => GameController.Instance;
+    private Logger _logger => Logger.Instance;
     private string _scriptName;
 
     public override void _Ready()
@@ -77,7 +78,7 @@ public partial class CombatController : Node
     private void OnAttackAction()
     {
         var damageTaken = _service.Attack(_service.PlayerCharacter, _service.Enemy);
-        Logger.Write(
+        _logger.Write(
             LogLevel.Info,
             _scriptName,
             $"Gracz zadaje {damageTaken} obrażeń przeciwnikowi."
@@ -100,7 +101,7 @@ public partial class CombatController : Node
     {
         await ToSignal(GetTree().CreateTimer(1), "timeout");
         var damageTaken = _service.Attack(_service.Enemy, _service.PlayerCharacter, defenseAction);
-        Logger.Write(
+        _logger.Write(
             LogLevel.Info,
             _scriptName,
             $"Przeciwnik zadaje {damageTaken} obrażeń graczowi."

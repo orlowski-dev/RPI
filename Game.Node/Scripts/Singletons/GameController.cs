@@ -13,6 +13,7 @@ public partial class GameController : BaseSingleton<GameController>
     public PlayerCharacter PlayerCharacter { get; private set; }
     public GameState GameState { get; private set; }
     private Signals _signals => Signals.Instance;
+    private Logger _logger => Logger.Instance;
     private Dictionary<string, string> _scenesMap = new()
     {
         { "testWorld", "res://Scenes/Testing/TestWorld.tscn" },
@@ -38,16 +39,17 @@ public partial class GameController : BaseSingleton<GameController>
 
     public void StartNewGame()
     {
-        GD.Print("starting new game..");
-        // PlayerCharacter = new(
-        //     signals: _signals,
-        //     name: "Character name",
-        //     maxHp: 100,
-        //     attack: 50,
-        //     defense: 10,
-        //     luck: 10,
-        //     critChance: 2
-        // );
+        PlayerCharacter = new(
+            name: "Test Character",
+            maxHp: 100,
+            attack: 50,
+            defense: 30,
+            luck: 10,
+            critChance: 1,
+            characterClass: new(name: "Warrior", hpBonus: 20, attackBonus: 3, defenseBonus: 3),
+            signals: _signals,
+            logger: _logger
+        );
     }
 
     /// <summary>

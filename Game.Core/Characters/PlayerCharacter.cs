@@ -22,9 +22,10 @@ public partial class PlayerCharacter : BaseCharacter
         int luck,
         CharacterClass characterClass,
         int level = 1,
-        ISignals? signals = null
+        ISignals? signals = null,
+        ILogger? logger = null
     )
-        : base(name, maxHp, attack, defense, critChance, level, signals)
+        : base(name, maxHp, attack, defense, critChance, level, signals, logger)
     {
         Exp = 0;
         ExpNextLvl = CalculateExpToNextLevel();

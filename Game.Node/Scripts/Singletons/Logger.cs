@@ -1,18 +1,16 @@
-using System;
 using Godot;
+using System;
 
-/// /// <summary>
-/// Klasa statyczna odpowiadająca za obsługę logów.
-/// </summary>
-public static class Logger
+
+public partial class Logger : BaseSingleton<Logger>, ILogger
 {
-    /// /// <summary>
+    /// <summary>
     /// Metoda opowiadająca za zapis logu do pliku i wypisanie go w konsoli.
     /// </summary>
     /// <param name="level">Rodzaj logu</param>
     /// <param name="service">Nazwa serwisu/skryptu</param>
     /// <param name="message">Treść wiadomości</param>
-    public static void Write(LogLevel level, string service, string message)
+    public void Write(LogLevel level, string service, string message)
     {
         var log = new Log(
             level: level,
@@ -36,4 +34,5 @@ public static class Logger
                 break;
         }
     }
+
 }

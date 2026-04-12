@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dgellg0osrp76" path="res://Scenes/Levels/City/Sphinx.tscn" id="2_baj77"]
 [ext_resource type="PackedScene" uid="uid://dim80l4ydignp" path="res://Scenes/Levels/City/Portal.tscn" id="3_ko8th"]
 [ext_resource type="PackedScene" uid="uid://jc178g3w6yb7" path="res://Scenes/Levels/City/Seller.tscn" id="4_w8hkx"]
-[ext_resource type="PackedScene" uid="uid://dod3pfsysib2j" path="res://Scenes/Characters/Players/knight.tscn" id="5_ak3mn"]
+[ext_resource type="PackedScene" uid="uid://dod3pfsysib2j" path="res://Scenes/Characters/Players/Knight.tscn" id="5_ak3mn"]
 [ext_resource type="Script" uid="uid://cjso6pjfdb8nt" path="res://Scenes/Prototype/Levels/Camera2d.cs" id="6_hdx88"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp0wc"]

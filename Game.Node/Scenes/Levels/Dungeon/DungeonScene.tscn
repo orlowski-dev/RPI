@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dh1eoxikk2ko8" path="res://Assets/Prototype/Assets/Prototype/Dungeon/Tile_22_R-256x128.png" id="2_g5l1u"]
 [ext_resource type="PackedScene" uid="uid://dim80l4ydignp" path="res://Scenes/Levels/City/Portal.tscn" id="3_k1xp1"]
 [ext_resource type="PackedScene" uid="uid://vwfjruehu553" path="res://Scenes/Levels/Dungeon/Door.tscn" id="4_4kk56"]
-[ext_resource type="PackedScene" uid="uid://dod3pfsysib2j" path="res://Scenes/Characters/Players/knight.tscn" id="5_3dxx8"]
+[ext_resource type="PackedScene" uid="uid://dod3pfsysib2j" path="res://Scenes/Characters/Players/Knight.tscn" id="5_3dxx8"]
 [ext_resource type="Script" uid="uid://cjso6pjfdb8nt" path="res://Scenes/Prototype/Levels/Camera2d.cs" id="6_jbmxv"]
 [ext_resource type="PackedScene" uid="uid://drsf62lnleovg" path="res://Scenes/Characters/Enemies/Goblin.tscn" id="7_d7ve6"]
 

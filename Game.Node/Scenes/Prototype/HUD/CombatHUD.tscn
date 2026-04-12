@@ -1,6 +1,33 @@
 [gd_scene format=3 uid="uid://bxlojd3s2ho15"]
 
 [ext_resource type="Script" uid="uid://cxgf2rmqkfke8" path="res://Scripts/Prototype/HUD/CombatHUD.cs" id="1_xwtk5"]
+[ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="2_36tup"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36tup"]
+bg_color = Color(0.21, 0.21, 0.21, 0.6784314)
+
+[sub_resource type="Theme" id="Theme_36tup"]
+default_font = ExtResource("2_36tup")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ffoas"]
+font = ExtResource("2_36tup")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_cfext"]
+font = ExtResource("2_36tup")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_36tup"]
+font = ExtResource("2_36tup")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_7jb62"]
+font = ExtResource("2_36tup")
+font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ffoas"]
+bg_color = Color(0.25490198, 0.22352941, 0.1764706, 1)
+border_color = Color(0.3579198, 0.13246033, 0.051686466, 1)
 
 [node name="CombatHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL", "PlayerActionsCont")]
 layout_mode = 3
@@ -10,90 +37,100 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xwtk5")
-TurnLabel = NodePath("TurnContiner/VBoxContainer/TurnLabel")
-PlayerNameL = NodePath("PlayerStats/VBoxContainer2/PlayerNameL")
-PlayerHpPB = NodePath("PlayerStats/VBoxContainer2/VBoxContainer/PlayerHpPB")
-PlayerHpL = NodePath("PlayerStats/VBoxContainer2/VBoxContainer/HpL")
-EnemyNameL = NodePath("EnemiesStats/VBoxContainer2/EnemyNameL")
-EnemyHpPB = NodePath("EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpPB")
-EnemyHpL = NodePath("EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpL")
+TurnLabel = NodePath("HBoxContainer/TurnContiner/VBoxContainer/TurnLabel")
+PlayerNameL = NodePath("HBoxContainer/PlayerStats/VBoxContainer2/PlayerNameL")
+PlayerHpPB = NodePath("HBoxContainer/PlayerStats/VBoxContainer2/VBoxContainer/PlayerHpPB")
+PlayerHpL = NodePath("HBoxContainer/PlayerStats/VBoxContainer2/VBoxContainer/HpL")
+EnemyNameL = NodePath("HBoxContainer/EnemiesStats/VBoxContainer2/EnemyNameL")
+EnemyHpPB = NodePath("HBoxContainer/EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpPB")
+EnemyHpL = NodePath("HBoxContainer/EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpL")
 PlayerActionsCont = NodePath("PlayerActionsCont")
 
-[node name="TurnContiner" type="MarginContainer" parent="." unique_id=194589187]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 47.0
-grow_horizontal = 2
-theme_override_constants/margin_top = 24
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TurnContiner" unique_id=1271403741]
-layout_mode = 2
-
-[node name="TurnLabel" type="Label" parent="TurnContiner/VBoxContainer" unique_id=1236618589]
-layout_mode = 2
-text = "Turn"
-
-[node name="PlayerStats" type="MarginContainer" parent="." unique_id=1596455284]
+[node name="Panel" type="Panel" parent="." unique_id=765667903]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1440.0
+offset_bottom = 165.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_36tup")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1620993043]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 132.0
+grow_horizontal = 2
+theme = SubResource("Theme_36tup")
+
+[node name="PlayerStats" type="MarginContainer" parent="HBoxContainer" unique_id=1596455284]
+layout_mode = 2
+size_flags_horizontal = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PlayerStats" unique_id=200098817]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/PlayerStats" unique_id=200098817]
 layout_mode = 2
 
-[node name="PlayerNameL" type="Label" parent="PlayerStats/VBoxContainer2" unique_id=1335425602]
+[node name="PlayerNameL" type="Label" parent="HBoxContainer/PlayerStats/VBoxContainer2" unique_id=1335425602]
 layout_mode = 2
 text = "PlayerName"
+label_settings = SubResource("LabelSettings_ffoas")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerStats/VBoxContainer2" unique_id=2130890181]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PlayerStats/VBoxContainer2" unique_id=2130890181]
 layout_mode = 2
 
-[node name="PlayerHpPB" type="ProgressBar" parent="PlayerStats/VBoxContainer2/VBoxContainer" unique_id=259561477]
+[node name="PlayerHpPB" type="ProgressBar" parent="HBoxContainer/PlayerStats/VBoxContainer2/VBoxContainer" unique_id=259561477]
 custom_minimum_size = Vector2(256, 30)
 layout_mode = 2
 show_percentage = false
 
-[node name="HpL" type="Label" parent="PlayerStats/VBoxContainer2/VBoxContainer" unique_id=1338414149]
+[node name="HpL" type="Label" parent="HBoxContainer/PlayerStats/VBoxContainer2/VBoxContainer" unique_id=1338414149]
 layout_mode = 2
+size_flags_horizontal = 0
 text = "100/100"
+label_settings = SubResource("LabelSettings_cfext")
 horizontal_alignment = 2
 
-[node name="EnemiesStats" type="MarginContainer" parent="." unique_id=2122388138]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -280.0
-offset_bottom = 108.0
-grow_horizontal = 0
+[node name="TurnContiner" type="MarginContainer" parent="HBoxContainer" unique_id=194589187]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/margin_top = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TurnContiner" unique_id=1271403741]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TurnLabel" type="Label" parent="HBoxContainer/TurnContiner/VBoxContainer" unique_id=1236618589]
+layout_mode = 2
+text = "Turn"
+label_settings = SubResource("LabelSettings_36tup")
+
+[node name="EnemiesStats" type="MarginContainer" parent="HBoxContainer" unique_id=2122388138]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="EnemiesStats" unique_id=2081319528]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/EnemiesStats" unique_id=2081319528]
 layout_mode = 2
 
-[node name="EnemyNameL" type="Label" parent="EnemiesStats/VBoxContainer2" unique_id=1480009700]
+[node name="EnemyNameL" type="Label" parent="HBoxContainer/EnemiesStats/VBoxContainer2" unique_id=1480009700]
 layout_mode = 2
 text = "EnemyName"
+label_settings = SubResource("LabelSettings_7jb62")
 horizontal_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EnemiesStats/VBoxContainer2" unique_id=1348017018]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/EnemiesStats/VBoxContainer2" unique_id=1348017018]
 layout_mode = 2
 
-[node name="EnemyHpPB" type="ProgressBar" parent="EnemiesStats/VBoxContainer2/VBoxContainer" unique_id=1951442021]
+[node name="EnemyHpPB" type="ProgressBar" parent="HBoxContainer/EnemiesStats/VBoxContainer2/VBoxContainer" unique_id=1951442021]
 custom_minimum_size = Vector2(256, 30)
 layout_mode = 2
 show_percentage = false
 
-[node name="EnemyHpL" type="Label" parent="EnemiesStats/VBoxContainer2/VBoxContainer" unique_id=456855259]
+[node name="EnemyHpL" type="Label" parent="HBoxContainer/EnemiesStats/VBoxContainer2/VBoxContainer" unique_id=456855259]
 layout_mode = 2
 text = "100/100"
+label_settings = SubResource("LabelSettings_cfext")
 horizontal_alignment = 2
 
 [node name="PlayerActionsCont" type="MarginContainer" parent="." unique_id=1924045364]
@@ -101,28 +138,53 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_top = -274.0
+offset_right = 425.0
 grow_vertical = 0
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerActionsCont" unique_id=397645132]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
 [node name="AttackBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=1899620242]
 layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.7788931, 0.62344044, 0.24413955, 1)
+theme_override_constants/align_to_largest_stylebox = 25
+theme_override_fonts/font = ExtResource("2_36tup")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffoas")
 text = "Atak
 "
 
 [node name="DefenseBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=528711708]
 layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.7788931, 0.62344044, 0.24413955, 1)
+theme_override_constants/align_to_largest_stylebox = 25
+theme_override_fonts/font = ExtResource("2_36tup")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffoas")
 text = "Obrona"
 
 [node name="UseItemBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=845124900]
 layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.7788931, 0.62344044, 0.24413955, 1)
+theme_override_constants/align_to_largest_stylebox = 25
+theme_override_fonts/font = ExtResource("2_36tup")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffoas")
 text = "Użyj przedmiotu"
 
 [node name="SkipTurnBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=42354181]
 layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.7788931, 0.62344044, 0.24413955, 1)
+theme_override_constants/align_to_largest_stylebox = 25
+theme_override_fonts/font = ExtResource("2_36tup")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffoas")
 text = "Pomiń turę"

@@ -82,6 +82,9 @@
 [ext_resource type="Texture2D" uid="uid://cxftr67gh3p1y" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_022.png" id="80_7m4mx"]
 [ext_resource type="Texture2D" uid="uid://d01lyx6oarqjt" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_023.png" id="81_qgr11"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6yqq"]
+size = Vector2(134, 166)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_csoed"]
 animations = [{
 "frames": [{
@@ -122,8 +125,8 @@ animations = [{
 "texture": ExtResource("12_ln7f0")
 }],
 "loop": false,
-"name": &"attack",
-"speed": 5.0
+"name": &"Attack",
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -172,8 +175,8 @@ animations = [{
 "texture": ExtResource("27_leu61")
 }],
 "loop": false,
-"name": &"die",
-"speed": 5.0
+"name": &"Die",
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -213,8 +216,8 @@ animations = [{
 "texture": ExtResource("39_7er40")
 }],
 "loop": false,
-"name": &"hurt",
-"speed": 5.0
+"name": &"Hurt",
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -272,7 +275,7 @@ animations = [{
 "texture": ExtResource("57_e63en")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"Idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -349,16 +352,18 @@ animations = [{
 "texture": ExtResource("81_qgr11")
 }],
 "loop": true,
-"name": &"walk",
-"speed": 5.0
+"name": &"Walking",
+"speed": 30.0
 }]
 
 [node name="Goblin" type="CharacterBody2D" unique_id=1755493283]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216266320]
+position = Vector2(2, 10)
+shape = SubResource("RectangleShape2D_s6yqq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1489971868]
 scale = Vector2(0.29666665, 0.29666665)
 sprite_frames = SubResource("SpriteFrames_csoed")
-animation = &"hurt"
-autoplay = "idle"
+animation = &"Attack"
+autoplay = "Idle"

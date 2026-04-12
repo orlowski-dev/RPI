@@ -8,7 +8,7 @@ public partial class CombatController : Node
     private CombatService _service;
     private Signals _signals => Signals.Instance;
     private CombatSignals _combatSignals => CombatSignals.Instance;
-    private GameController _gc => GameController.Instance;
+    private GameManager _gm => GameManager.Instance;
     private Logger _logger => Logger.Instance;
     private string _scriptName;
 
@@ -20,15 +20,16 @@ public partial class CombatController : Node
         _combatSignals.AttackAction += OnAttackAction;
         _combatSignals.DefenseAction += OnDefenseAction;
 
+        var pch = _gm.GetPlayerCharacter();
         _service = new CombatService(
-            playerCharacter: _gc.PlayerCharacter,
+            playerCharacter: pch,
             enemy: new(
                 name: "Wróg publiczny",
                 maxHp: 300,
                 attack: 30,
                 defense: 10,
                 critChance: 1,
-                level: _gc.PlayerCharacter.Level,
+                level: pch.Level,
                 enemyType: EnemyType.Normal
             )
         );

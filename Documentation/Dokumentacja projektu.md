@@ -35,9 +35,14 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 
 # UML
 
-![[Game_Core.jpeg]]
+## Game.Core
 
-![[Game_Node.jpeg]]
+![Game.Core UML](./attachements/GameCoreUML.png)
+
+
+## Game.Node
+
+![Game.Node UML](./attachements/GameNodeUML.png)
 
 ---
 
@@ -67,9 +72,7 @@ Rdzeń architektury.
 
 Dla przykładu kliknięci w przycisk w UI, obliczenie danych i wypisanie w UI
 
-```bash
 UI wysyła sygnał → Controller odbiera → Controller wywołuje Service → Service zwraca wynik → Controller wysyła sygnał (dane) → UI aktualizuje widok
-```
 
 ## Implementacja architektury
 
@@ -426,8 +429,6 @@ Pobiera kierunek z `InputMap`. Akcje:
 - moveUp
 - moveDown
 
-Oblicza rotację dla domyślnej orientacji sprajta w górę.
-
 ---
 
 ## PlayerRunCamera
@@ -530,12 +531,12 @@ public partial class GameController : BaseSingleton<GameController>
 
 ---
 
-## GameController
+## GameManager
 
 Główny kontroler gry.
 
 ```csharp
-public partial class GameController : BaseSingleton<GameController>
+public partial class GameManager : BaseSingleton<GameManager>
 ```
 
 ### Dziedziczenie
@@ -544,42 +545,34 @@ public partial class GameController : BaseSingleton<GameController>
 Node <-- BaseSingleton <-- GameController
 ```
 
-### Opis
-
-Singleton zarządzający logiką gry. Zapewnia globalny dostęp do kontrolera gry.
-
-Klasa wykorzystuje:
-
-- Singleton Pattern
-- EventBus (`Signals`)
-- Globalny stan gry (`GameState`)
-
-Odpowiada za:
-
-- zarządzanie stanem gry
-- przechowywanie danych gracza
-- start nowej gry
-- komunikację globalną
-
 ### Właściwości
 
-| Właściwość      | Typ             | Dostęp  | Opis                                   |
-| --------------- | --------------- | ------- | -------------------------------------- |
-| Instance        | GameController  | public  | Singleton                              |
-| PlayerCharacter | PlayerCharacter | public  | Aktualna postać gracza                 |
-| GameState       | GameState       | public  | Aktualny stan gry                      |
-| \_signals       | Signalsq        | private | Referencja do EventBus                 |
-| \_scenesMap     | Dict<str,str>   | private | Mapa nazw scen ze ścieżkami źródłowymi |
+| Właściwość   | Typ         | Dostęp  | Opis                            |
+| ------------ | ----------- | ------- | ------------------------------- |
+| \_service    | GameService | private | Instancja logiki komponentu     |
+| \_scriptName | string      | private | Nazwa skryptu dla loggera       |
+| \_signals    | Signals     | private | Referencja do instancji Signals |
+| \_logger     | Logger      | private | Referencja do instancji Logger  |
 
 ### Metody
 
-#### OnSetGameState
+#### OnGameStateChganged
 
 ```csharp
-private void OnSetGameState(GameState newState)
+private void OnSetGameState(GameManagerData data)
 ```
 
 Obsługuje zmianę stanu gry.
+
+Metody
+
+#### GetPlayerCharacter
+
+```csharp
+public PlayerCharacter GetPlayerCharacter()
+```
+
+Zwraca wartość zmiennej PlayerCharacter z `GameService`.
 
 ---
 
@@ -796,6 +789,42 @@ private void CheckIfCombatEnded()
 ```
 
 Sprawdza czy walka została zakończona.
+
+---
+
+## GameService
+
+Serwis odpowiedzialny za logikę rozgrywki. Przechowuje zmienne, które mają być dostępne globalnie.
+
+### Właściwości
+
+| Właściwość      | Typ              | Dostęp      | Opis                               |
+| --------------- | ---------------- | ----------- | ---------------------------------- |
+| GameState       | GameState        | public      | Aktualny stan gry                  |
+| PlayerCharacter | PlayerCharacter? | public      | Statystyki postaci gracza gracza   |
+| \_scenesMap     | Dict<str, str>   | private     | Mapa nazwa sceny, ścieżka do sceny |
+| \_scriptName    | string           | private     | Nazwa skryptu                      |
+| \_logger        | ILogger?         | private, ro | Zależność do Logger                |
+
+### Konstruktor
+
+```cs
+public GameService(ILogger? logger = null)
+```
+
+| Parametr | Typ      | Opis                |
+| -------- | -------- | ------------------- |
+| logger   | ILogger? | Zależność do Logger |
+
+### Metody
+
+#### GetScenePath
+
+```cs
+public string GetScenePath(IGameManagerData data)
+```
+
+Zwraca ścieżkę do sceny w zależności od stanu rozgrywki.
 
 ---
 
@@ -1021,6 +1050,44 @@ public CombatData(
 
 ---
 
+## GameManagerData
+
+Obiekt danych wykorzystywany do przekazywania aktualnego stanu gry.
+
+```cs
+public partial class GameManagerData : GodotObject, IGameManagerData
+```
+
+### Dziedziczenie
+
+```bash
+GodotObject <-- CombatData
+```
+
+Klasa dziedziczy po GodotObject poniważ umożliwia to przekazywanie klasy przez sygnały.
+
+### Właściwości
+
+| Właściwość      | Typ             | Dostęp | Opis                      |
+| --------------- | --------------- | ------ | ------------------------- |
+| GameState       | GameState       | public | Aktualny stan gry         |
+| PlayerCharacter | PlayerCharacter | public | Statystyki postaci gracza |
+
+### Konstruktor
+
+```cs
+public GameManagerData(GameState gameState, PlayerCharacter playerCharacter = null)
+```
+
+#### Parametry
+
+| Parametr        | Typ             | Opis                |
+| --------------- | --------------- | ------------------- |
+| gameState       | GameState       | Aktualny stan walki |
+| playerCharacter | PlayerCharacter | Postać gracza       |
+
+---
+
 # Wyliczniki
 
 ## GameState
@@ -1134,6 +1201,22 @@ public interface ILogger
     public void Write(LogLevel level, string service, string message);
 }
 ```
+
+## IGameManagerData
+
+```cs
+public interface IGameManagerData
+{
+    public PlayerCharacter PlayerCharacter { get; init; }
+    public GameState GameState { get; init; }
+}
+```
+
+Interfejs dla klasy GameManagerData.
+
+Dane przekazywane przez sygnały muszą dziedziczyć po `Godot:GodotObject`, stąd ten interfejs.
+
+Wykorzystywany np. w `ISignals` do zdefiniowania parametrów sygnału w `Game.Core`.
 
 ---
 

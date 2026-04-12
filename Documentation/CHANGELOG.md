@@ -1,5 +1,18 @@
 # Dziennik zmian
 
+## 12.04.2026 GameController to teraz GameManager
+
+### Dlaczego
+
+Głównie żeby zachować spójność w nazewnictwie i rozdzielić logikę od wartwy `.Node`.
+
+### Zmiany
+
+- plik `.Node:GameController` usunięty
+- plik `.Node:GameManager` utworzony jako `Singleton` - dodany do autoload
+- utworzony został interfejs `.Core:IGameManagerData` potrzebny do definicji typu danych przesyłanych przez `.Node:Signals` w interfejsie `.Core:ISignals` (bo `.Core` nie zna `.Node`, a przesyłane dane przez sygnały muszą dziedziczyć po `Godot:GodotObject`)
+- zmiany w plikach, które korzystały ze starego `.Node:GameController`
+
 ## 11.04.2026 Zmiany w loggerze
 
 - `Logger` jest teraz Singletonem (`Game.Node/Signletons/Logger.cs`)

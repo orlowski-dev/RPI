@@ -1,25 +1,75 @@
 [gd_scene format=3 uid="uid://dim80l4ydignp"]
 
-[ext_resource type="Texture2D" uid="uid://c7jqwh75r76av" path="res://Assets/Prototype/Assets/Prototype/City/Back.png" id="1_v1evr"]
+[ext_resource type="Texture2D" uid="uid://bqwc0mnkwmqmp" path="res://Assets/Prototype/Assets/Prototype/City/Isometric_Portal.png" id="1_v1evr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8x18"]
-size = Vector2(295, 306)
+size = Vector2(303, 335)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0vdn"]
-size = Vector2(99, 175)
+size = Vector2(125, 171)
 
-[node name="Sphinx" type="StaticBody2D" unique_id=1966618041]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1evr"]
+atlas = ExtResource("1_v1evr")
+region = Rect2(0, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxyh5"]
+atlas = ExtResource("1_v1evr")
+region = Rect2(112, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7k4m"]
+atlas = ExtResource("1_v1evr")
+region = Rect2(224, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyn5j"]
+atlas = ExtResource("1_v1evr")
+region = Rect2(336, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwec4"]
+atlas = ExtResource("1_v1evr")
+region = Rect2(448, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_826dh"]
+atlas = ExtResource("1_v1evr")
+region = Rect2(560, 0, 112, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spis0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1evr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxyh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7k4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyn5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwec4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_826dh")
+}],
+"loop": true,
+"name": &"Whirl",
+"speed": 5.0
+}]
+
+[node name="Portal" type="StaticBody2D" unique_id=1966618041]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=423904238]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=802406416]
-position = Vector2(7.5, 7)
 shape = SubResource("RectangleShape2D_q8x18")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=634714942]
-scale = Vector2(1.6015625, 1.6171875)
-texture = ExtResource("1_v1evr")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=209156196]
-position = Vector2(-1.5, 14.5)
 shape = SubResource("RectangleShape2D_s0vdn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=333488361]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_spis0")
+animation = &"Whirl"
+autoplay = "Whirl"

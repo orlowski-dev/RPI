@@ -15,6 +15,9 @@ public partial class GameService
         _scriptName = this.GetType().Name;
     }
 
+    /// <summary>
+    /// Zwraca ścieżkę do sceny w zależności od stanu rozgrywki.
+    /// </summary>
     public string GetScenePath(IGameManagerData data)
     {
         switch (data.GameState)

@@ -1,5 +1,8 @@
 using Godot;
 
+/// <summary>
+/// Obiekt danych wykorzystywany do przekazywania aktualnego stanu gry.
+/// </summary>
 public partial class GameManagerData : GodotObject, IGameManagerData
 {
     public GameState GameState { get; init; }

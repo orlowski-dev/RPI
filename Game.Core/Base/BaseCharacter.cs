@@ -22,7 +22,7 @@ public abstract partial class BaseCharacter
         private set
         {
             _hp = value;
-            _signals?.EmitSetCharacterHpChanged(_hp);
+            _signals?.EmitCharacterHpChanged(_hp);
             _logger?.Write(
                 LogLevel.Info,
                 this.GetType().Name,

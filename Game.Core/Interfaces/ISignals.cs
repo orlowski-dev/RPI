@@ -6,9 +6,9 @@
 /// </remarks>
 public interface ISignals
 {
-    public delegate void SetGameStateEventHandler(GameState newState);
     public delegate void CharacterHpChangedEventHandler(int hp);
+    public delegate void GameStateChangedEventHandler(IGameManagerData data);
 
-    public void EmitSetGameState(GameState newState);
-    public void EmitSetCharacterHpChanged(int newHp);
+    public void EmitCharacterHpChanged(int newHp);
+    public void EmitGameStateChanged(IGameManagerData data);
 }

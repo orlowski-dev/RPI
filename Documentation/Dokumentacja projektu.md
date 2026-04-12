@@ -35,7 +35,14 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 
 # UML
 
-- na koniec obrazki z gaphora
+## Game.Core
+
+![Game.Core UML](./attachements/GameCoreUML.png)
+
+
+## Game.Node
+
+![Game.Node UML](./attachements/GameNodeUML.png)
 
 ---
 

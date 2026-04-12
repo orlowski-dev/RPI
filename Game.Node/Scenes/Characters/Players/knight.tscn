@@ -230,7 +230,7 @@ animations = [{
 "texture": ExtResource("60_r3pnt")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"Walking",
 "speed": 5.0
 }]
 
@@ -244,6 +244,6 @@ shape = SubResource("CapsuleShape2D_oonvv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2106383370]
 scale = Vector2(0.13979055, 0.12278968)
 sprite_frames = SubResource("SpriteFrames_sm1t8")
-animation = &"Hurt"
+animation = &"Walking"
 autoplay = "Idle"
 speed_scale = 2.5

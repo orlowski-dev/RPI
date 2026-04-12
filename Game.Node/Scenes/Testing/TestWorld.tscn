@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dletqmfqn1dr1"]
 
-[ext_resource type="Texture2D" uid="uid://0k12hscapm7v" path="res://Assets/Prototype/Sprites/bgTile.png" id="1_k2eo1"]
+[ext_resource type="Texture2D" uid="uid://0k12hscapm7v" path="res://Assets/Prototype/Assets/TileMaps/bgTile.png" id="1_k2eo1"]
 [ext_resource type="PackedScene" uid="uid://fkyr6o76cn3i" path="res://Scenes/Player/Player.tscn" id="2_se0eo"]
 [ext_resource type="PackedScene" uid="uid://dj6o4ib2wc1rf" path="res://Scenes/Player/PlayerRunCamera.tscn" id="3_4snwc"]
 [ext_resource type="PackedScene" uid="uid://c0h078in2nq2b" path="res://Scenes/UI/HudTestWorld.tscn" id="4_2n0ak"]

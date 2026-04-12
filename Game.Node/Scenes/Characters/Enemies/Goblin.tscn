@@ -358,6 +358,7 @@ animations = [{
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216266320]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1489971868]
+scale = Vector2(0.29666665, 0.29666665)
 sprite_frames = SubResource("SpriteFrames_csoed")
 animation = &"hurt"
 autoplay = "idle"

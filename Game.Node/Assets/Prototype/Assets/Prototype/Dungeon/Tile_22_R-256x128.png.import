@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ihyao8akgqt0"
-path="res://.godot/imported/menu_bg.png-699bbbca8dbc1adf5fa2a80d514c495a.ctex"
+uid="uid://dh1eoxikk2ko8"
+path="res://.godot/imported/Tile_22_R-256x128.png-ac0c6c5b0fc55d56fb7609f79504312a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Prototype/Sprites/menu_bg.png"
-dest_files=["res://.godot/imported/menu_bg.png-699bbbca8dbc1adf5fa2a80d514c495a.ctex"]
+source_file="res://Assets/Prototype/Assets/Prototype/Dungeon/Tile_22_R-256x128.png"
+dest_files=["res://.godot/imported/Tile_22_R-256x128.png-ac0c6c5b0fc55d56fb7609f79504312a.ctex"]
 
 [params]
 

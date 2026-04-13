@@ -233,6 +233,9 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im5be"]
+size = Vector2(216, 216)
+
 [node name="Archer" type="CharacterBody2D" unique_id=489137578]
 script = ExtResource("1_rc5mq")
 
@@ -246,3 +249,8 @@ sprite_frames = SubResource("SpriteFrames_yjx8t")
 animation = &"Walking"
 autoplay = "Idle"
 speed_scale = 2.5
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1596138020]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=884669531]
+shape = SubResource("RectangleShape2D_im5be")

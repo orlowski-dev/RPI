@@ -356,6 +356,9 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mfr2"]
+size = Vector2(216, 216)
+
 [node name="Goblin" type="CharacterBody2D" unique_id=1755493283]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216266320]
@@ -367,3 +370,8 @@ scale = Vector2(0.29666665, 0.29666665)
 sprite_frames = SubResource("SpriteFrames_csoed")
 animation = &"Attack"
 autoplay = "Idle"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1016875039]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=810890815]
+shape = SubResource("RectangleShape2D_7mfr2")

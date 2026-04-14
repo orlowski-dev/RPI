@@ -277,7 +277,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 30.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -354,7 +354,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walking",
-"speed": 30.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyqp4"]
@@ -374,7 +374,7 @@ shape = SubResource("RectangleShape2D_p3rxj")
 position = Vector2(6, -5)
 scale = Vector2(0.15189524, 0.1474508)
 sprite_frames = SubResource("SpriteFrames_wq0ek")
-animation = &"Walking"
+animation = &"Idle"
 autoplay = "Idle"
 speed_scale = 5.0
 

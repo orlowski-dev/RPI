@@ -195,7 +195,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 30.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -230,14 +230,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walking",
-"speed": 30.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0iex"]
 size = Vector2(216, 216)
 
 [node name="Knight" type="CharacterBody2D" unique_id=802040328]
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("1_6mnwy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908186859]
@@ -247,7 +247,7 @@ shape = SubResource("RectangleShape2D_py3ve")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2106383370]
 scale = Vector2(0.13979055, 0.12278968)
 sprite_frames = SubResource("SpriteFrames_sm1t8")
-animation = &"Attack"
+animation = &"Walking"
 autoplay = "Idle"
 speed_scale = 2.5
 

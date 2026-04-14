@@ -56,15 +56,7 @@ public partial class CharacterCreatorHUD : Node
 
 	private void UpdateUI()
 	{
-		StatsLabels["charClassName"].Text = _selectedClassStats.Name;
-		StatsLabels["hp"].Text = _selectedClassStats.HpBase.ToString();
-		StatsLabels["attack"].Text = _selectedClassStats.AttackBase.ToString();
-		StatsLabels["defense"].Text = _selectedClassStats.DefenseBase.ToString();
-		StatsLabels["crit"].Text = _selectedClassStats.CritBase.ToString() + "%";
-		StatsLabels["luck"].Text = _selectedClassStats.LuckBase.ToString();
-		CharClassIcon.Texture = GD.Load<Texture2D>(
-			"res://Assets/Icons/" + _selectedClassStats.ClassIconName
-		);
+		
 	}
 
 	private void HandleDataSender(CharacterCreatorData data)

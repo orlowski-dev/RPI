@@ -29,6 +29,19 @@ font_size = 30
 bg_color = Color(0.25490198, 0.22352941, 0.1764706, 1)
 border_color = Color(0.3579198, 0.13246033, 0.051686466, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jb62"]
+bg_color = Color(0.47, 0.41172, 0.3243, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfext"]
+bg_color = Color(0.25490198, 0.22352941, 0.1764706, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
+shadow_color = Color(0.011087579, 0.011087578, 0.01108758, 0.8117647)
+shadow_size = 3
+
 [node name="CombatHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL", "PlayerActionsCont")]
 layout_mode = 3
 anchors_preset = 15
@@ -152,10 +165,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_colors/font_color = Color(0.7788931, 0.62344044, 0.24413955, 1)
+theme_override_colors/font_pressed_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
+theme_override_colors/font_hover_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
 theme_override_constants/align_to_largest_stylebox = 25
 theme_override_fonts/font = ExtResource("2_36tup")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ffoas")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jb62")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cfext")
 text = "Atak
 "
 
@@ -163,28 +180,40 @@ text = "Atak
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_colors/font_color = Color(0.7788931, 0.62344044, 0.24413955, 1)
+theme_override_colors/font_pressed_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
+theme_override_colors/font_hover_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
 theme_override_constants/align_to_largest_stylebox = 25
 theme_override_fonts/font = ExtResource("2_36tup")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ffoas")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jb62")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cfext")
 text = "Obrona"
 
 [node name="UseItemBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=845124900]
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_colors/font_color = Color(0.7788931, 0.62344044, 0.24413955, 1)
+theme_override_colors/font_pressed_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
+theme_override_colors/font_hover_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
 theme_override_constants/align_to_largest_stylebox = 25
 theme_override_fonts/font = ExtResource("2_36tup")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ffoas")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jb62")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cfext")
 text = "Użyj przedmiotu"
 
 [node name="SkipTurnBtn" type="Button" parent="PlayerActionsCont/VBoxContainer" unique_id=42354181]
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_colors/font_color = Color(0.7788931, 0.62344044, 0.24413955, 1)
+theme_override_colors/font_pressed_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
+theme_override_colors/font_hover_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
 theme_override_constants/align_to_largest_stylebox = 25
 theme_override_fonts/font = ExtResource("2_36tup")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ffoas")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jb62")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cfext")
 text = "Pomiń turę"

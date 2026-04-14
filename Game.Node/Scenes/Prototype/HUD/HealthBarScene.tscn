@@ -29,6 +29,9 @@ bg_color = Color(0.3187413, 0.25744206, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxqof"]
 bg_color = Color(0.73887765, 0.66687727, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ki5vp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m22qo"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0.78039217, 0.62352943, 0.24313726, 1)
@@ -129,14 +132,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=144328462]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 
 [node name="Menu" type="Button" parent="HBoxContainer/MarginContainer/HBoxContainer" unique_id=1970349015]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.78039217, 0.62352943, 0.24313726, 1)
+theme_override_colors/font_pressed_color = Color(0.78039217, 0.62352943, 0.24313726, 1)
 theme_override_colors/font_hover_color = Color(0.78039217, 0.62352943, 0.24313726, 1)
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ki5vp")
 text = "Main Menu"
 
 [node name="Inventory" type="Button" parent="HBoxContainer/MarginContainer/HBoxContainer" unique_id=103200414]
@@ -144,8 +151,10 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.78039217, 0.62352943, 0.24313726, 1)
+theme_override_colors/font_pressed_color = Color(0.78039217, 0.62352943, 0.24313726, 1)
 theme_override_colors/font_hover_color = Color(0.78039217, 0.62352943, 0.24313726, 1)
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ki5vp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m22qo")
 text = "Inventory
 "

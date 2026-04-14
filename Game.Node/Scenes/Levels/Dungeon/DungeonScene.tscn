@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dod3pfsysib2j" path="res://Scenes/Characters/Players/Knight.tscn" id="5_3dxx8"]
 [ext_resource type="Script" uid="uid://cjso6pjfdb8nt" path="res://Scenes/Prototype/Levels/Camera2d.cs" id="6_jbmxv"]
 [ext_resource type="PackedScene" uid="uid://drsf62lnleovg" path="res://Scenes/Characters/Enemies/Goblin.tscn" id="7_d7ve6"]
+[ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/Prototype/HUD/HealthBarScene.tscn" id="8_tjg5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g5l1u"]
 texture = ExtResource("1_v6eqs")
@@ -701,21 +702,31 @@ position = Vector2(257, 750)
 
 [node name="Door" parent="." unique_id=1966618041 instance=ExtResource("4_4kk56")]
 position = Vector2(392, 434)
+script = null
 
 [node name="Door2" parent="." unique_id=210316350 instance=ExtResource("4_4kk56")]
 position = Vector2(1218, 1025)
+script = null
 
 [node name="Door6" parent="." unique_id=1102484361 instance=ExtResource("4_4kk56")]
 position = Vector2(756, 156)
+script = null
 
 [node name="Door3" parent="." unique_id=1529993208 instance=ExtResource("4_4kk56")]
 position = Vector2(754, 1264)
+script = null
 
 [node name="Door4" parent="." unique_id=726067298 instance=ExtResource("4_4kk56")]
 position = Vector2(1251, 433)
+script = null
 
 [node name="Door5" parent="." unique_id=1589551642 instance=ExtResource("4_4kk56")]
 position = Vector2(445, 1019)
+script = null
 
 [node name="Goblin" parent="." unique_id=1755493283 instance=ExtResource("7_d7ve6")]
 position = Vector2(618, 1193)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1683093842]
+
+[node name="LowerPanel" parent="CanvasLayer" unique_id=2047079096 instance=ExtResource("8_tjg5i")]

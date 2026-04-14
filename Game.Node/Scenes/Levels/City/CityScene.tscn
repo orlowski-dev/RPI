@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jc178g3w6yb7" path="res://Scenes/Levels/City/Seller.tscn" id="4_w8hkx"]
 [ext_resource type="PackedScene" uid="uid://dod3pfsysib2j" path="res://Scenes/Characters/Players/Knight.tscn" id="5_ak3mn"]
 [ext_resource type="Script" uid="uid://cjso6pjfdb8nt" path="res://Scenes/Prototype/Levels/Camera2d.cs" id="6_hdx88"]
+[ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/Prototype/HUD/HealthBarScene.tscn" id="7_2cbcx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp0wc"]
 texture = ExtResource("1_yoe87")
@@ -664,6 +665,9 @@ terrain_set_0/terrain_0/name = "floor"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_wp0wc")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cbcx"]
+bg_color = Color(0.16, 0.16, 0.16, 0.80784315)
+
 [node name="City" type="Node2D" unique_id=427174994]
 
 [node name="Floor" type="TileMapLayer" parent="." unique_id=1386702729]
@@ -684,10 +688,29 @@ position = Vector2(257, 750)
 [node name="Seller" parent="." unique_id=722451097 instance=ExtResource("4_w8hkx")]
 position = Vector2(1193, 568)
 
-[node name="Knight" parent="." unique_id=802040328 instance=ExtResource("5_ak3mn")]
-position = Vector2(174, 174)
+[node name="Knight" parent="Seller" unique_id=802040328 instance=ExtResource("5_ak3mn")]
+position = Vector2(-1019, -394)
 
-[node name="Camera2D" type="Camera2D" parent="Knight" unique_id=854374092]
+[node name="Camera2D" type="Camera2D" parent="Seller/Knight" unique_id=854374092]
 position = Vector2(68, 63)
 rotation_smoothing_enabled = true
 script = ExtResource("6_hdx88")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Seller/Knight" unique_id=189395416]
+
+[node name="Panel" type="Panel" parent="Seller/Knight/CanvasLayer" unique_id=1889469530]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2cbcx")
+
+[node name="LowerPanel" parent="Seller/Knight/CanvasLayer/Panel" unique_id=2047079096 instance=ExtResource("7_2cbcx")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 705.0
+offset_top = 931.0
+offset_right = 705.0
+offset_bottom = 931.0
+grow_horizontal = 1
+grow_vertical = 1

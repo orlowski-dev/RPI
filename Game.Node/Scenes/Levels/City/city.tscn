@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://by44sabkigyba"]
 
 [ext_resource type="PackedScene" uid="uid://c7ggg6mhph0hf" path="res://Scenes/Levels/Level.tscn" id="1_fntcl"]
-[ext_resource type="Texture2D" uid="uid://bgvv4jxj3xrm2" path="res://Scenes/Levels/City/tilemap.png" id="2_5l3lq"]
+[ext_resource type="Texture2D" uid="uid://bgvv4jxj3xrm2" path="res://Assets/Prototype/Assets/TileMaps/tilemap (3).png" id="2_5l3lq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e1dgx"]
 texture = ExtResource("2_5l3lq")

@@ -52,9 +52,8 @@
 [ext_resource type="Texture2D" uid="uid://bwgyk3osgklke" path="res://Assets/Prototype/Sprites/Player/Knight/Walk/Knight_01__WALK_008.png" id="59_ixn5d"]
 [ext_resource type="Texture2D" uid="uid://c1qtvsmiumiby" path="res://Assets/Prototype/Sprites/Player/Knight/Walk/Knight_01__WALK_009.png" id="60_r3pnt"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oonvv"]
-radius = 25.0
-height = 52.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_py3ve"]
+size = Vector2(47, 75)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sm1t8"]
 animations = [{
@@ -91,7 +90,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -126,7 +125,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Die",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -161,7 +160,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Hurt",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -196,7 +195,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -230,20 +229,29 @@ animations = [{
 "texture": ExtResource("60_r3pnt")
 }],
 "loop": true,
-"name": &"Walk",
-"speed": 5.0
+"name": &"Walking",
+"speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0iex"]
+size = Vector2(216, 216)
+
 [node name="Knight" type="CharacterBody2D" unique_id=802040328]
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("1_6mnwy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908186859]
-shape = SubResource("CapsuleShape2D_oonvv")
+position = Vector2(-0.5, -9.5)
+shape = SubResource("RectangleShape2D_py3ve")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2106383370]
 scale = Vector2(0.13979055, 0.12278968)
 sprite_frames = SubResource("SpriteFrames_sm1t8")
-animation = &"Hurt"
+animation = &"Walking"
 autoplay = "Idle"
 speed_scale = 2.5
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1052593077]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1897669117]
+shape = SubResource("RectangleShape2D_a0iex")

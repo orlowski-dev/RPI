@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ihyao8akgqt0"
-path="res://.godot/imported/menu_bg.png-699bbbca8dbc1adf5fa2a80d514c495a.ctex"
+uid="uid://bqwc0mnkwmqmp"
+path="res://.godot/imported/Isometric_Portal.png-8a4ea1c1e98548a37cae4205d4b4a24d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Prototype/Sprites/menu_bg.png"
-dest_files=["res://.godot/imported/menu_bg.png-699bbbca8dbc1adf5fa2a80d514c495a.ctex"]
+source_file="res://Assets/Prototype/Assets/Prototype/City/Isometric_Portal.png"
+dest_files=["res://.godot/imported/Isometric_Portal.png-8a4ea1c1e98548a37cae4205d4b4a24d.ctex"]
 
 [params]
 

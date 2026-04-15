@@ -83,8 +83,8 @@
 [ext_resource type="Texture2D" uid="uid://b4fiakx6d5mof" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_022.png" id="92_625pn"]
 [ext_resource type="Texture2D" uid="uid://cvn130644j0qu" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_023.png" id="93_fksqt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6d4of"]
-radius = 7.7595267
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3rxj"]
+size = Vector2(22.868362, 22.353628)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wq0ek"]
 animations = [{
@@ -127,7 +127,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -177,7 +177,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Die",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -218,7 +218,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Hurt",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -277,7 +277,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -354,8 +354,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walking",
-"speed": 5.0
+"speed": 10.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyqp4"]
+size = Vector2(216, 216)
 
 [node name="Orc" type="CharacterBody2D" unique_id=822514758]
 collision_layer = 4
@@ -363,12 +366,19 @@ collision_mask = 7
 script = ExtResource("1_p3rxj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240862241]
+position = Vector2(5.572508, -4.5725083)
 scale = Vector2(3.8854978, 3.8854978)
-shape = SubResource("CircleShape2D_6d4of")
+shape = SubResource("RectangleShape2D_p3rxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2071525896]
-scale = Vector2(0.12601271, 0.12601271)
+position = Vector2(6, -5)
+scale = Vector2(0.15189524, 0.1474508)
 sprite_frames = SubResource("SpriteFrames_wq0ek")
-animation = &"Hurt"
+animation = &"Idle"
 autoplay = "Idle"
 speed_scale = 5.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=274165993]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=445608772]
+shape = SubResource("RectangleShape2D_gyqp4")

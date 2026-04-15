@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://vwfjruehu553"]
+
+[ext_resource type="Texture2D" uid="uid://bmb5ndhy161a6" path="res://Assets/Prototype/Assets/Prototype/Dungeon/Door3_pipo.png" id="1_iv686"]
+[ext_resource type="Script" uid="uid://bfard2jgdxa7p" path="res://Scenes/Levels/Dungeon/Door.cs" id="1_x1hcx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8x18"]
+size = Vector2(126, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0vdn"]
+size = Vector2(125, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1hcx"]
+atlas = ExtResource("1_iv686")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agfrf"]
+atlas = ExtResource("1_iv686")
+region = Rect2(64, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk6wh"]
+atlas = ExtResource("1_iv686")
+region = Rect2(128, 0, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spis0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1hcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk6wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1hcx")
+}],
+"loop": true,
+"name": &"Door",
+"speed": 5.0
+}]
+
+[node name="Door" type="StaticBody2D" unique_id=1966618041]
+collision_layer = 8
+script = ExtResource("1_x1hcx")
+
+[node name="Area" type="Area2D" parent="." unique_id=423904238]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=802406416]
+position = Vector2(0, 25.5)
+shape = SubResource("RectangleShape2D_q8x18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=209156196]
+position = Vector2(0, 25.5)
+shape = SubResource("RectangleShape2D_s0vdn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=333488361]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_spis0")
+animation = &"Door"
+frame_progress = 0.6696594

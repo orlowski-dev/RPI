@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://jc178g3w6yb7"]
+
+[ext_resource type="Texture2D" uid="uid://c7hfhg3tbfkg3" path="res://Assets/Prototype/Assets/Prototype/City/3_D.png" id="1_ws2bb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8x18"]
+size = Vector2(169, 214)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0vdn"]
+size = Vector2(99, 135)
+
+[node name="Seller" type="StaticBody2D" unique_id=1966618041]
+collision_layer = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=423904238]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=802406416]
+shape = SubResource("RectangleShape2D_q8x18")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=634714942]
+scale = Vector2(0.08559138, 0.08642644)
+texture = ExtResource("1_ws2bb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=209156196]
+shape = SubResource("RectangleShape2D_s0vdn")

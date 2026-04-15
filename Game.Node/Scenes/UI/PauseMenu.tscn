@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6oi2yx8do5ri"]
 
 [ext_resource type="Script" uid="uid://p4o8s6fwqfew" path="res://Scripts/UI/MainMenu.cs" id="1_238ko"]
-[ext_resource type="Texture2D" uid="uid://ihyao8akgqt0" path="res://Assets/Prototype/Sprites/menu_bg.png" id="2_2bpff"]
+[ext_resource type="Texture2D" uid="uid://ihyao8akgqt0" path="res://Assets/Prototype/Assets/TileMaps/menu_bg.png" id="2_2bpff"]
 [ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="3_238ko"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8um8"]

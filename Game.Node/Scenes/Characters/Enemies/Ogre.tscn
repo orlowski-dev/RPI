@@ -82,6 +82,9 @@
 [ext_resource type="Texture2D" uid="uid://brx7scrgqdgci" path="res://Assets/Prototype/Sprites/Enemy/Ogr/walk/0_Ogre_Walking_022.png" id="80_3ocjv"]
 [ext_resource type="Texture2D" uid="uid://o2t4lqtisv0l" path="res://Assets/Prototype/Sprites/Enemy/Ogr/walk/0_Ogre_Walking_023.png" id="81_2vu2i"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyfyj"]
+size = Vector2(115, 161)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_x3lvc"]
 animations = [{
 "frames": [{
@@ -122,8 +125,8 @@ animations = [{
 "texture": ExtResource("12_g7tjm")
 }],
 "loop": false,
-"name": &"attack",
-"speed": 5.0
+"name": &"Attack",
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -172,8 +175,8 @@ animations = [{
 "texture": ExtResource("27_aeqli")
 }],
 "loop": false,
-"name": &"die",
-"speed": 5.0
+"name": &"Die",
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -213,8 +216,8 @@ animations = [{
 "texture": ExtResource("39_q8355")
 }],
 "loop": false,
-"name": &"hurt",
-"speed": 5.0
+"name": &"Hurt",
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -272,8 +275,8 @@ animations = [{
 "texture": ExtResource("57_yrtpd")
 }],
 "loop": true,
-"name": &"idle",
-"speed": 5.0
+"name": &"Idle",
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -349,15 +352,27 @@ animations = [{
 "texture": ExtResource("81_2vu2i")
 }],
 "loop": true,
-"name": &"walk",
-"speed": 5.0
+"name": &"Walking",
+"speed": 30.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpa2b"]
+size = Vector2(216, 216)
 
 [node name="Ogr" type="CharacterBody2D" unique_id=139700223]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=488840629]
+position = Vector2(-1.5, 7.5)
+shape = SubResource("RectangleShape2D_gyfyj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=206800082]
+position = Vector2(-2.0000153, 8.000006)
+scale = Vector2(0.22833328, 0.22833328)
 sprite_frames = SubResource("SpriteFrames_x3lvc")
-animation = &"hurt"
-autoplay = "idle"
+animation = &"Attack"
+autoplay = "Idle"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=955971477]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1033046272]
+shape = SubResource("RectangleShape2D_hpa2b")

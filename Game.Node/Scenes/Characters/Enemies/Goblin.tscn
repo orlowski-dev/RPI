@@ -276,7 +276,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -368,8 +368,9 @@ shape = SubResource("RectangleShape2D_s6yqq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1489971868]
 scale = Vector2(0.29666665, 0.29666665)
 sprite_frames = SubResource("SpriteFrames_csoed")
-animation = &"Attack"
+animation = &"Walking"
 autoplay = "Idle"
+frame_progress = 0.19463022
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1016875039]
 

@@ -36,7 +36,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0.78039217, 0.62352943, 0.24313726, 1)
 
-[node name="LowerPanel" type="Control" unique_id=2047079096 node_paths=PackedStringArray("TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL", "PlayerActionsCont")]
+[node name="LowerPanel" type="Control" unique_id=2047079096]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,14 +44,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cli0n")
-TurnLabel = NodePath("")
-PlayerNameL = NodePath("")
-PlayerHpPB = NodePath("")
-PlayerHpL = NodePath("")
-EnemyNameL = NodePath("")
-EnemyHpPB = NodePath("")
-EnemyHpL = NodePath("")
-PlayerActionsCont = NodePath("")
 
 [node name="Panel2" type="Panel" parent="." unique_id=1138302338]
 custom_minimum_size = Vector2(0, 150)

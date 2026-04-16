@@ -1,0 +1,324 @@
+[gd_scene format=3 uid="uid://d2dfx2e054wi0"]
+
+[ext_resource type="Script" uid="uid://bo0fysasmjsfu" path="res://Scripts/Player/PlayerController.cs" id="1_3rlqr"]
+[ext_resource type="Texture2D" uid="uid://b36shb4fxc8u" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_000.png" id="2_c6l1m"]
+[ext_resource type="Texture2D" uid="uid://ye5wiauarc5x" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_001.png" id="3_s7oba"]
+[ext_resource type="Texture2D" uid="uid://5qk7dgxrxmds" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_002.png" id="4_rq6rn"]
+[ext_resource type="Texture2D" uid="uid://b6vv1oqeo7jr1" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_003.png" id="5_i4cmh"]
+[ext_resource type="Texture2D" uid="uid://bsq22llgo8ufw" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_004.png" id="6_h76iw"]
+[ext_resource type="Texture2D" uid="uid://beuhwabpqn5g8" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_005.png" id="7_3tomi"]
+[ext_resource type="Texture2D" uid="uid://db2vkhqdvty5f" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_006.png" id="8_mii08"]
+[ext_resource type="Texture2D" uid="uid://dg3bqhqx6j2i1" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_007.png" id="9_d43y3"]
+[ext_resource type="Texture2D" uid="uid://bwrrkhbw72b4n" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_008.png" id="10_kms8q"]
+[ext_resource type="Texture2D" uid="uid://dimjuslraxyb3" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/attack/Right - Attacking_009.png" id="11_wltv4"]
+[ext_resource type="Texture2D" uid="uid://cgo73ik3vx2i1" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_000.png" id="12_6716n"]
+[ext_resource type="Texture2D" uid="uid://ble02uiyuvyd1" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_001.png" id="13_5im1k"]
+[ext_resource type="Texture2D" uid="uid://v8nnr6w2muv8" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_002.png" id="14_bgkyr"]
+[ext_resource type="Texture2D" uid="uid://c0y5snirwvod2" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_003.png" id="15_sbiru"]
+[ext_resource type="Texture2D" uid="uid://df00gd1rp2whr" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_004.png" id="16_dyanp"]
+[ext_resource type="Texture2D" uid="uid://hxuljem1bevr" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_005.png" id="17_3rlqr"]
+[ext_resource type="Texture2D" uid="uid://vmnuudy5meyh" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_006.png" id="18_k05av"]
+[ext_resource type="Texture2D" uid="uid://bbyxwn8fhpbh3" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_007.png" id="19_v4uye"]
+[ext_resource type="Texture2D" uid="uid://bhai0ribbi2kc" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_008.png" id="20_mhti3"]
+[ext_resource type="Texture2D" uid="uid://dhejtqss1h74" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/die/Dying_009.png" id="21_bi6gt"]
+[ext_resource type="Texture2D" uid="uid://bf7tpqdoban6o" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_000.png" id="22_c1stv"]
+[ext_resource type="Texture2D" uid="uid://dfijbnyobc43n" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_001.png" id="23_7brww"]
+[ext_resource type="Texture2D" uid="uid://bl0a1ju1dp5l6" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_002.png" id="24_gxquj"]
+[ext_resource type="Texture2D" uid="uid://dd332axc2ytfa" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_003.png" id="25_1i3ws"]
+[ext_resource type="Texture2D" uid="uid://cl0p4lrt6km0o" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_004.png" id="26_ixe72"]
+[ext_resource type="Texture2D" uid="uid://wa2187p1hd4j" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_005.png" id="27_kt56a"]
+[ext_resource type="Texture2D" uid="uid://c1sfpa65bxe7f" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_006.png" id="28_xq5i2"]
+[ext_resource type="Texture2D" uid="uid://bt4j87affnlgm" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_007.png" id="29_bxquf"]
+[ext_resource type="Texture2D" uid="uid://dilxj66c5em7i" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_008.png" id="30_6r24e"]
+[ext_resource type="Texture2D" uid="uid://c7j2ci67finm1" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/hurt/Right - Hurt_009.png" id="31_kcsuj"]
+[ext_resource type="Texture2D" uid="uid://d2fbonx1jmox5" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_000.png" id="32_vh7p1"]
+[ext_resource type="Texture2D" uid="uid://b4ondumhg41ru" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_001.png" id="33_px1m7"]
+[ext_resource type="Texture2D" uid="uid://bufuqsssj5rfb" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_002.png" id="34_uiaxv"]
+[ext_resource type="Texture2D" uid="uid://cddu76o6sab8b" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_003.png" id="35_0a04i"]
+[ext_resource type="Texture2D" uid="uid://drc72k1njvnmp" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_004.png" id="36_q1mxb"]
+[ext_resource type="Texture2D" uid="uid://dahtgqywyfu8t" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_005.png" id="37_1wx17"]
+[ext_resource type="Texture2D" uid="uid://pnwvnrd1g5hd" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_006.png" id="38_rx7po"]
+[ext_resource type="Texture2D" uid="uid://def8vf11v3hpt" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_007.png" id="39_laomn"]
+[ext_resource type="Texture2D" uid="uid://c88afodi30q1n" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_008.png" id="40_nl4u6"]
+[ext_resource type="Texture2D" uid="uid://cbqvy0rjppd01" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_009.png" id="41_cpye5"]
+[ext_resource type="Texture2D" uid="uid://hx6oed8mrae8" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_010.png" id="42_ugvdj"]
+[ext_resource type="Texture2D" uid="uid://df3fgknf12yhg" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_011.png" id="43_j7xoo"]
+[ext_resource type="Texture2D" uid="uid://cmifcsdgdx7jf" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_012.png" id="44_feld7"]
+[ext_resource type="Texture2D" uid="uid://c3ekmgh3oqntb" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_013.png" id="45_niuyr"]
+[ext_resource type="Texture2D" uid="uid://j8wcia0bhlip" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_014.png" id="46_b57u2"]
+[ext_resource type="Texture2D" uid="uid://evq15lesfskc" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/idle/Right - Idle_015.png" id="47_g3i1d"]
+[ext_resource type="Texture2D" uid="uid://dhohgcjmhxgk3" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_000.png" id="48_kcfmm"]
+[ext_resource type="Texture2D" uid="uid://csqwybcyd8pyt" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_001.png" id="49_13nnr"]
+[ext_resource type="Texture2D" uid="uid://thqxx35xj4ot" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_002.png" id="50_34y7o"]
+[ext_resource type="Texture2D" uid="uid://bt4w5bc0a7kk8" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_003.png" id="51_ihkff"]
+[ext_resource type="Texture2D" uid="uid://cxprsnqifyj3k" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_004.png" id="52_wymyh"]
+[ext_resource type="Texture2D" uid="uid://bk2vdtydpisym" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_005.png" id="53_7fndb"]
+[ext_resource type="Texture2D" uid="uid://cwbpngm2i2qur" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_006.png" id="54_f1ye6"]
+[ext_resource type="Texture2D" uid="uid://cvhbbn7xfqb1h" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_007.png" id="55_4066k"]
+[ext_resource type="Texture2D" uid="uid://2ed20ql0hyyw" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_008.png" id="56_i4jsp"]
+[ext_resource type="Texture2D" uid="uid://cbkio7m4ieqto" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_009.png" id="57_5tiwl"]
+[ext_resource type="Texture2D" uid="uid://bqb7yytja8nsb" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_010.png" id="58_iurid"]
+[ext_resource type="Texture2D" uid="uid://dwjqgi6jt6ka0" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_011.png" id="59_rv175"]
+[ext_resource type="Texture2D" uid="uid://dbon8yp1q3h3h" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_012.png" id="60_piu7b"]
+[ext_resource type="Texture2D" uid="uid://htyiobmx2s03" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_013.png" id="61_qvv3w"]
+[ext_resource type="Texture2D" uid="uid://bps300u2n5mlm" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_014.png" id="62_opmy2"]
+[ext_resource type="Texture2D" uid="uid://dt7h8y5jm4jbj" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_015.png" id="63_j3bbd"]
+[ext_resource type="Texture2D" uid="uid://c203g28yjduuj" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_016.png" id="64_dc3we"]
+[ext_resource type="Texture2D" uid="uid://c3j8owa55qwei" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_017.png" id="65_l4omt"]
+[ext_resource type="Texture2D" uid="uid://dyiy8k107ubmc" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_018.png" id="66_gu1pm"]
+[ext_resource type="Texture2D" uid="uid://dmbq805imdhun" path="res://Assets/Prototype/Sprites/Enemy/LadyGoblin/walk/Right - Walking_019.png" id="67_yspib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3rxj"]
+size = Vector2(22.868362, 22.353628)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wq0ek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c6l1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s7oba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rq6rn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i4cmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h76iw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3tomi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mii08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d43y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kms8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wltv4")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_6716n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5im1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bgkyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sbiru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dyanp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3rlqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_k05av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_v4uye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mhti3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_bi6gt")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_c1stv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_7brww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_gxquj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1i3ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ixe72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kt56a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_xq5i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_bxquf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_6r24e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_kcsuj")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_vh7p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_px1m7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_uiaxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_0a04i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_q1mxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_1wx17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_rx7po")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_laomn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_nl4u6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_cpye5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_ugvdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_j7xoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_feld7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_niuyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_b57u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_g3i1d")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_kcfmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_13nnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_34y7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_ihkff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_wymyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_7fndb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_f1ye6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_4066k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_i4jsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_5tiwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_iurid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_rv175")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_piu7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_qvv3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_opmy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_j3bbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_dc3we")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_l4omt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_gu1pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_yspib")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyqp4"]
+size = Vector2(216, 216)
+
+[node name="LadyGoblin" type="CharacterBody2D" unique_id=822514758]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_3rlqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240862241]
+position = Vector2(5.572508, -4.5725083)
+scale = Vector2(3.8854978, 3.8854978)
+shape = SubResource("RectangleShape2D_p3rxj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2071525896]
+position = Vector2(6, -5)
+scale = Vector2(0.15189524, 0.1474508)
+sprite_frames = SubResource("SpriteFrames_wq0ek")
+animation = &"Walking"
+autoplay = "Idle"
+speed_scale = 5.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=274165993]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=445608772]
+shape = SubResource("RectangleShape2D_gyqp4")

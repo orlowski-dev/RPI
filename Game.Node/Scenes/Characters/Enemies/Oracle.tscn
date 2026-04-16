@@ -1,0 +1,385 @@
+[gd_scene format=3 uid="uid://ch0iu1vim02c0"]
+
+[ext_resource type="Script" uid="uid://bo0fysasmjsfu" path="res://Scripts/Player/PlayerController.cs" id="1_rdlpk"]
+[ext_resource type="Texture2D" uid="uid://djhy2dq3p0xvj" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_000.png" id="2_rdlpk"]
+[ext_resource type="Texture2D" uid="uid://c1ex5cguj76bw" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_001.png" id="3_wa1rj"]
+[ext_resource type="Texture2D" uid="uid://cx1ypgtqy7nfm" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_002.png" id="4_boxw1"]
+[ext_resource type="Texture2D" uid="uid://bxc63mwcigsdo" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_003.png" id="5_r3h1d"]
+[ext_resource type="Texture2D" uid="uid://m6g8t2j6j80i" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_004.png" id="6_w18f2"]
+[ext_resource type="Texture2D" uid="uid://dtg115w5yva5q" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_005.png" id="7_wov8q"]
+[ext_resource type="Texture2D" uid="uid://smemr25wmg2a" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_006.png" id="8_is3oh"]
+[ext_resource type="Texture2D" uid="uid://bd3hai814lpn1" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_007.png" id="9_itktr"]
+[ext_resource type="Texture2D" uid="uid://bd0j0fcltws7t" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_008.png" id="10_ff6xi"]
+[ext_resource type="Texture2D" uid="uid://oacl6e0npc6o" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_009.png" id="11_ej8nr"]
+[ext_resource type="Texture2D" uid="uid://brupc705uheob" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_010.png" id="12_mvi7x"]
+[ext_resource type="Texture2D" uid="uid://b7w883ruwmlgx" path="res://Assets/Prototype/Sprites/Enemy/Oracle/attack/0_Dark_Oracle_Slashing_011.png" id="13_7opxk"]
+[ext_resource type="Texture2D" uid="uid://ctay66xfsrc8k" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_000.png" id="14_5j86a"]
+[ext_resource type="Texture2D" uid="uid://2s4eoe3v5or5" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_001.png" id="15_6pxh2"]
+[ext_resource type="Texture2D" uid="uid://cjn8rbfytwsvd" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_002.png" id="16_jss4p"]
+[ext_resource type="Texture2D" uid="uid://dym2xl53ts0bv" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_003.png" id="17_ahmcc"]
+[ext_resource type="Texture2D" uid="uid://b433eoni3utq0" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_004.png" id="18_1lelq"]
+[ext_resource type="Texture2D" uid="uid://cj4xxa6b4tgev" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_005.png" id="19_7acbc"]
+[ext_resource type="Texture2D" uid="uid://1708avi1cw8b" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_006.png" id="20_xcb8r"]
+[ext_resource type="Texture2D" uid="uid://bwsjcat7lki14" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_007.png" id="21_gc7js"]
+[ext_resource type="Texture2D" uid="uid://bludl1mqdyv3k" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_008.png" id="22_hwtix"]
+[ext_resource type="Texture2D" uid="uid://ciu2ry1o14ow1" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_009.png" id="23_8nist"]
+[ext_resource type="Texture2D" uid="uid://bt5eumgeibwl5" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_010.png" id="24_22ygu"]
+[ext_resource type="Texture2D" uid="uid://dmg5ju4x64lvq" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_011.png" id="25_bhi2w"]
+[ext_resource type="Texture2D" uid="uid://0m2s885ret3h" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_012.png" id="26_p0qb3"]
+[ext_resource type="Texture2D" uid="uid://csnpuge0xejqt" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_013.png" id="27_g4h73"]
+[ext_resource type="Texture2D" uid="uid://cgaruvnavwhi4" path="res://Assets/Prototype/Sprites/Enemy/Oracle/die/0_Dark_Oracle_Dying_014.png" id="28_3usc0"]
+[ext_resource type="Texture2D" uid="uid://1dfj2vutd0th" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_000.png" id="29_75tmf"]
+[ext_resource type="Texture2D" uid="uid://rngdjg4acw6x" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_001.png" id="30_vt6ik"]
+[ext_resource type="Texture2D" uid="uid://bgvsl80hat7av" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_002.png" id="31_bjbud"]
+[ext_resource type="Texture2D" uid="uid://chgvd3ildbtxb" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_003.png" id="32_17npv"]
+[ext_resource type="Texture2D" uid="uid://darbbm8vw6wrs" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_004.png" id="33_3yufy"]
+[ext_resource type="Texture2D" uid="uid://7li7g0njkw0o" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_005.png" id="34_j6qwr"]
+[ext_resource type="Texture2D" uid="uid://dvbgch813qhbf" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_006.png" id="35_43oje"]
+[ext_resource type="Texture2D" uid="uid://cw1842x6kvbkg" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_007.png" id="36_issue"]
+[ext_resource type="Texture2D" uid="uid://bdl5jg3to7fmc" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_008.png" id="37_fm3yn"]
+[ext_resource type="Texture2D" uid="uid://bp0mpvrby07jn" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_009.png" id="38_sf07g"]
+[ext_resource type="Texture2D" uid="uid://btuid7dgy5ocu" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_010.png" id="39_ir1rj"]
+[ext_resource type="Texture2D" uid="uid://b4o8ml0s0ta0q" path="res://Assets/Prototype/Sprites/Enemy/Oracle/hurt/0_Dark_Oracle_Hurt_011.png" id="40_fnobn"]
+[ext_resource type="Texture2D" uid="uid://b306iqltyd2qr" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_000.png" id="41_f8rxu"]
+[ext_resource type="Texture2D" uid="uid://dd3ua6c7nx1gr" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_001.png" id="42_kfifn"]
+[ext_resource type="Texture2D" uid="uid://cmhqpms4ymo20" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_002.png" id="43_ikjx0"]
+[ext_resource type="Texture2D" uid="uid://dswpxjwp6rr36" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_003.png" id="44_86an5"]
+[ext_resource type="Texture2D" uid="uid://dc2brytnt8uqw" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_004.png" id="45_0ogp0"]
+[ext_resource type="Texture2D" uid="uid://bvh5c3riymxue" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_005.png" id="46_lgutp"]
+[ext_resource type="Texture2D" uid="uid://didfswj5ia7xr" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_006.png" id="47_hjrtj"]
+[ext_resource type="Texture2D" uid="uid://cvjtyjfsddi2i" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_007.png" id="48_qkskc"]
+[ext_resource type="Texture2D" uid="uid://8etuhi3a1apo" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_008.png" id="49_3uoc5"]
+[ext_resource type="Texture2D" uid="uid://ct2fomh7oneee" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_009.png" id="50_d6w6t"]
+[ext_resource type="Texture2D" uid="uid://cag0k3nji15e1" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_010.png" id="51_hphnn"]
+[ext_resource type="Texture2D" uid="uid://bd20jwxvs3b5y" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_011.png" id="52_rqus0"]
+[ext_resource type="Texture2D" uid="uid://o553objsgcj6" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_012.png" id="53_y32bq"]
+[ext_resource type="Texture2D" uid="uid://rx2jed14smxb" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_013.png" id="54_ntafx"]
+[ext_resource type="Texture2D" uid="uid://boxsej5yg00bg" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_014.png" id="55_r48aj"]
+[ext_resource type="Texture2D" uid="uid://d24oqcmvftnpf" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_015.png" id="56_gtjd0"]
+[ext_resource type="Texture2D" uid="uid://bq58ywso3l7g6" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_016.png" id="57_5tfa1"]
+[ext_resource type="Texture2D" uid="uid://dxwnwwqug5tre" path="res://Assets/Prototype/Sprites/Enemy/Oracle/idle/0_Dark_Oracle_Idle_017.png" id="58_dmror"]
+[ext_resource type="Texture2D" uid="uid://p1vh7oawader" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_000.png" id="59_orawi"]
+[ext_resource type="Texture2D" uid="uid://pjfbq8ubvedi" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_001.png" id="60_nmxq8"]
+[ext_resource type="Texture2D" uid="uid://cy00vuu535igr" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_002.png" id="61_br3bh"]
+[ext_resource type="Texture2D" uid="uid://cuwsvmgcm4wto" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_003.png" id="62_6qlxs"]
+[ext_resource type="Texture2D" uid="uid://djip3ydu1ufd6" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_004.png" id="63_1cwdi"]
+[ext_resource type="Texture2D" uid="uid://tw62kirg4nc4" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_005.png" id="64_nt4pt"]
+[ext_resource type="Texture2D" uid="uid://jlud6e1hm47o" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_006.png" id="65_qhrlh"]
+[ext_resource type="Texture2D" uid="uid://c1dwwmys8f5gt" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_007.png" id="66_acafi"]
+[ext_resource type="Texture2D" uid="uid://buxkpwu2rlrgp" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_008.png" id="67_vft22"]
+[ext_resource type="Texture2D" uid="uid://fiag4hp20f67" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_009.png" id="68_q30lu"]
+[ext_resource type="Texture2D" uid="uid://b3rubq3ll62qx" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_010.png" id="69_io6w8"]
+[ext_resource type="Texture2D" uid="uid://btpvcn3i0r3f3" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_011.png" id="70_qy7sl"]
+[ext_resource type="Texture2D" uid="uid://b1uolw3ut86k7" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_012.png" id="71_jof6k"]
+[ext_resource type="Texture2D" uid="uid://dr2nkb3y5xyuu" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_013.png" id="72_j6dxo"]
+[ext_resource type="Texture2D" uid="uid://dcvifrxceuduk" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_014.png" id="73_5gvj8"]
+[ext_resource type="Texture2D" uid="uid://cc7imknd0ista" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_015.png" id="74_ajogv"]
+[ext_resource type="Texture2D" uid="uid://3yh81xinqian" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_016.png" id="75_tmcxm"]
+[ext_resource type="Texture2D" uid="uid://mtj6hav6jgj3" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_017.png" id="76_yaqfk"]
+[ext_resource type="Texture2D" uid="uid://cneg5jx5e0daq" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_018.png" id="77_hi3iy"]
+[ext_resource type="Texture2D" uid="uid://cixc666jofbq7" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_019.png" id="78_vv8bv"]
+[ext_resource type="Texture2D" uid="uid://y1dpaexwdq06" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_020.png" id="79_hjmw4"]
+[ext_resource type="Texture2D" uid="uid://bxc2cjqfcg7gp" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_021.png" id="80_jlboj"]
+[ext_resource type="Texture2D" uid="uid://csw6og7tkcsv8" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_022.png" id="81_x71rm"]
+[ext_resource type="Texture2D" uid="uid://bin0ahkbvsmhp" path="res://Assets/Prototype/Sprites/Enemy/Oracle/walk/0_Dark_Oracle_Walking_023.png" id="82_j2coa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3rxj"]
+size = Vector2(22.868362, 22.353628)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wq0ek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rdlpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wa1rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_boxw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r3h1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w18f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wov8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_is3oh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_itktr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ff6xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ej8nr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mvi7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7opxk")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_5j86a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6pxh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jss4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ahmcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_1lelq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_7acbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xcb8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_gc7js")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hwtix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_8nist")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_22ygu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_bhi2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_p0qb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_g4h73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_3usc0")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_75tmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_vt6ik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_bjbud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_17npv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_3yufy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_j6qwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_43oje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_issue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_fm3yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_sf07g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ir1rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_fnobn")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_f8rxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_kfifn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_ikjx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_86an5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_0ogp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_lgutp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_hjrtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_qkskc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_3uoc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_d6w6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_hphnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_rqus0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_y32bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_ntafx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_r48aj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_gtjd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_5tfa1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_dmror")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("59_orawi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_nmxq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_br3bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_6qlxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_1cwdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_nt4pt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_qhrlh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_acafi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_vft22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_q30lu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_io6w8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_qy7sl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_jof6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_j6dxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_5gvj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_ajogv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_tmcxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_yaqfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_hi3iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_vv8bv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_hjmw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_jlboj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_x71rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_j2coa")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyqp4"]
+size = Vector2(216, 216)
+
+[node name="Oracle" type="CharacterBody2D" unique_id=822514758]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_rdlpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240862241]
+position = Vector2(5.572508, -4.5725083)
+scale = Vector2(3.8854978, 3.8854978)
+shape = SubResource("RectangleShape2D_p3rxj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2071525896]
+position = Vector2(6, -5)
+scale = Vector2(0.15189524, 0.1474508)
+sprite_frames = SubResource("SpriteFrames_wq0ek")
+animation = &"Walking"
+autoplay = "Idle"
+frame_progress = 0.64313734
+speed_scale = 5.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=274165993]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=445608772]
+shape = SubResource("RectangleShape2D_gyqp4")

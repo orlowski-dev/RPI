@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<gaphor xmlns="https://gaphor.org/model" xmlns:Core="https://gaphor.org/modelinglanguage/Core" xmlns:UML="https://gaphor.org/modelinglanguage/UML" version="4" gaphor-version="3.2.0">
+<gaphor xmlns="https://gaphor.org/model" xmlns:Core="https://gaphor.org/modelinglanguage/Core" xmlns:UML="https://gaphor.org/modelinglanguage/UML" version="4" gaphor-version="3.3.1">
 <model>
 <Core:StyleSheet id="58d6989a-66f8-11ec-b4c8-0456e5e540ed">
 <styleSheet>
@@ -107,10 +107,21 @@ controlflow {
 <ref refid="b1c7e227-358a-11f1-bdaf-a786c6f9088a"/>
 <ref refid="233e9c89-358b-11f1-b859-a786c6f9088a"/>
 <ref refid="4b885e55-358b-11f1-810c-a786c6f9088a"/>
+<ref refid="bb05c278-358b-11f1-94d8-a786c6f9088a"/>
 <ref refid="14dbea46-358c-11f1-904b-a786c6f9088a"/>
 <ref refid="3718922a-358c-11f1-9bc2-a786c6f9088a"/>
 <ref refid="e8a839c9-358c-11f1-9b4e-a786c6f9088a"/>
 <ref refid="eb404aa7-358c-11f1-b1fe-a786c6f9088a"/>
+<ref refid="de8dd922-363f-11f1-b04c-3d19bfa9ce9e"/>
+<ref refid="22d8d80d-3640-11f1-beaf-3d19bfa9ce9e"/>
+<ref refid="3c411d58-3640-11f1-9364-3d19bfa9ce9e"/>
+<ref refid="5f054a0e-3640-11f1-9724-3d19bfa9ce9e"/>
+<ref refid="a61e0645-3640-11f1-bbf5-3d19bfa9ce9e"/>
+<ref refid="ebcdcf52-3640-11f1-9188-3d19bfa9ce9e"/>
+<ref refid="94a44c6e-3641-11f1-b73d-3d19bfa9ce9e"/>
+<ref refid="0e008730-3642-11f1-a19f-3d19bfa9ce9e"/>
+<ref refid="45626a53-3642-11f1-baa2-3d19bfa9ce9e"/>
+<ref refid="5d76b872-3642-11f1-8ec3-3d19bfa9ce9e"/>
 <ref refid="3960b8f1-3587-11f1-89f5-a786c6f9088a"/>
 <ref refid="46eafdfc-3587-11f1-82b4-a786c6f9088a"/>
 <ref refid="7da6e99f-3587-11f1-95ad-a786c6f9088a"/>
@@ -120,22 +131,11 @@ controlflow {
 <ref refid="feafe258-3588-11f1-8717-a786c6f9088a"/>
 <ref refid="9e7c128a-358c-11f1-8ae8-a786c6f9088a"/>
 <ref refid="f4148ae3-358e-11f1-ac72-cb9720111d29"/>
-<ref refid="bb05c278-358b-11f1-94d8-a786c6f9088a"/>
-<ref refid="de8dd922-363f-11f1-b04c-3d19bfa9ce9e"/>
-<ref refid="22d8d80d-3640-11f1-beaf-3d19bfa9ce9e"/>
 <ref refid="282f367c-3640-11f1-a1cc-3d19bfa9ce9e"/>
-<ref refid="3c411d58-3640-11f1-9364-3d19bfa9ce9e"/>
 <ref refid="438226e9-3640-11f1-828b-3d19bfa9ce9e"/>
-<ref refid="5f054a0e-3640-11f1-9724-3d19bfa9ce9e"/>
 <ref refid="660c0d47-3640-11f1-8100-3d19bfa9ce9e"/>
-<ref refid="a61e0645-3640-11f1-bbf5-3d19bfa9ce9e"/>
 <ref refid="ae69d7a5-3640-11f1-af4e-3d19bfa9ce9e"/>
-<ref refid="ebcdcf52-3640-11f1-9188-3d19bfa9ce9e"/>
 <ref refid="01ac99e8-3641-11f1-bae8-3d19bfa9ce9e"/>
-<ref refid="94a44c6e-3641-11f1-b73d-3d19bfa9ce9e"/>
-<ref refid="0e008730-3642-11f1-a19f-3d19bfa9ce9e"/>
-<ref refid="45626a53-3642-11f1-baa2-3d19bfa9ce9e"/>
-<ref refid="5d76b872-3642-11f1-8ec3-3d19bfa9ce9e"/>
 </reflist>
 </packagedElement>
 </UML:Package>
@@ -236,7 +236,7 @@ controlflow {
 </UML:Class>
 <UML:ClassItem id="b80b707f-3583-11f1-9bd0-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 172.5, 0.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 200.5, 0.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -465,7 +465,7 @@ controlflow {
 </UML:Class>
 <UML:ClassItem id="d6d7ea61-3584-11f1-912b-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 34.5, 405.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 55.5, 405.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -500,7 +500,7 @@ controlflow {
 <val>(1.0, 0.0, 0.0, 1.0, 209.92187500000048, 416.3500575925291)</val>
 </matrix>
 <points>
-<val>[(18.078124999999517, -11.350057592529083), (18.078124999999517, -121.35005759252908)]</val>
+<val>[(42.57812499999952, -11.350057592529083), (42.57812499999952, -121.35005759252908)]</val>
 </points>
 <head-connection>
 <ref refid="d6d7ea61-3584-11f1-912b-a786c6f9088a"/>
@@ -630,7 +630,7 @@ controlflow {
 </UML:Class>
 <UML:ClassItem id="2c37b8fb-3585-11f1-a445-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 301.5, 447.5)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 322.5, 447.5)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -684,7 +684,7 @@ controlflow {
 <val>(1.0, 0.0, 0.0, 1.0, 270.5399647792992, 462.45703125)</val>
 </matrix>
 <points>
-<val>[(81.96003522070077, -14.95703125), (81.96003522070077, -167.45703125)]</val>
+<val>[(106.46003522070077, -14.95703125), (106.46003522070077, -167.45703125)]</val>
 </points>
 <head-connection>
 <ref refid="2c37b8fb-3585-11f1-a445-a786c6f9088a"/>
@@ -737,7 +737,7 @@ controlflow {
 </UML:Enumeration>
 <UML:EnumerationItem id="84284e36-3585-11f1-a544-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 515.0, 426.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 536.0, 426.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -823,7 +823,7 @@ controlflow {
 </UML:Enumeration>
 <UML:EnumerationItem id="a5b6610a-3585-11f1-9e7d-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 422.0, 89.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 450.0, 89.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -902,7 +902,7 @@ controlflow {
 </UML:Enumeration>
 <UML:EnumerationItem id="b92d68c1-3585-11f1-83f2-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 651.0, 426.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 672.0, 426.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -988,7 +988,7 @@ controlflow {
 </UML:Enumeration>
 <UML:EnumerationItem id="ccb2fe5f-3585-11f1-b5fb-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 818.3618192466812, 89.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 839.3618192466812, 89.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1074,7 +1074,7 @@ controlflow {
 </UML:Interface>
 <UML:InterfaceItem id="dde9e123-3585-11f1-a8cd-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 999.0, 102.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1020.0, 102.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1147,7 +1147,7 @@ controlflow {
 </UML:Interface>
 <UML:InterfaceItem id="eff9eaa3-3585-11f1-9855-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1107.0, 80.5)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1128.0, 80.5)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1250,7 +1250,7 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 </UML:Class>
 <UML:ClassItem id="1cdda958-3586-11f1-9d71-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 350.5, 691.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 371.5, 691.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1350,10 +1350,17 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 </name>
 <ownedAttribute>
 <reflist>
-<ref refid="886f1da0-3586-11f1-a594-a786c6f9088a"/>
-<ref refid="8b572939-3586-11f1-85d4-a786c6f9088a"/>
-<ref refid="8fbf8b09-3586-11f1-afb2-a786c6f9088a"/>
-<ref refid="93182ebd-3586-11f1-af4d-a786c6f9088a"/>
+<ref refid="c63df51a-3b65-11f1-8039-31b1ae08bbe0"/>
+<ref refid="ca8abf0e-3b65-11f1-8100-31b1ae08bbe0"/>
+<ref refid="ce225460-3b65-11f1-b65b-31b1ae08bbe0"/>
+<ref refid="d5c68cad-3b65-11f1-943d-31b1ae08bbe0"/>
+<ref refid="d7b75453-3b65-11f1-b213-31b1ae08bbe0"/>
+<ref refid="dab1f48c-3b65-11f1-9af1-31b1ae08bbe0"/>
+<ref refid="e3480333-3b65-11f1-b9e2-31b1ae08bbe0"/>
+<ref refid="e852e569-3b65-11f1-a480-31b1ae08bbe0"/>
+<ref refid="eb060b75-3b65-11f1-ac01-31b1ae08bbe0"/>
+<ref refid="eda10c59-3b65-11f1-92fa-31b1ae08bbe0"/>
+<ref refid="3d4df943-3b66-11f1-a7a4-31b1ae08bbe0"/>
 </reflist>
 </ownedAttribute>
 <ownedOperation>
@@ -1380,16 +1387,16 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 </UML:DataType>
 <UML:DataTypeItem id="74f54cc2-3586-11f1-b0e7-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 0.0, 68.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 0.0, 8.5)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>154.0</val>
+<val>182.0</val>
 </width>
 <height>
-<val>159.0</val>
+<val>278.0</val>
 </height>
 <diagram>
 <ref refid="b2a44880-3583-11f1-9fe5-a786c6f9088a"/>
@@ -1398,50 +1405,6 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 <ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
 </subject>
 </UML:DataTypeItem>
-<UML:Property id="886f1da0-3586-11f1-a594-a786c6f9088a">
-<datatype>
-<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
-</datatype>
-<name>
-<val>Name</val>
-</name>
-<typeValue>
-<val>string</val>
-</typeValue>
-</UML:Property>
-<UML:Property id="8b572939-3586-11f1-85d4-a786c6f9088a">
-<datatype>
-<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
-</datatype>
-<name>
-<val>HpBonus</val>
-</name>
-<typeValue>
-<val>int</val>
-</typeValue>
-</UML:Property>
-<UML:Property id="8fbf8b09-3586-11f1-afb2-a786c6f9088a">
-<datatype>
-<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
-</datatype>
-<name>
-<val>AttackBonus</val>
-</name>
-<typeValue>
-<val>int</val>
-</typeValue>
-</UML:Property>
-<UML:Property id="93182ebd-3586-11f1-af4d-a786c6f9088a">
-<datatype>
-<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
-</datatype>
-<name>
-<val>DefenseBonus</val>
-</name>
-<typeValue>
-<val>int</val>
-</typeValue>
-</UML:Property>
 <UML:Operation id="964e0ff2-3586-11f1-9e4c-a786c6f9088a">
 <datatype>
 <ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
@@ -1495,7 +1458,7 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 </UML:DataType>
 <UML:DataTypeItem id="9cf6160c-3586-11f1-962a-a786c6f9088a">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 787.5, 405.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 808.5, 405.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1590,7 +1553,7 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 <val>(1.0, 0.0, 0.0, 1.0, 190.91511438796095, 934.7119586367066)</val>
 </matrix>
 <points>
-<val>[(92.58488561203905, -364.71195863670664), (208.25488561203906, -364.71195863670664), (208.25488561203906, -243.71195863670664)]</val>
+<val>[(113.58488561203905, -364.71195863670664), (229.25488561203906, -364.71195863670664), (229.25488561203906, -243.71195863670664)]</val>
 </points>
 <head-connection>
 <ref refid="d6d7ea61-3584-11f1-912b-a786c6f9088a"/>
@@ -1636,7 +1599,7 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 <val>(1.0, 0.0, 0.0, 1.0, 189.97955631299936, 926.88459718601)</val>
 </matrix>
 <points>
-<val>[(257.8504436870006, -388.38459718600996), (257.8504436870006, -235.88459718600996)]</val>
+<val>[(278.8504436870006, -388.38459718600996), (278.8504436870006, -235.88459718600996)]</val>
 </points>
 <head-connection>
 <ref refid="2c37b8fb-3585-11f1-a445-a786c6f9088a"/>
@@ -1662,7 +1625,7 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 <val>(1.0, 0.0, 0.0, 1.0, 324.1327237954765, 1036.692022101976)</val>
 </matrix>
 <points>
-<val>[(245.11727620452348, -476.6920221019759), (245.11727620452348, -345.6920221019759)]</val>
+<val>[(266.1172762045235, -476.6920221019759), (266.1172762045235, -345.6920221019759)]</val>
 </points>
 <head-connection>
 <ref refid="84284e36-3585-11f1-a544-a786c6f9088a"/>
@@ -1708,7 +1671,7 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 <val>(1.0, 0.0, 0.0, 1.0, 54.09060581276594, 1045.0320954258787)</val>
 </matrix>
 <points>
-<val>[(655.909394187234, -485.03209542587865), (655.909394187234, -318.03209542587865), (569.409394187234, -318.03209542587865)]</val>
+<val>[(676.909394187234, -485.03209542587865), (676.909394187234, -318.03209542587865), (590.409394187234, -318.03209542587865)]</val>
 </points>
 <head-connection>
 <ref refid="b92d68c1-3585-11f1-83f2-a786c6f9088a"/>
@@ -1754,7 +1717,7 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 <val>(1.0, 0.0, 0.0, 1.0, 353.0629810576971, 612.9406852067818)</val>
 </matrix>
 <points>
-<val>[(106.18701894230293, -406.94068520678184), (106.18701894230293, -165.44068520678184)]</val>
+<val>[(130.68701894230293, -406.94068520678184), (130.68701894230293, -165.44068520678184)]</val>
 </points>
 <head-connection>
 <ref refid="a5b6610a-3585-11f1-9e7d-a786c6f9088a"/>
@@ -1800,7 +1763,7 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 <val>(1.0, 0.0, 0.0, 1.0, -32.75572674020273, 662.1147244070984)</val>
 </matrix>
 <points>
-<val>[(127.00572674020273, -435.1147244070984), (127.00572674020273, -257.1147244070984)]</val>
+<val>[(151.50572674020273, -375.6147244070984), (151.50572674020273, -257.1147244070984)]</val>
 </points>
 <head-connection>
 <ref refid="74f54cc2-3586-11f1-b0e7-a786c6f9088a"/>
@@ -1846,7 +1809,7 @@ Zarządza turami, obliczaniem obrażeń oraz sprawdzaniem zakończenia walki.</v
 <val>(1.0, 0.0, 0.0, 1.0, 603.0938144280223, -36.81546329483501)</val>
 </matrix>
 <points>
-<val>[(274.90618557197774, 242.81546329483507), (274.90618557197774, 441.815463294835)]</val>
+<val>[(295.90618557197774, 242.815463294835), (295.90618557197774, 441.815463294835)]</val>
 </points>
 <head-connection>
 <ref refid="ccb2fe5f-3585-11f1-b5fb-a786c6f9088a"/>
@@ -4150,7 +4113,7 @@ Wykorzystuje system fizyki do kolizji</val>
 </UML:DependencyItem>
 <UML:ClassItem id="de8c634b-363f-11f1-88bc-3d19bfa9ce9e">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1411.0, 68.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1432.0, 68.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -4345,7 +4308,7 @@ Wykorzystuje system fizyki do kolizji</val>
 </UML:Class>
 <UML:ClassItem id="3c415f74-3640-11f1-9519-3d19bfa9ce9e">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1460.0, 468.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1481.0, 468.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -4386,7 +4349,7 @@ Wykorzystuje system fizyki do kolizji</val>
 <val>(1.0, 0.0, 0.0, 1.0, 1268.577646062817, 328.8435532474)</val>
 </matrix>
 <points>
-<val>[(277.42235393718306, -101.8435532474), (277.42235393718306, 139.1564467526)]</val>
+<val>[(298.42235393718306, -101.8435532474), (298.42235393718306, 139.1564467526)]</val>
 </points>
 <head-connection>
 <ref refid="de8c634b-363f-11f1-88bc-3d19bfa9ce9e"/>
@@ -4438,7 +4401,7 @@ Wykorzystuje system fizyki do kolizji</val>
 </UML:Class>
 <UML:ClassItem id="5f058bef-3640-11f1-ab21-3d19bfa9ce9e">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 820.5, 762.5)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 841.5, 762.5)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -4479,7 +4442,7 @@ Wykorzystuje system fizyki do kolizji</val>
 <val>(1.0, 0.0, 0.0, 1.0, 1065.3567990887996, 618.4335547715579)</val>
 </matrix>
 <points>
-<val>[(-187.35679908879956, -37.43355477155785), (-187.35679908879956, 144.06644522844215)]</val>
+<val>[(-166.35679908879956, -37.43355477155785), (-166.35679908879956, 144.06644522844215)]</val>
 </points>
 <head-connection>
 <ref refid="9cf6160c-3586-11f1-962a-a786c6f9088a"/>
@@ -4776,7 +4739,7 @@ Wykorzystuje system fizyki do kolizji</val>
 </UML:Interface>
 <UML:InterfaceItem id="94a48799-3641-11f1-aa04-3d19bfa9ce9e">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1699.5, 97.5)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1720.5, 97.5)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -4855,7 +4818,7 @@ Wykorzystuje system fizyki do kolizji</val>
 </UML:Class>
 <UML:ClassItem id="0e00c94c-3642-11f1-be46-3d19bfa9ce9e">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1726.0, 468.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1747.0, 468.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -4896,7 +4859,7 @@ Wykorzystuje system fizyki do kolizji</val>
 <val>(1.0, 0.0, 0.0, 1.0, 1081.9352534200157, 878.9102897713907)</val>
 </matrix>
 <points>
-<val>[(749.0647465799843, -681.4102897713907), (749.0647465799843, -410.9102897713907)]</val>
+<val>[(770.0647465799843, -681.4102897713907), (770.0647465799843, -410.9102897713907)]</val>
 </points>
 <head-connection>
 <ref refid="94a48799-3641-11f1-aa04-3d19bfa9ce9e"/>
@@ -4963,7 +4926,7 @@ Wykorzystuje system fizyki do kolizji</val>
 </UML:Class>
 <UML:ClassItem id="4562abc6-3642-11f1-b180-3d19bfa9ce9e">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 986.5, 464.5)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1007.5, 464.5)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -5004,7 +4967,7 @@ Wykorzystuje system fizyki do kolizji</val>
 <val>(1.0, 0.0, 0.0, 1.0, 125.53725210580617, 122.14880131360508)</val>
 </matrix>
 <points>
-<val>[(918.4627478941939, 70.85119868639492), (918.4627478941939, 342.3511986863949)]</val>
+<val>[(939.4627478941939, 70.85119868639492), (939.4627478941939, 342.3511986863949)]</val>
 </points>
 <head-connection>
 <ref refid="dde9e123-3585-11f1-a8cd-a786c6f9088a"/>
@@ -5071,7 +5034,7 @@ Wykorzystuje system fizyki do kolizji</val>
 </UML:Class>
 <UML:ClassItem id="5d76f9aa-3642-11f1-a4c5-3d19bfa9ce9e">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1191.5, 468.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1212.5, 468.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -5112,7 +5075,7 @@ Wykorzystuje system fizyki do kolizji</val>
 <val>(1.0, 0.0, 0.0, 1.0, 469.0976846216753, 114.41095426626646)</val>
 </matrix>
 <points>
-<val>[(780.9023153783247, 100.08904573373354), (780.9023153783247, 353.58904573373354)]</val>
+<val>[(801.9023153783247, 100.08904573373354), (801.9023153783247, 353.58904573373354)]</val>
 </points>
 <head-connection>
 <ref refid="eff9eaa3-3585-11f1-9855-a786c6f9088a"/>
@@ -5146,5 +5109,126 @@ Wykorzystuje system fizyki do kolizji</val>
 </reflist>
 </supplier>
 </UML:InterfaceRealization>
+<UML:Property id="c63df51a-3b65-11f1-8039-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>Name</val>
+</name>
+<typeValue>
+<val>string</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="ca8abf0e-3b65-11f1-8100-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>HpBase</val>
+</name>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="ce225460-3b65-11f1-b65b-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>AttackBase</val>
+</name>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="d5c68cad-3b65-11f1-943d-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>DefenseBase</val>
+</name>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="d7b75453-3b65-11f1-b213-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>CritBase</val>
+</name>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="dab1f48c-3b65-11f1-9af1-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>LuckBase</val>
+</name>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="e3480333-3b65-11f1-b9e2-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>HpBonus</val>
+</name>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="e852e569-3b65-11f1-a480-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>AttackBonus</val>
+</name>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="eb060b75-3b65-11f1-ac01-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>DefenseBonus</val>
+</name>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="eda10c59-3b65-11f1-92fa-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>ClassIconName</val>
+</name>
+<typeValue>
+<val>string</val>
+</typeValue>
+</UML:Property>
+<UML:Property id="3d4df943-3b66-11f1-a7a4-31b1ae08bbe0">
+<datatype>
+<ref refid="74f4e24b-3586-11f1-98ee-a786c6f9088a"/>
+</datatype>
+<name>
+<val>NodeName</val>
+</name>
+<typeValue>
+<val>string</val>
+</typeValue>
+</UML:Property>
 </model>
 </gaphor>

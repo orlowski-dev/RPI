@@ -1,5 +1,11 @@
 # Dziennik zmian
 
+## 18.04.2026 Rozszerzenie klasy CharacterClass
+
+### Dlaczego
+
+Potrzebne były bazowe statystyki klas postaci.
+
 ## 12.04.2026 GameController to teraz GameManager
 
 ### Dlaczego

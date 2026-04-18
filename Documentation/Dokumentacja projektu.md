@@ -37,12 +37,11 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 
 ## Game.Core
 
-![Game.Core UML](./attachements/GameCoreUML.png)
-
+![Game.Node UML](./attachements/GameCore.svg)
 
 ## Game.Node
 
-![Game.Node UML](./attachements/GameNodeUML.png)
+![Game.Node UML](./attachements/GameNode.svg)
 
 ---
 
@@ -50,7 +49,7 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 
 ## Diagram mentalny
 
-![[Pasted image 20260411125250.png]]
+![Diagram mentalny](./attachements/diagram_mentalny.png)
 
 ## Ogólna idea architektury
 
@@ -68,7 +67,7 @@ Każda z tych warstw ma swoją konkretną odpowiedzialność, dzięki czemu kod 
 
 Rdzeń architektury.
 
-![[Pasted image 20260411125441.png]]
+![Przepływ danych](./attachements/przeplyw_danych.png)
 
 Dla przykładu kliknięci w przycisk w UI, obliczenie danych i wypisanie w UI
 
@@ -321,6 +320,56 @@ Dodaje punkty doświadczenia i zwiększa Level jeśli potrzeba.
 | Parametr | Typ | Opis                 |
 | -------- | --- | -------------------- |
 | amount   | int | Ilość Exp do dodania |
+
+---
+
+## CharacterClass
+
+Struktura przechowująca definicję klasy postaci wraz z bazowymi statystykami i bonusami przy awansie poziomu.
+
+```cs
+public readonly struct CharacterClass
+```
+
+### Opis
+
+CharacterClass jest niezmienialną strukturą przechowującymi statystyki bazowe dla danej klasy postaci. Zawiera informacje o:
+
+- bazowych wartościach statystyk,
+- bonusach przy level-up,
+- nazwie i ikonie klasy.
+
+### Właściwości
+
+| Właściwość    | Typ    | Dostęp | Opis                                     |
+| ------------- | ------ | ------ | ---------------------------------------- |
+| Name          | string | public | Nazwa klasy postaci                      |
+| HpBase        | int    | public | Bazowe punkty życia                      |
+| AttackBase    | int    | public | Bazowa siła ataku                        |
+| DefenseBase   | int    | public | Bazowa obrona                            |
+| CritBase      | int    | public | Bazowa szansa na trafienie krytyczne (%) |
+| LuckBase      | int    | public | Bazowe szczęście                         |
+| ClassIconName | string | public | Nazwa pliku ikony klasy                  |
+| HpBonus       | int    | public | Bonus do HP przy każdym level-up         |
+| AttackBonus   | int    | public | Bonus do ataku przy każdym level-up      |
+| DefenseBonus  | int    | public | Bonus do obrony przy każdym level-up     |
+| NodeName      | string | public | Nazwa sceny z postacią gracza            |
+
+### Konstruktor
+
+| Parametr      | Typ     | Opis                                                      |
+| ------------- | ------- | --------------------------------------------------------- |
+| name          | string  | Nazwa klasy postaci                                       |
+| hpBase        | int     | Bazowe punkty życia                                       |
+| attackBase    | int     | Bazowa siła ataku                                         |
+| defenseBase   | int     | Bazowa obrona                                             |
+| critBase      | int     | Bazowa szansa na trafienie krytyczne (%)                  |
+| luckBase      | int     | Bazowe szczęście                                          |
+| hpBonus       | int     | Bonus do HP przy każdym level-up                          |
+| attackBonus   | int     | Bonus do ataku przy każdym level-up                       |
+| defenseBonus  | int     | Bonus do obrony przy każdym level-up                      |
+| classIconName | string? | Nazwa pliku ikony klasy (domyślnie `null` → pusty string) |
+| NodeName      | string? | Nazwa sceny z postacią gracza                             |
 
 ---
 
@@ -1231,7 +1280,7 @@ Custom signals pozwalają:
 - łatwo komunikować się między scenami
 - tworzyć skalowalną architekturę
 
-### Rejestracja nowego sygnału
+## Rejestracja nowego sygnału
 
 Należy dodać **sygnał** do klasy `Signals`
 

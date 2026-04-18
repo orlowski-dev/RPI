@@ -13,6 +13,11 @@ public static class Shared
             critChance: 1,
             characterClass: new CharacterClass(
                 name: "Warrior",
+                hpBase: 140,
+                attackBase: 12,
+                defenseBase: 10,
+                critBase: 5,
+                luckBase: 2,
                 hpBonus: 20,
                 attackBonus: 3,
                 defenseBonus: 3

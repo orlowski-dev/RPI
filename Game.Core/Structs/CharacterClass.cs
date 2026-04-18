@@ -1,3 +1,6 @@
+/// <summary>
+/// Struktura przechowująca definicję klasy postaci wraz z bazowymi statystykami i bonusami przy awansie poziomu.
+/// </summary>
 public readonly struct CharacterClass
 {
     public string Name { get; init; }
@@ -8,6 +11,7 @@ public readonly struct CharacterClass
     public int LuckBase { get; init; }
 
     public string ClassIconName { get; init; }
+    public string NodeName { get; init; }
 
     // bonusy to o ile się zwiększają dane statyski przy levelUp
     public int HpBonus { get; init; }
@@ -24,7 +28,8 @@ public readonly struct CharacterClass
         int hpBonus,
         int attackBonus,
         int defenseBonus,
-        string? classIconName = null
+        string? classIconName = null,
+        string? nodeName = null
     )
     {
         Name = name;
@@ -37,5 +42,6 @@ public readonly struct CharacterClass
         AttackBonus = attackBonus;
         DefenseBonus = defenseBonus;
         ClassIconName = classIconName ?? string.Empty;
+        NodeName = nodeName ?? string.Empty;
     }
 }

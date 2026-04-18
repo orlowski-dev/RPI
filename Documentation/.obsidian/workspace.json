@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "157270bac38df16d",
@@ -185,6 +186,10 @@
   },
   "active": "2983cf32106dde66",
   "lastOpenFiles": [
+    "attachements/przeplyw_danych.png",
+    "attachements/diagram_mentalny.png",
+    "attachements/GameNode.svg",
+    "attachements/GameCore.svg",
     "attachements/GameNodeUML.png",
     "Dokumentacja projektu.md",
     "CHANGELOG.md",
@@ -194,13 +199,10 @@
     "attachements/Game_Node.jpeg",
     "attachements/Game_Core.jpeg",
     "attachements/Game_Core.svg",
-    "attachements/Game_Node.svg",
     "attachements",
     "Git Flow.md",
     "attachements/Pasted image 20260324091512.png.import",
-    "attachements/Pasted image 20260324091512.png",
     "attachements/Pasted image 20260324090110.png.import",
-    "attachements/Pasted image 20260324090110.png",
     "attachements/Pasted image 20260324081909.png.import",
     "uml.gaphor"
   ]

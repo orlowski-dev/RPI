@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dim80l4ydignp" path="res://Scenes/Levels/City/Portal.tscn" id="3_k1xp1"]
 [ext_resource type="PackedScene" uid="uid://vwfjruehu553" path="res://Scenes/Levels/Dungeon/Door.tscn" id="4_4kk56"]
 [ext_resource type="PackedScene" uid="uid://dod3pfsysib2j" path="res://Scenes/Characters/Players/Knight.tscn" id="5_3dxx8"]
-[ext_resource type="Script" uid="uid://cjso6pjfdb8nt" path="res://Scenes/Prototype/Levels/Camera2d.cs" id="6_jbmxv"]
 [ext_resource type="PackedScene" uid="uid://drsf62lnleovg" path="res://Scenes/Characters/Enemies/Goblin.tscn" id="7_d7ve6"]
-[ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/Prototype/HUD/HealthBarScene.tscn" id="8_tjg5i"]
+[ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/HUD/HealthBarScene.tscn" id="8_tjg5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g5l1u"]
 texture = ExtResource("1_v6eqs")
@@ -695,7 +694,6 @@ position = Vector2(411, 796)
 [node name="Camera2D" type="Camera2D" parent="Knight" unique_id=854374092]
 position = Vector2(68, 63)
 rotation_smoothing_enabled = true
-script = ExtResource("6_jbmxv")
 
 [node name="Portal" parent="." unique_id=748650788 instance=ExtResource("3_k1xp1")]
 position = Vector2(257, 750)

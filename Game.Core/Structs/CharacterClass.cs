@@ -12,6 +12,7 @@ public readonly struct CharacterClass
 
     public string ClassIconName { get; init; }
     public string NodeName { get; init; }
+    public string PreviewSpritePath { get; init; }
 
     // bonusy to o ile się zwiększają dane statyski przy levelUp
     public int HpBonus { get; init; }
@@ -29,7 +30,8 @@ public readonly struct CharacterClass
         int attackBonus,
         int defenseBonus,
         string? classIconName = null,
-        string? nodeName = null
+        string? nodeName = null,
+        string? previewSpritePath = null
     )
     {
         Name = name;
@@ -43,5 +45,6 @@ public readonly struct CharacterClass
         DefenseBonus = defenseBonus;
         ClassIconName = classIconName ?? string.Empty;
         NodeName = nodeName ?? string.Empty;
+        PreviewSpritePath = previewSpritePath ?? string.Empty;
     }
 }

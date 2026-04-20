@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://5mijpj2oub7h" path="res://Scripts/Prototype/HUD/CharacterCreatorHUD.cs" id="1_qp3wf"]
 [ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="2_df76t"]
 
-[node name="CharacterCreatorHud" type="Control" unique_id=330954309 node_paths=PackedStringArray("CharClassIcon", "CharacterName", "StartBtn")]
+[node name="CharacterCreatorHud" type="Control" unique_id=330954309 node_paths=PackedStringArray("StatsLabels", "ClassesBtns", "CharClassIcon", "CharacterName", "StartBtn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qp3wf")
+StatsLabels = {
+"attack": NodePath("characterStats/VBoxContainer/characterStatsContainer/attackLabel"),
+"charClassName": NodePath("characterStats/VBoxContainer/HBoxContainer/characterClassName_label"),
+"crit": NodePath("characterStats/VBoxContainer/characterStatsContainer/critLabel"),
+"defense": NodePath("characterStats/VBoxContainer/characterStatsContainer/defenseLabel"),
+"hp": NodePath("characterStats/VBoxContainer/characterStatsContainer/hpLabel"),
+"luck": NodePath("characterStats/VBoxContainer/characterStatsContainer/luckLabel")
+}
+ClassesBtns = {
+"archer": NodePath("charClassSel/VBoxContainer/archerBtn"),
+"mag": NodePath("charClassSel/VBoxContainer/magBtn"),
+"warrior": NodePath("charClassSel/VBoxContainer/warriorBtn")
+}
 CharClassIcon = NodePath("characterStats/VBoxContainer/HBoxContainer/classIcon")
 CharacterName = NodePath("charNameStart/VBoxContainer/characterName")
 StartBtn = NodePath("charNameStart/VBoxContainer/startBtn")

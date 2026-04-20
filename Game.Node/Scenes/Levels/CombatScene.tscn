@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cfhiyogqrff72"]
 
-[ext_resource type="PackedScene" uid="uid://bxlojd3s2ho15" path="res://Scenes/Prototype/HUD/CombatHUD.tscn" id="1_bro1e"]
+[ext_resource type="PackedScene" uid="uid://bxlojd3s2ho15" path="res://Scenes/HUD/CombatHUD.tscn" id="1_bro1e"]
 [ext_resource type="Script" uid="uid://ck7s8pr7vbwb0" path="res://Scripts/Controllers/CombatController.cs" id="1_qw1aw"]
 [ext_resource type="Texture2D" uid="uid://dh1eoxikk2ko8" path="res://Assets/Prototype/Assets/Prototype/Dungeon/Tile_22_R-256x128.png" id="3_sgo7d"]
 [ext_resource type="PackedScene" uid="uid://3fddxfoi4686" path="res://Scenes/Characters/Enemies/Orc.tscn" id="4_b2apx"]

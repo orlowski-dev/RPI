@@ -37,11 +37,15 @@ Gracz eksploruje losowo generowane lochy, walczy z przeciwnikami w systemie turo
 
 ## Game.Core
 
-![Game.Node UML](./attachements/GameCore.svg)
+![](attachements/Game_Core.svg)
 
 ## Game.Node
 
-![Game.Node UML](./attachements/GameNode.svg)
+![](attachements/Game_Node.svg)
+
+### Diagram sekwencji akcji atak
+
+![](attachements/DS_Combat.svg)
 
 ---
 

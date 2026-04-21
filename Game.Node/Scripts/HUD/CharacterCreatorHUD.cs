@@ -3,7 +3,9 @@ using Godot.Collections;
 
 public partial class CharacterCreatorHUD : Node
 {
-    private CharacterCreatorSignals Signals => CharacterCreatorSignals.Instance;
+    private CharacterCreatorSignals CreatorSignals => CharacterCreatorSignals.Instance;
+    private Signals GlobalSignals => Signals.Instance;
+    private Logger Logger => Logger.Instance;
     private CharacterCreatorData _data;
     private CharacterClass _selectedClassStats;
 
@@ -42,7 +44,7 @@ public partial class CharacterCreatorHUD : Node
 
     public override void _Ready()
     {
-        Signals.DataSender += HandleDataSender;
+        CreatorSignals.DataSender += HandleDataSender;
 
         foreach (var (className, btn) in ClassesBtns)
         {
@@ -54,7 +56,7 @@ public partial class CharacterCreatorHUD : Node
 
     public override void _ExitTree()
     {
-        Signals.DataSender -= HandleDataSender;
+        CreatorSignals.DataSender -= HandleDataSender;
     }
 
     private void UpdateUI()
@@ -80,7 +82,7 @@ public partial class CharacterCreatorHUD : Node
 
     private void OnClassBtnPressed(string className)
     {
-        Signals.EmitSetSelectedClassName(className);
+        CreatorSignals.EmitSetSelectedClassName(className);
     }
 
     private void OnStartBtnPressed()
@@ -90,6 +92,21 @@ public partial class CharacterCreatorHUD : Node
         if (name.Length < 3)
             return;
 
+        var player = new PlayerCharacter(
+            name: name,
+            maxHp: _selectedClassStats.HpBase,
+            defense: _selectedClassStats.DefenseBase,
+            attack: _selectedClassStats.AttackBase,
+            luck: _selectedClassStats.LuckBase,
+            critChance: _selectedClassStats.CritBase,
+            characterClass: _selectedClassStats,
+            signals: GlobalSignals,
+            logger: Logger
+        );
+
         // start new game
+        GlobalSignals.EmitGameStateChanged(
+            new GameManagerData(gameState: GameState.City, playerCharacter: player)
+        );
     }
 }

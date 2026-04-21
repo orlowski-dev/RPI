@@ -18,11 +18,12 @@ public class CharacterClassesDB
                     hpBonus: 20,
                     attackBonus: 3,
                     defenseBonus: 3,
-                    classIconName: "warrior-icon.png"
+                    classIconName: "warrior-icon.png",
+                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/warrior.jpeg"
                 )
             },
             {
-                "mag",
+                "mage",
                 new(
                     name: "Mag",
                     hpBase: 80,
@@ -33,7 +34,8 @@ public class CharacterClassesDB
                     hpBonus: 12,
                     attackBonus: 5,
                     defenseBonus: 1,
-                    classIconName: "mag-icon.png"
+                    classIconName: "mag-icon.png",
+                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/mage.jpeg"
                 )
             },
             {
@@ -48,7 +50,8 @@ public class CharacterClassesDB
                     hpBonus: 15,
                     attackBonus: 4,
                     defenseBonus: 2,
-                    classIconName: "warrior-icon.png"
+                    classIconName: "warrior-icon.png",
+                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/archer.jpeg"
                 )
             },
         };

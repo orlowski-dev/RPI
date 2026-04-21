@@ -24,12 +24,15 @@ public partial class CharacterCreatorHUD : Node
         new()
         {
             { "warrior", null },
-            { "mag", null },
+            { "mage", null },
             { "archer", null },
         };
 
     [Export]
     TextureRect CharClassIcon { get; set; }
+
+    [Export]
+    TextureRect PreviewTR { get; set; }
 
     [Export]
     TextEdit CharacterName { get; set; }
@@ -65,6 +68,7 @@ public partial class CharacterCreatorHUD : Node
         CharClassIcon.Texture = GD.Load<Texture2D>(
             "res://Assets/Icons/" + _selectedClassStats.ClassIconName
         );
+        PreviewTR.Texture = GD.Load<Texture2D>(_selectedClassStats.PreviewSpritePath);
     }
 
     private void HandleDataSender(CharacterCreatorData data)

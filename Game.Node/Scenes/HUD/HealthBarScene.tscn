@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bktryykinj2jq"]
 
-[ext_resource type="Script" uid="uid://cxgf2rmqkfke8" path="res://Scripts/Prototype/HUD/CombatHUD.cs" id="1_cli0n"]
+[ext_resource type="Script" uid="uid://cxgf2rmqkfke8" path="res://Scripts/HUD/CombatHUD.cs" id="1_cli0n"]
 [ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="2_m22qo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cli0n"]

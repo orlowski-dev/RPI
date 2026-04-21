@@ -14,6 +14,7 @@ public partial class GameService
         {
             { "testWorld", "res://Scenes/Testing/TestWorld.tscn" },
             { "characterCreator", "res://Scenes/Levels/CharacterCreator.tscn" },
+            { "cityScene", "res://Scenes/Levels/City/CityScene.tscn" },
         };
         _logger = logger;
         _scriptName = this.GetType().Name;
@@ -26,14 +27,14 @@ public partial class GameService
     {
         switch (data.GameState)
         {
-            case GameState.TestingPlayerMovement:
+            case GameState.City:
                 if (data.PlayerCharacter == null)
                 {
                     _logger?.Write(LogLevel.Error, _scriptName, "PlayerCharacter jest null!");
                     throw new Exception("PlayerCharacter jest null!");
                 }
                 PlayerCharacter = data.PlayerCharacter;
-                return _scenesMap["testWorld"];
+                return _scenesMap["cityScene"];
             case GameState.CharacterCreator:
                 return _scenesMap["characterCreator"];
             default:

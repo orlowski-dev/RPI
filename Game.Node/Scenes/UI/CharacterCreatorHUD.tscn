@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d158tjma1rqpf"]
 
-[ext_resource type="Script" uid="uid://5mijpj2oub7h" path="res://Scripts/Prototype/HUD/CharacterCreatorHUD.cs" id="1_qp3wf"]
+[ext_resource type="Script" uid="uid://5mijpj2oub7h" path="res://Scripts/HUD/CharacterCreatorHUD.cs" id="1_qp3wf"]
 [ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="2_df76t"]
 
 [node name="CharacterCreatorHud" type="Control" unique_id=330954309 node_paths=PackedStringArray("CharClassIcon", "CharacterName", "StartBtn")]

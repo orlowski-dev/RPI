@@ -4,8 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dgellg0osrp76" path="res://Scenes/Levels/City/Sphinx.tscn" id="2_baj77"]
 [ext_resource type="PackedScene" uid="uid://dim80l4ydignp" path="res://Scenes/Levels/City/Portal.tscn" id="3_ko8th"]
 [ext_resource type="PackedScene" uid="uid://jc178g3w6yb7" path="res://Scenes/Levels/City/Seller.tscn" id="4_w8hkx"]
-[ext_resource type="PackedScene" uid="uid://dod3pfsysib2j" path="res://Scenes/Characters/Players/Knight.tscn" id="5_ak3mn"]
-[ext_resource type="Script" path="res://Scenes/Prototype/Levels/Camera2d.cs" id="6_hdx88"]
 [ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/HUD/HealthBarScene.tscn" id="7_2cbcx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp0wc"]
@@ -688,11 +686,3 @@ position = Vector2(257, 750)
 
 [node name="Seller" parent="." unique_id=722451097 instance=ExtResource("4_w8hkx")]
 position = Vector2(1193, 568)
-
-[node name="Knight" parent="Seller" unique_id=802040328 instance=ExtResource("5_ak3mn")]
-position = Vector2(-1019, -394)
-
-[node name="Camera2D" type="Camera2D" parent="Seller/Knight" unique_id=854374092]
-position = Vector2(68, 63)
-rotation_smoothing_enabled = true
-script = ExtResource("6_hdx88")

@@ -684,11 +684,11 @@ tile_set = SubResource("TileSet_3uu40")
 [node name="Sphinx" parent="." unique_id=1966618041 instance=ExtResource("2_baj77")]
 position = Vector2(510, 246)
 
-[node name="Portal" parent="." unique_id=748650788 instance=ExtResource("3_ko8th")]
-position = Vector2(257, 750)
-
 [node name="Seller" parent="." unique_id=722451097 instance=ExtResource("4_w8hkx")]
 position = Vector2(1193, 568)
 
 [node name="PlayerSpawnPoint" parent="." unique_id=1843400963 instance=ExtResource("6_ksyn7")]
 position = Vector2(189, 199)
+
+[node name="DungeonPortal" parent="." unique_id=1445083229 instance=ExtResource("3_ko8th")]
+position = Vector2(252, 713)

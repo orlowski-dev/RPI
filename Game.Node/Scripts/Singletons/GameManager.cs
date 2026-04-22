@@ -28,6 +28,7 @@ public partial class GameManager : BaseSingleton<GameManager>
     private void OnGameStateChanged(GameManagerData data)
     {
         var scenePath = _service.GetScenePath(data);
-        GetTree().ChangeSceneToFile(scenePath);
+        // GetTree().ChangeSceneToFile(scenePath);
+        GetTree().CallDeferred("change_scene_to_file", scenePath); // bo jak wywyływany w trakcie wywołania zwrotnego
     }
 }

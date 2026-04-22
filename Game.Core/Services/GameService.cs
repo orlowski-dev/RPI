@@ -15,6 +15,7 @@ public partial class GameService
             { "testWorld", "res://Scenes/Testing/TestWorld.tscn" },
             { "characterCreator", "res://Scenes/Levels/CharacterCreator.tscn" },
             { "cityScene", "res://Scenes/Levels/City/CityScene.tscn" },
+            { "dungeonScene", "res://Scenes/Levels/Dungeon/DungeonScene.tscn" },
         };
         _logger = logger;
         _scriptName = this.GetType().Name;
@@ -37,6 +38,8 @@ public partial class GameService
                 return _scenesMap["cityScene"];
             case GameState.CharacterCreator:
                 return _scenesMap["characterCreator"];
+            case GameState.Dungeon:
+                return _scenesMap["dungeonScene"];
             default:
                 _logger?.Write(LogLevel.Error, _scriptName, "Nieobsługiwany GameState!");
                 throw new Exception("Nieobsługiwany GameState!");

@@ -1,3 +1,5 @@
+using Godot;
+
 public partial class GameManager : BaseSingleton<GameManager>
 {
     private GameService _service;
@@ -30,5 +32,20 @@ public partial class GameManager : BaseSingleton<GameManager>
         var scenePath = _service.GetScenePath(data);
         // GetTree().ChangeSceneToFile(scenePath);
         GetTree().CallDeferred("change_scene_to_file", scenePath); // bo jak wywyływany w trakcie wywołania zwrotnego
+    }
+
+    public Node2D GetPlayerNode(string path, Vector2 position)
+    {
+        var playerScene = GD.Load<PackedScene>(path);
+        var playerNode = playerScene.Instantiate() as Node2D;
+        playerNode.Position = new Vector2(position.X, position.Y);
+        playerNode.Name = "Player";
+        return playerNode;
+    }
+
+    public Node2D GetPlayerCameraNode()
+    {
+        var playerCameraScene = GD.Load<PackedScene>("res://Scenes/Player/PlayerRunCamera.tscn");
+        return playerCameraScene.Instantiate() as Node2D;
     }
 }

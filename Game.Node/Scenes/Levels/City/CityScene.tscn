@@ -1,9 +1,11 @@
 [gd_scene format=4 uid="uid://ddsikdcpcg0xk"]
 
+[ext_resource type="Script" uid="uid://blkh881agqtfw" path="res://Scripts/Controllers/CityController.cs" id="1_2cbcx"]
 [ext_resource type="Texture2D" uid="uid://ci2svbmue20tk" path="res://Assets/Prototype/Assets/TileMaps/dungeon.png" id="1_yoe87"]
 [ext_resource type="PackedScene" uid="uid://dgellg0osrp76" path="res://Scenes/Levels/City/Sphinx.tscn" id="2_baj77"]
 [ext_resource type="PackedScene" uid="uid://dim80l4ydignp" path="res://Scenes/Levels/City/Portal.tscn" id="3_ko8th"]
 [ext_resource type="PackedScene" uid="uid://jc178g3w6yb7" path="res://Scenes/Levels/City/Seller.tscn" id="4_w8hkx"]
+[ext_resource type="PackedScene" uid="uid://u1jexebxttx4" path="res://Scenes/Levels/SpawnPoint.tscn" id="6_ksyn7"]
 [ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/HUD/HealthBarScene.tscn" id="7_2cbcx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp0wc"]
@@ -664,6 +666,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_wp0wc")
 
 [node name="City" type="Node2D" unique_id=427174994]
+script = ExtResource("1_2cbcx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=189395416]
 
@@ -686,3 +689,6 @@ position = Vector2(257, 750)
 
 [node name="Seller" parent="." unique_id=722451097 instance=ExtResource("4_w8hkx")]
 position = Vector2(1193, 568)
+
+[node name="PlayerSpawnPoint" parent="." unique_id=1843400963 instance=ExtResource("6_ksyn7")]
+position = Vector2(189, 199)

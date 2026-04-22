@@ -19,7 +19,8 @@ public class CharacterClassesDB
                     attackBonus: 3,
                     defenseBonus: 3,
                     classIconName: "warrior-icon.png",
-                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/warrior.jpeg"
+                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/warrior.jpeg",
+                    nodeName: "res://Scenes/Characters/Players/Knight.tscn"
                 )
             },
             {
@@ -35,7 +36,8 @@ public class CharacterClassesDB
                     attackBonus: 5,
                     defenseBonus: 1,
                     classIconName: "mag-icon.png",
-                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/mage.jpeg"
+                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/mage.jpeg",
+                    nodeName: "res://Scenes/Characters/Players/Mage.tscn"
                 )
             },
             {
@@ -51,7 +53,8 @@ public class CharacterClassesDB
                     attackBonus: 4,
                     defenseBonus: 2,
                     classIconName: "warrior-icon.png",
-                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/archer.jpeg"
+                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/archer.jpeg",
+                    nodeName: "res://Scenes/Characters/Players/Archer.tscn"
                 )
             },
         };

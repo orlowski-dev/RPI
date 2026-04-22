@@ -20,7 +20,7 @@ public partial class CombatController : Node
         _combatSignals.AttackAction += OnAttackAction;
         _combatSignals.DefenseAction += OnDefenseAction;
 
-        var pch = _gm.GetPlayerCharacter();
+        var pch = _gm.PlayerCharacter;
         _service = new CombatService(
             playerCharacter: pch,
             enemy: new(

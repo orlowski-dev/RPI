@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bktryykinj2jq"]
 
+[ext_resource type="Script" uid="uid://dnci7yktqv6kw" path="res://Scripts/HUD/CityHUD.cs" id="1_geqd3"]
 [ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="2_m22qo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cli0n"]
@@ -42,6 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_geqd3")
 
 [node name="Panel2" type="Panel" parent="." unique_id=1138302338]
 custom_minimum_size = Vector2(0, 150)

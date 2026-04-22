@@ -23,10 +23,7 @@ public partial class GameManager : BaseSingleton<GameManager>
     /// <summary>
     /// Zwraca wartość zmiennej PlayerCharacter z _service.
     /// </summary>
-    public PlayerCharacter GetPlayerCharacter()
-    {
-        return _service.PlayerCharacter;
-    }
+    public PlayerCharacter PlayerCharacter => _service.PlayerCharacter;
 
     private void OnGameStateChanged(GameManagerData data)
     {

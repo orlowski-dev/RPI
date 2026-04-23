@@ -23,7 +23,7 @@ CombatSignals="*uid://d2jfmo1aymyyu"
 GlobalLogger="*uid://b552tpr7h80t"
 GameManager="*uid://c1j7a0rwre15j"
 CharacterCreatorSignals="*uid://bcreenfc8pcbs"
-CitySignals="*uid://bw5xj8bftkjga"
+LevelSignals="*uid://bw5xj8bftkjga"
 
 [display]
 

@@ -1,8 +1,8 @@
 using Godot;
 
-public partial class CityHUD : Node
+public partial class RunHUD : Node
 {
-    private CitySignals CitySignals => CitySignals.Instance;
+    private LevelSignals LevelSignals => LevelSignals.Instance;
 
     [Export]
     ProgressBar PlayerHpPB { get; set; }
@@ -24,12 +24,12 @@ public partial class CityHUD : Node
 
     public override void _Ready()
     {
-        CitySignals.DataSender += OnDataSenderEvent;
+        LevelSignals.DataSender += OnDataSenderEvent;
     }
 
     public override void _ExitTree()
     {
-        CitySignals.DataSender -= OnDataSenderEvent;
+        LevelSignals.DataSender -= OnDataSenderEvent;
     }
 
     private void UpdateUI(CityHudData data)

@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://ddp5ta4toek16"]
 
+[ext_resource type="Script" uid="uid://blkh881agqtfw" path="res://Scripts/Controllers/LevelController.cs" id="1_d7ve6"]
 [ext_resource type="Texture2D" uid="uid://cf0qx6uaje02f" path="res://Assets/Prototype/Assets/TileMaps/Dungeon.png" id="1_v6eqs"]
 [ext_resource type="Texture2D" uid="uid://dh1eoxikk2ko8" path="res://Assets/Prototype/Assets/Prototype/Dungeon/Tile_22_R-256x128.png" id="2_g5l1u"]
 [ext_resource type="PackedScene" uid="uid://dim80l4ydignp" path="res://Scenes/Levels/City/Portal.tscn" id="3_k1xp1"]
 [ext_resource type="PackedScene" uid="uid://u1jexebxttx4" path="res://Scenes/Levels/SpawnPoint.tscn" id="6_4kk56"]
 [ext_resource type="PackedScene" uid="uid://drsf62lnleovg" path="res://Scenes/Characters/Enemies/Goblin.tscn" id="7_d7ve6"]
-[ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/HUD/HealthBarScene.tscn" id="8_tjg5i"]
+[ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/HUD/RunHUD.tscn" id="8_tjg5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g5l1u"]
 texture = ExtResource("1_v6eqs")
@@ -676,6 +677,7 @@ sources/1 = SubResource("TileSetAtlasSource_g5l1u")
 sources/2 = SubResource("TileSetAtlasSource_4kk56")
 
 [node name="Dungeon" type="Node2D" unique_id=427174994]
+script = ExtResource("1_d7ve6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1683093842]
 

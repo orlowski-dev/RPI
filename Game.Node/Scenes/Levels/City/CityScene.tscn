@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://ddsikdcpcg0xk"]
 
-[ext_resource type="Script" uid="uid://blkh881agqtfw" path="res://Scripts/Controllers/CityController.cs" id="1_2cbcx"]
+[ext_resource type="Script" uid="uid://blkh881agqtfw" path="res://Scripts/Controllers/LevelController.cs" id="1_2cbcx"]
 [ext_resource type="Texture2D" uid="uid://ci2svbmue20tk" path="res://Assets/Prototype/Assets/TileMaps/dungeon.png" id="1_yoe87"]
 [ext_resource type="PackedScene" uid="uid://dgellg0osrp76" path="res://Scenes/Levels/City/Sphinx.tscn" id="2_baj77"]
 [ext_resource type="PackedScene" uid="uid://dim80l4ydignp" path="res://Scenes/Levels/City/Portal.tscn" id="3_ko8th"]
 [ext_resource type="PackedScene" uid="uid://jc178g3w6yb7" path="res://Scenes/Levels/City/Seller.tscn" id="4_w8hkx"]
 [ext_resource type="PackedScene" uid="uid://u1jexebxttx4" path="res://Scenes/Levels/SpawnPoint.tscn" id="6_ksyn7"]
-[ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/HUD/HealthBarScene.tscn" id="7_2cbcx"]
+[ext_resource type="PackedScene" uid="uid://bktryykinj2jq" path="res://Scenes/HUD/RunHUD.tscn" id="7_2cbcx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp0wc"]
 texture = ExtResource("1_yoe87")

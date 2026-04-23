@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bktryykinj2jq"]
 
-[ext_resource type="Script" uid="uid://dnci7yktqv6kw" path="res://Scripts/HUD/CityHUD.cs" id="1_geqd3"]
+[ext_resource type="Script" uid="uid://dnci7yktqv6kw" path="res://Scripts/HUD/RunHUD.cs" id="1_geqd3"]
 [ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="2_m22qo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cli0n"]
@@ -36,7 +36,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0.78039217, 0.62352943, 0.24313726, 1)
 
-[node name="LowerPanel" type="Control" unique_id=2047079096 node_paths=PackedStringArray("PlayerHpPB", "PlayerHpL", "PlayerExpPB", "PlayerExpL", "PlayerNameL", "PlayerLevelL")]
+[node name="RunHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("PlayerHpPB", "PlayerHpL", "PlayerExpPB", "PlayerExpL", "PlayerNameL", "PlayerLevelL")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

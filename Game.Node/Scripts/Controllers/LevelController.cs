@@ -1,18 +1,16 @@
 using Godot;
 
-public partial class CityController : Node
+public partial class LevelController : Node
 {
     private GameManager GameManager => GameManager.Instance;
-    private CitySignals CitySignals => CitySignals.Instance;
+    private LevelSignals LevelSignals => LevelSignals.Instance;
     private Signals GlobalSignals => Signals.Instance;
     private Node2D _playerSpawnPoint;
-    private StaticBody2D _dungeonPortal;
     private bool _changingScene = false; // flaga do zapobiegania wielokrotnej zmiany sceny na AreaEntered
 
     public override void _Ready()
     {
         _playerSpawnPoint = GetNode<Node2D>("PlayerSpawnPoint");
-        _dungeonPortal = GetNode<StaticBody2D>("DungeonPortal");
 
         var playerNode = GameManager.GetPlayerNode(
             GameManager.PlayerCharacter.CharacterClass.NodeName,
@@ -27,7 +25,7 @@ public partial class CityController : Node
         var playerCameraNode = GameManager.GetPlayerCameraNode();
         AddChild(playerCameraNode);
 
-        CitySignals.EmitDataSender(new CityHudData(GameManager.PlayerCharacter));
+        LevelSignals.EmitDataSender(new CityHudData(GameManager.PlayerCharacter));
     }
 
     private void _OnArea2dEntered(Area2D area)

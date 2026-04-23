@@ -25,7 +25,11 @@ public partial class CombatData : GodotObject
     // public EnemyCharacter[] Enemies { get; init; }
     public EnemyCharacter Enemy { get; init; }
 
-    public CombatData(CombatState state, PlayerCharacter playerCharacter, EnemyCharacter enemy)
+    public CombatData(
+        CombatState state,
+        PlayerCharacter playerCharacter = null,
+        EnemyCharacter enemy = null
+    )
     {
         State = state;
         PlayerCharacter = playerCharacter;

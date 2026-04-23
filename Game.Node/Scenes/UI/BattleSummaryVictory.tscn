@@ -17,9 +17,12 @@ bg_color = Color(0.38039216, 0.3529412, 0.32156864, 1)
 bg_color = Color(0.81718373, 0.7600781, 0.6967363, 1)
 border_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
 
-[node name="BatlleSummaryVictory" type="CanvasLayer" unique_id=1893629249]
+[node name="BatlleSummaryVictory" type="Control" unique_id=1831301503]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1719022209]
+layout_mode = 0
 offset_right = 653.0
 offset_bottom = 647.0
 size_flags_horizontal = 4
@@ -108,6 +111,7 @@ theme_override_fonts/font = ExtResource("1_baaeu")
 text = "loot"
 
 [node name="Button" type="Button" parent="." unique_id=1276427942]
+layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.123
 anchor_bottom = 0.093

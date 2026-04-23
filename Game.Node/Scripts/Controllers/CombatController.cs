@@ -6,42 +6,33 @@ using Godot;
 public partial class CombatController : Node
 {
     private CombatService _service;
-    private Signals _signals => Signals.Instance;
-    private CombatSignals _combatSignals => CombatSignals.Instance;
-    private GameManager _gm => GameManager.Instance;
-    private Logger _logger => Logger.Instance;
+    private Signals Signals => Signals.Instance;
+    private CombatSignals CombatSignals => CombatSignals.Instance;
+    private GameManager GameManager => GameManager.Instance;
+    private Logger Logger => Logger.Instance;
     private string _scriptName;
 
     public override void _Ready()
     {
         _scriptName = "(Prototype)" + this.GetType().Name;
 
-        _combatSignals.SkipTurn += OnSkipTurnAction;
-        _combatSignals.AttackAction += OnAttackAction;
-        _combatSignals.DefenseAction += OnDefenseAction;
+        CombatSignals.SkipTurn += OnSkipTurnAction;
+        CombatSignals.AttackAction += OnAttackAction;
+        CombatSignals.DefenseAction += OnDefenseAction;
 
-        var pch = _gm.PlayerCharacter;
         _service = new CombatService(
-            playerCharacter: pch,
-            enemy: new(
-                name: "Wróg publiczny",
-                maxHp: 300,
-                attack: 30,
-                defense: 10,
-                critChance: 1,
-                level: pch.Level,
-                enemyType: EnemyType.Normal
-            )
+            playerCharacter: GameManager.PlayerCharacter,
+            enemy: GameManager.EnemyCharacter
         );
 
-        _combatSignals.EmitDataSender(GetData());
+        CombatSignals.EmitDataSender(GetData());
     }
 
     public override void _ExitTree()
     {
-        _combatSignals.SkipTurn -= OnSkipTurnAction;
-        _combatSignals.AttackAction -= OnAttackAction;
-        _combatSignals.DefenseAction -= OnDefenseAction;
+        CombatSignals.SkipTurn -= OnSkipTurnAction;
+        CombatSignals.AttackAction -= OnAttackAction;
+        CombatSignals.DefenseAction -= OnDefenseAction;
     }
 
     /// <summary>
@@ -50,7 +41,7 @@ public partial class CombatController : Node
     private void OnTurnEnded()
     {
         _service.ChangeTurn();
-        _combatSignals.EmitDataSender(GetData());
+        CombatSignals.EmitDataSender(GetData());
     }
 
     /// <summary>
@@ -70,7 +61,7 @@ public partial class CombatController : Node
     /// </summary>
     private void SendData()
     {
-        _combatSignals.EmitDataSender(GetData());
+        CombatSignals.EmitDataSender(GetData());
     }
 
     /// <summary>
@@ -79,7 +70,7 @@ public partial class CombatController : Node
     private void OnAttackAction()
     {
         var damageTaken = _service.Attack(_service.PlayerCharacter, _service.Enemy);
-        _logger.Write(
+        Logger.Write(
             LogLevel.Info,
             _scriptName,
             $"Gracz zadaje {damageTaken} obrażeń przeciwnikowi."
@@ -87,7 +78,7 @@ public partial class CombatController : Node
 
         if (CheckIfCombatEnded())
         {
-            _combatSignals.EmitDataSender(GetData());
+            CombatSignals.EmitDataSender(GetData());
             return;
         }
 
@@ -102,7 +93,7 @@ public partial class CombatController : Node
     {
         await ToSignal(GetTree().CreateTimer(1), "timeout");
         var damageTaken = _service.Attack(_service.Enemy, _service.PlayerCharacter, defenseAction);
-        _logger.Write(
+        Logger.Write(
             LogLevel.Info,
             _scriptName,
             $"Przeciwnik zadaje {damageTaken} obrażeń graczowi."
@@ -110,7 +101,7 @@ public partial class CombatController : Node
 
         if (CheckIfCombatEnded())
         {
-            _combatSignals.EmitDataSender(GetData());
+            CombatSignals.EmitDataSender(GetData());
             return;
         }
 
@@ -125,6 +116,18 @@ public partial class CombatController : Node
         if (_service.CombatEnded)
         {
             // emit (_service.CombatState)
+
+            if (_service.State == CombatState.PlayerWon)
+            {
+                _service.PlayerCharacter.AddExp(25);
+                Signals.EmitGameStateChanged(new GameManagerData(GameState.Dungeon));
+            }
+            else
+            {
+                _service.PlayerCharacter.Heal(9999);
+                Signals.EmitGameStateChanged(new GameManagerData(GameState.City));
+            }
+
             return true;
         }
         // wyświetl UI - UIController

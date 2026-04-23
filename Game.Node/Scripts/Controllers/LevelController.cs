@@ -50,7 +50,13 @@ public partial class LevelController : Node
 
 		if (collideWith.IsInGroup("Enemy"))
 		{
-			GD.Print("COllide with enemy!");
+			_changingScene = true;
+			GlobalSignals.EmitGameStateChanged(
+				new GameManagerData(
+					GameState.Combat,
+					enemyCharacter: (collideWith as EnemyNode).Stats
+				)
+			);
 		}
 	}
 }

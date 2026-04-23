@@ -27,6 +27,8 @@ public partial class GameManager : BaseSingleton<GameManager>
     /// </summary>
     public PlayerCharacter PlayerCharacter => _service.PlayerCharacter;
 
+    public EnemyCharacter EnemyCharacter => _service.EnemyCharacter;
+
     private void OnGameStateChanged(GameManagerData data)
     {
         var scenePath = _service.GetScenePath(data);

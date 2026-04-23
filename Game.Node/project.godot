@@ -34,6 +34,10 @@ window/size/viewport_height=1024
 
 project/assembly_name="RPI"
 
+[global_group]
+
+Enemy=""
+
 [input]
 
 moveLeft={

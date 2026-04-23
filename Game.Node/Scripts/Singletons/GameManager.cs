@@ -48,4 +48,29 @@ public partial class GameManager : BaseSingleton<GameManager>
         var playerCameraScene = GD.Load<PackedScene>("res://Scenes/Player/PlayerRunCamera.tscn");
         return playerCameraScene.Instantiate() as Node2D;
     }
+
+    public EnemyNode GetEnemy(Vector2 position)
+    {
+        // TODO: Przerobić potem
+        var enemyScene = GD.Load<PackedScene>("res://Scenes/Characters/Enemies/Goblin.tscn");
+        var enemyInstance = enemyScene.Instantiate<EnemyNode>();
+        enemyInstance.Init(
+            new(
+                name: "Goblin",
+                maxHp: 30,
+                attack: 10,
+                defense: 10,
+                critChance: 1,
+                level: _service.PlayerCharacter.Level + 1,
+                enemyType: EnemyType.Normal
+            )
+        );
+
+        enemyInstance.Position = position;
+
+        enemyInstance.GetNode<Label>("EnemyNameLabel").Text =
+            $"{enemyInstance.Stats.Name} lvl: {enemyInstance.Stats.Level}";
+
+        return enemyInstance;
+    }
 }

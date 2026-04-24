@@ -15,7 +15,7 @@ public class CharacterClassesDB
                     defenseBase: 10,
                     critBase: 5,
                     luckBase: 2,
-                    hpBonus: 20,
+                    MaxhpBonus: 20, // Zmienione na MaxHpBonus z HpBonus
                     attackBonus: 3,
                     defenseBonus: 3,
                     classIconName: "warrior-icon.png",
@@ -32,7 +32,7 @@ public class CharacterClassesDB
                     defenseBase: 4,
                     critBase: 10,
                     luckBase: 4,
-                    hpBonus: 12,
+                    MaxhpBonus: 12, // Zmienione na MaxHpBonus z HpBonus
                     attackBonus: 5,
                     defenseBonus: 1,
                     classIconName: "mag-icon.png",
@@ -49,7 +49,7 @@ public class CharacterClassesDB
                     defenseBase: 6,
                     critBase: 15,
                     luckBase: 6,
-                    hpBonus: 15,
+                    MaxhpBonus: 15, // Zmienione na MaxHpBonus z HpBonus
                     attackBonus: 4,
                     defenseBonus: 2,
                     classIconName: "warrior-icon.png",

@@ -33,7 +33,8 @@ public static class Shared
             defense: 30,
             critChance: 1,
             level: 3,
-            enemyType: EnemyType.Normal
+            enemyType: EnemyType.Normal,
+            reward: new(10, 10)
         );
     }
 }

@@ -66,7 +66,8 @@ public partial class GameManager : BaseSingleton<GameManager>
                 level: _service.PlayerCharacter.Level + 1,
                 enemyType: EnemyType.Normal,
                 logger: _logger,
-                signals: _signals
+                signals: _signals,
+                reward: new(10, 10)
             )
         );
 

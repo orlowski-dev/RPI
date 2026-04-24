@@ -77,7 +77,8 @@ public class CombatServiceTest
             defense: 1,
             critChance: 1,
             level: 3,
-            enemyType: EnemyType.Normal
+            enemyType: EnemyType.Normal,
+            reward: new(10, 10)
         );
 
         var service = new CombatService(player, enemy);

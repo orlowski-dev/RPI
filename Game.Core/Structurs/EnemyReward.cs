@@ -1,5 +1,3 @@
-namespace Game.Core.Structs;
-
 /// <summary>
 /// Nagroda za pokonanie przeciwnika.
 /// Trzyma tylko dane, bez żadnej logiki.

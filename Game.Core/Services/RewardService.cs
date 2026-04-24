@@ -1,5 +1,3 @@
-namespace Game.Core.Services;
-
 /// <summary>
 /// Serwis odpowiedzialny za przyznawanie nagród po walce.
 /// W Obecnie tylko Gold w przyszłości itemy też

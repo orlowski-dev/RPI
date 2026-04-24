@@ -6,6 +6,7 @@ using Godot;
 public partial class CombatController : Node
 {
     private CombatService _service;
+    private RewardService _rewardService;
     private Signals Signals => Signals.Instance;
     private CombatSignals CombatSignals => CombatSignals.Instance;
     private GameManager GameManager => GameManager.Instance;
@@ -15,6 +16,7 @@ public partial class CombatController : Node
     public override void _Ready()
     {
         _scriptName = "(Prototype)" + this.GetType().Name;
+        _rewardService = new RewardService();
 
         CombatSignals.SkipTurn += OnSkipTurnAction;
         CombatSignals.AttackAction += OnAttackAction;
@@ -22,7 +24,8 @@ public partial class CombatController : Node
 
         _service = new CombatService(
             playerCharacter: GameManager.PlayerCharacter,
-            enemy: GameManager.EnemyCharacter
+            enemy: GameManager.EnemyCharacter,
+            rewardService: _rewardService
         );
 
         CombatSignals.EmitDataSender(GetData());

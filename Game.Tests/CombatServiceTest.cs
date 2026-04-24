@@ -4,7 +4,12 @@ public class CombatServiceTest
     {
         var player = Shared.GetNewPlayer();
         var enemy = Shared.GetNewEnemyCharacter();
-        var service = new CombatService(playerCharacter: player, enemy: enemy);
+        var rewardService = new RewardService();
+        var service = new CombatService(
+            playerCharacter: player,
+            enemy: enemy,
+            rewardService: rewardService
+        );
         return (player, enemy, service);
     }
 
@@ -81,7 +86,8 @@ public class CombatServiceTest
             reward: new(10, 10)
         );
 
-        var service = new CombatService(player, enemy);
+        var rewardService = new RewardService();
+        var service = new CombatService(player, enemy, rewardService: rewardService);
 
         var initPlayerHp = player.HP;
         var damage = service.Attack(enemy, player); // -4

@@ -9,6 +9,7 @@ public partial class PlayerCharacter : BaseCharacter
     public int Exp { get; private set; }
     public int ExpNextLvl { get; private set; }
     public int Luck { get; private set; }
+    public int Gold { get; private set; } // Ilość złota gracza
     public CharacterClass CharacterClass { get; private set; }
 
     // TODO: dodać później umiejętności etc tutaj
@@ -30,6 +31,7 @@ public partial class PlayerCharacter : BaseCharacter
         Exp = 0;
         ExpNextLvl = CalculateExpToNextLevel();
         Luck = luck;
+        Gold = 0; // Na starcie gracz nie ma złota
         CharacterClass = characterClass;
     }
 
@@ -56,12 +58,18 @@ public partial class PlayerCharacter : BaseCharacter
     {
         do
         {
+            // Podnosimy poziom o 1
             SetLevel(Level + 1);
+
+            // Dodajemy bonusy wynikające z klasy postaci
             ApplyLevelUpBonusses(CharacterClass);
+
+            // Przeliczamy exp potrzebny do kolejnego poziomu
             ExpNextLvl = CalculateExpToNextLevel();
         } while (Exp > ExpNextLvl);
 
-        Heal (999); // dodanie leczenia po LevelUp
+        // Po level upie leczymy postać
+        Heal(999);
 
         // TODO: Wytriggerować UI - jakieś fajerwerki czy coś..
     }
@@ -78,5 +86,21 @@ public partial class PlayerCharacter : BaseCharacter
         {
             LevelUp();
         }
+    }
+
+    /// <summary>
+    /// Dodaje złoto graczowi.
+    /// </summary>
+    /// <param name="amount">Ilość złota do dodania</param>
+    public void AddGold(int amount)
+    {
+        // Ta metoda służy do dawania nagrody,
+        // więc ignorujemy wartości zerowe i ujemne.
+        if (amount <= 0)
+        {
+            return;
+        }
+
+        Gold += amount;
     }
 }

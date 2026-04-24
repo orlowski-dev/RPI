@@ -7,11 +7,9 @@ namespace Game.Core.Structs;
 public class EnemyReward
 {
     public int Gold { get; private set; }
-    public int Exp { get; private set; }
 
-    public EnemyReward(int gold, int exp)
+    public EnemyReward(int gold,)
     {
         Gold = gold;
-        Exp = exp;
     }
 }

@@ -1,3 +1,4 @@
+using Game.Core.Services;
 namespace Game.Core.Services;
 /// <summary>
 /// Serwis odpowiedzialny za logikę walki w grze.

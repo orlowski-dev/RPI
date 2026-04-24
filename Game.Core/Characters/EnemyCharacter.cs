@@ -18,6 +18,5 @@ public partial class EnemyCharacter : BaseCharacter
         : base(name, maxHp, attack, defense, critChance, level, signals, logger)
     {
         EnemyType = enemyType;
-        Reward = reward;
     }
 }

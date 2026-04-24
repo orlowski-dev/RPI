@@ -6,7 +6,7 @@ public class EnemyReward
 {
     public int Gold { get; private set; }
 
-    public EnemyReward(int gold,)
+    public EnemyReward(int gold)
     {
         Gold = gold;
     }

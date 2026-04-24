@@ -1,3 +1,6 @@
+using Game.Core.Data;
+namespace Game.Core.Services;
+
 /// <summary>
 /// Serwis odpowiedzialny za przyznawanie nagród po walce.
 /// Obecnie obsługuje tylko gold, ale później można tu dodać
@@ -18,15 +21,16 @@ public partial class RewardService
     }
 
     /// <summary>
-    /// Dodaje graczowi nagrodę za pokonanego przeciwnika.
-    /// Reward jest wyszukiwany po EnemyType.
+    /// Przyznaje nagrodę na podstawie nazwy przeciwnika.
     /// </summary>
     /// <param name="player">Gracz, który wygrał walkę.</param>
     /// <param name="enemy">Pokonany przeciwnik.</param>
     public void GiveEnemyReward(PlayerCharacter player, EnemyCharacter enemy)
     {
-        // Szukamy rewardu przypisanego do typu przeciwnika.
-        if (EnemyRewardsDB.EnemyRewards.TryGetValue(enemy.EnemyType, out var reward))
+        // Normalizujemy nazwę, żeby "Goblin" i "goblin" działały tak samo.
+        var enemyName = enemy.Name.ToLower();
+
+        if (EnemyRewardsDB.EnemyRewards.TryGetValue(enemyName, out var reward))
         {
             // Jeśli reward istnieje, dodajemy gold graczowi.
             player.AddGold(reward.Gold);

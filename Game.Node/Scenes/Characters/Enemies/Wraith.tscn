@@ -66,10 +66,10 @@
 [ext_resource type="Texture2D" uid="uid://d3hn32ff1wfi7" path="res://Assets/Prototype/Sprites/Enemy/Wraith/walk/Wraith_03_Moving Forward_011.png" id="64_dy21c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3rxj"]
-size = Vector2(22.868362, 22.353628)
+size = Vector2(20.29469, 19.55991)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyqp4"]
-size = Vector2(216, 216)
+size = Vector2(52, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wq0ek"]
 animations = [{
@@ -294,13 +294,14 @@ collision_mask = 7
 script = ExtResource("1_64yvm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240862241]
-position = Vector2(5.572508, -4.5725083)
+position = Vector2(0.5725088, -10)
 scale = Vector2(3.8854978, 3.8854978)
 shape = SubResource("RectangleShape2D_p3rxj")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=274165993]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=445608772]
+position = Vector2(2, -11)
 shape = SubResource("RectangleShape2D_gyqp4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=2071525896]

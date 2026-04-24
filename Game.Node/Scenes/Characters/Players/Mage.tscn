@@ -53,7 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://dsps7mbk72b8y" path="res://Assets/Prototype/Sprites/Player/Mag/walk/Elf_03__WALK_009.png" id="51_cosgl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eggeb"]
-size = Vector2(131, 177)
+size = Vector2(165, 193)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a70wj"]
 animations = [{
@@ -90,7 +90,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack",
-"speed": 30.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,7 +125,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Die",
-"speed": 30.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -160,7 +160,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Hurt",
-"speed": 30.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -195,7 +195,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 30.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -230,27 +230,28 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walking",
-"speed": 30.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shtuu"]
-size = Vector2(216, 216)
+size = Vector2(137, 167)
 
 [node name="Mage" type="CharacterBody2D" unique_id=1798945074]
 script = ExtResource("1_eggeb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1708820153]
-position = Vector2(-8.5, 31.5)
+position = Vector2(-5.5, 24.5)
 shape = SubResource("RectangleShape2D_eggeb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1674264614]
 scale = Vector2(0.31259525, 0.30333334)
 sprite_frames = SubResource("SpriteFrames_a70wj")
-animation = &"Walking"
+animation = &"Attack"
 autoplay = "Idle"
 speed_scale = 2.5
 
 [node name="Area2D" type="Area2D" parent="." unique_id=279350412]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1442944062]
+position = Vector2(-6.5, 25.5)
 shape = SubResource("RectangleShape2D_shtuu")

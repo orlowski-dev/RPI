@@ -85,7 +85,7 @@
 [ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="83_q7siy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6yqq"]
-size = Vector2(49, 63)
+size = Vector2(57, 70)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_csoed"]
 animations = [{
@@ -359,13 +359,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mfr2"]
-size = Vector2(105, 97)
+size = Vector2(49, 63)
 
 [node name="Goblin" type="CharacterBody2D" unique_id=1755493283 groups=["Enemy"]]
 script = ExtResource("1_7mfr2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216266320]
-position = Vector2(2.5, 6.5)
+position = Vector2(1.5, 6)
 shape = SubResource("RectangleShape2D_s6yqq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1489971868]
@@ -378,7 +378,7 @@ frame_progress = 0.19463022
 [node name="Area2D" type="Area2D" parent="." unique_id=1016875039]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=810890815]
-position = Vector2(1.5, 5.5)
+position = Vector2(2.5, 6.5)
 shape = SubResource("RectangleShape2D_7mfr2")
 
 [node name="EnemyNameLabel" type="Label" parent="." unique_id=635515395]

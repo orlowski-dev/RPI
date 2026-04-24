@@ -53,7 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://ch3e8why3ybd6" path="res://Assets/Prototype/Sprites/Player/archer/hurt/Elf_01__HURT_009.png" id="51_jvn0x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rc5mq"]
-size = Vector2(125, 142)
+size = Vector2(141, 173)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yjx8t"]
 animations = [{
@@ -234,13 +234,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im5be"]
-size = Vector2(216, 216)
+size = Vector2(125, 145)
 
 [node name="Archer" type="CharacterBody2D" unique_id=489137578]
 script = ExtResource("1_rc5mq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=688339545]
-position = Vector2(4.5, 10)
+position = Vector2(3.5, 12.5)
 shape = SubResource("RectangleShape2D_rc5mq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1138878809]
@@ -253,4 +253,5 @@ speed_scale = 2.5
 [node name="Area2D" type="Area2D" parent="." unique_id=1596138020]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=884669531]
+position = Vector2(3.5, 10.5)
 shape = SubResource("RectangleShape2D_im5be")

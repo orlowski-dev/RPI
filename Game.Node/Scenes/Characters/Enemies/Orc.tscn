@@ -84,7 +84,7 @@
 [ext_resource type="Texture2D" uid="uid://cvn130644j0qu" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_023.png" id="93_fksqt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3rxj"]
-size = Vector2(22.868362, 22.353628)
+size = Vector2(36.54615, 36.54615)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wq0ek"]
 animations = [{
@@ -358,7 +358,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyqp4"]
-size = Vector2(216, 216)
+size = Vector2(94, 105)
 
 [node name="Orc" type="CharacterBody2D" unique_id=822514758]
 collision_layer = 4
@@ -366,7 +366,7 @@ collision_mask = 7
 script = ExtResource("1_p3rxj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240862241]
-position = Vector2(5.572508, -4.5725083)
+position = Vector2(5.999998, -2.0000038)
 scale = Vector2(3.8854978, 3.8854978)
 shape = SubResource("RectangleShape2D_p3rxj")
 
@@ -381,4 +381,5 @@ speed_scale = 5.0
 [node name="Area2D" type="Area2D" parent="." unique_id=274165993]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=445608772]
+position = Vector2(4, -3.5)
 shape = SubResource("RectangleShape2D_gyqp4")

@@ -65,7 +65,7 @@
 [ext_resource type="Texture2D" uid="uid://dpm4d6ix0ywn3" path="res://Assets/Prototype/Sprites/Enemy/CyanWraith/walk/Wraith_01_Moving Forward_011.png" id="63_v762t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6yqq"]
-size = Vector2(134, 166)
+size = Vector2(134, 141)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_csoed"]
 animations = [{
@@ -285,12 +285,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mfr2"]
-size = Vector2(216, 216)
+size = Vector2(100, 107)
 
 [node name="CyanWraith" type="CharacterBody2D" unique_id=1755493283]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216266320]
-position = Vector2(2, 10)
+position = Vector2(2, -2.5)
 shape = SubResource("RectangleShape2D_s6yqq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1489971868]
@@ -304,4 +304,5 @@ frame_progress = 1.0
 [node name="Area2D" type="Area2D" parent="." unique_id=1016875039]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=810890815]
+position = Vector2(4, -7.5)
 shape = SubResource("RectangleShape2D_7mfr2")

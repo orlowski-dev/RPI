@@ -48,15 +48,15 @@ public partial class LevelController : Node
 			GlobalSignals.EmitGameStateChanged(new GameManagerData(GameState.Dungeon));
 		}
 
-		if (collideWith.IsInGroup("Enemy"))
-		{
-			_changingScene = true;
-			GlobalSignals.EmitGameStateChanged(
-				new GameManagerData(
-					GameState.Combat,
-					enemyCharacter: (collideWith as EnemyNode).Stats
-				)
-			);
-		}
+		//if (collideWith.IsInGroup("Enemy"))
+		//{
+			//_changingScene = true;
+			//GlobalSignals.EmitGameStateChanged(
+				//new GameManagerData(
+					//GameState.Combat,
+					//enemyCharacter: (collideWith as EnemyNode).Stats
+				//)
+			//);
+		//}
 	}
 }

@@ -77,7 +77,7 @@ public partial class CombatController : Node
         Logger.Write(
             LogLevel.Info,
             _scriptName,
-            $"Gracz zadał {damageTaken} obrażeń przeciwnikowi."
+            $"Gracz zadaje {damageTaken} obrażeń przeciwnikowi."
         );
 
         if (CheckIfCombatEnded())
@@ -85,9 +85,6 @@ public partial class CombatController : Node
             CombatSignals.EmitDataSender(GetData());
             return;
         }
-
-        OnTurnEnded();
-        DoEnemyMove();
     }
 
     /// <summary>
@@ -100,7 +97,7 @@ public partial class CombatController : Node
         Logger.Write(
             LogLevel.Info,
             _scriptName,
-            $"Przeciwnik zadał {damageTaken} obrażeń graczowi."
+            $"Przeciwnik zadaje {damageTaken} obrażeń graczowi."
         );
 
         if (CheckIfCombatEnded())
@@ -108,8 +105,6 @@ public partial class CombatController : Node
             CombatSignals.EmitDataSender(GetData());
             return;
         }
-
-        OnTurnEnded();
     }
 
     /// <summary>
@@ -119,17 +114,17 @@ public partial class CombatController : Node
     {
         if (_service.CombatEnded)
         {
+            // emit (_service.CombatState)
+
             if (_service.State == CombatState.PlayerWon)
             {
                 _service.PlayerCharacter.AddExp(25);
                 Signals.EmitGameStateChanged(new GameManagerData(GameState.Dungeon));
-                Logger.Write(LogLevel.Info, _scriptName, "Koniec walki - wygrywa gracz");
             }
             else
             {
-                _service.PlayerCharacter.Heal(9999); // TODO: zmienić
+                _service.PlayerCharacter.Heal(9999);
                 Signals.EmitGameStateChanged(new GameManagerData(GameState.City));
-                Logger.Write(LogLevel.Info, _scriptName, "Koniec walki - wygrywa przeciwnik");
             }
 
             return true;

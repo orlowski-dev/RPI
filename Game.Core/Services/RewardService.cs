@@ -11,22 +11,23 @@ public partial class RewardService
     /// </summary>
     public EnemyRewardsDB EnemyRewardsDB { get; }
 
-    public RewardService(EnemyRewardsDB enemyRewardsDb)
+    public RewardService()
     {
         // Wstrzykujemy bazę rewardów do serwisu.
-        EnemyRewardsDB = enemyRewardsDb;
+        EnemyRewardsDB = new EnemyRewardsDB();
     }
 
     /// <summary>
-    /// Dodaje graczowi nagrodę za pokonanego przeciwnika.
-    /// Reward jest wyszukiwany po EnemyType.
+    /// Przyznaje nagrodę na podstawie nazwy przeciwnika.
     /// </summary>
     /// <param name="player">Gracz, który wygrał walkę.</param>
     /// <param name="enemy">Pokonany przeciwnik.</param>
     public void GiveEnemyReward(PlayerCharacter player, EnemyCharacter enemy)
     {
-        // Szukamy rewardu przypisanego do typu przeciwnika.
-        if (EnemyRewardsDB.EnemyRewards.TryGetValue(enemy.EnemyType, out var reward))
+        // Normalizujemy nazwę, żeby "Goblin" i "goblin" działały tak samo.
+        var enemyName = enemy.Name.ToLower();
+
+        if (EnemyRewardsDB.EnemyRewards.TryGetValue(enemyName, out var reward))
         {
             // Jeśli reward istnieje, dodajemy gold graczowi.
             player.AddGold(reward.Gold);

@@ -103,7 +103,7 @@ public partial class CombatService
         {
             // Gracz wygrał walkę, więc przyznajemy nagrodę
             // przez osobny serwis odpowiedzialny za rewardy.
-            RewardService.GiveEnemyReward(PlayerCharacter, Enemy.Reward);
+            RewardService.GiveEnemyReward(PlayerCharacter, Enemy);
 
             // Dopiero po przyznaniu nagrody oznaczamy zwycięstwo.
             State = CombatState.PlayerWon;

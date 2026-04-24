@@ -35,6 +35,7 @@ public partial class RunHUD : Node
     private void UpdateUI(CityHudData data)
     {
         PlayerNameL.Text = data.PlayerCharacter.Name;
+
         PlayerHpPB.MinValue = 0;
         PlayerHpPB.MaxValue = data.PlayerCharacter.MaxHP;
         PlayerHpPB.Value = data.PlayerCharacter.HP;
@@ -44,7 +45,10 @@ public partial class RunHUD : Node
         PlayerExpPB.MaxValue = data.PlayerCharacter.ExpNextLvl;
         PlayerExpPB.Value = data.PlayerCharacter.Exp;
         PlayerExpL.Text = $"{data.PlayerCharacter.Exp}/{data.PlayerCharacter.ExpNextLvl}";
-        PlayerLevelL.Text = $"( Lvl: {data.PlayerCharacter.Level} )";
+
+        // W tym samym labelu pokazujemy level oraz ilość złota bohatera.
+        // Dzięki temu oba napisy mają ten sam styl i rozmiar.
+        PlayerLevelL.Text = $"( Lvl: {data.PlayerCharacter.Level} ) Gold: {data.PlayerCharacter.Gold}";
     }
 
     private void OnDataSenderEvent(CityHudData data)

@@ -1,6 +1,6 @@
 # Dziennik zmian
 
-## 24.04.2026 Dodanie Heal(999) po levelUp
+## 24.04.2026 Dodanie Heal(999) w levelUp po dodaniu statystyk
 
 ### Dlaczego
 

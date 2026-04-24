@@ -61,6 +61,8 @@ public partial class PlayerCharacter : BaseCharacter
             ExpNextLvl = CalculateExpToNextLevel();
         } while (Exp > ExpNextLvl);
 
+        Heal (999); // dodanie leczenia po LevelUp
+
         // TODO: Wytriggerować UI - jakieś fajerwerki czy coś..
     }
 

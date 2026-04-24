@@ -1,5 +1,11 @@
 # Dziennik zmian
 
+## 24.04.2026 Dodanie Heal(999) po levelUp
+
+### Dlaczego
+
+Dlatego aby gracz po levelUp miał Hp = MaxHp.
+
 ## 18.04.2026 Rozszerzenie klasy CharacterClass
 
 ### Dlaczego

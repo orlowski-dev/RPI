@@ -24,7 +24,7 @@ public class PlayerCharacterTest
         // dodaję 100 exa i wbijam drugi level
         Assert.Equal(100, player.Exp);
         Assert.Equal(2, player.Level);
-        Assert.Equal(lvl1Hp + player.CharacterClass.HpBonus, player.HP);
+        Assert.Equal(lvl1Hp + player.CharacterClass.MaxHpBonus, player.HP);
 
         // sprawdzam czy expNextLvl = 282 - wdł tabelki
         Assert.Equal(282, player.ExpNextLvl);

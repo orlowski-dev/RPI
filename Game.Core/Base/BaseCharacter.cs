@@ -95,7 +95,7 @@ public abstract partial class BaseCharacter
 
     protected void ApplyLevelUpBonusses(CharacterClass characterClass)
     {
-        HP += characterClass.HpBonus;
+        MaxHP += characterClass.MaxHpBonus; // Zmieniono z HP na MaxHP & Zmieniono z characterClass.HpBonus na characterClass.MaxHpBonus
         Attack += characterClass.AttackBonus;
         Defense += characterClass.DefenseBonus;
     }

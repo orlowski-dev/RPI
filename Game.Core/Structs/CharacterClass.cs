@@ -15,7 +15,7 @@ public readonly struct CharacterClass
     public string PreviewSpritePath { get; init; }
 
     // bonusy to o ile się zwiększają dane statyski przy levelUp
-    public int HpBonus { get; init; }
+    public int MaxHpBonus { get; init; } // Zmienione na MaxHpBonus z HpBonus
     public int AttackBonus { get; init; }
     public int DefenseBonus { get; init; }
 
@@ -26,7 +26,7 @@ public readonly struct CharacterClass
         int defenseBase,
         int critBase,
         int luckBase,
-        int hpBonus,
+        int maxHpBonus, // Zmienione na MaxHpBonus z HpBonus
         int attackBonus,
         int defenseBonus,
         string? classIconName = null,
@@ -40,7 +40,7 @@ public readonly struct CharacterClass
         DefenseBase = defenseBase;
         CritBase = critBase;
         LuckBase = luckBase;
-        HpBonus = hpBonus;
+        MaxHpBonus = maxHpBonus; // Zmienione na MaxHpBonus z HpBonus
         AttackBonus = attackBonus;
         DefenseBonus = defenseBonus;
         ClassIconName = classIconName ?? string.Empty;

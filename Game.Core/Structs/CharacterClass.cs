@@ -26,7 +26,7 @@ public readonly struct CharacterClass
         int defenseBase,
         int critBase,
         int luckBase,
-        int MaxhpBonus, // Zmienione na MaxHpBonus z HpBonus
+        int maxHpBonus, // Zmienione na MaxHpBonus z HpBonus
         int attackBonus,
         int defenseBonus,
         string? classIconName = null,
@@ -40,7 +40,7 @@ public readonly struct CharacterClass
         DefenseBase = defenseBase;
         CritBase = critBase;
         LuckBase = luckBase;
-        MaxHpBonus = MaxhpBonus; // Zmienione na MaxHpBonus z HpBonus
+        MaxHpBonus = maxHpBonus; // Zmienione na MaxHpBonus z HpBonus
         AttackBonus = attackBonus;
         DefenseBonus = defenseBonus;
         ClassIconName = classIconName ?? string.Empty;

@@ -4,24 +4,25 @@ public static class Shared
 {
     public static PlayerCharacter GetNewPlayer()
     {
+        var cc = new CharacterClass(
+            name: "Warrior",
+            hpBase: 100,
+            attackBase: 50,
+            defenseBase: 30,
+            critBase: 1,
+            luckBase: 10,
+            maxHpBonus: 20,
+            attackBonus: 3,
+            defenseBonus: 3
+        );
         return new PlayerCharacter(
             name: "Test Character",
-            maxHp: 100,
-            attack: 50,
-            defense: 30,
-            luck: 10,
-            critChance: 1,
-            characterClass: new CharacterClass(
-                name: "Warrior",
-                hpBase: 140,
-                attackBase: 12,
-                defenseBase: 10,
-                critBase: 5,
-                luckBase: 2,
-                MaxhpBonus: 20,
-                attackBonus: 3,
-                defenseBonus: 3
-            )
+            maxHp: cc.HpBase,
+            attack: cc.AttackBase,
+            defense: cc.AttackBase,
+            luck: cc.AttackBase,
+            critChance: cc.CritBase,
+            characterClass: cc
         );
     }
 

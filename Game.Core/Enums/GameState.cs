@@ -8,4 +8,5 @@ public enum GameState
     Dungeon,
     Combat,
     TestingPlayerMovement,
+    CharacterCreator,
 }

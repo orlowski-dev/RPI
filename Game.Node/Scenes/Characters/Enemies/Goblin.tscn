@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://drsf62lnleovg"]
 
+[ext_resource type="Script" uid="uid://bmxjcgeqntpic" path="res://Scripts/Entities/EnemyNode.cs" id="1_7mfr2"]
 [ext_resource type="Texture2D" uid="uid://cnp5jnoipngcw" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_000.png" id="1_s6yqq"]
 [ext_resource type="Texture2D" uid="uid://cl2phcqdgsdac" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_001.png" id="2_7mfr2"]
 [ext_resource type="Texture2D" uid="uid://h3y5r4n6kksf" path="res://Assets/Prototype/Sprites/Enemy/Goblin/attack/0_Goblin_Slashing_002.png" id="3_q7siy"]
@@ -81,9 +82,10 @@
 [ext_resource type="Texture2D" uid="uid://bmjxsmc4fh8w0" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_021.png" id="79_1ulux"]
 [ext_resource type="Texture2D" uid="uid://cxftr67gh3p1y" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_022.png" id="80_7m4mx"]
 [ext_resource type="Texture2D" uid="uid://d01lyx6oarqjt" path="res://Assets/Prototype/Sprites/Enemy/Goblin/walk/0_Goblin_Walking_023.png" id="81_qgr11"]
+[ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="83_q7siy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6yqq"]
-size = Vector2(134, 166)
+size = Vector2(57, 70)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_csoed"]
 animations = [{
@@ -357,16 +359,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mfr2"]
-size = Vector2(216, 216)
+size = Vector2(49, 63)
 
-[node name="Goblin" type="CharacterBody2D" unique_id=1755493283]
+[node name="Goblin" type="CharacterBody2D" unique_id=1755493283 groups=["Enemy"]]
+script = ExtResource("1_7mfr2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216266320]
-position = Vector2(2, 10)
+position = Vector2(1.5, 6)
 shape = SubResource("RectangleShape2D_s6yqq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1489971868]
-scale = Vector2(0.29666665, 0.29666665)
+scale = Vector2(0.112, 0.112)
 sprite_frames = SubResource("SpriteFrames_csoed")
 animation = &"Walking"
 autoplay = "Idle"
@@ -375,4 +378,17 @@ frame_progress = 0.19463022
 [node name="Area2D" type="Area2D" parent="." unique_id=1016875039]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=810890815]
+position = Vector2(2.5, 6.5)
 shape = SubResource("RectangleShape2D_7mfr2")
+
+[node name="EnemyNameLabel" type="Label" parent="." unique_id=635515395]
+offset_left = -103.0
+offset_top = -53.0
+offset_right = 106.0
+offset_bottom = -30.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("83_q7siy")
+theme_override_font_sizes/font_size = 18
+text = "Goblin lvl: 1"
+horizontal_alignment = 1

@@ -83,7 +83,7 @@
 [ext_resource type="Texture2D" uid="uid://o2t4lqtisv0l" path="res://Assets/Prototype/Sprites/Enemy/Ogr/walk/0_Ogre_Walking_023.png" id="81_2vu2i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyfyj"]
-size = Vector2(115, 161)
+size = Vector2(176, 190)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x3lvc"]
 animations = [{
@@ -357,12 +357,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpa2b"]
-size = Vector2(216, 216)
+size = Vector2(136, 157)
 
 [node name="Ogr" type="CharacterBody2D" unique_id=139700223]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=488840629]
-position = Vector2(-1.5, 7.5)
+position = Vector2(1, 4)
 shape = SubResource("RectangleShape2D_gyfyj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=206800082]
@@ -375,4 +375,5 @@ autoplay = "Idle"
 [node name="Area2D" type="Area2D" parent="." unique_id=955971477]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1033046272]
+position = Vector2(-1, 4.5)
 shape = SubResource("RectangleShape2D_hpa2b")

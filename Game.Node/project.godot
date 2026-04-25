@@ -22,6 +22,8 @@ UiManager="*uid://83t1asqgm4ww"
 CombatSignals="*uid://d2jfmo1aymyyu"
 GlobalLogger="*uid://b552tpr7h80t"
 GameManager="*uid://c1j7a0rwre15j"
+CharacterCreatorSignals="*uid://bcreenfc8pcbs"
+LevelSignals="*uid://bw5xj8bftkjga"
 
 [display]
 
@@ -31,6 +33,10 @@ window/size/viewport_height=1024
 [dotnet]
 
 project/assembly_name="RPI"
+
+[global_group]
+
+Enemy=""
 
 [input]
 

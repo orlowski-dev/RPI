@@ -297,7 +297,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mfr2"]
-size = Vector2(216, 216)
+size = Vector2(79, 103)
 
 [node name="ChiefGoblin" type="CharacterBody2D" unique_id=1755493283]
 
@@ -315,4 +315,5 @@ frame_progress = 0.12399318
 [node name="Area2D" type="Area2D" parent="." unique_id=1016875039]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=810890815]
+position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_7mfr2")

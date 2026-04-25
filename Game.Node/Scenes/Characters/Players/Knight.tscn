@@ -53,7 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://c1qtvsmiumiby" path="res://Assets/Prototype/Sprites/Player/Knight/Walk/Knight_01__WALK_009.png" id="60_r3pnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_py3ve"]
-size = Vector2(47, 75)
+size = Vector2(63, 86)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sm1t8"]
 animations = [{
@@ -234,17 +234,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0iex"]
-size = Vector2(216, 216)
+size = Vector2(52, 70)
 
 [node name="Knight" type="CharacterBody2D" unique_id=802040328]
 collision_mask = 14
 script = ExtResource("1_6mnwy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908186859]
-position = Vector2(-0.5, -9.5)
+position = Vector2(0.5, -10)
 shape = SubResource("RectangleShape2D_py3ve")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2106383370]
+position = Vector2(1, -3)
 scale = Vector2(0.13979055, 0.12278968)
 sprite_frames = SubResource("SpriteFrames_sm1t8")
 animation = &"Walking"
@@ -254,4 +255,5 @@ speed_scale = 2.5
 [node name="Area2D" type="Area2D" parent="." unique_id=1052593077]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1897669117]
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_a0iex")

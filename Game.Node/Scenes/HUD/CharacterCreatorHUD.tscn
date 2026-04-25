@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d158tjma1rqpf"]
 
-[ext_resource type="Script" uid="uid://5mijpj2oub7h" path="res://Scripts/Prototype/HUD/CharacterCreatorHUD.cs" id="1_qp3wf"]
+[ext_resource type="Script" uid="uid://5mijpj2oub7h" path="res://Scripts/HUD/CharacterCreatorHUD.cs" id="1_qp3wf"]
 [ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="2_df76t"]
 
-[node name="CharacterCreatorHud" type="Control" unique_id=330954309 node_paths=PackedStringArray("CharClassIcon", "CharacterName", "StartBtn")]
+[node name="CharacterCreatorHud" type="Control" unique_id=330954309 node_paths=PackedStringArray("StatsLabels", "ClassesBtns", "CharClassIcon", "PreviewTR", "CharacterName", "StartBtn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,9 +11,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qp3wf")
+StatsLabels = {
+"attack": NodePath("characterStats/VBoxContainer/characterStatsContainer/attackLabel"),
+"charClassName": NodePath("characterStats/VBoxContainer/HBoxContainer/characterClassName_label"),
+"crit": NodePath("characterStats/VBoxContainer/characterStatsContainer/critLabel"),
+"defense": NodePath("characterStats/VBoxContainer/characterStatsContainer/defenseLabel"),
+"hp": NodePath("characterStats/VBoxContainer/characterStatsContainer/hpLabel"),
+"luck": NodePath("characterStats/VBoxContainer/characterStatsContainer/luckLabel")
+}
+ClassesBtns = {
+"archer": NodePath("charClassSel/VBoxContainer/archerBtn"),
+"mage": NodePath("charClassSel/VBoxContainer/magBtn"),
+"warrior": NodePath("charClassSel/VBoxContainer/warriorBtn")
+}
 CharClassIcon = NodePath("characterStats/VBoxContainer/HBoxContainer/classIcon")
+PreviewTR = NodePath("MarginContainer/PreviewTR")
 CharacterName = NodePath("charNameStart/VBoxContainer/characterName")
 StartBtn = NodePath("charNameStart/VBoxContainer/startBtn")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1615156226]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PreviewTR" type="TextureRect" parent="MarginContainer" unique_id=1146103577]
+layout_mode = 2
 
 [node name="characterStats" type="MarginContainer" parent="." unique_id=2087668140]
 layout_mode = 0

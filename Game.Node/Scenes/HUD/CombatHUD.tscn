@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bxlojd3s2ho15"]
 
-[ext_resource type="Script" uid="uid://cxgf2rmqkfke8" path="res://Scripts/Prototype/HUD/CombatHUD.cs" id="1_xwtk5"]
+[ext_resource type="Script" uid="uid://cxgf2rmqkfke8" path="res://Scripts/HUD/CombatHUD.cs" id="1_xwtk5"]
 [ext_resource type="FontFile" uid="uid://c1wt3l102634m" path="res://Assets/Prototype/Assets/Prototype/Fonts/Cinzel-VariableFont_wght.ttf" id="2_36tup"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36tup"]
@@ -42,7 +42,7 @@ border_color = Color(0.95686275, 0.8235294, 0.5254902, 1)
 shadow_color = Color(0.011087579, 0.011087578, 0.01108758, 0.8117647)
 shadow_size = 3
 
-[node name="CombatHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL", "PlayerActionsCont")]
+[node name="CombatHud" type="Control" unique_id=2047079096 node_paths=PackedStringArray("TurnLabel", "PlayerNameL", "PlayerHpPB", "PlayerHpL", "EnemyNameL", "EnemyHpPB", "EnemyHpL", "PlayerActionsCont", "PlayerActionsBtns")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,6 +58,12 @@ EnemyNameL = NodePath("HBoxContainer/EnemiesStats/VBoxContainer2/EnemyNameL")
 EnemyHpPB = NodePath("HBoxContainer/EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpPB")
 EnemyHpL = NodePath("HBoxContainer/EnemiesStats/VBoxContainer2/VBoxContainer/EnemyHpL")
 PlayerActionsCont = NodePath("PlayerActionsCont")
+PlayerActionsBtns = {
+"attack": NodePath("PlayerActionsCont/VBoxContainer/AttackBtn"),
+"defense": NodePath("PlayerActionsCont/VBoxContainer/DefenseBtn"),
+"skipTurn": NodePath("PlayerActionsCont/VBoxContainer/SkipTurnBtn"),
+"useItem": NodePath("PlayerActionsCont/VBoxContainer/UseItemBtn")
+}
 
 [node name="Panel" type="Panel" parent="." unique_id=765667903]
 layout_mode = 0

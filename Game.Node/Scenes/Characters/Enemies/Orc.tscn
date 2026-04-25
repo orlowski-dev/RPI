@@ -1,0 +1,385 @@
+[gd_scene format=3 uid="uid://3fddxfoi4686"]
+
+[ext_resource type="Texture2D" uid="uid://c61h38s8ib8dp" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_000.png" id="1_35imw"]
+[ext_resource type="Script" uid="uid://bo0fysasmjsfu" path="res://Scripts/Player/PlayerController.cs" id="1_p3rxj"]
+[ext_resource type="Texture2D" uid="uid://cvcl4nkgwk66c" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_001.png" id="2_ipos5"]
+[ext_resource type="Texture2D" uid="uid://cpak8u3qcrd5g" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_002.png" id="3_mb66h"]
+[ext_resource type="Texture2D" uid="uid://co5gu7n0es2p0" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_003.png" id="4_laq5i"]
+[ext_resource type="Texture2D" uid="uid://d2r6qowwe8n6a" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_004.png" id="5_2gh6j"]
+[ext_resource type="Texture2D" uid="uid://bcq2tsxkwcmms" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_005.png" id="6_dfv51"]
+[ext_resource type="Texture2D" uid="uid://dfdkavm38e08s" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_006.png" id="7_elxl5"]
+[ext_resource type="Texture2D" uid="uid://gdwi8bxc65gc" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_007.png" id="8_ct7yy"]
+[ext_resource type="Texture2D" uid="uid://bj3eookmi2y38" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_008.png" id="9_u6dul"]
+[ext_resource type="Texture2D" uid="uid://pi1ba5pckfrq" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_009.png" id="10_qp1ws"]
+[ext_resource type="Texture2D" uid="uid://deov2befdtbmh" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_010.png" id="11_4qkqf"]
+[ext_resource type="Texture2D" uid="uid://di0mfpfoe0ui0" path="res://Assets/Prototype/Sprites/Enemy/Orc/Attack/0_Orc_Slashing_011.png" id="12_wuuqk"]
+[ext_resource type="Texture2D" uid="uid://c6x6othwoyxoh" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_000.png" id="13_l8l4y"]
+[ext_resource type="Texture2D" uid="uid://dvaxqesbw0ik1" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_001.png" id="14_8xp5s"]
+[ext_resource type="Texture2D" uid="uid://dh5suv2jvfkgv" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_002.png" id="15_5oq53"]
+[ext_resource type="Texture2D" uid="uid://esupqak67wkg" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_003.png" id="16_tssf6"]
+[ext_resource type="Texture2D" uid="uid://bgr64v3nisdjb" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_004.png" id="17_vtpos"]
+[ext_resource type="Texture2D" uid="uid://b5blrnx0hxsiw" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_005.png" id="18_x5i52"]
+[ext_resource type="Texture2D" uid="uid://bknquag2gmkxu" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_006.png" id="19_58has"]
+[ext_resource type="Texture2D" uid="uid://bepghd4qmqxd8" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_007.png" id="20_kgx6l"]
+[ext_resource type="Texture2D" uid="uid://b3e5gbkwwlkj1" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_008.png" id="21_nssuk"]
+[ext_resource type="Texture2D" uid="uid://x1o8bd5ugmax" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_009.png" id="22_4socb"]
+[ext_resource type="Texture2D" uid="uid://bwudbvbu7v3cy" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_010.png" id="23_yjmb3"]
+[ext_resource type="Texture2D" uid="uid://ujqcusoqst40" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_011.png" id="24_r7llp"]
+[ext_resource type="Texture2D" uid="uid://j2lms6lppir2" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_012.png" id="25_xrjbm"]
+[ext_resource type="Texture2D" uid="uid://bkipkpdbwtda1" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_013.png" id="26_6fccm"]
+[ext_resource type="Texture2D" uid="uid://bmo7kn26agnyc" path="res://Assets/Prototype/Sprites/Enemy/Orc/Die/0_Orc_Dying_014.png" id="27_ox7f2"]
+[ext_resource type="Texture2D" uid="uid://ddhsro5vh6ly4" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_000.png" id="28_28vur"]
+[ext_resource type="Texture2D" uid="uid://bkml435nnelur" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_001.png" id="29_qxhwm"]
+[ext_resource type="Texture2D" uid="uid://c22qmkh31omux" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_002.png" id="30_k2fyg"]
+[ext_resource type="Texture2D" uid="uid://burcslyif11ce" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_003.png" id="31_mk7h0"]
+[ext_resource type="Texture2D" uid="uid://cq3sry3yae2i8" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_004.png" id="32_neta6"]
+[ext_resource type="Texture2D" uid="uid://djvyoppxnvt6r" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_005.png" id="33_65d25"]
+[ext_resource type="Texture2D" uid="uid://c34a2g7obeonl" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_006.png" id="34_nxa5w"]
+[ext_resource type="Texture2D" uid="uid://csqavguy07qff" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_007.png" id="35_l6va8"]
+[ext_resource type="Texture2D" uid="uid://cc7lk6npvvh4u" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_008.png" id="36_ftop8"]
+[ext_resource type="Texture2D" uid="uid://b0o7jtxarxvld" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_009.png" id="37_gwy3v"]
+[ext_resource type="Texture2D" uid="uid://dtsxj3p6xt6qy" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_010.png" id="38_4r4lq"]
+[ext_resource type="Texture2D" uid="uid://7w6oc4fldg2a" path="res://Assets/Prototype/Sprites/Enemy/Orc/Hurt/0_Orc_Hurt_011.png" id="39_15c43"]
+[ext_resource type="Texture2D" uid="uid://31hx36q0pf2m" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_000.png" id="40_2nhhy"]
+[ext_resource type="Texture2D" uid="uid://b4xouua3nvdv1" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_001.png" id="41_h2yhl"]
+[ext_resource type="Texture2D" uid="uid://bhwklntdeoax4" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_002.png" id="42_yh8yi"]
+[ext_resource type="Texture2D" uid="uid://b2vqtn2fn44hd" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_003.png" id="43_mfhg3"]
+[ext_resource type="Texture2D" uid="uid://kojbw20rtvx" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_004.png" id="44_85lvj"]
+[ext_resource type="Texture2D" uid="uid://c4gqqt0shvc61" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_005.png" id="45_ptuak"]
+[ext_resource type="Texture2D" uid="uid://6cw2u0p4pr3l" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_006.png" id="46_03ccj"]
+[ext_resource type="Texture2D" uid="uid://c6lkymg8vf1so" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_007.png" id="47_0su0w"]
+[ext_resource type="Texture2D" uid="uid://cdbl47xrtdxao" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_008.png" id="48_opyau"]
+[ext_resource type="Texture2D" uid="uid://dp5k31reen3gi" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_009.png" id="49_ql3o0"]
+[ext_resource type="Texture2D" uid="uid://dip21p74yckl5" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_010.png" id="50_fmwuo"]
+[ext_resource type="Texture2D" uid="uid://crmwenukgbuey" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_011.png" id="51_kyitf"]
+[ext_resource type="Texture2D" uid="uid://c2a47a3kx37qp" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_012.png" id="52_xahp1"]
+[ext_resource type="Texture2D" uid="uid://cb1lhd5ucfql6" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_013.png" id="53_dqvss"]
+[ext_resource type="Texture2D" uid="uid://tyni3plsjde" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_014.png" id="54_2rjc0"]
+[ext_resource type="Texture2D" uid="uid://b1n4pc8vng4wd" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_015.png" id="55_e5d07"]
+[ext_resource type="Texture2D" uid="uid://trny1hb0c7s" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_016.png" id="56_3axcn"]
+[ext_resource type="Texture2D" uid="uid://dbjgigodhbflg" path="res://Assets/Prototype/Sprites/Enemy/Orc/Idle/0_Orc_Idle_017.png" id="57_dqqdq"]
+[ext_resource type="Texture2D" uid="uid://1pfbr4iij812" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_000.png" id="70_cpcy6"]
+[ext_resource type="Texture2D" uid="uid://bv8a1fihi04md" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_001.png" id="71_1de0s"]
+[ext_resource type="Texture2D" uid="uid://cer5dtmvsaw1f" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_002.png" id="72_pe5dg"]
+[ext_resource type="Texture2D" uid="uid://clq8ha88mkuul" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_003.png" id="73_e2qwd"]
+[ext_resource type="Texture2D" uid="uid://b1iyfw7x2naxs" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_004.png" id="74_ln3o4"]
+[ext_resource type="Texture2D" uid="uid://dc31idnixg3s8" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_005.png" id="75_somn2"]
+[ext_resource type="Texture2D" uid="uid://c8q1s8qiymvqh" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_006.png" id="76_fakim"]
+[ext_resource type="Texture2D" uid="uid://dtdlly17pry63" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_007.png" id="77_gp05a"]
+[ext_resource type="Texture2D" uid="uid://ci4lqp1jcbq2a" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_008.png" id="78_61ap2"]
+[ext_resource type="Texture2D" uid="uid://b6d0olrwdnd8s" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_009.png" id="79_6bpuc"]
+[ext_resource type="Texture2D" uid="uid://c10hw43johqqw" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_010.png" id="80_02jo6"]
+[ext_resource type="Texture2D" uid="uid://cn3h021yfwt73" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_011.png" id="81_2r3sq"]
+[ext_resource type="Texture2D" uid="uid://crko3vll4lsmw" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_012.png" id="82_qhyv5"]
+[ext_resource type="Texture2D" uid="uid://b6s5i4cvu4yb5" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_013.png" id="83_fo1r4"]
+[ext_resource type="Texture2D" uid="uid://b48g048njvc6b" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_014.png" id="84_b0c3h"]
+[ext_resource type="Texture2D" uid="uid://c7kx6lt64o3k2" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_015.png" id="85_ltdaq"]
+[ext_resource type="Texture2D" uid="uid://3udxvfaaolqr" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_016.png" id="86_x62mt"]
+[ext_resource type="Texture2D" uid="uid://ba2nbbywffju6" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_017.png" id="87_6rrm4"]
+[ext_resource type="Texture2D" uid="uid://bc86tf1sh361e" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_018.png" id="88_m6msk"]
+[ext_resource type="Texture2D" uid="uid://b5gy6dkg08jic" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_019.png" id="89_n5mbk"]
+[ext_resource type="Texture2D" uid="uid://d3bqwhqur8728" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_020.png" id="90_ts38k"]
+[ext_resource type="Texture2D" uid="uid://fd4khrdg27c" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_021.png" id="91_nusn5"]
+[ext_resource type="Texture2D" uid="uid://b4fiakx6d5mof" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_022.png" id="92_625pn"]
+[ext_resource type="Texture2D" uid="uid://cvn130644j0qu" path="res://Assets/Prototype/Sprites/Enemy/Orc/Walk/0_Orc_Walking_023.png" id="93_fksqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3rxj"]
+size = Vector2(36.54615, 36.54615)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wq0ek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_35imw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ipos5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mb66h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_laq5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2gh6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dfv51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_elxl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ct7yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_u6dul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qp1ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4qkqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wuuqk")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_l8l4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8xp5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5oq53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_tssf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_vtpos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_x5i52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_58has")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_kgx6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_nssuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_4socb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_yjmb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_r7llp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_xrjbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_6fccm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ox7f2")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_28vur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_qxhwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_k2fyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_mk7h0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_neta6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_65d25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_nxa5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_l6va8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ftop8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_gwy3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_4r4lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_15c43")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_2nhhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_h2yhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_yh8yi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_mfhg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_85lvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_ptuak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_03ccj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_0su0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_opyau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ql3o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_fmwuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_kyitf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_xahp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_dqvss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_2rjc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_e5d07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_3axcn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_dqqdq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("70_cpcy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_1de0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_pe5dg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_e2qwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_ln3o4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_somn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_fakim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_gp05a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_61ap2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_6bpuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_02jo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_2r3sq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_qhyv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_fo1r4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_b0c3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_ltdaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_x62mt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_6rrm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_m6msk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_n5mbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_ts38k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_nusn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_625pn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_fksqt")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyqp4"]
+size = Vector2(94, 105)
+
+[node name="Orc" type="CharacterBody2D" unique_id=822514758]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_p3rxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240862241]
+position = Vector2(5.999998, -2.0000038)
+scale = Vector2(3.8854978, 3.8854978)
+shape = SubResource("RectangleShape2D_p3rxj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2071525896]
+position = Vector2(6, -5)
+scale = Vector2(0.15189524, 0.1474508)
+sprite_frames = SubResource("SpriteFrames_wq0ek")
+animation = &"Idle"
+autoplay = "Idle"
+speed_scale = 5.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=274165993]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=445608772]
+position = Vector2(4, -3.5)
+shape = SubResource("RectangleShape2D_gyqp4")

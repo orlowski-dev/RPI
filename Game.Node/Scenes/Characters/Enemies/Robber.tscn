@@ -1,0 +1,325 @@
+[gd_scene format=3 uid="uid://cybnird3vcjvv"]
+
+[ext_resource type="Script" uid="uid://bo0fysasmjsfu" path="res://Scripts/Player/PlayerController.cs" id="1_t5dnm"]
+[ext_resource type="Texture2D" uid="uid://dfmvo5xfho60d" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_000.png" id="2_86f5f"]
+[ext_resource type="Texture2D" uid="uid://dad57egk6p8eu" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_001.png" id="3_c0dut"]
+[ext_resource type="Texture2D" uid="uid://d3pvnmlwmt3fw" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_002.png" id="4_vkb2g"]
+[ext_resource type="Texture2D" uid="uid://b2jxspphllw8d" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_003.png" id="5_okyw2"]
+[ext_resource type="Texture2D" uid="uid://cg0g2qy0dqvaf" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_004.png" id="6_wbx7x"]
+[ext_resource type="Texture2D" uid="uid://dv4ui71av8vm4" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_005.png" id="7_a2741"]
+[ext_resource type="Texture2D" uid="uid://bstfrw6wj5jeb" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_006.png" id="8_n7hqh"]
+[ext_resource type="Texture2D" uid="uid://cth6wfoh2gdr1" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_007.png" id="9_6ukvf"]
+[ext_resource type="Texture2D" uid="uid://dbhq3r1wk7hic" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_008.png" id="10_qvmhb"]
+[ext_resource type="Texture2D" uid="uid://blp5s2kj0evty" path="res://Assets/Prototype/Sprites/Enemy/Robber/attack/Right - Attacking_009.png" id="11_a0hy1"]
+[ext_resource type="Texture2D" uid="uid://dsl6jgubqvvlc" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_000.png" id="12_l0gfs"]
+[ext_resource type="Texture2D" uid="uid://bndoynqya8npg" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_001.png" id="13_33yto"]
+[ext_resource type="Texture2D" uid="uid://bt7uyg5wbop65" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_002.png" id="14_8smjh"]
+[ext_resource type="Texture2D" uid="uid://6xo73crhy2jb" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_003.png" id="15_t3mlw"]
+[ext_resource type="Texture2D" uid="uid://cxlvh71fvi0ke" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_004.png" id="16_gx7yn"]
+[ext_resource type="Texture2D" uid="uid://0ebsen4fvfnt" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_005.png" id="17_t5dnm"]
+[ext_resource type="Texture2D" uid="uid://bu5e1jtbybet5" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_006.png" id="18_fxf0b"]
+[ext_resource type="Texture2D" uid="uid://dpc4cyxrobuxc" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_007.png" id="19_a6m88"]
+[ext_resource type="Texture2D" uid="uid://boq87wp1cjt0w" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_008.png" id="20_6jpv5"]
+[ext_resource type="Texture2D" uid="uid://clpvmfxashag7" path="res://Assets/Prototype/Sprites/Enemy/Robber/die/Dying_009.png" id="21_fwpgd"]
+[ext_resource type="Texture2D" uid="uid://b5d3y7ddm6av2" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_000.png" id="22_mh2ga"]
+[ext_resource type="Texture2D" uid="uid://cp7j1v4230bmm" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_001.png" id="23_ywrgi"]
+[ext_resource type="Texture2D" uid="uid://bkjjent5m7e7q" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_002.png" id="24_qwsvp"]
+[ext_resource type="Texture2D" uid="uid://bvpvt2787u5cy" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_003.png" id="25_pgvac"]
+[ext_resource type="Texture2D" uid="uid://0v0xkou2t8kk" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_004.png" id="26_telbf"]
+[ext_resource type="Texture2D" uid="uid://tpcn8iq7lek6" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_005.png" id="27_64sj1"]
+[ext_resource type="Texture2D" uid="uid://datc43bv2by5m" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_006.png" id="28_mh2qy"]
+[ext_resource type="Texture2D" uid="uid://befbosigohqys" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_007.png" id="29_uv3iy"]
+[ext_resource type="Texture2D" uid="uid://dqr54nrnu7brc" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_008.png" id="30_u14xh"]
+[ext_resource type="Texture2D" uid="uid://dhrvj5uy0rcy7" path="res://Assets/Prototype/Sprites/Enemy/Robber/hurt/Right - Hurt_009.png" id="31_4pvph"]
+[ext_resource type="Texture2D" uid="uid://e5okopep4wqc" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_000.png" id="32_lxxlx"]
+[ext_resource type="Texture2D" uid="uid://2xp6rskp6av5" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_001.png" id="33_oxdo0"]
+[ext_resource type="Texture2D" uid="uid://vbhdackvvhng" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_002.png" id="34_wl8cs"]
+[ext_resource type="Texture2D" uid="uid://do40gxq1vcl2w" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_003.png" id="35_rwy1o"]
+[ext_resource type="Texture2D" uid="uid://ctw66beafkwun" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_004.png" id="36_3o4q1"]
+[ext_resource type="Texture2D" uid="uid://bxqkd2xh0xh6q" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_005.png" id="37_722sn"]
+[ext_resource type="Texture2D" uid="uid://c3yyrm22ewjf7" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_006.png" id="38_3qdfg"]
+[ext_resource type="Texture2D" uid="uid://2ih34hnuqwgm" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_007.png" id="39_r075c"]
+[ext_resource type="Texture2D" uid="uid://46ukn3nyrqo2" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_008.png" id="40_coeym"]
+[ext_resource type="Texture2D" uid="uid://dmiktslirheiu" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_009.png" id="41_hb3ob"]
+[ext_resource type="Texture2D" uid="uid://bfpx8y6ml0ukq" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_010.png" id="42_frg26"]
+[ext_resource type="Texture2D" uid="uid://bji42b3uubbke" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_011.png" id="43_6ta1i"]
+[ext_resource type="Texture2D" uid="uid://sai3bydh71fb" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_012.png" id="44_ufsma"]
+[ext_resource type="Texture2D" uid="uid://eagkgxamt01t" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_013.png" id="45_nic5g"]
+[ext_resource type="Texture2D" uid="uid://defhp1tbn66qx" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_014.png" id="46_5vga4"]
+[ext_resource type="Texture2D" uid="uid://y8o6nnirc8b0" path="res://Assets/Prototype/Sprites/Enemy/Robber/idle/Right - Idle_015.png" id="47_jqf1x"]
+[ext_resource type="Texture2D" uid="uid://ls2p0uja11si" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_000.png" id="48_8lkoc"]
+[ext_resource type="Texture2D" uid="uid://i6e6byf67gas" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_001.png" id="49_kvlos"]
+[ext_resource type="Texture2D" uid="uid://iufx17r2hjkr" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_002.png" id="50_ms5ud"]
+[ext_resource type="Texture2D" uid="uid://flougju8catq" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_003.png" id="51_pptmh"]
+[ext_resource type="Texture2D" uid="uid://cil2jsy0l235j" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_004.png" id="52_c7n2j"]
+[ext_resource type="Texture2D" uid="uid://brnwtlj327q6q" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_005.png" id="53_8sun8"]
+[ext_resource type="Texture2D" uid="uid://cwtd37i63mktd" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_006.png" id="54_q8vw7"]
+[ext_resource type="Texture2D" uid="uid://bgmvyfhile8pt" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_007.png" id="55_wilmg"]
+[ext_resource type="Texture2D" uid="uid://dvfycibssl78x" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_008.png" id="56_iwjo4"]
+[ext_resource type="Texture2D" uid="uid://gup08qm3la7a" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_009.png" id="57_wvr5q"]
+[ext_resource type="Texture2D" uid="uid://bffmiencn3tjs" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_010.png" id="58_agmcb"]
+[ext_resource type="Texture2D" uid="uid://txcboisnfflw" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_011.png" id="59_isk0h"]
+[ext_resource type="Texture2D" uid="uid://ydlljlga7vta" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_012.png" id="60_odgrb"]
+[ext_resource type="Texture2D" uid="uid://itee7pcptnv8" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_013.png" id="61_suur6"]
+[ext_resource type="Texture2D" uid="uid://c3o6bjb7g0uic" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_014.png" id="62_utwjn"]
+[ext_resource type="Texture2D" uid="uid://cyqv2qq3kmijp" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_015.png" id="63_vuq20"]
+[ext_resource type="Texture2D" uid="uid://dry703rt4lt2e" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_016.png" id="64_dvrpl"]
+[ext_resource type="Texture2D" uid="uid://c4uyihflv0tfd" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_017.png" id="65_6cc05"]
+[ext_resource type="Texture2D" uid="uid://drx4oexs1wfjb" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_018.png" id="66_w7456"]
+[ext_resource type="Texture2D" uid="uid://c8p4gtsfmdo02" path="res://Assets/Prototype/Sprites/Enemy/Robber/walk/Right - Walking_019.png" id="67_n4nv6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3rxj"]
+size = Vector2(16.857555, 18.015709)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wq0ek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_86f5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c0dut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vkb2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_okyw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wbx7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a2741")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n7hqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6ukvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qvmhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_a0hy1")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_l0gfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_33yto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8smjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_t3mlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gx7yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_t5dnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_fxf0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_a6m88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_6jpv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_fwpgd")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_mh2ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ywrgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_qwsvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_pgvac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_telbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_64sj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_mh2qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_uv3iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_u14xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_4pvph")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_lxxlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_oxdo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_wl8cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_rwy1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_3o4q1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_722sn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_3qdfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_r075c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_coeym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_hb3ob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_frg26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_6ta1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_ufsma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_nic5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_5vga4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_jqf1x")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_8lkoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_kvlos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_ms5ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_pptmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_c7n2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_8sun8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_q8vw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_wilmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_iwjo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_wvr5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_agmcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_isk0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_odgrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_suur6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_utwjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_vuq20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_dvrpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_6cc05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_w7456")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_n4nv6")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyqp4"]
+size = Vector2(40.75, 46.5)
+
+[node name="Robber" type="CharacterBody2D" unique_id=822514758]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_t5dnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240862241]
+position = Vector2(2.7499993, -4.999999)
+scale = Vector2(3.8854978, 3.8854978)
+shape = SubResource("RectangleShape2D_p3rxj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2071525896]
+position = Vector2(6, -5)
+scale = Vector2(0.15189524, 0.1474508)
+sprite_frames = SubResource("SpriteFrames_wq0ek")
+animation = &"Walking"
+autoplay = "Idle"
+speed_scale = 5.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=274165993]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=445608772]
+position = Vector2(4.375, -4.25)
+shape = SubResource("RectangleShape2D_gyqp4")

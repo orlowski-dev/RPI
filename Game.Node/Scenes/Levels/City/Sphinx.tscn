@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dgellg0osrp76"]
+
+[ext_resource type="Texture2D" uid="uid://c7jqwh75r76av" path="res://Assets/Prototype/Assets/Prototype/City/Back.png" id="1_q8x18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8x18"]
+size = Vector2(295, 306)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0vdn"]
+size = Vector2(99, 175)
+
+[node name="Sphinx" type="StaticBody2D" unique_id=1966618041]
+collision_layer = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=423904238]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=802406416]
+position = Vector2(7.5, 7)
+shape = SubResource("RectangleShape2D_q8x18")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=634714942]
+scale = Vector2(1.6015625, 1.6171875)
+texture = ExtResource("1_q8x18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=209156196]
+position = Vector2(-1.5, 14.5)
+shape = SubResource("RectangleShape2D_s0vdn")

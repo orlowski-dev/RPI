@@ -1,10 +1,17 @@
 # Godot 4+ specific ignores
-.godot/
-/android/
+*.godot/
+*android/
 
 # Cache
 *.tmp
 *.log
+
+# testy i classlib
+*bin/
+*obj/
+
+# katalogi testowe
+*Testing/
 
 # Śmieci VisualStudio
 .vs/

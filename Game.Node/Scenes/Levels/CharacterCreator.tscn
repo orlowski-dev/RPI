@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://rvf8t03xi8lk"]
+
+[ext_resource type="Script" uid="uid://dsy1ld8gkj2ei" path="res://Scripts/Controllers/CharacterCreatorController.cs" id="1_h64tm"]
+[ext_resource type="PackedScene" uid="uid://d158tjma1rqpf" path="res://Scenes/HUD/CharacterCreatorHUD.tscn" id="1_nx6f1"]
+
+[node name="CharacterCreator" type="Node2D" unique_id=1861087679]
+script = ExtResource("1_h64tm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=430197031]
+
+[node name="CharacterCreatorHud" parent="CanvasLayer" unique_id=330954309 node_paths=PackedStringArray("StatsLabels", "ClassesBtns") instance=ExtResource("1_nx6f1")]
+StatsLabels = {
+"attack": NodePath("characterStats/VBoxContainer/characterStatsContainer/attackLabel"),
+"charClassName": NodePath("characterStats/VBoxContainer/HBoxContainer/characterClassName_label"),
+"crit": NodePath("characterStats/VBoxContainer/characterStatsContainer/critLabel"),
+"defense": NodePath("characterStats/VBoxContainer/characterStatsContainer/defenseLabel"),
+"hp": NodePath("characterStats/VBoxContainer/characterStatsContainer/hpLabel"),
+"luck": NodePath("characterStats/VBoxContainer/characterStatsContainer/luckLabel")
+}
+ClassesBtns = {
+"archer": NodePath("charClassSel/VBoxContainer/archerBtn"),
+"mage": NodePath("charClassSel/VBoxContainer/magBtn"),
+"warrior": NodePath("charClassSel/VBoxContainer/warriorBtn")
+}

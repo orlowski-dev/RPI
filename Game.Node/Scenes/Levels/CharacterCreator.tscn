@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://rvf8t03xi8lk"]
 
 [ext_resource type="Script" uid="uid://dsy1ld8gkj2ei" path="res://Scripts/Controllers/CharacterCreatorController.cs" id="1_h64tm"]
-[ext_resource type="PackedScene" uid="uid://d158tjma1rqpf" path="res://Scenes/UI/CharacterCreatorHUD.tscn" id="1_nx6f1"]
+[ext_resource type="PackedScene" uid="uid://d158tjma1rqpf" path="res://Scenes/HUD/CharacterCreatorHUD.tscn" id="1_nx6f1"]
 
 [node name="CharacterCreator" type="Node2D" unique_id=1861087679]
 script = ExtResource("1_h64tm")

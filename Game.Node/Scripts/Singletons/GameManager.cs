@@ -64,7 +64,9 @@ public partial class GameManager : BaseSingleton<GameManager>
                 defense: 10,
                 critChance: 1,
                 level: _service.PlayerCharacter.Level + 1,
-                enemyType: EnemyType.Normal
+                enemyType: EnemyType.Normal,
+                logger: _logger,
+                signals: _signals
             )
         );
 

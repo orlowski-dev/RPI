@@ -26,7 +26,7 @@ public abstract partial class BaseCharacter
             _logger?.Write(
                 LogLevel.Info,
                 this.GetType().Name,
-                "HP postaci zostało ustawione na: " + _hp
+                $"HP postaci {Name} zostało ustawione na: {_hp}"
             );
         }
     }
@@ -63,6 +63,8 @@ public abstract partial class BaseCharacter
     /// <param name="amount">Ilość obrażeń</param>
     public virtual void TakeDamage(int amount)
     {
+        if (amount < 0)
+            return;
         HP = Math.Max(0, HP - amount);
     }
 

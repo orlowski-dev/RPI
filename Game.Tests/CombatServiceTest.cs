@@ -49,4 +49,45 @@ public class CombatServiceTest
         Assert.NotEqual(enemy.HP, enemy2.HP);
         Assert.True(damageWith > damageWithout);
     }
+
+    [Fact]
+    public void TestAttackSmallerThanDefense()
+    {
+        var player = new PlayerCharacter(
+            name: "Test Character",
+            maxHp: 10,
+            attack: 1,
+            defense: 10,
+            luck: 1,
+            critChance: 1,
+            characterClass: new CharacterClass(
+                name: "Warrior",
+                hpBase: 140,
+                attackBase: 12,
+                defenseBase: 10,
+                critBase: 5,
+                luckBase: 2,
+                hpBonus: 20,
+                attackBonus: 3,
+                defenseBonus: 3
+            )
+        );
+        var enemy = new EnemyCharacter(
+            name: "Test Enemy",
+            maxHp: 10,
+            attack: 1,
+            defense: 1,
+            critChance: 1,
+            level: 3,
+            enemyType: EnemyType.Normal
+        );
+
+        var service = new CombatService(player, enemy);
+
+        var initPlayerHp = player.HP;
+        var damage = service.Attack(enemy, player); // -4
+
+        // jak defense większy niż atak przeciwnika to hp powinno być takie samo jak na początku
+        Assert.Equal(initPlayerHp, player.HP);
+    }
 }

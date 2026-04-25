@@ -118,7 +118,7 @@ public partial class CombatController : Node
         {
             if (_service.State == CombatState.PlayerWon)
             {
-                _service.PlayerCharacter.AddExp(300);
+                _service.PlayerCharacter.AddExp(25);
                 Signals.EmitGameStateChanged(new GameManagerData(GameState.Dungeon));
                 Logger.Write(LogLevel.Info, _scriptName, "Koniec walki - wygrywa gracz");
             }

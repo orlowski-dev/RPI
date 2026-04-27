@@ -706,10 +706,12 @@ Node <-- BaseSingleton <-- UIManager
 
 ## FileSystem
 
-Statyczna klasa odpowiedzialna za pracę z plikami.
+Singleton odpowiedzialny za pracę z plikami.
 
 ```csharp
-public static class FileSystem
+public sealed partial class FileSystem : BaseSingleton<FileSystem>
+{
+}
 ```
 
 Implementacja wykorzystuje `Godot.FileAccess`.
@@ -722,7 +724,7 @@ Metoda odpowiada za zapis danych do pliku. Tworzenie pliku jeśli plik nie istni
 dopisuje dane do istniejącego wskazanego pliku.
 
 ```csharp
-public static void Write(...args)
+public void Write(string path, string content)
 ```
 
 ##### Parametry
@@ -733,6 +735,20 @@ public static void Write(...args)
 | content  | string | Zawartość do zapisania w pliku |
 
 ---
+
+## Read
+Odczytuje zawartość pliku.
+
+```csharp
+public string Read(string path)
+```
+## Exists
+Sprawdza, czy plik istnieje.
+
+```csharp
+public bool Exists(string path)
+```
+
 
 ## Logger
 

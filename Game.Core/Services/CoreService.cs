@@ -1,8 +1,11 @@
-using System.Collections.Generic;
-
-public partial class Database : BaseSingleton<Database>
+public static partial class CoreService
 {
-    public Dictionary<DungTileType, List<Point>> DungeonTiles = new()
+    public static readonly DungGeneratorConfig DungeonGeneratorConfig = new(
+        minRoomSize: 20,
+        maxRoomSize: 40,
+        totalRooms: 5
+    );
+    public static readonly Dictionary<DungTileType, List<Point>> DungeonTiles = new()
     {
         {
             DungTileType.WallTop,

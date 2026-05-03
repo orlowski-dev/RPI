@@ -24,6 +24,8 @@ GlobalLogger="*uid://b552tpr7h80t"
 GameManager="*uid://c1j7a0rwre15j"
 CharacterCreatorSignals="*uid://bcreenfc8pcbs"
 LevelSignals="*uid://bw5xj8bftkjga"
+Database="*uid://w7d6vwvi1ly3"
+Config="*uid://dnpt3vxnpud3v"
 
 [display]
 

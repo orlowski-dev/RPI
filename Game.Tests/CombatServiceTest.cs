@@ -67,7 +67,7 @@ public class CombatServiceTest
                 defenseBase: 10,
                 critBase: 5,
                 luckBase: 2,
-                hpBonus: 20,
+                maxHpBonus: 20,
                 attackBonus: 3,
                 defenseBonus: 3
             )

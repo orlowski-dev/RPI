@@ -1,29 +1,29 @@
 public class DungTilesetMapDB
 {
-    public Dictionary<string, List<Point>> All { get; init; }
+    public Dictionary<DungTileType, List<Point>> All { get; init; }
 
     public DungTilesetMapDB()
     {
         All = new()
         {
             {
-                "wallTop",
+                DungTileType.WallTop,
                 new List<Point>() { new(1, 0), new(2, 0), new(3, 0), new(4, 0) }
             },
             {
-                "wallBottom",
+                DungTileType.WallBottom,
                 new List<Point>() { new(1, 4), new(2, 4), new(3, 4), new(4, 4) }
             },
             {
-                "wallLeft",
+                DungTileType.WallLeft,
                 new List<Point>() { new(0, 0), new(0, 1), new(0, 2), new(0, 3) }
             },
             {
-                "wallRight",
+                DungTileType.WallRight,
                 new List<Point>() { new(5, 0), new(5, 1), new(5, 2), new(5, 3) }
             },
             {
-                "floor",
+                DungTileType.Floor,
                 new List<Point>()
                 {
                     new(1, 1),

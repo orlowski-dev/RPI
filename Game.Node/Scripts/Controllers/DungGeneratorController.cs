@@ -13,7 +13,8 @@ public partial class DungGeneratorController : Node
 
     private void GenerateDungeon()
     {
-        var tile = _service.TilesDB.All["floor"][0];
+        // var tile = _service.TilesDB.All["floor"][0];
+        var tile = _service.TilesDB.All[DungTileType.Floor][0];
         _tileMapLayer.SetCell(new(0, 0), 0, CoordMapper.ToVector2I(tile), 0);
     }
 }

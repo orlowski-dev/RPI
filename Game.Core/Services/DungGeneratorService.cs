@@ -1,10 +1,12 @@
 public partial class DungGeneratorService
 {
-    public List<DungRoomData> Rooms = new();
+    private List<DungRoomData> _rooms = new();
 
     public DungGeneratorService() { }
 
-    private DungRoomData? LastRoom => Rooms.Count > 0 ? Rooms.Last() : null;
+    private DungRoomData? LastRoom => _rooms.Count > 0 ? _rooms.Last() : null;
 
     public void GenerateDungeon() { }
+
+    private void AddRoom() { }
 }

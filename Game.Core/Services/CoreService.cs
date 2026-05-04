@@ -9,19 +9,35 @@ public static partial class CoreService
     {
         {
             DungTileType.WallTop,
-            new List<Point>() { new(1, 0), new(2, 0), new(3, 0), new(4, 0) }
+            new List<Point>() { new(2, 0), new(3, 0), new(4, 0) }
         },
         {
             DungTileType.WallBottom,
             new List<Point>() { new(1, 4), new(2, 4), new(3, 4), new(4, 4) }
         },
         {
+            DungTileType.WallBottomLeft,
+            new List<Point> { new(0, 4) }
+        },
+        {
+            DungTileType.WallBottomRight,
+            new List<Point> { new(5, 4) }
+        },
+        {
             DungTileType.WallLeft,
-            new List<Point>() { new(0, 0), new(0, 1), new(0, 2), new(0, 3) }
+            new List<Point>() { new(0, 1), new(0, 2), new(0, 3) }
+        },
+        {
+            DungTileType.WallTopLeft,
+            new List<Point> { new(0, 0) }
         },
         {
             DungTileType.WallRight,
-            new List<Point>() { new(5, 0), new(5, 1), new(5, 2), new(5, 3) }
+            new List<Point>() { new(5, 1), new(5, 2), new(5, 3) }
+        },
+        {
+            DungTileType.WallTopRight,
+            new List<Point> { new(5, 0) }
         },
         {
             DungTileType.Floor,

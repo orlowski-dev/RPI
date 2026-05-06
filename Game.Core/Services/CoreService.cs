@@ -3,7 +3,8 @@ public static partial class CoreService
     public static readonly DungGeneratorConfig DungeonGeneratorConfig = new(
         minRoomSize: 20,
         maxRoomSize: 40,
-        totalRooms: 5
+        totalRooms: 5,
+        roomOffset: 8
     );
     public static readonly Dictionary<DungTileType, List<Point>> DungeonTiles = new()
     {

@@ -11,11 +11,20 @@ public partial class DungGeneratorService
         _logger = logger;
     }
 
-    private DungRoomData? LastRoom => _rooms.Count > 0 ? _rooms.Last() : null;
-
     public Dictionary<Point, Point> GenerateDungeon()
     {
-        return AddRoom();
+        Dictionary<Point, Point> cells = new();
+
+        for (var i = 0; i < _config.TotalRooms; i++)
+        {
+            var newRoom = AddRoom();
+            foreach (var kvp in newRoom)
+            {
+                cells[kvp.Key] = kvp.Value;
+            }
+        }
+
+        return cells;
     }
 
     private Dictionary<Point, Point> AddRoom()
@@ -24,58 +33,69 @@ public partial class DungGeneratorService
         Dictionary<Point, Point> cells = new();
         void AddCell(Point cell, DungTileType type) =>
             cells.Add(cell, CoreService.GetRandomDungTile(type));
+
         var width = _random.Next((int)_config.MinRoomSize, (int)_config.MaxRoomSize);
         var height = _random.Next((int)_config.MinRoomSize, (int)_config.MaxRoomSize);
+        var startPoint = GetDrawingStartPoint();
+
+        _rooms.Add(
+            new(id: _rooms.Count, topLeftCoords: startPoint, size: new((uint)width, (uint)height))
+        );
+
+        _logger?.Write(LogLevel.Info, "DungGeneratorService", _rooms.Count.ToString());
 
         _logger?.Write(
             LogLevel.Info,
             "DungGeneratorService",
-            $"Generating dungeon - w:{width}, h:{height}"
+            $"Generating room w:{width}, h:{height} at {startPoint.X}x{startPoint.Y}"
         );
 
-        for (var i = 0; i < width; i++)
+        var targetW = startPoint.X + width;
+        var targetH = startPoint.Y + height;
+
+        for (var i = startPoint.X; i < targetW; i++)
         {
-            for (var j = 0; j < height; j++)
+            for (var j = startPoint.Y; j < targetH; j++)
             {
                 var cell = new Point(i, j);
 
                 // top-left
-                if (cell.X == 0 && cell.Y == 0)
+                if (cell.X == startPoint.X && cell.Y == startPoint.Y)
                 {
                     AddCell(cell, DungTileType.WallTopLeft);
                 }
                 // top-right
-                else if (cell.X == width - 1 && cell.Y == 0)
+                else if (cell.X == targetW - 1 && cell.Y == startPoint.Y)
                 {
                     AddCell(cell, DungTileType.WallTopRight);
                 }
                 // bottom left
-                else if (cell.X == 0 && cell.Y == height - 1)
+                else if (cell.X == startPoint.X && cell.Y == targetH - 1)
                 {
                     AddCell(cell, DungTileType.WallBottomLeft);
                 }
                 // bottom-right
-                else if (cell.X == width - 1 && cell.Y == height - 1)
+                else if (cell.X == targetW - 1 && cell.Y == targetH - 1)
                 {
                     AddCell(cell, DungTileType.WallBottomRight);
                 }
                 // left
-                else if (cell.X == 0)
+                else if (cell.X == startPoint.X)
                 {
                     AddCell(cell, DungTileType.WallLeft);
                 }
                 // right
-                else if (cell.X == width - 1)
+                else if (cell.X == targetW - 1)
                 {
                     AddCell(cell, DungTileType.WallRight);
                 }
                 // top
-                else if (cell.Y == 0)
+                else if (cell.Y == startPoint.Y)
                 {
                     AddCell(cell, DungTileType.WallTop);
                 }
                 // bottom
-                else if (cell.Y == height - 1)
+                else if (cell.Y == targetH - 1)
                 {
                     AddCell(cell, DungTileType.WallBottom);
                 }
@@ -88,5 +108,17 @@ public partial class DungGeneratorService
         }
 
         return cells;
+    }
+
+    private Point GetDrawingStartPoint()
+    {
+        if (_rooms.Count == 0)
+            return new(0, 0);
+
+        var lastRoom = _rooms[_rooms.Count - 1];
+        return new(
+            lastRoom.TopLeftCoords.X + (int)lastRoom.Size.Width + (int)_config.RoomOffset,
+            lastRoom.TopLeftCoords.Y
+        );
     }
 }

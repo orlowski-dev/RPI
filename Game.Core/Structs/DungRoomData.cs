@@ -1,11 +1,11 @@
 public struct DungRoomData
 {
-    public uint Id { get; }
+    public int Id { get; }
     public Point TopLeftCoords { get; private set; }
     public Size Size { get; private set; }
     public Point CenterCoords { get; private set; }
 
-    public DungRoomData(uint id, Point topLeftCoords, Size size)
+    public DungRoomData(int id, Point topLeftCoords, Size size)
     {
         Id = id;
         TopLeftCoords = topLeftCoords;

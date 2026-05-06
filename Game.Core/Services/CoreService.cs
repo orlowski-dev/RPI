@@ -58,4 +58,10 @@ public static partial class CoreService
             }
         },
     };
+
+    public static Point GetRandomDungTile(DungTileType type)
+    {
+        var tiles = DungeonTiles[type];
+        return tiles[new Random().Next(0, tiles.Count)];
+    }
 }

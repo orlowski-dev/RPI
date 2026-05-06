@@ -2,17 +2,21 @@ using Godot;
 
 public partial class DungGeneratorController : Node
 {
-    private DungGeneratorService _service = new();
+    private Logger Logger => Logger.Instance;
+    private DungGeneratorService _service;
     private TileMapLayer _tileMapLayer;
 
     public override void _Ready()
     {
+        _service = new DungGeneratorService(logger: Logger);
         _tileMapLayer = GetNode<TileMapLayer>("TileMapLayer");
-        GenerateDungeon();
-    }
+        var cells = _service.GenerateDungeon();
 
-    private void GenerateDungeon()
-    {
-        // _tileMapLayer.SetCell(new(0, 0), 0, tiel, 0);
+        foreach (var cell in cells)
+        {
+            var coords = CoordMapper.ToVector2I(cell.Key);
+            var tileCoords = CoordMapper.ToVector2I(cell.Value);
+            _tileMapLayer.SetCell(coords, 0, tileCoords, 0);
+        }
     }
 }

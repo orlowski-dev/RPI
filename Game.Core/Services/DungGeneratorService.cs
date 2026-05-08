@@ -38,11 +38,12 @@ public partial class DungGeneratorService
         var height = _random.Next((int)_config.MinRoomSize, (int)_config.MaxRoomSize);
         var startPoint = GetDrawingStartPoint();
 
-        _rooms.Add(
-            new(id: _rooms.Count, topLeftCoords: startPoint, size: new((uint)width, (uint)height))
+        var newRoom = new DungRoomData(
+            id: _rooms.Count,
+            topLeftCoords: startPoint,
+            size: new((uint)width, (uint)height)
         );
-
-        _logger?.Write(LogLevel.Info, "DungGeneratorService", _rooms.Count.ToString());
+        _rooms.Add(newRoom);
 
         _logger?.Write(
             LogLevel.Info,
@@ -53,14 +54,31 @@ public partial class DungGeneratorService
         var targetW = startPoint.X + width;
         var targetH = startPoint.Y + height;
 
+        var doorCoord = new Point(
+            x: targetW - 1,
+            y: _random.Next(
+                startPoint.Y + (int)_config.DoorOffset,
+                targetH - (int)_config.DoorOffset
+            )
+        );
+
         for (var i = startPoint.X; i < targetW; i++)
         {
             for (var j = startPoint.Y; j < targetH; j++)
             {
                 var cell = new Point(i, j);
 
+                // door, except last room
+                if (
+                    newRoom.Id < _config.TotalRooms - 1
+                    && cell.X == doorCoord.X
+                    && cell.Y == doorCoord.Y
+                )
+                {
+                    AddCell(cell, DungTileType.Door);
+                }
                 // top-left
-                if (cell.X == startPoint.X && cell.Y == startPoint.Y)
+                else if (cell.X == startPoint.X && cell.Y == startPoint.Y)
                 {
                     AddCell(cell, DungTileType.WallTopLeft);
                 }

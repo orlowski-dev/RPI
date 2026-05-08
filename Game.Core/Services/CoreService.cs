@@ -4,7 +4,8 @@ public static partial class CoreService
         minRoomSize: 20,
         maxRoomSize: 40,
         totalRooms: 5,
-        roomOffset: 8
+        roomOffset: 8,
+        doorSize: 1
     );
     public static readonly Dictionary<DungTileType, List<Point>> DungeonTiles = new()
     {
@@ -57,6 +58,10 @@ public static partial class CoreService
                 new(3, 3),
                 new(4, 3),
             }
+        },
+        {
+            DungTileType.Door,
+            new List<Point>() { new(9, 3) }
         },
     };
 

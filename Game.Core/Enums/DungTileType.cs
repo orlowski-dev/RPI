@@ -9,4 +9,5 @@ public enum DungTileType
     WallLeft,
     WallRight,
     Floor,
+    Door,
 }

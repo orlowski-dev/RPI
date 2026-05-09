@@ -43,12 +43,11 @@ public partial class DungGeneratorService
             topLeftCoords: startPoint,
             size: new((uint)width, (uint)height)
         );
-        _rooms.Add(newRoom);
 
         _logger?.Write(
             LogLevel.Info,
-            "DungGeneratorService",
-            $"Generating room w:{width}, h:{height} at {startPoint.X}x{startPoint.Y}"
+            "DungGeneratorService:AddRoom",
+            $"Generating room width: {width}, height: {height} at ({startPoint.X}, {startPoint.Y})"
         );
 
         var targetW = startPoint.X + width;
@@ -61,6 +60,8 @@ public partial class DungGeneratorService
                 targetH - (int)_config.DoorOffset
             )
         );
+
+        newRoom.DoorCoord = doorCoord;
 
         for (var i = startPoint.X; i < targetW; i++)
         {
@@ -125,6 +126,8 @@ public partial class DungGeneratorService
             }
         }
 
+        _rooms.Add(newRoom);
+
         return cells;
     }
 
@@ -134,9 +137,19 @@ public partial class DungGeneratorService
             return new(0, 0);
 
         var lastRoom = _rooms[_rooms.Count - 1];
-        return new(
-            lastRoom.TopLeftCoords.X + (int)lastRoom.Size.Width + (int)_config.RoomOffset,
-            lastRoom.TopLeftCoords.Y
+
+        _logger?.Write(
+            LogLevel.Info,
+            "DungGeneratorService:GetDrawingStartPoint",
+            $"Last room door coord ({lastRoom.DoorCoord.X}, {lastRoom.DoorCoord.Y})"
+        );
+
+        return new Point(
+            x: lastRoom.TopLeftCoords.X + (int)lastRoom.Size.Width + (int)_config.RoomOffset,
+            y: _random.Next(
+                lastRoom.DoorCoord.Y - (int)lastRoom.Size.Height + (int)_config.DoorOffset,
+                lastRoom.DoorCoord.Y - (int)_config.DoorOffset
+            )
         );
     }
 }

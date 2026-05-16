@@ -1,5 +1,3 @@
-namespace Game.Tests.Shared;
-
 public static class Shared
 {
     public static PlayerCharacter GetNewPlayer()

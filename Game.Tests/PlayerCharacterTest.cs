@@ -1,5 +1,3 @@
-using Game.Tests.Shared;
-
 public class PlayerCharacterTest
 {
     [Fact]

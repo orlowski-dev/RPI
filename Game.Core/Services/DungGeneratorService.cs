@@ -1,11 +1,11 @@
 public partial class DungGeneratorService
 {
-    private List<DungRoomData> _rooms = new();
+    public List<DungRoomData> Rooms = new();
     private DungGeneratorConfig _config = CoreService.DungeonGeneratorConfig;
     private Dictionary<DungTileType, List<Point>> _dungTiles = CoreService.DungeonTiles;
     private Random _random = new Random();
     private ILogger? _logger;
-    private DungRoomData? LastRoom => _rooms.Count > 0 ? _rooms.Last() : null;
+    private DungRoomData? LastRoom => Rooms.Count > 0 ? Rooms.Last() : null;
 
     public DungGeneratorService(ILogger? logger)
     {
@@ -29,7 +29,7 @@ public partial class DungGeneratorService
     }
 
     // returns cell - tileCoords map
-    private Dictionary<Point, Point> AddRoom()
+    public Dictionary<Point, Point> AddRoom()
     {
         // cell, tileCoords
         Dictionary<Point, Point> cells = new();
@@ -38,10 +38,10 @@ public partial class DungGeneratorService
 
         var width = _random.Next((int)_config.MinRoomSize, (int)_config.MaxRoomSize);
         var height = _random.Next((int)_config.MinRoomSize, (int)_config.MaxRoomSize);
-        var startPoint = GetDrawingStartPoint();
+        var startPoint = GetDrawingStartPoint(newRoomHeight: height, previousRoom: LastRoom);
 
         var newRoom = new DungRoomData(
-            id: _rooms.Count,
+            id: Rooms.Count,
             topLeftCoords: startPoint,
             size: new((uint)width, (uint)height)
         );
@@ -82,8 +82,7 @@ public partial class DungGeneratorService
                 }
                 // draw floor instead of wall on the same level as prev room's door
                 else if (
-                    newRoom.Id == _config.TotalRooms - 1
-                    && cell.X == startPoint.X
+                    cell.X == startPoint.X
                     && LastRoom != null
                     && cell.Y == LastRoom.DoorCoord.Y
                 )
@@ -138,30 +137,32 @@ public partial class DungGeneratorService
             }
         }
 
-        _rooms.Add(newRoom);
+        Rooms.Add(newRoom);
 
         return cells;
     }
 
-    private Point GetDrawingStartPoint()
+    public Point GetDrawingStartPoint(int newRoomHeight, DungRoomData? previousRoom = null)
     {
-        var lastRoom = LastRoom;
-
-        if (lastRoom == null)
+        if (previousRoom == null)
             return new(0, 0);
 
         _logger?.Write(
             LogLevel.Info,
             "DungGeneratorService:GetDrawingStartPoint",
-            $"Last room door coord ({lastRoom.DoorCoord.X}, {lastRoom.DoorCoord.Y})"
+            $"Last room door coord ({previousRoom.DoorCoord.X}, {previousRoom.DoorCoord.Y})"
+        );
+
+        var randomY = _random.Next(
+            previousRoom.DoorCoord.Y - newRoomHeight + (int)_config.DoorOffset,
+            previousRoom.DoorCoord.Y - (int)_config.DoorOffset
         );
 
         return new Point(
-            x: lastRoom.TopLeftCoords.X + (int)lastRoom.Size.Width + (int)_config.RoomOffset,
-            y: _random.Next(
-                lastRoom.DoorCoord.Y - (int)lastRoom.Size.Height + (int)_config.DoorOffset,
-                lastRoom.DoorCoord.Y + (int)_config.DoorOffset
-            )
+            x: previousRoom.TopLeftCoords.X
+                + (int)previousRoom.Size.Width
+                + (int)_config.RoomOffset,
+            y: randomY
         );
     }
 }

@@ -78,7 +78,8 @@ public partial class DungGeneratorService
                     && cell.Y == doorCoord.Y
                 )
                 {
-                    AddCell(cell, DungTileType.Door);
+                    // AddCell(cell, DungTileType.Door);
+                    AddCell(cell, DungTileType.Floor); // TODO: temp - change later
                 }
                 // draw floor instead of wall on the same level as prev room's door
                 else if (
@@ -138,6 +139,52 @@ public partial class DungGeneratorService
         }
 
         Rooms.Add(newRoom);
+
+        if (newRoom.Id < _config.TotalRooms - 1)
+        {
+            var corridor = AddCorridor(newRoom.DoorCoord);
+
+            foreach (var kvp in corridor)
+            {
+                cells[kvp.Key] = kvp.Value;
+            }
+        }
+
+        return cells;
+    }
+
+    public Dictionary<Point, Point> AddCorridor(Point doorCoord)
+    {
+        // cell, tileCoords
+        Dictionary<Point, Point> cells = new();
+        void AddCell(Point cell, DungTileType type) =>
+            cells.Add(cell, CoreService.GetRandomDungTile(type));
+
+        var startX = doorCoord.X + 1;
+        var startY = doorCoord.Y - (int)(_config.CorridorHeight / 2);
+
+        _logger?.Write(
+            LogLevel.Info,
+            "DungGeneratorService:AddCorridor",
+            $"Drawing corridor at ({startX}, {startY})"
+        );
+
+        for (var i = startX; i <= doorCoord.X + _config.RoomOffset; i++)
+        {
+            for (var j = startY; j < doorCoord.Y + _config.CorridorHeight - 1; j++)
+            {
+                var cell = new Point(i, j);
+
+                if (cell.Y == startY || cell.Y == doorCoord.Y + _config.CorridorHeight - 2)
+                {
+                    AddCell(cell, DungTileType.WallTop);
+                }
+                else
+                {
+                    AddCell(cell, DungTileType.Floor);
+                }
+            }
+        }
 
         return cells;
     }

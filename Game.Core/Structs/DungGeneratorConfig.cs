@@ -7,6 +7,7 @@ public struct DungGeneratorConfig
     public uint RoomOffset { get; init; }
     public uint DoorSize { get; init; }
     public uint DoorOffset { get; init; }
+    public uint CorridorHeight { get; init; }
 
     public DungGeneratorConfig(
         uint minRoomSize,
@@ -14,7 +15,8 @@ public struct DungGeneratorConfig
         uint totalRooms,
         uint roomOffset,
         uint doorSize,
-        uint? doorOffset = null
+        uint? doorOffset = null,
+        uint? corridorHeight = null
     )
     {
         MinRoomSize = minRoomSize;
@@ -23,5 +25,6 @@ public struct DungGeneratorConfig
         RoomOffset = roomOffset;
         DoorSize = doorSize;
         DoorOffset = doorOffset ?? doorSize + 2;
+        CorridorHeight = corridorHeight ?? doorSize + 2;
     }
 }

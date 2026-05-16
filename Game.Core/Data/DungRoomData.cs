@@ -1,4 +1,4 @@
-public struct DungRoomData
+public class DungRoomData
 {
     public int Id { get; }
     public Point TopLeftCoords { get; private set; }

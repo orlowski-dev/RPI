@@ -5,6 +5,7 @@ public partial class DungGeneratorService
     private Dictionary<DungTileType, List<Point>> _dungTiles = CoreService.DungeonTiles;
     private Random _random = new Random();
     private ILogger? _logger;
+    private DungRoomData? LastRoom => _rooms.Count > 0 ? _rooms.Last() : null;
 
     public DungGeneratorService(ILogger? logger)
     {
@@ -27,6 +28,7 @@ public partial class DungGeneratorService
         return cells;
     }
 
+    // returns cell - tileCoords map
     private Dictionary<Point, Point> AddRoom()
     {
         // cell, tileCoords
@@ -77,6 +79,16 @@ public partial class DungGeneratorService
                 )
                 {
                     AddCell(cell, DungTileType.Door);
+                }
+                // draw floor instead of wall on the same level as prev room's door
+                else if (
+                    newRoom.Id == _config.TotalRooms - 1
+                    && cell.X == startPoint.X
+                    && LastRoom != null
+                    && cell.Y == LastRoom.DoorCoord.Y
+                )
+                {
+                    AddCell(cell, DungTileType.Floor);
                 }
                 // top-left
                 else if (cell.X == startPoint.X && cell.Y == startPoint.Y)
@@ -133,10 +145,10 @@ public partial class DungGeneratorService
 
     private Point GetDrawingStartPoint()
     {
-        if (_rooms.Count == 0)
-            return new(0, 0);
+        var lastRoom = LastRoom;
 
-        var lastRoom = _rooms[_rooms.Count - 1];
+        if (lastRoom == null)
+            return new(0, 0);
 
         _logger?.Write(
             LogLevel.Info,
@@ -148,7 +160,7 @@ public partial class DungGeneratorService
             x: lastRoom.TopLeftCoords.X + (int)lastRoom.Size.Width + (int)_config.RoomOffset,
             y: _random.Next(
                 lastRoom.DoorCoord.Y - (int)lastRoom.Size.Height + (int)_config.DoorOffset,
-                lastRoom.DoorCoord.Y - (int)_config.DoorOffset
+                lastRoom.DoorCoord.Y + (int)_config.DoorOffset
             )
         );
     }

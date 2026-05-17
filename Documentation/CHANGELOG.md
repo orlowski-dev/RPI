@@ -1,5 +1,39 @@
 # Dziennik zmian
 
+## 17.05.2026 Dodanie statycznej klasy CoreService jako centralnego magazynu danych
+
+### Dlaczego
+
+Potrzebny był globalny dostęp do konfiguracji generatora lochu oraz mapy tekstur kafelków bez konieczności tworzenia instancji czy dodawania do autoload jako Node.
+
+### Zmiany
+
+- utworzony plik `.Core:CoreService` - statyczna klasa przechowująca:
+    - `DungeonGeneratorConfig` - domyślna konfiguracja generatora
+    - `DungeonTiles` - mapa typów kafelków na listy tekstur
+    - `GetRandomDungTile()` - metoda pomocnicza do losowania wariantów
+- usunięto potrzebę tworzenia instancji dla danych konfiguracyjnych
+- zapewniono dostęp do danych przez wywołanie `CoreService.PropertyName`
+
+## 17.05.2026 Dodanie systemu generowania lochów (Dungeon Generator)
+
+### Dlaczego
+
+Potrzebny był moduł do proceduralnego generowania lochów składających się z pokoi połączonych korytarzami, z zachowaniem podziału na warstwy `Game.Core` (logika) i `Game.Node` (integracja z Godot).
+
+### Zmiany
+
+- utworzony plik `.Core:DungGeneratorService` - logika generowania pokoi, korytarzy i mapy kafelków
+- utworzony plik `.Node:DungGeneratorController` - kontroler podpięty do sceny `GeneratedDungeonScene`, rysujący kafelki na `TileMapLayer`
+- utworzony plik `.Core:DungGeneratorConfig` - struktura konfiguracyjna generatora
+- utworzony plik `.Core:DungRoomData` - dane wygenerowanego pokoju
+- utworzony plik `.Core:DungTileType` - wylicznik typów kafelków lochu
+- utworzony plik `.Core:Point` - struktura współrzędnych
+- utworzony plik `.Core:Size` - struktura wymiarów
+- utworzony plik `.Core:CoordMapper` - narzędzie mapowania `Point` ↔ `Vector2I`
+- rozszerzony plik `.Core:CoreService` o `DungeonGeneratorConfig`, `DungeonTiles` i `GetRandomDungTile()`
+- dodana dokumentacja systemu do `Dokumentacja projektu.md`
+
 ## 24.04.2026 Dodanie Heal(999) w levelUp po dodaniu statystyk
 
 ### Dlaczego

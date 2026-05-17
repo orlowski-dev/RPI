@@ -1,3 +1,7 @@
+/// <summary>
+/// Struktura przechowująca konfigurację generatora lochu.
+/// Wszystkie wartości są wyrażone w kafelkach (tiles).
+/// </summary>
 public struct DungGeneratorConfig
 {
     // sizes are measured in tiles
@@ -9,6 +13,16 @@ public struct DungGeneratorConfig
     public uint DoorOffset { get; init; }
     public uint CorridorHeight { get; init; }
 
+    /// <summary>
+    /// Inicjalizuje konfigurację generatora.
+    /// </summary>
+    /// <param name="minRoomSize">Minimalny rozmiar pokoju.</param>
+    /// <param name="maxRoomSize">Maksymalny rozmiar pokoju.</param>
+    /// <param name="totalRooms">Liczba pokoi.</param>
+    /// <param name="roomOffset">Odległość między pokojami.</param>
+    /// <param name="doorSize">Rozmiar drzwi.</param>
+    /// <param name="doorOffset">Offset drzwi (domyślnie doorSize + 2).</param>
+    /// <param name="corridorHeight">Wysokość korytarza (domyślnie doorSize + 2).</param>
     public DungGeneratorConfig(
         uint minRoomSize,
         uint maxRoomSize,

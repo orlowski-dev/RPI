@@ -1,5 +1,6 @@
 public static partial class CoreService
 {
+    /// <summary>Domyślna konfiguracja generatora lochu.</summary>
     public static readonly DungGeneratorConfig DungeonGeneratorConfig = new(
         minRoomSize: 20,
         maxRoomSize: 40,
@@ -7,6 +8,11 @@ public static partial class CoreService
         roomOffset: 8,
         doorSize: 1
     );
+
+    /// <summary>
+    /// Mapa typów kafelków lochu na listę możliwych tekstur (punktów w atlasie).
+    /// Używana do losowania wariantów kafelków podczas generowania.
+    /// </summary>
     public static readonly Dictionary<DungTileType, List<Point>> DungeonTiles = new()
     {
         {
@@ -65,6 +71,11 @@ public static partial class CoreService
         },
     };
 
+    /// <summary>
+    /// Losuje jeden wariant tekstury dla danego typu kafelka.
+    /// </summary>
+    /// <param name="type">Typ kafelka.</param>
+    /// <returns>Współrzędne tekstury w atlasie.</returns>
     public static Point GetRandomDungTile(DungTileType type)
     {
         var tiles = DungeonTiles[type];

@@ -1,3 +1,6 @@
+/// <summary>
+/// Klasa przechowująca dane geometryczne wygenerowanego pokoju.
+/// </summary>
 public class DungRoomData
 {
     public int Id { get; }

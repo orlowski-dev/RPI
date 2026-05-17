@@ -1,3 +1,7 @@
+/// <summary>
+/// Serwis odpowiedzialny za logikę proceduralnego generowania lochu.
+/// Generuje pokoje, korytarze i mapę kafelków.
+/// </summary>
 public partial class DungGeneratorService
 {
     public List<DungRoomData> Rooms = new();
@@ -7,11 +11,19 @@ public partial class DungGeneratorService
     private ILogger? _logger;
     private DungRoomData? LastRoom => Rooms.Count > 0 ? Rooms.Last() : null;
 
+    /// <summary>
+    /// Inicjalizuje serwis generowania.
+    /// </summary>
+    /// <param name="logger">Instancja loggera do zapisywania informacji diagnostycznych.</param>
     public DungGeneratorService(ILogger? logger)
     {
         _logger = logger;
     }
 
+    /// <summary>
+    /// Główna metoda generująca cały loch.
+    /// </summary>
+    /// <returns>Słownik mapujący współrzędne komórki (grid) na współrzędne tekstury (tile).</returns>
     public Dictionary<Point, Point> GenerateDungeon()
     {
         Dictionary<Point, Point> cells = new();
@@ -28,7 +40,10 @@ public partial class DungGeneratorService
         return cells;
     }
 
-    // returns cell - tileCoords map
+    /// <summary>
+    /// Generuje pojedynczy pokój i korytarz prowadzący do niego (jeśli to nie pierwszy pokój).
+    /// </summary>
+    /// <returns>Słownik mapujący współrzędne kafelków pokoju na tekstury.</returns>
     public Dictionary<Point, Point> AddRoom()
     {
         // cell, tileCoords
@@ -140,6 +155,7 @@ public partial class DungGeneratorService
 
         Rooms.Add(newRoom);
 
+        // Generowanie korytarza do następnego pokoju no chyba że to ostatni pokój
         if (newRoom.Id < _config.TotalRooms - 1)
         {
             var corridor = AddCorridor(newRoom.DoorCoord);
@@ -153,6 +169,11 @@ public partial class DungGeneratorService
         return cells;
     }
 
+    /// <summary>
+    /// Generuje poziomy korytarz łączący obecny pokój z następnym.
+    /// </summary>
+    /// <param name="doorCoord">Współrzędne drzwi wyjściowych z pokoju.</param>
+    /// <returns>Słownik mapujący kafelki korytarza na tekstury.</returns>
     public Dictionary<Point, Point> AddCorridor(Point doorCoord)
     {
         // cell, tileCoords
@@ -175,6 +196,7 @@ public partial class DungGeneratorService
             {
                 var cell = new Point(i, j);
 
+                // górna i dolna ściana korytarza
                 if (cell.Y == startY || cell.Y == doorCoord.Y + _config.CorridorHeight - 2)
                 {
                     AddCell(cell, DungTileType.WallTop);
@@ -189,6 +211,13 @@ public partial class DungGeneratorService
         return cells;
     }
 
+    /// <summary>
+    /// Oblicza pozycję startową (lewy górny róg) dla nowego pokoju.
+    /// Pozycja zależy od drzwi poprzedniego pokoju i konfiguracji offsetu.
+    /// </summary>
+    /// <param name="newRoomHeight">Wysokość nowego pokoju.</param>
+    /// <param name="previousRoom">Ostatnio wygenerowany pokój (null dla pierwszego).</param>
+    /// <returns>Współrzędne punktu startowego.</returns>
     public Point GetDrawingStartPoint(int newRoomHeight, DungRoomData? previousRoom = null)
     {
         if (previousRoom == null)
@@ -200,6 +229,7 @@ public partial class DungGeneratorService
             $"Last room door coord ({previousRoom.DoorCoord.X}, {previousRoom.DoorCoord.Y})"
         );
 
+        // losowanie pozycji Y w zakresie pozwalającym na połączenie z poprzednim pokojem
         var randomY = _random.Next(
             previousRoom.DoorCoord.Y - newRoomHeight + (int)_config.DoorOffset,
             previousRoom.DoorCoord.Y - (int)_config.DoorOffset

@@ -1141,6 +1141,65 @@ public GameManagerData(GameState gameState, PlayerCharacter playerCharacter = nu
 
 ---
 
+## CoreService
+
+Statyczna klasa pełniąca rolę centralnego magazynu danych i konfiguracji dla modułu `Game.Core`.
+
+```cs
+public static partial class CoreService
+```
+
+### Opis
+
+`CoreService` to statyczna klasa, która przechowuje dane globalne niezbędne dla systemu generowania lochu. Dzięki temu dane są dostępne natychmiastowo bez tworzenia instancji i bez konieczności dodawania do `autoload` jako węzeł Godot.
+
+Klasa zawiera:
+
+- **Konfigurację**: Domyślne ustawienia generatora (`DungeonGeneratorConfig`).
+- **Dane teksturalne**: Mapę typów kafelków na listy współrzędnych tekstur (`DungeonTiles`).
+- **Logikę pomocniczą**: Metodę losującą warianty kafelków (`GetRandomDungTile`).
+
+### Właściwości
+
+| Właściwość               | Typ                                     | Dostęp            | Opis                                                                               |
+| ------------------------ | --------------------------------------- | ----------------- | ---------------------------------------------------------------------------------- |
+| `DungeonGeneratorConfig` | `DungGeneratorConfig`                   | `static readonly` | Domyślna konfiguracja generatora (rozmiary pokoi, liczba pokoi, odległości).       |
+| `DungeonTiles`           | `Dictionary<DungTileType, List<Point>>` | `static readonly` | Mapa definiująca, które tekstury (punkty w atlasie) należą do danego typu kafelka. |
+
+### Metody
+
+#### GetRandomDungTile
+
+```cs
+public static Point GetRandomDungTile(DungTileType type)
+```
+
+Losuje jeden wariant tekstury dla podanego typu kafelka.
+
+##### Parametry
+
+| Parametr | Typ            | Opis                                              |
+| -------- | -------------- | ------------------------------------------------- |
+| `type`   | `DungTileType` | Typ kafelka, dla którego chcemy uzyskać teksturę. |
+
+##### Zwraca
+
+| Typ     | Opis                            |
+| ------- | ------------------------------- |
+| `Point` | Współrzędne tekstury w atlasie. |
+
+### Przykład użycia
+
+```cs
+// Pobranie konfiguracji
+var config = CoreService.DungeonGeneratorConfig;
+
+// Pobranie losowej tekstury podłogi
+var floorTile = CoreService.GetRandomDungTile(DungTileType.Floor);
+```
+
+---
+
 # Wyliczniki
 
 ## GameState
@@ -1270,6 +1329,110 @@ Interfejs dla klasy GameManagerData.
 Dane przekazywane przez sygnały muszą dziedziczyć po `Godot:GodotObject`, stąd ten interfejs.
 
 Wykorzystywany np. w `ISignals` do zdefiniowania parametrów sygnału w `Game.Core`.
+
+---
+
+# System generowania lochów - dungeon generator
+
+Moduł odpowiedzialny za proceduralne generowanie losowych lochów składających się z pokoi połączonych korytarzami. System działa w warstwie `Game.Core` i `Game.Node`.
+
+> [!NOTE] Podział na warstwy
+>
+> -   `Game.Core` to tylko logika - nie zna `Godot.Node`
+> -   `Game.Node` odpowiada za integrację logiki z Godot - zna `Game.Core`
+
+## Architektura
+
+Generowanie opiera się na podziale na warstwy zgodnie z ogólną architekturą projektu:
+
+- **DungGeneratorService**: Czysta logika biznesowa. Odpowiada za algorytm rozmieszczania pokoi, rysowanie ścian, podłóg i korytarzy. Nie zależy od Godot.
+- **DungGeneratorController**: Odpowiada za inicjalizację usługi, pobranie danych i narysowanie kafelków na `TileMapLayer`.
+- **DTO**: `DungRoomData`, `Point`, `Size` - transport danych opisujących geometrię pokoju i współrzędne kafelków.
+
+## Algorytm Generowania
+
+1. **Inicjalizacja**: Pobranie konfiguracji z `CoreService.DungeonGeneratorConfig`.
+2. **Pętla pokoi**: Dla każdej z `TotalRooms`:
+    - Obliczenie losowych wymiarów pokoju (min/max size).
+    - Obliczenie punktu startowego na podstawie drzwi poprzedniego pokoju (lub 0,0 dla pierwszego).
+    - Rysowanie obrysu pokoju (ściany, narożniki).
+    - Umieszczenie drzwi po prawej stronie pokoju.
+    - Jeśli nie jest to ostatni pokój: wygenerowanie korytarza łączącego drzwi z następnym pokojem.
+3. **Renderowanie**: Przekazanie mapy współrzędnych (Cell -> TileCoord) do `TileMapLayer`.
+
+## Klasy i Struktury
+
+### DungGeneratorService
+
+Główny serwis generujący.
+
+| Metoda                         | Opis                                                                                                     |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| `GenerateDungeon()`            | Główna metoda uruchamiająca proces. Zwraca słownik mapujący współrzędne kafelka na współrzędne tekstury. |
+| `AddRoom()`                    | Generuje pojedynczy pokój, rysuje jego ściany i podłogę, ustala drzwi.                                   |
+| `AddCorridor(Point doorCoord)` | Generuje poziomy korytarz łączący obecny pokój z przyszłym.                                              |
+| `GetDrawingStartPoint(...)`    | Oblicza pozycję lewego górnego rogu nowego pokoju względem drzwi poprzedniego.                           |
+
+### DungGeneratorController
+
+Kontroler integracyjny w Godot.
+
+| Metoda     | Opis                                                                                               |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| `_Ready()` | Inicjalizuje serwis, pobiera `TileMapLayer` z drzewa sceny, wywołuje generowanie i maluje kafelki. |
+
+### DungGeneratorConfig
+
+Konfiguracja generatora (immutable struct).
+
+| Właściwość                   | Opis                                           |
+| ---------------------------- | ---------------------------------------------- |
+| `MinRoomSize`, `MaxRoomSize` | Zakres losowych wymiarów pokoju (w kafelkach). |
+| `TotalRooms`                 | Liczba pokoi w lochu.                          |
+| `RoomOffset`                 | Odległość pozioma między pokojami.             |
+| `DoorSize`                   | Wysokość drzwi.                                |
+| `CorridorHeight`             | Wysokość korytarza.                            |
+
+### DungRoomData
+
+Dane opisujące wygenerowany pokój.
+
+| Właściwość      | Opis                                    |
+| --------------- | --------------------------------------- |
+| `Id`            | Unikalny identyfikator pokoju.          |
+| `TopLeftCoords` | Współrzędne lewego górnego rogu pokoju. |
+| `Size`          | Wymiary pokoju.                         |
+| `CenterCoords`  | Środek pokoju.                          |
+| `DoorCoord`     | Współrzędne drzwi.                      |
+
+### DungTileType
+
+Wylicznik typów kafelków używanych w lochu.
+
+| Wartość                                                            | Opis                                                     |
+| ------------------------------------------------------------------ | -------------------------------------------------------- |
+| `WallTop`, `WallBottom`, `WallLeft`, `WallRight`                   | Ściany boczne.                                           |
+| `WallTopLeft`, `WallTopRight`, `WallBottomLeft`, `WallBottomRight` | Narożniki ścian.                                         |
+| `Floor`                                                            | Podłoga.                                                 |
+| `Door`                                                             | Drzwi (obecnie zastąpione podłogą w logice tymczasowej). |
+
+## Konfiguracja
+
+Domyślne ustawienia znajdują się w `CoreService.DungeonGeneratorConfig`:
+
+- **Pokoi**: 5
+- **Wymiary**: 20x20 do 40x40 kafelków
+- **Odległość**: 8 kafelków między pokojami
+
+## Integracja z Godot
+
+1. Stwórz scenę `GeneratedDungeonScene`.
+2. Dodaj jako dziecko węzeł `TileMapLayer` (nazwa musi być dokładnie `TileMapLayer`).
+3. Przypisz skrypt `DungGeneratorController.cs` do głównego węzła sceny.
+4. Upewnij się, że `TileSet` w `TileMapLayer` ma zdefiniowane tekstury odpowiadające indeksom w `CoreService.DungeonTiles`.
+
+> [!NOTE]
+> Moduł opisany z pomocą AI
 
 ---
 

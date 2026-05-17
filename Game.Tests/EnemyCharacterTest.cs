@@ -1,6 +1,3 @@
-using Game.Tests.Shared;
-using Xunit;
-
 public class EnemyCharacterTest
 {
     [Fact]

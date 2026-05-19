@@ -53,7 +53,8 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="characterClassName_label" type="Label" parent="characterStats/VBoxContainer/HBoxContainer" unique_id=1281829403]
+[node name="characterClassNameL" type="Label" parent="characterStats/VBoxContainer/HBoxContainer" unique_id=1281829403]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_df76t")
 theme_override_font_sizes/font_size = 28
@@ -70,6 +71,7 @@ theme_override_fonts/font = ExtResource("2_df76t")
 text = "Punty życia:"
 
 [node name="hpLabel" type="Label" parent="characterStats/VBoxContainer/characterStatsContainer" unique_id=2134966408]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_df76t")
 text = "1"
@@ -80,6 +82,7 @@ theme_override_fonts/font = ExtResource("2_df76t")
 text = "Atak:"
 
 [node name="attackLabel" type="Label" parent="characterStats/VBoxContainer/characterStatsContainer" unique_id=761557719]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_df76t")
 text = "1"
@@ -90,6 +93,7 @@ theme_override_fonts/font = ExtResource("2_df76t")
 text = "Obrona:"
 
 [node name="defenseLabel" type="Label" parent="characterStats/VBoxContainer/characterStatsContainer" unique_id=27194129]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_df76t")
 text = "1"
@@ -101,6 +105,7 @@ text = "Szansa na
 trafienie krytyczne:"
 
 [node name="critLabel" type="Label" parent="characterStats/VBoxContainer/characterStatsContainer" unique_id=790992223]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_df76t")
 text = "1"
@@ -111,6 +116,7 @@ theme_override_fonts/font = ExtResource("2_df76t")
 text = "Sczęście:"
 
 [node name="luckLabel" type="Label" parent="characterStats/VBoxContainer/characterStatsContainer" unique_id=1619093628]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_df76t")
 text = "1"
@@ -162,16 +168,19 @@ theme_override_constants/margin_right = 30
 layout_mode = 2
 
 [node name="warriorBtn" type="Button" parent="charClassSel/VBoxContainer" unique_id=1254712686]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_df76t")
 text = "Wojownik"
 
 [node name="magBtn" type="Button" parent="charClassSel/VBoxContainer" unique_id=508129053]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_df76t")
 text = "Mag"
 
 [node name="archerBtn" type="Button" parent="charClassSel/VBoxContainer" unique_id=1265536459]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_df76t")
 text = "Łucznik"

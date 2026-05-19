@@ -1165,6 +1165,7 @@ Klasa zawiera:
 | ------------------------ | --------------------------------------- | ----------------- | ---------------------------------------------------------------------------------- |
 | `DungeonGeneratorConfig` | `DungGeneratorConfig`                   | `static readonly` | Domyślna konfiguracja generatora (rozmiary pokoi, liczba pokoi, odległości).       |
 | `DungeonTiles`           | `Dictionary<DungTileType, List<Point>>` | `static readonly` | Mapa definiująca, które tekstury (punkty w atlasie) należą do danego typu kafelka. |
+| `CharacterClasses`       | `Dictionary<string, CharacterClass>`    | `static readonly` | Mapa definiująca podstawowe (startowe statystyki dla klas postaci gracza)          |
 
 ### Metody
 

@@ -1,5 +1,12 @@
 # Dziennik zmian
 
+## 19.05.2026 Przeniesienie CharacterClasses do CoreService
+
+### Zmiany
+
+- `.Core:CoreService` jest teraz magazynem danych i konfigów.
+- Przyciski w CharacterCreatorHUD są teraz pobierane przez skrypt poprzez unikatowe nazwy (`%nazwa`).
+
 ## 17.05.2026 Dodanie statycznej klasy CoreService jako centralnego magazynu danych
 
 ### Dlaczego
@@ -9,9 +16,9 @@ Potrzebny był globalny dostęp do konfiguracji generatora lochu oraz mapy tekst
 ### Zmiany
 
 - utworzony plik `.Core:CoreService` - statyczna klasa przechowująca:
-    - `DungeonGeneratorConfig` - domyślna konfiguracja generatora
-    - `DungeonTiles` - mapa typów kafelków na listy tekstur
-    - `GetRandomDungTile()` - metoda pomocnicza do losowania wariantów
+  - `DungeonGeneratorConfig` - domyślna konfiguracja generatora
+  - `DungeonTiles` - mapa typów kafelków na listy tekstur
+  - `GetRandomDungTile()` - metoda pomocnicza do losowania wariantów
 - usunięto potrzebę tworzenia instancji dla danych konfiguracyjnych
 - zapewniono dostęp do danych przez wywołanie `CoreService.PropertyName`
 

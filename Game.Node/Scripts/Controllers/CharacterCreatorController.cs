@@ -1,9 +1,11 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class CharacterCreatorController : Node
 {
     private CharacterCreatorService _service;
     private CharacterCreatorSignals Signals => CharacterCreatorSignals.Instance;
+    private Dictionary<string, CharacterClass> CharacterClasses = CoreService.CharacterClasses;
     private CharacterCreatorData _data;
 
     public override void _Ready()
@@ -27,10 +29,11 @@ public partial class CharacterCreatorController : Node
 
     private CharacterCreatorData GetData()
     {
-        return new(
-            characterClasses: _service.DB.CharacterClasses,
-            selectedClass: _service.SelectedClass
-        );
+        // return new(
+        //     characterClasses: _service.DB.CharacterClasses,
+        //     selectedClass: _service.SelectedClass
+        // );
+        return new(CharacterClasses, _service.SelectedClass);
     }
 
     private void OnSelectedClassChanged(string className)

@@ -3,110 +3,109 @@ using Godot.Collections;
 
 public partial class CharacterCreatorHUD : Node
 {
-    private CharacterCreatorSignals CreatorSignals => CharacterCreatorSignals.Instance;
-    private Signals GlobalSignals => Signals.Instance;
-    private Logger Logger => Logger.Instance;
-    private CharacterCreatorData _data;
-    private CharacterClass _selectedClassStats;
+	private CharacterCreatorSignals CreatorSignals => CharacterCreatorSignals.Instance;
+	private Signals GlobalSignals => Signals.Instance;
+	private Logger Logger => Logger.Instance;
+	private CharacterCreatorData _data;
+	private CharacterClass _selectedClassStats;
 
-    [Export]
-    Dictionary<string, Label> StatsLabels { get; set; } =
-        new()
-        {
-            { "charClassName", null },
-            { "hp", null },
-            { "attack", null },
-            { "defense", null },
-            { "crit", null },
-            { "luck", null },
-        };
+	private Dictionary<string, Label> _statsLabels;
 
-    [Export]
-    Dictionary<string, Button> ClassesBtns { get; set; } =
-        new()
-        {
-            { "warrior", null },
-            { "mage", null },
-            { "archer", null },
-        };
+	private Dictionary<string, Button> _classesBtns;
 
-    [Export]
-    TextureRect CharClassIcon { get; set; }
+	[Export]
+	TextureRect CharClassIcon { get; set; }
 
-    [Export]
-    TextureRect PreviewTR { get; set; }
+	[Export]
+	TextureRect PreviewTR { get; set; }
 
-    [Export]
-    TextEdit CharacterName { get; set; }
+	[Export]
+	TextEdit CharacterName { get; set; }
 
-    [Export]
-    Button StartBtn { get; set; }
+	[Export]
+	Button StartBtn { get; set; }
 
-    public override void _Ready()
-    {
-        CreatorSignals.DataSender += HandleDataSender;
+	public override void _Ready()
+	{
+		_statsLabels = new()
+		{
+			{ "charClassName", GetNode<Label>("%characterClassNameL") },
+			{ "hp", GetNode<Label>("%hpLabel") },
+			{ "attack", GetNode<Label>("%attackLabel") },
+			{ "defense", GetNode<Label>("%defenseLabel") },
+			{ "crit", GetNode<Label>("%critLabel") },
+			{ "luck", GetNode<Label>("%luckLabel") },
+		};
+		_classesBtns = new()
+		{
+			{ "warrior", GetNode<Button>("%warriorBtn") },
+			{ "mage", GetNode<Button>("%magBtn") },
+			{ "archer", GetNode<Button>("%archerBtn") },
+		};
 
-        foreach (var (className, btn) in ClassesBtns)
-        {
-            btn.Pressed += () => OnClassBtnPressed(className);
-        }
+		CreatorSignals.DataSender += HandleDataSender;
 
-        StartBtn.Pressed += OnStartBtnPressed;
-    }
+		foreach (var (className, btn) in _classesBtns)
+		{
+			btn.Pressed += () => OnClassBtnPressed(className);
+		}
 
-    public override void _ExitTree()
-    {
-        CreatorSignals.DataSender -= HandleDataSender;
-    }
+		StartBtn.Pressed += OnStartBtnPressed;
+	}
 
-    private void UpdateUI()
-    {
-        StatsLabels["charClassName"].Text = _selectedClassStats.Name;
-        StatsLabels["hp"].Text = _selectedClassStats.HpBase.ToString();
-        StatsLabels["attack"].Text = _selectedClassStats.AttackBase.ToString();
-        StatsLabels["defense"].Text = _selectedClassStats.DefenseBase.ToString();
-        StatsLabels["crit"].Text = _selectedClassStats.CritBase.ToString() + "%";
-        StatsLabels["luck"].Text = _selectedClassStats.LuckBase.ToString();
-        CharClassIcon.Texture = GD.Load<Texture2D>(
-            "res://Assets/Icons/" + _selectedClassStats.ClassIconName
-        );
-        PreviewTR.Texture = GD.Load<Texture2D>(_selectedClassStats.PreviewSpritePath);
-    }
+	public override void _ExitTree()
+	{
+		CreatorSignals.DataSender -= HandleDataSender;
+	}
 
-    private void HandleDataSender(CharacterCreatorData data)
-    {
-        _data = data;
-        _data.CharacterClasses.TryGetValue(_data.SelectedClass, out _selectedClassStats);
-        UpdateUI();
-    }
+	private void UpdateUI()
+	{
+		_statsLabels["charClassName"].Text = _selectedClassStats.Name;
+		_statsLabels["hp"].Text = _selectedClassStats.HpBase.ToString();
+		_statsLabels["attack"].Text = _selectedClassStats.AttackBase.ToString();
+		_statsLabels["defense"].Text = _selectedClassStats.DefenseBase.ToString();
+		_statsLabels["crit"].Text = _selectedClassStats.CritBase.ToString() + "%";
+		_statsLabels["luck"].Text = _selectedClassStats.LuckBase.ToString();
+		CharClassIcon.Texture = GD.Load<Texture2D>(
+			"res://Assets/Icons/" + _selectedClassStats.ClassIconName
+		);
+		PreviewTR.Texture = GD.Load<Texture2D>(_selectedClassStats.PreviewSpritePath);
+	}
 
-    private void OnClassBtnPressed(string className)
-    {
-        CreatorSignals.EmitSetSelectedClassName(className);
-    }
+	private void HandleDataSender(CharacterCreatorData data)
+	{
+		_data = data;
+		_data.CharacterClasses.TryGetValue(_data.SelectedClass, out _selectedClassStats);
+		UpdateUI();
+	}
 
-    private void OnStartBtnPressed()
-    {
-        var name = CharacterName.Text;
+	private void OnClassBtnPressed(string className)
+	{
+		CreatorSignals.EmitSetSelectedClassName(className);
+	}
 
-        if (name.Length < 3)
-            return;
+	private void OnStartBtnPressed()
+	{
+		var name = CharacterName.Text;
 
-        var player = new PlayerCharacter(
-            name: name,
-            maxHp: _selectedClassStats.HpBase,
-            defense: _selectedClassStats.DefenseBase,
-            attack: _selectedClassStats.AttackBase,
-            luck: _selectedClassStats.LuckBase,
-            critChance: _selectedClassStats.CritBase,
-            characterClass: _selectedClassStats,
-            signals: GlobalSignals,
-            logger: Logger
-        );
+		if (name.Length < 3)
+			return;
 
-        // start new game
-        GlobalSignals.EmitGameStateChanged(
-            new GameManagerData(gameState: GameState.City, playerCharacter: player)
-        );
-    }
+		var player = new PlayerCharacter(
+			name: name,
+			maxHp: _selectedClassStats.HpBase,
+			defense: _selectedClassStats.DefenseBase,
+			attack: _selectedClassStats.AttackBase,
+			luck: _selectedClassStats.LuckBase,
+			critChance: _selectedClassStats.CritBase,
+			characterClass: _selectedClassStats,
+			signals: GlobalSignals,
+			logger: Logger
+		);
+
+		// start new game
+		GlobalSignals.EmitGameStateChanged(
+			new GameManagerData(gameState: GameState.City, playerCharacter: player)
+		);
+	}
 }

@@ -1378,9 +1378,10 @@ Główny serwis generujący.
 
 Kontroler integracyjny w Godot.
 
-| Metoda     | Opis                                                                                               |
-| ---------- | -------------------------------------------------------------------------------------------------- |
-| `_Ready()` | Inicjalizuje serwis, pobiera `TileMapLayer` z drzewa sceny, wywołuje generowanie i maluje kafelki. |
+| Metoda          | Dostęp  | Opis                                                                                               |
+| --------------- | ------- | -------------------------------------------------------------------------------------------------- |
+| `_Ready()`      | public  | Inicjalizuje serwis, pobiera `TileMapLayer` z drzewa sceny, wywołuje generowanie i maluje kafelki. |
+| `SpawnPlayer()` | private | Tworzy instancję postaci gracza i kamery, dodając je do drzewa sceny.                              |
 
 ### DungGeneratorConfig
 

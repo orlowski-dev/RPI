@@ -1,5 +1,27 @@
 # Dziennik zmian
 
+## 21.05.2026 Integracja generatora lochu z systemem spawnu gracza
+
+### Co zmieniono
+
+- Zaktualizowano ścieżkę sceny lochu w `GameService` na nową wersję z generowanym lochem (`GeneratedDungeonScene.tscn`).
+- Rozszerzono `DungGeneratorController` o funkcjonalność automatycznego spawnu gracza i kamery po wygenerowaniu mapy.
+- Dodano konfigurację punktu startowego (`_playerSpawnPointPos`) w kontrolerze.
+- Zaimplementowano metodę `SpawnPlayer()` wykorzystującą `GameManager` do instancjonowania postaci i kamery.
+- Dodano kolizje fizyczne (`physics_layer_0`) do kafelków w `DungeonTilesetTemp.tres` (polygon points dla ścian i podłóg).
+
+### Dlaczego
+
+- Aby umożliwić graczowi natychmiastową rozgrywkę w nowo wygenerowanym lochu bez konieczności ręcznego dodawania obiektów do sceny.
+- Zmiana ścieżki sceny w `GameService` zapewnia, że gra ładuje wersję z procedurally generated dungeon zamiast statycznego poziomu.
+- Dodanie fizyki do tilesetu jest niezbędne do poprawnego działania kolizji postaci z murami lochu.
+
+### Zmiany w plikach
+
+- `Game.Core/Services/GameService.cs` - aktualizacja mapy scen.
+- `Game.Node/Scripts/Controllers/DungGeneratorController.cs` - dodanie logiki spawnu.
+- `Game.Node/Assets/Tilesets/DungeonTilesetTemp.tres` - dodanie danych kolizyjnych.
+
 ## 19.05.2026 Przeniesienie CharacterClasses do CoreService
 
 ### Zmiany
@@ -16,9 +38,9 @@ Potrzebny był globalny dostęp do konfiguracji generatora lochu oraz mapy tekst
 ### Zmiany
 
 - utworzony plik `.Core:CoreService` - statyczna klasa przechowująca:
-  - `DungeonGeneratorConfig` - domyślna konfiguracja generatora
-  - `DungeonTiles` - mapa typów kafelków na listy tekstur
-  - `GetRandomDungTile()` - metoda pomocnicza do losowania wariantów
+    - `DungeonGeneratorConfig` - domyślna konfiguracja generatora
+    - `DungeonTiles` - mapa typów kafelków na listy tekstur
+    - `GetRandomDungTile()` - metoda pomocnicza do losowania wariantów
 - usunięto potrzebę tworzenia instancji dla danych konfiguracyjnych
 - zapewniono dostęp do danych przez wywołanie `CoreService.PropertyName`
 

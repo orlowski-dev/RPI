@@ -18,7 +18,7 @@ public partial class GameService
             { "testWorld", "res://Scenes/Testing/TestWorld.tscn" },
             { "characterCreator", "res://Scenes/Levels/CharacterCreator.tscn" },
             { "cityScene", "res://Scenes/Levels/City/CityScene.tscn" },
-            { "dungeonScene", "res://Scenes/Levels/Dungeon/DungeonScene.tscn" },
+            { "dungeonScene", "res://Scenes/Levels/GeneratedDungeonScene.tscn" },
             { "combatScene", "res://Scenes/Levels/CombatScene.tscn" },
         };
         _logger = logger;

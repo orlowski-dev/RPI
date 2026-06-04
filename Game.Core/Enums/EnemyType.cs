@@ -6,4 +6,8 @@ public enum EnemyType
     Normal,
     Elite,
     Boss,
+    Zombie,
+    Biegacz,
+    Zboj,
+    Brutal,
 }

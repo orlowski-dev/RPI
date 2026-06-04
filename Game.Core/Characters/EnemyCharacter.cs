@@ -17,6 +17,4 @@ public partial class EnemyCharacter : BaseCharacter
     {
         EnemyType = enemyType;
     }
-
-    // TODO: brak skalowania statystyk
 }

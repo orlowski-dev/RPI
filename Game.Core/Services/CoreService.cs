@@ -86,57 +86,121 @@ public static partial class CoreService
     }
 
     public static Dictionary<string, CharacterClass> CharacterClasses = new()
+    {
         {
-            {
-                "warrior",
-                new(
-                    name: "Wojownik",
-                    hpBase: 140,
-                    attackBase: 12,
-                    defenseBase: 10,
-                    critBase: 5,
-                    luckBase: 2,
-                    maxHpBonus: 20, // Zmienione na maxHpBonus z HpBonus
-                    attackBonus: 3,
-                    defenseBonus: 3,
-                    classIconName: "warrior-icon.png",
-                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/warrior.jpeg",
-                    nodeName: "res://Scenes/Characters/Players/Knight.tscn"
-                )
-            },
-            {
-                "mage",
-                new(
-                    name: "Mag",
-                    hpBase: 80,
-                    attackBase: 18,
-                    defenseBase: 4,
-                    critBase: 10,
-                    luckBase: 4,
-                    maxHpBonus: 12, // Zmienione na maxHpBonus z HpBonus
-                    attackBonus: 5,
-                    defenseBonus: 1,
-                    classIconName: "mag-icon.png",
-                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/mage.jpeg",
-                    nodeName: "res://Scenes/Characters/Players/Mage.tscn"
-                )
-            },
-            {
-                "archer",
-                new(
-                    name: "Łucznik",
-                    hpBase: 100,
-                    attackBase: 14,
-                    defenseBase: 6,
-                    critBase: 15,
-                    luckBase: 6,
-                    maxHpBonus: 15, // Zmienione na maxHpBonus z HpBonus
-                    attackBonus: 4,
-                    defenseBonus: 2,
-                    classIconName: "warrior-icon.png",
-                    previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/archer.jpeg",
-                    nodeName: "res://Scenes/Characters/Players/Archer.tscn"
-                )
-            },
-        };
+            "warrior",
+            new(
+                name: "Wojownik",
+                hpBase: 140,
+                attackBase: 12,
+                defenseBase: 10,
+                critBase: 5,
+                luckBase: 2,
+                maxHpBonus: 20, // Zmienione na maxHpBonus z HpBonus
+                attackBonus: 3,
+                defenseBonus: 3,
+                classIconName: "warrior-icon.png",
+                previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/warrior.jpeg",
+                nodeName: "res://Scenes/Characters/Players/Knight.tscn"
+            )
+        },
+        {
+            "mage",
+            new(
+                name: "Mag",
+                hpBase: 80,
+                attackBase: 18,
+                defenseBase: 4,
+                critBase: 10,
+                luckBase: 4,
+                maxHpBonus: 12, // Zmienione na maxHpBonus z HpBonus
+                attackBonus: 5,
+                defenseBonus: 1,
+                classIconName: "mag-icon.png",
+                previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/mage.jpeg",
+                nodeName: "res://Scenes/Characters/Players/Mage.tscn"
+            )
+        },
+        {
+            "archer",
+            new(
+                name: "Łucznik",
+                hpBase: 100,
+                attackBase: 14,
+                defenseBase: 6,
+                critBase: 15,
+                luckBase: 6,
+                maxHpBonus: 15, // Zmienione na maxHpBonus z HpBonus
+                attackBonus: 4,
+                defenseBonus: 2,
+                classIconName: "warrior-icon.png",
+                previewSpritePath: "res://Assets/Prototype/Assets/Prototype/CharacterPreview/archer.jpeg",
+                nodeName: "res://Scenes/Characters/Players/Archer.tscn"
+            )
+        },
+    };
+
+    public static Dictionary<EnemyType, EnemyCharacter> EnemyTypes = new()
+    {
+        {
+            EnemyType.Zombie,
+            new EnemyCharacter(
+                name: "Zombie",
+                maxHp: 90,
+                attack: 10,
+                defense: 4,
+                critChance: 3,
+                enemyType: EnemyType.Zombie,
+                level: 1
+            )
+        },
+        {
+            EnemyType.Biegacz,
+            new EnemyCharacter(
+                name: "Biegacz",
+                maxHp: 70,
+                attack: 15,
+                defense: 3,
+                critChance: 10,
+                enemyType: EnemyType.Biegacz,
+                level: 1
+            )
+        },
+        {
+            EnemyType.Zboj,
+            new EnemyCharacter(
+                name: "Zbój",
+                maxHp: 110,
+                attack: 18,
+                defense: 7,
+                critChance: 12,
+                enemyType: EnemyType.Zboj,
+                level: 1
+            )
+        },
+        {
+            EnemyType.Brutal,
+            new EnemyCharacter(
+                name: "Brutal",
+                maxHp: 160,
+                attack: 22,
+                defense: 14,
+                critChance: 5,
+                enemyType: EnemyType.Brutal,
+                level: 1
+            )
+        },
+        {
+            EnemyType.Boss,
+            new EnemyCharacter(
+                name: "Boss",
+                maxHp: 300,
+                attack: 35,
+                defense: 20,
+                critChance: 20,
+                enemyType: EnemyType.Boss,
+                level: 1
+            )
+        },
+    };
 }

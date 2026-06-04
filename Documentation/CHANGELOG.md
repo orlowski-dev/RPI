@@ -1,5 +1,38 @@
 # Dziennik zmian
 
+## 04.06.2026 Refaktoryzacja definicji przeciwników i porządkowanie konfiguracji CoreService
+
+### Co zmieniono
+
+- Przeniesiono definicje typów przeciwników (`EnemyType`) z `EnemyCharacter` do dedykowanego pliku `.Core:Enums/EnemyType`.
+- Rozszerzono enum `EnemyType` o konkretne typy przeciwników:
+  - `Zombie`
+  - `Biegacz`
+  - `Zboj`
+  - `Brutal`
+
+- Przeniesiono statyczny słownik `EnemyTypes` z klasy `EnemyCharacter` do `.Core:CoreService`.
+- `CoreService` pełni teraz również rolę centralnego magazynu konfiguracji przeciwników obok istniejących konfiguracji klas postaci i generatora lochów.
+- Uporządkowano strukturę inicjalizacji danych w `CharacterClasses`.
+- Usunięto nieużywane pliki projektowe:
+  - `Game.Node/RPI.csproj.old`
+  - `Game.Node/RPI.csproj.old.1`
+  - `Game.Node/RPI.csproj.old.2`
+
+### Dlaczego
+
+- Aby rozdzielić definicje danych od logiki encji i poprawić organizację kodu.
+- Przeniesienie `EnemyType` do osobnego pliku upraszcza ponowne użycie typu w innych modułach bez zależności od klasy `EnemyCharacter`.
+- Centralizacja konfiguracji przeciwników w `CoreService` utrzymuje spójny sposób zarządzania danymi gry (analogicznie do `CharacterClasses` i konfiguracji generatora lochów).
+- Usunięcie starych plików projektowych ogranicza ilość nieaktualnych artefaktów w repozytorium.
+
+### Zmiany w plikach
+
+- `Game.Core/Characters/EnemyCharacter.cs` – usunięcie definicji `EnemyType` i słownika `EnemyTypes`.
+- `Game.Core/Enums/EnemyType.cs` – wydzielenie oraz rozszerzenie enum przeciwników.
+- `Game.Core/Services/CoreService.cs` – dodanie centralnej konfiguracji `EnemyTypes` i uporządkowanie danych.
+- `Game.Node/RPI.csproj.old*` – usunięcie nieużywanych plików projektu.
+
 ## 21.05.2026 Integracja generatora lochu z systemem spawnu gracza
 
 ### Co zmieniono
@@ -38,9 +71,9 @@ Potrzebny był globalny dostęp do konfiguracji generatora lochu oraz mapy tekst
 ### Zmiany
 
 - utworzony plik `.Core:CoreService` - statyczna klasa przechowująca:
-    - `DungeonGeneratorConfig` - domyślna konfiguracja generatora
-    - `DungeonTiles` - mapa typów kafelków na listy tekstur
-    - `GetRandomDungTile()` - metoda pomocnicza do losowania wariantów
+  - `DungeonGeneratorConfig` - domyślna konfiguracja generatora
+  - `DungeonTiles` - mapa typów kafelków na listy tekstur
+  - `GetRandomDungTile()` - metoda pomocnicza do losowania wariantów
 - usunięto potrzebę tworzenia instancji dla danych konfiguracyjnych
 - zapewniono dostęp do danych przez wywołanie `CoreService.PropertyName`
 

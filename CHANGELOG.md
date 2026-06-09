@@ -1,5 +1,56 @@
 # Changelog
 
+## CombatStateMachine (Unfinished)
+
+### Added
+
+#### Combat
+
+- dodano `Combat State Machine`
+- dodano `ICombatState`
+- dodano `CombatStateTransition`
+- dodano `CombatContext`
+- dodano `CombatSession`
+- dodano `CombatParticipant`
+- dodano `CombatReward`
+- dodano obsługę wyboru i wykonywania akcji
+
+#### Results
+
+- dodano `Result`
+- dodano `Error`
+- dodano `ErrorType`
+
+#### Architecture
+
+- rozdzielono odpowiedzialności:
+  - `CombatSession`
+  - `CombatStateMachine`
+  - `CombatAction`
+
+- przygotowano model pod:
+  - status effects
+  - reward calculation
+  - event integration
+
+#### Documentation
+
+- dodano dokument przepływu walki
+- opisano wzorzec State
+- opisano przepływ sesji walki
+
+### Changed
+
+- sesja walki nie zarządza przejściami stanów
+- wykonanie akcji delegowane do `CombatAction`
+- walka przygotowana pod rozszerzalne typy uczestników
+
+### Notes
+
+- brak integracji z `EventBus`
+- brak integracji z `Save`
+- brak integracji z `UI`
+
 ## Combat Domain
 
 dodano:

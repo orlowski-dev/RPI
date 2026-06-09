@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "97d731c280927056",
+        "id": "39b08ed78a3a5b06",
         "type": "tabs",
         "children": [
           {
-            "id": "73673ffc978c5d19",
+            "id": "38ebbf875e195fe8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Architecture/Modules.md",
+                "file": "01_Architecture/ADR/ADR-003.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Modules"
+              "title": "ADR-003"
             }
           }
         ]
@@ -183,8 +183,21 @@
       "bases:Stwórz nową bazę danych": false
     }
   },
-  "active": "f12dd2346b3091ce",
+  "active": "38ebbf875e195fe8",
   "lastOpenFiles": [
+    "01_Architecture/ADR/ADR-001.md",
+    "01_Architecture/ADR/ADR-003.md",
+    "01_Architecture/Modules.md",
+    "01_Architecture/ADR/ADR-002.md",
+    "01_Architecture/Events.md",
+    "01_Architecture/ADR.md",
+    "01_Architecture/SaveModel",
+    "01_Architecture/Patterns",
+    "01_Architecture/Patterns.md",
+    "01_Architecture/Bez nazwy",
+    "01_Architecture/Events",
+    "01_Architecture/ADR",
+    "01_Architecture/SaveModel.md",
     "01_Architecture/assets/Diagram_modułów.jpeg",
     "01_Architecture/assets",
     "uml.gaphor",
@@ -192,7 +205,6 @@
     "00_Project/Roadmap.md",
     "00_Project/Scope.md",
     "00_Project/Vision.md",
-    "01_Architecture/Modules.md",
     "01_Architecture",
     "00_Project/_roadmap_template.md",
     "00_Project"

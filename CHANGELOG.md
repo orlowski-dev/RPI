@@ -1,5 +1,23 @@
 # Changelog
 
+## Save Model
+
+Dodano model zapisu.
+
+Zakres:
+
+- player.json,
+- world.json,
+- itemDefinition.json,
+- itemInstacne.json,
+- algorytm item generation
+- inventory.json
+- events.json
+- settings.json
+- algorytm odczyt zapisu,
+- algorytm zapis gry
+- algorytm trybu continue
+
 ## Event Architecture
 
 Zaprojektowano komunikację systemową.

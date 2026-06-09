@@ -219,8 +219,14 @@ jeden duży dungeon.
 
 Struktura:
 
-- pokoje standardowe,
-- jeden boss.
+- jeden ciągły dungeon
+- eksploracja bez podziału na pokoje
+- przeciwnicy generowani w obrębie dungeonu
+- jeden boss
+
+Warunek pojawienia się bossa:
+
+- osiągnięcie wymaganej liczby pokonanych przeciwników
 
 Założenia:
 
@@ -228,18 +234,15 @@ Założenia:
 - przejście dalej generuje nowy dungeon,
 - nie można opuścić dungeonu wcześniej.
 
-Po śmierci:
+Po śmierci:  
+- zapisujemy stan aktualnego dungeonu
 
-- zapisujemy aktualny stan wygenerowanego świata,
-- zapisujemy stan pokojów.
-
-Przykładowe dane pokoju:
-
-- przeciwnicy,
-- loot,
-- beczki,
-- skrzynie,
-- interakcje.
+Przykładowe dane dungeonu:  
+- przeciwnicy  
+- loot  
+- interakcje  
+- postęp eksploracji  
+- boss unlocked
 
 # System śmierci
 
@@ -344,8 +347,6 @@ Dokumentacja obejmuje:
 
 - ADR,
 - changelog,
-- sprinty,
 - UML,
 - screeny,
 - opis systemów.
-

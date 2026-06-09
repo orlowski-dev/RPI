@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Architecture/ADR/ADR-003.md",
+                "file": "01_Architecture/ADR/_template.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ADR-003"
+              "title": "_template"
             }
           }
         ]
@@ -185,8 +185,9 @@
   },
   "active": "38ebbf875e195fe8",
   "lastOpenFiles": [
-    "01_Architecture/ADR/ADR-001.md",
     "01_Architecture/ADR/ADR-003.md",
+    "01_Architecture/ADR/_template.md",
+    "01_Architecture/ADR/ADR-001.md",
     "01_Architecture/Modules.md",
     "01_Architecture/ADR/ADR-002.md",
     "01_Architecture/Events.md",

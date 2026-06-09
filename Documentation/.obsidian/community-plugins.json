@@ -1,5 +1,4 @@
 [
   "obsidian-plugin-prettier",
-  "better-export-pdf",
-  "dynamic-outline"
+  "floating-toc"
 ]

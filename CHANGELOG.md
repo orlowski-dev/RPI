@@ -1,5 +1,29 @@
 # Changelog
 
+## Combat Domain
+
+dodano:
+-opis agregatu `CombatSession`
+
+- definicja `CombatParticipant`
+- definicja `CombatAction`
+- definicja `CombatReward`
+- model `StatusEffect`
+
+Zdefiniowano:
+
+- granice odpowiedzialności pomiędzy Domain i Presentation
+- brak zależności od Godot w warstwie Core
+- przygotowanie pod implementację Combat State Machine
+
+architektura:
+
+- zgodne z architekturą Game.Core -> Application -> Presenter
+- przygotowanie pod testy jednostkowe
+- wydzielenie odpowiedzialności Combat
+- przygotowanie pod State Pattern
+- przygotowanie pod testy Game.Tests
+
 ## Application Model
 
 Zaprojektowano warstwę Application.

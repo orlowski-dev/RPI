@@ -127,6 +127,7 @@ Operacje:
 - EscapeSucceeded
 - EscapeFailed
 - CombatEnded
+- RewardGranted
 
 ## Character
 

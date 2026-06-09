@@ -1,5 +1,20 @@
 # Changelog
 
+## Application Model
+
+Zaprojektowano warstwę Application.
+
+Zakres:
+
+- use case’y,
+- queries,
+- DTO,
+- Result,
+- Presenter,
+- nawigacja,
+- DI,
+- integracja z eventami.
+
 ## Domain Model
 
 Zaprojektowano model domenowy.

@@ -1,5 +1,17 @@
 # Changelog
 
+## Domain Model
+
+Zaprojektowano model domenowy.
+
+Zakres:
+
+- agregaty,
+- encje,
+- statystyki dynamiczne,
+- model przedmiotów,
+- model walki.
+
 ## Save Model
 
 Dodano model zapisu.

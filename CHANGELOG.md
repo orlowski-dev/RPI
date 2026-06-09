@@ -1,5 +1,17 @@
 # Changelog
 
+## Event Architecture
+
+Zaprojektowano komunikację systemową.
+
+Zakres:
+
+- event flow,
+- event history,
+- model pub/sub,
+- rozdzielenie Domain i Application,
+- zasady obsługi błędów.
+
 ## Combat System Design
 
 Zaprojektowano przepływ walki.

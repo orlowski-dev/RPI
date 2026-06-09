@@ -1,4 +1,4 @@
-## Cel dokumentu
+# Cel dokumentu
 
 Dokument definiuje podział odpowiedzialności pomiędzy modułami systemu.
 

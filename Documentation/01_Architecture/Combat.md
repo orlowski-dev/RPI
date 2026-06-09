@@ -1,4 +1,4 @@
-## Cel dokumentu
+# Cel dokumentu
 
 Dokument definiuje przebieg walki, zasady wykonywania tur, rozliczanie efektów oraz warunki zakończenia.
 

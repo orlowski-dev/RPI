@@ -185,6 +185,8 @@
   },
   "active": "38ebbf875e195fe8",
   "lastOpenFiles": [
+    "01_Architecture/assets/Pasted image 20260609125304.png",
+    "01_Architecture/assets/svg/Przykładowyu_Request_Flow.svg",
     "01_Architecture/assets/ApplicationLayer.jpeg",
     "01_Architecture/assets/svg/ApplicationLayer.svg",
     "01_Architecture/Modules.md",
@@ -204,8 +206,6 @@
     "01_Architecture/assets/svg/Przepływ_zdarzeń.svg",
     "01_Architecture/assets/svg/Przepływ_zdarzeń_przykład.svg",
     "01_Architecture/assets/svg/Gameplay_Loop.svg",
-    "01_Architecture/assets/svg/Combat.svg",
-    "01_Architecture/assets/svg/Architektura_eventów.svg",
     "01_Architecture/assets/svg",
     "01_Architecture/Combat.md",
     "02_GameDesign/Gameplay Loop.md",

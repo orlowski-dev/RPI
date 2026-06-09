@@ -479,6 +479,12 @@ Application korzysta z Infrastructure przez interfejsy.
 
 > Rys. Diagram relacji modelu aplikacji
 
+## Przykładowy Request Flow
+
+![](assets/Pasted%20image%2020260609125304.png)
+
+> Rys. Przykładowy request flow
+
 # Ograniczenia
 
 Niedozwolone:

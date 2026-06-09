@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d132b1719e7600c6",
@@ -185,6 +186,8 @@
   },
   "active": "38ebbf875e195fe8",
   "lastOpenFiles": [
+    "02_GameDesign/assets/Gameplay_Loop.jpeg",
+    "02_GameDesign/assets",
     "01_Architecture/ADR/_template.md",
     "02_GameDesign/Gameplay Loop.md",
     "02_GameDesign",
@@ -209,7 +212,6 @@
     "00_Project/Scope.md",
     "00_Project/Vision.md",
     "01_Architecture",
-    "00_Project/_roadmap_template.md",
-    "00_Project"
+    "00_Project/_roadmap_template.md"
   ]
 }

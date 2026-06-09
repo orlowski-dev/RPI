@@ -21,6 +21,10 @@ stan Pause może zostać nałożony na wybrane stany.
 
 # Stany
 
+![](assets/Gameplay_Loop.jpeg)
+
+> Rys. Diagram State Machine Gameplay Loop
+
 ## MainMenu
 
 Stan początkowy.
@@ -33,9 +37,13 @@ Odpowiedzialność:
 
 Dozwolone przejścia:
 
-- CharacterSelection
+- CharacterCreation
+- ContinueGame
+- LoadGame
+- SaveSelection
+- ExitGame
 
-## CharacterSelection
+## CharacterCreation
 
 Tworzenie postaci.
 
@@ -47,6 +55,40 @@ Odpowiedzialność:
 Dozwolone przejścia:
 
 - SafeHouse
+
+## ContinueGame
+
+Odpowiedzialność:
+
+- odczyt ostatniego aktywnego slota,
+- odtworzenie stanu.
+
+Przejście:  
+SaveSelection
+
+## LoadGame
+
+Odpowiedzialność:
+
+- wybór slota.
+
+Przejście:  
+SaveSelection
+
+## SaveSelection
+
+Odpowiedzialność:
+
+- wybór istniejącego zapisu.
+
+Przejście:  
+SafeHouse
+
+## ExitGame
+
+Odpowiedzialność:
+
+- zakończenie działania aplikacji.
 
 ## SafeHouse
 
@@ -257,7 +299,7 @@ Uwagi:
 - nie uruchamia save,
 - nie zmienia sceny.
 
-### Character
+### CharacterStats
 
 Odpowiedzialność:
 
@@ -370,4 +412,3 @@ Dozwolone przejścia:
 3. Character działa jako ekran.
 4. Combat pozostaje nieprzerywalny poza Pause.
 5. Podstany nie zapisują gry.
-

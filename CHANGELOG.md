@@ -160,8 +160,6 @@ Zakres:
 - ekran nagród,
 - ekran śmierci.
 
----
-
 ## Gameplay Loop
 
 Dodano projekt głównej pętli rozgrywki.
@@ -174,8 +172,6 @@ Zakres:
 - opisano przepływ śmierci,
 - opisano Continue Mode,
 - przygotowano diagram UML.
-
----
 
 ## Init
 

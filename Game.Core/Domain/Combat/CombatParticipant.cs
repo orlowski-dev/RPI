@@ -6,7 +6,7 @@ namespace Game.Core.Domain.Combat;
 /// Reprezentacja jednostki uczestniczącej w walce.
 /// Stanowi adapter domenowy do systemu walki.
 /// </summary>
-public partial class CombatParticipant
+public class CombatParticipant
 {
     public string Id { get; }
     public CombatParticipantType Type { get; }

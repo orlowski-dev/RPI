@@ -3,7 +3,7 @@ namespace Game.Core.Domain.Combat;
 /// <summary>
 /// Reprezentuje wynik walki.
 /// </summary>
-public partial class CombatReward
+public class CombatReward
 {
     public int Experience { get; }
     public int Gold { get; }

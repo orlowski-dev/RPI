@@ -175,4 +175,11 @@ public class CombatSessionTests
         Assert.NotNull(result.Value);
         Assert.Equal(3, result.Value.Participants.Count);
     }
+
+    // test gracz klika atak
+    [Fact]
+    public void CombatFlow_UserClickAttacl()
+    {
+        // new ResolveTurnUseCase().Execute();
+    }
 }

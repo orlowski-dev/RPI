@@ -1,6 +1,6 @@
 namespace Game.Core.Domain.Combat;
 
-public partial class CombatStateMachine
+public class CombatStateMachine
 {
     private readonly Dictionary<CombatStateType, ICombatState> _states;
     private ICombatState? _current;

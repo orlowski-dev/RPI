@@ -4,7 +4,7 @@ namespace Game.Core.Domain.Combat;
 /// Obiekt kontekstowy przekazywany pomiędzy stanami walki.
 /// Ogranicza liczbę parametrów przekazywanych pomiędzy komponentami domeny.
 /// </summary>
-public partial class CombatContext
+public class CombatContext
 {
     public CombatSession Session { get; }
 

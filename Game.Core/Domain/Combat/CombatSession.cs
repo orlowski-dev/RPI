@@ -1,5 +1,3 @@
-using Game.Core.Application.Results;
-
 namespace Game.Core.Domain.Combat;
 
 /// <summary>
@@ -7,7 +5,7 @@ namespace Game.Core.Domain.Combat;
 ///
 /// Odpowiada za: przechowywanie uczestników, zarządzanie aktywną turą, przechowywanie wybranej akcji oraz oznaczanie zakończenia walki. Nie odpowiada za przejścia stanów ani logikę UI.
 /// </summary>
-public partial class CombatSession
+public class CombatSession
 {
     private readonly List<CombatParticipant> _participants;
     private CombatAction? _selectedAction;

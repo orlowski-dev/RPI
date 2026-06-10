@@ -1,28 +1,93 @@
 # Changelog
 
-## Combat Domain
+## Combat State Machine Foundation
 
-dodano:
--opis agregatu `CombatSession`
+### Added
 
-- definicja `CombatParticipant`
-- definicja `CombatAction`
-- definicja `CombatReward`
-- model `StatusEffect`
+#### Combat Domain
 
-Zdefiniowano:
+- dodano model `CombatSession`
+- dodano model `CombatContext`
+- dodano model `CombatParticipant`
+- dodano typ `CombatParticipantType`
+- dodano model statystyk `CombatStats`
+- dodano model wyniku walki `CombatReward`
+- dodano abstrakcję `CombatAction`
 
-- granice odpowiedzialności pomiędzy Domain i Presentation
-- brak zależności od Godot w warstwie Core
-- przygotowanie pod implementację Combat State Machine
+#### State Machine
 
-architektura:
+- dodano interfejs `ICombatState`
+- dodano `CombatStateMachine`
+- dodano `CombatStateTransition`
+- dodano `CombatStateType`
+- przygotowano obsługę przejść stanów:
+  - Enter
+  - Update
+  - Exit
 
-- zgodne z architekturą Game.Core -> Application -> Presenter
-- przygotowanie pod testy jednostkowe
-- wydzielenie odpowiedzialności Combat
-- przygotowanie pod State Pattern
-- przygotowanie pod testy Game.Tests
+- dodano rejestr stanów oparty o `Dictionary<CombatStateType, ICombatState>`
+
+#### Combat Flow
+
+- przygotowano przepływ walki oparty o State Pattern
+- rozdzielono odpowiedzialności:
+  - CombatSession
+  - CombatStateMachine
+  - CombatAction
+
+- dodano obsługę:
+  - aktywnego uczestnika
+  - wyboru akcji
+  - wykonania akcji
+  - zakończenia walki
+
+#### Results
+
+- dodano model `Result`
+- dodano `Result<T>`
+- dodano `Error`
+- dodano `ErrorType`
+
+#### Tests
+
+- dodano testy jednostkowe `CombatSession`
+- dodano fixture tworzącą przykładową sesję walki
+- dodano scenariusze:
+  - inicjalizacji sesji
+  - wyboru akcji
+  - wykonania akcji
+  - zmiany aktywnego uczestnika
+  - zakończenia walki
+  - walidacji pustej akcji
+
+### Changed
+
+- `CombatSession` przestał odpowiadać za przejścia stanów
+- wykonanie akcji zostało zdelegowane do `CombatAction`
+- przygotowano architekturę pod implementację:
+  - PlayerTurnState
+  - EnemyTurnState
+  - RewardState
+
+### Architecture
+
+- zachowano podział:
+  - Domain
+  - Application
+  - Infrastructure
+
+- logika walki pozostała w `Game.Core`
+- brak zależności od Godot
+- przygotowano fundament pod UseCase i EventBus
+
+### Notes
+
+- brak integracji z EventBus
+- brak integracji z Save
+- brak implementacji reward calculation
+- UseCase pozostają w warstwie Application
+- AI przeciwników niezaimplementowane
+- przejścia stanów przygotowane pod dalszą implementację
 
 ## Application Model
 

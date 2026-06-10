@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Architecture/Events.md",
+                "file": "01_Architecture/Combat Domain.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Events"
+              "title": "Combat Domain"
             }
           }
         ]
@@ -183,31 +183,39 @@
       "bases:Stwórz nową bazę danych": false
     }
   },
-  "active": "38ebbf875e195fe8",
+  "active": "f12dd2346b3091ce",
   "lastOpenFiles": [
+    "01_Architecture/Application/Diagramy.md",
+    "01_Architecture/ADR/ADR-003.md",
+    "01_Architecture/Application",
+    "99_Notes/Combat.md",
+    "01_Architecture/ADR/ADR-001.md",
+    "99_Notes",
+    "Bez nazwy.md",
+    "01_Architecture/Save Model.md",
+    "01_Architecture/Application Model.md",
+    "01_Architecture/Combat.md",
+    "01_Architecture/Domain Model.md",
     "01_Architecture/Combat Domain.md",
+    "01_Architecture/Events.md",
+    "01_Architecture/Modules.md",
+    "01_Architecture/assets/Architektura_eventów.jpeg",
+    "01_Architecture/assets/ApplicationLayer.jpeg",
+    "01_Architecture/ADR/_template.md",
+    "01_Architecture/ADR/ADR-002.md",
+    "00_Project/Vision.md",
+    "00_Project/Scope.md",
+    "00_Project/Roadmap.md",
+    "00_Project/Design decision document.md",
     "01_Architecture/assets/CombatDomain.jpeg",
     "01_Architecture/assets/svg/CombatDomain.svg",
-    "01_Architecture/Application Model.md",
     "01_Architecture/assets/Pasted image 20260609125304.png",
     "01_Architecture/assets/svg/Przykładowyu_Request_Flow.svg",
-    "01_Architecture/assets/ApplicationLayer.jpeg",
     "01_Architecture/assets/svg/ApplicationLayer.svg",
-    "01_Architecture/Modules.md",
-    "01_Architecture/Events.md",
-    "01_Architecture/Domain Model.md",
     "01_Architecture/assets/DomainModel.jpeg",
     "01_Architecture/assets/svg/DomainModel.svg",
-    "01_Architecture/Save Model.md",
-    "01_Architecture/ADR/ADR-001.md",
-    "01_Architecture/ADR/_template.md",
-    "01_Architecture/ADR/ADR-003.md",
-    "01_Architecture/ADR/ADR-002.md",
-    "00_Project/Design decision document.md",
     "01_Architecture/assets/Przepływ_zdarzeń_przykład.jpeg",
-    "01_Architecture/assets/Przepływ_zdarzeń.jpeg",
     "01_Architecture/assets/svg",
-    "01_Architecture/Combat.md",
     "02_GameDesign/Gameplay Loop.md",
     "02_GameDesign/assets",
     "02_GameDesign",
@@ -215,15 +223,10 @@
     "01_Architecture/SaveModel",
     "01_Architecture/Patterns",
     "01_Architecture/Patterns.md",
-    "01_Architecture/Bez nazwy",
     "01_Architecture/Events",
     "01_Architecture/ADR",
     "01_Architecture/SaveModel.md",
     "01_Architecture/assets",
-    "uml.gaphor",
-    "00_Project/Roadmap.md",
-    "00_Project/Scope.md",
-    "00_Project/Vision.md",
     "00_Project/_roadmap_template.md"
   ]
 }

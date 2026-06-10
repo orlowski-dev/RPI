@@ -1,137 +1,93 @@
 # Changelog
 
-## CombatStateMachine (Unfinished)
+## Combat State Machine Foundation
 
 ### Added
 
-#### Combat
+#### Combat Domain
 
-- zaimplementowano model `CombatParticipant`
-- dodano identyfikację uczestnika (`Id`, `SourceId`)
-- dodano typ uczestnika (`CombatParticipantType`)
-- dodano obsługę stanu życia (`CurrentHp`, `IsAlive`)
-- dodano model statystyk walki (`CombatStats`)
-- dodano operacje:
-  - `ReceiveDamage`
-  - `Heal`
-
-- rozszerzono `CombatReward`
-- dodano obsługę:
-  - doświadczenia (`Experience`)
-  - złota (`Gold`)
-  - listy nagród (`ItemInstanceIds`)
+- dodano model `CombatSession`
+- dodano model `CombatContext`
+- dodano model `CombatParticipant`
+- dodano typ `CombatParticipantType`
+- dodano model statystyk `CombatStats`
+- dodano model wyniku walki `CombatReward`
+- dodano abstrakcję `CombatAction`
 
 #### State Machine
 
+- dodano interfejs `ICombatState`
+- dodano `CombatStateMachine`
+- dodano `CombatStateTransition`
+- dodano `CombatStateType`
+- przygotowano obsługę przejść stanów:
+  - Enter
+  - Update
+  - Exit
+
 - dodano rejestr stanów oparty o `Dictionary<CombatStateType, ICombatState>`
-- dodano śledzenie aktywnego stanu (`Current`)
-- dodano mechanizm zmiany stanu (`Change`)
-- dodano obsługę wejścia i wyjścia ze stanu:
-  - `Enter`
-  - `Exit`
-- przygotowano mechanizm aktualizacji stanu (`Update`)
-- dodano walidację uruchomienia maszyny stanów
+
+#### Combat Flow
+
+- przygotowano przepływ walki oparty o State Pattern
+- rozdzielono odpowiedzialności:
+  - CombatSession
+  - CombatStateMachine
+  - CombatAction
+
+- dodano obsługę:
+  - aktywnego uczestnika
+  - wyboru akcji
+  - wykonania akcji
+  - zakończenia walki
+
+#### Results
+
+- dodano model `Result`
+- dodano `Result<T>`
+- dodano `Error`
+- dodano `ErrorType`
 
 #### Tests
 
 - dodano testy jednostkowe `CombatSession`
 - dodano fixture tworzącą przykładową sesję walki
-- dodano testy:
+- dodano scenariusze:
   - inicjalizacji sesji
   - wyboru akcji
   - wykonania akcji
-  - przełączania tur
+  - zmiany aktywnego uczestnika
   - zakończenia walki
-  - walidacji wykonania pustej akcji
+  - walidacji pustej akcji
 
 ### Changed
 
-- `CombatParticipant` stał się pełnoprawną encją domenową
-- `CombatReward` przechowuje rzeczywiste dane nagród
-- `CombatStateMachine` otrzymał szkielet obsługi przejść stanów
-- `CombatSession` posiada pokrycie testami scenariuszy podstawowych
+- `CombatSession` przestał odpowiadać za przejścia stanów
+- wykonanie akcji zostało zdelegowane do `CombatAction`
+- przygotowano architekturę pod implementację:
+  - PlayerTurnState
+  - EnemyTurnState
+  - RewardState
+
+### Architecture
+
+- zachowano podział:
+  - Domain
+  - Application
+  - Infrastructure
+
+- logika walki pozostała w `Game.Core`
+- brak zależności od Godot
+- przygotowano fundament pod UseCase i EventBus
 
 ### Notes
 
-- `CombatStateMachine.Start()` nadal nie posiada implementacji
-- `CombatStateMachine.Update()` nie wykonuje jeszcze faktycznego przejścia po otrzymaniu `CombatStateTransition`
-- brak integracji State Machine z EventBus
-- brak rozliczania rewardów w Application
-
-## CombatStateMachine (Unfinished)
-
-### Added
-
-#### Combat
-
-- dodano `Combat State Machine`
-- dodano `ICombatState`
-- dodano `CombatStateTransition`
-- dodano `CombatContext`
-- dodano `CombatSession`
-- dodano `CombatParticipant`
-- dodano `CombatReward`
-- dodano obsługę wyboru i wykonywania akcji
-
-#### Results
-
-- dodano `Result`
-- dodano `Error`
-- dodano `ErrorType`
-
-#### Architecture
-
-- rozdzielono odpowiedzialności:
-  - `CombatSession`
-  - `CombatStateMachine`
-  - `CombatAction`
-
-- przygotowano model pod:
-  - status effects
-  - reward calculation
-  - event integration
-
-#### Documentation
-
-- dodano dokument przepływu walki
-- opisano wzorzec State
-- opisano przepływ sesji walki
-
-### Changed
-
-- sesja walki nie zarządza przejściami stanów
-- wykonanie akcji delegowane do `CombatAction`
-- walka przygotowana pod rozszerzalne typy uczestników
-
-### Notes
-
-- brak integracji z `EventBus`
-- brak integracji z `Save`
-- brak integracji z `UI`
-
-## Combat Domain
-
-dodano:
--opis agregatu `CombatSession`
-
-- definicja `CombatParticipant`
-- definicja `CombatAction`
-- definicja `CombatReward`
-- model `StatusEffect`
-
-Zdefiniowano:
-
-- granice odpowiedzialności pomiędzy Domain i Presentation
-- brak zależności od Godot w warstwie Core
-- przygotowanie pod implementację Combat State Machine
-
-architektura:
-
-- zgodne z architekturą Game.Core -> Application -> Presenter
-- przygotowanie pod testy jednostkowe
-- wydzielenie odpowiedzialności Combat
-- przygotowanie pod State Pattern
-- przygotowanie pod testy Game.Tests
+- brak integracji z EventBus
+- brak integracji z Save
+- brak implementacji reward calculation
+- UseCase pozostają w warstwie Application
+- AI przeciwników niezaimplementowane
+- przejścia stanów przygotowane pod dalszą implementację
 
 ## Application Model
 

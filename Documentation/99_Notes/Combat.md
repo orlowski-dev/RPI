@@ -409,7 +409,8 @@ EnemyTurnState ->
 EnemyStatusState
 ```
 
-> [!NOTE] > `CombatSession` nie zna `EventBus`, `Save`, `Presenter`, `Godot` ani `Scene` bo to już są inne warsty,
+> [!NOTE] 
+ > `CombatSession` nie zna `EventBus`, `Save`, `Presenter`, `Godot` ani `Scene` bo to już są inne warsty,
 
 
 ### MachineState

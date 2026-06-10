@@ -1,23 +1,26 @@
 public class CombatSessionTests
 {
-    private (CombatParticipant, CombatParticipant, CombatSession) CreateSession()
+    private (List<CombatParticipant>, CombatSession) CreateSession()
     {
-        var player = TestCombatParticipant.Player;
-        var enemy = TestCombatParticipant.Enemy;
+        var tcp = new TestCombatParticipant();
+        var player = tcp.Player;
+        var enemy1 = tcp.Enemy1;
+        var enemy2 = tcp.Enemy2;
 
-        var session = new CombatSession(new[] { player, enemy });
+        var session = new CombatSession(new[] { player, enemy1, enemy2 });
 
-        return (player, enemy, session);
+        return (new() { player, enemy1, enemy2 }, session);
     }
 
     // sprawdzam czy CombatSession ustawia stan początkowy i wybiera pierwszego uczestnika
     [Fact]
     public void Constructor_ShouldInitializeSession()
     {
-        var (player, enemy, session) = CreateSession();
+        var (participants, session) = CreateSession();
 
         Assert.Equal(CombatStateType.Start, session.State);
-        Assert.Equal(player, session.ActiveParticipant);
+        session.SetActiveParticipant(participants[0]);
+        Assert.Equal(participants.First(), session.ActiveParticipant);
         Assert.False(session.IsFinished);
         Assert.Equal(1, session.TurnNumber);
     }
@@ -26,7 +29,7 @@ public class CombatSessionTests
     [Fact]
     public void SelectAction_ShouldMarkActionAsSelected()
     {
-        var (_, _, session) = CreateSession();
+        var (_, session) = CreateSession();
 
         var action = new FakeAction();
 
@@ -38,7 +41,7 @@ public class CombatSessionTests
     [Fact]
     public void ExecuteSelectedAction_ShouldConsumeAction()
     {
-        var (_, _, session) = CreateSession();
+        var (_, session) = CreateSession();
         var action = new FakeAction();
         session.SelectAction(action);
         var result = session.ExecuteSelectedAction();
@@ -47,21 +50,67 @@ public class CombatSessionTests
         Assert.True(action.Executed);
     }
 
-    // sprawdza kolejność tur
+    // sprawdzam flow walki player -> enemy1 -> enemy2 -> player
     [Fact]
-    public void EndPlayerTurn_ShouldMoveToNextParticipant()
+    void CombatFlow_ShouldWorkAsExpected()
     {
-        var (player, enemy, session) = CreateSession();
-        session.EndPlayerTurn();
-        Assert.Equal(enemy, session.ActiveParticipant);
+        var (participants, session) = CreateSession();
+        var player = participants.First();
+        var enemy1 = participants[1];
+        var enemy2 = participants[2];
+
+        // tura gracza na starcie
+        Assert.Equal(CombatStateType.Start, session.State);
+        session.SetActiveParticipant(player);
+        Assert.Equal(CombatStateType.PlayerTurn, session.State);
+        Assert.Equal(player, session.ActiveParticipant);
+        Assert.Equal(1, session.TurnNumber);
+
+        // gracz wykonuje akcję
+        var action = new FakeAction();
+        session.SelectAction(action);
+        var result = session.ExecuteSelectedAction();
+        Assert.True(result.IsSuccess);
+
+        // przeciwnycy wykonują akcje
+
+        foreach (var en in new[] { enemy1, enemy2 })
+        {
+            session.SetActiveParticipant(en);
+            Assert.Equal(CombatStateType.EnemyTurn, session.State);
+            Assert.Equal(en, session.ActiveParticipant);
+            Assert.Equal(player, session.Target);
+            Assert.Equal(1, session.TurnNumber); // wciąż tura 1 dopóki gracz nie ma znowu tury
+
+            // przeciwnik atakuje gracza czyli -10hp
+            var attack = new AttackAction();
+            session.SelectAction(attack);
+            session.ExecuteSelectedAction();
+        }
+
+        // hp po 2*10attack powinno być 10 u gracza
+        Assert.Equal(10, player.CurrentHp);
+
+        session.SetActiveParticipant(player);
+        Assert.Equal(CombatStateType.PlayerTurn, session.State);
+        Assert.Equal(player, session.ActiveParticipant);
+        Assert.Null(session.Target);
         Assert.Equal(2, session.TurnNumber);
+
+        // gracza atakuje enemy1 i go pokonuje bo attack=enemyCurrentHP
+        session.SetTarget(enemy1);
+        var attackAction = new AttackAction();
+        session.SelectAction(attackAction);
+        session.ExecuteSelectedAction();
+        Assert.Equal(0, enemy1.CurrentHp);
+        Assert.False(enemy1.IsAlive);
     }
 
     // sprawdzam zakończenie walki
     [Fact]
     public void Finish_ShouldCloseCombat()
     {
-        var (_, _, session) = CreateSession();
+        var (_, session) = CreateSession();
         var reward = new CombatReward(10, 10, new[] { "sword" });
         session.Finish(reward);
         Assert.True(session.IsFinished);
@@ -70,14 +119,60 @@ public class CombatSessionTests
     }
 
     // sprawdzam nie można wykonać pustej akcji
-    //
     [Fact]
     public void ExecuteSelectedAction_WithoutAction_ShouldFail()
     {
-        var (_, _, session) = CreateSession();
+        var (_, session) = CreateSession();
 
         var result = session.ExecuteSelectedAction();
 
         Assert.True(result.IsFailure);
+    }
+
+    // sprawdzam nie można wykonać attack acion jeśli nie ma targetu
+    [Fact]
+    public void AttackAction_WithoutTarget_ShouldFail()
+    {
+        var (_, session) = CreateSession();
+        var action = new AttackAction();
+        session.SelectAction(action);
+        var result = session.ExecuteSelectedAction();
+        Assert.True(result.IsFailure);
+    }
+
+    // sprawdzam czy target dostaje damage przy akcji ataki
+    [Fact]
+    public void AttackAction_ShouldDealDamage()
+    {
+        var (participants, session) = CreateSession();
+        var player = participants.First();
+        var enemy1 = participants[1];
+        var enemy2 = participants[2];
+
+        session.SetActiveParticipant(player);
+        session.SetTarget(enemy2);
+        var action = new AttackAction();
+        session.SelectAction(action);
+        var result = session.ExecuteSelectedAction();
+        Assert.True(result.IsSuccess);
+        Assert.Equal(enemy1.Stats.MaxHp, enemy1.CurrentHp);
+        Assert.Equal(enemy2.Stats.MaxHp - player.Stats.Attack, enemy2.CurrentHp);
+    }
+
+    // testuję UseCase
+    [Fact]
+    public void StartCombtaUseCase_ShouldCreateSession()
+    {
+        var (participants, _) = CreateSession();
+        var request = new StartCombatRequest(
+            participants.First(),
+            [participants[1], participants[2]]
+        );
+        var sut = new StartCombatUseCase();
+        var result = sut.Execute(request);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Equal(3, result.Value.Participants.Count);
     }
 }

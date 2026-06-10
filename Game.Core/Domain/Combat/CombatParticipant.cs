@@ -1,5 +1,7 @@
 namespace Game.Core.Domain.Combat;
 
+// to jest snapshot obiektu np player bo nie powinno się od razu niszczyć głównej encji.
+
 /// <summary>
 /// Reprezentacja jednostki uczestniczącej w walce.
 /// Stanowi adapter domenowy do systemu walki.

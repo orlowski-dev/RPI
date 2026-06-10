@@ -8,7 +8,7 @@ public record CombatStateTransition(bool ShouldChange, CombatStateType? NextStat
 {
     public static CombatStateTransition Stay()
     {
-        return new(true, null);
+        return new(false, null);
     }
 
     public static CombatStateTransition Next(CombatStateType next)

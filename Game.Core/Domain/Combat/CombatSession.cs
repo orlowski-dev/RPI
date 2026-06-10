@@ -15,22 +15,21 @@ public partial class CombatSession
     public CombatStateType State { get; private set; }
     public IReadOnlyList<CombatParticipant> Participants => _participants;
     public CombatParticipant ActiveParticipant { get; private set; }
+    public CombatParticipant? Target { get; private set; }
     public int TurnNumber { get; private set; }
     public bool IsFinished { get; private set; }
     public CombatReward? Reward { get; private set; }
     public bool HasSelectedAction => _selectedAction is not null;
 
+    public CombatParticipant Player =>
+        _participants.Find((x) => x.Type == CombatParticipantType.Player)
+        ?? throw new InvalidOperationException();
+
     public CombatSession(IEnumerable<CombatParticipant> participants)
     {
         _participants = participants.ToList();
         ActiveParticipant = _participants.First();
-        TurnNumber = 1;
         State = CombatStateType.Start;
-    }
-
-    public void BeginPlayerTurn()
-    {
-        State = CombatStateType.PlayerTurn;
     }
 
     /// <summary>
@@ -41,7 +40,7 @@ public partial class CombatSession
         _selectedAction = action;
     }
 
-    public CombatAction ConsumeAction()
+    private CombatAction ConsumeAction()
     {
         if (_selectedAction is null)
         {
@@ -76,12 +75,6 @@ public partial class CombatSession
         return action.Execute(this);
     }
 
-    public void EndPlayerTurn()
-    {
-        TurnNumber += 1;
-        MoveToNextParticipant();
-    }
-
     /// <summary>
     /// Oznacza zakończenie walki i zapisuje wynik nagrody.
     /// </summary>
@@ -92,10 +85,14 @@ public partial class CombatSession
         State = CombatStateType.End;
     }
 
-    private void MoveToNextParticipant()
+    public CombatParticipant? SetTarget(CombatParticipant? target)
     {
-        var current = _participants.IndexOf(ActiveParticipant);
-        var next = (current + 1) % _participants.Count;
-        ActiveParticipant = _participants[next];
+        Target = target;
+        return Target;
+    }
+
+    public void SetActiveParticipant(CombatParticipant participant)
+    {
+        ActiveParticipant = participant;
     }
 }

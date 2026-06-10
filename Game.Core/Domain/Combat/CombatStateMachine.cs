@@ -12,7 +12,10 @@ public partial class CombatStateMachine
         _states = states.ToDictionary(x => x.Type);
     }
 
-    public void Start(CombatContext ctx) { }
+    public void Start(CombatContext ctx)
+    {
+        Change(CombatStateType.PlayerTurn, ctx);
+    }
 
     public void Update(CombatContext ctx)
     {
@@ -27,6 +30,13 @@ public partial class CombatStateMachine
         {
             return;
         }
+
+        if (transition.NextState is null)
+        {
+            return;
+        }
+
+        Change(transition.NextState.Value, ctx);
     }
 
     private void Change(CombatStateType next, CombatContext ctx)

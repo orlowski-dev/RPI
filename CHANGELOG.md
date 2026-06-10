@@ -6,6 +6,64 @@
 
 #### Combat
 
+- zaimplementowano model `CombatParticipant`
+- dodano identyfikację uczestnika (`Id`, `SourceId`)
+- dodano typ uczestnika (`CombatParticipantType`)
+- dodano obsługę stanu życia (`CurrentHp`, `IsAlive`)
+- dodano model statystyk walki (`CombatStats`)
+- dodano operacje:
+  - `ReceiveDamage`
+  - `Heal`
+
+- rozszerzono `CombatReward`
+- dodano obsługę:
+  - doświadczenia (`Experience`)
+  - złota (`Gold`)
+  - listy nagród (`ItemInstanceIds`)
+
+#### State Machine
+
+- dodano rejestr stanów oparty o `Dictionary<CombatStateType, ICombatState>`
+- dodano śledzenie aktywnego stanu (`Current`)
+- dodano mechanizm zmiany stanu (`Change`)
+- dodano obsługę wejścia i wyjścia ze stanu:
+  - `Enter`
+  - `Exit`
+- przygotowano mechanizm aktualizacji stanu (`Update`)
+- dodano walidację uruchomienia maszyny stanów
+
+#### Tests
+
+- dodano testy jednostkowe `CombatSession`
+- dodano fixture tworzącą przykładową sesję walki
+- dodano testy:
+  - inicjalizacji sesji
+  - wyboru akcji
+  - wykonania akcji
+  - przełączania tur
+  - zakończenia walki
+  - walidacji wykonania pustej akcji
+
+### Changed
+
+- `CombatParticipant` stał się pełnoprawną encją domenową
+- `CombatReward` przechowuje rzeczywiste dane nagród
+- `CombatStateMachine` otrzymał szkielet obsługi przejść stanów
+- `CombatSession` posiada pokrycie testami scenariuszy podstawowych
+
+### Notes
+
+- `CombatStateMachine.Start()` nadal nie posiada implementacji
+- `CombatStateMachine.Update()` nie wykonuje jeszcze faktycznego przejścia po otrzymaniu `CombatStateTransition`
+- brak integracji State Machine z EventBus
+- brak rozliczania rewardów w Application
+
+## CombatStateMachine (Unfinished)
+
+### Added
+
+#### Combat
+
 - dodano `Combat State Machine`
 - dodano `ICombatState`
 - dodano `CombatStateTransition`

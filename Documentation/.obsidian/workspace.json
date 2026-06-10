@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "99_Notes/Combat.md",
+                "file": "01_Architecture/Combat Domain.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Combat"
+              "title": "Combat Domain"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d132b1719e7600c6",
@@ -184,10 +183,13 @@
       "bases:Stwórz nową bazę danych": false
     }
   },
-  "active": "38ebbf875e195fe8",
+  "active": "f12dd2346b3091ce",
   "lastOpenFiles": [
-    "01_Architecture/ADR/ADR-001.md",
+    "01_Architecture/Application/Diagramy.md",
+    "01_Architecture/ADR/ADR-003.md",
+    "01_Architecture/Application",
     "99_Notes/Combat.md",
+    "01_Architecture/ADR/ADR-001.md",
     "99_Notes",
     "Bez nazwy.md",
     "01_Architecture/Save Model.md",
@@ -199,7 +201,6 @@
     "01_Architecture/Modules.md",
     "01_Architecture/assets/Architektura_eventów.jpeg",
     "01_Architecture/assets/ApplicationLayer.jpeg",
-    "01_Architecture/ADR/ADR-003.md",
     "01_Architecture/ADR/_template.md",
     "01_Architecture/ADR/ADR-002.md",
     "00_Project/Vision.md",
@@ -222,7 +223,6 @@
     "01_Architecture/SaveModel",
     "01_Architecture/Patterns",
     "01_Architecture/Patterns.md",
-    "01_Architecture/Bez nazwy",
     "01_Architecture/Events",
     "01_Architecture/ADR",
     "01_Architecture/SaveModel.md",

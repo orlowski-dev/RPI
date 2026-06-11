@@ -6,9 +6,9 @@ namespace Game.Core.Domain.Combat;
 /// </summary>
 public record CombatStateTransition(bool ShouldChange, CombatStateType? NextState)
 {
-    public static void Stay()
+    public static CombatStateTransition Stay()
     {
-        return;
+        return new(false, null);
     }
 
     public static CombatStateTransition Next(CombatStateType next)

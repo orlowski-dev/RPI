@@ -1,4 +1,4 @@
-namespace Game.Core.Application.Abstraction;
+namespace Game.Core.Application.Abstractions;
 
 public interface IUseCase<in TRequest, TResponse>
 {

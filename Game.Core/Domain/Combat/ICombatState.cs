@@ -16,7 +16,7 @@ public interface ICombatState
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
     public void Enter(CombatContext ctx);
 
-    // wywołuje się wiele razy - czy gracz JUŻ wykonał akcję?
+    // wywołuje się wiele razy - czy gracz JUŻ wykonał akcję? co potem?
     public CombatStateTransition Update(CombatContext ctx);
 
     // wywoływane raz - sprzątanie po stanie - np. kończę turę

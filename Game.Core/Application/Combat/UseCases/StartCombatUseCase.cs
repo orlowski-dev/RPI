@@ -9,7 +9,13 @@ public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatRespon
 {
     public Result<StartCombatResponse> Execute(StartCombatRequest request)
     {
-        var states = new List<ICombatState>() { new PlayerTurnState(), new EnemyTurnState() };
+        var states = new List<ICombatState>()
+        {
+            new PlayerTurnState(),
+            new EnemyTurnState(),
+            new PlayerStatusState(),
+            new EnemyStatusState(),
+        };
         var stateMachine = new CombatStateMachine(states);
         var session = new CombatSession([request.Player, .. request.Enemies]);
         stateMachine.Start(session.Context);

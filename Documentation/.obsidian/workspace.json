@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00_Project/04_Testing/Combat tests.md",
+                "file": "99_Notes/Combat.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Combat tests"
+              "title": "Combat"
             }
           }
         ]
@@ -185,8 +185,8 @@
   },
   "active": "38ebbf875e195fe8",
   "lastOpenFiles": [
-    "00_Project/Design decision document.md",
     "00_Project/04_Testing/Combat tests.md",
+    "00_Project/Design decision document.md",
     "00_Project/04_Testing",
     "00_Project/Roadmap.md",
     "00_Project/Vision.md",

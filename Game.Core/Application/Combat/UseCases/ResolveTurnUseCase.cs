@@ -4,7 +4,7 @@ public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, CombatTurnResultD
 {
     public Result<CombatTurnResultDto> Execute(ResolveTurnRequest req)
     {
-        var currentActorId = "todo"; // np czyja tura bo do UI nie zwracam całej sesji P1 (Player1), E1, E2..
+        var currentActorId = req.Session.ActiveParticipant.Id;
         req.Session.SelectAction(req.Action);
         req.StateMachine.Update(req.Session.Context);
 
@@ -15,6 +15,8 @@ public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, CombatTurnResultD
             req.Session.IsFinished,
             currentActorId
         );
+
+        // todo: na razie zrwadane dto po wszystkich zakończonych podturach - zmienić filozofię..
 
         return Result<CombatTurnResultDto>.Success(dto);
     }

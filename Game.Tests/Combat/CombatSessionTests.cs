@@ -15,6 +15,7 @@ public class CombatSessionTests
     [Fact]
     public void CombatFlow_PlayerAttack_ShouldReturnToPlayerTurn()
     {
+        Console.WriteLine("[?] Test: CombatFlow_PlayerAttack_ShouldReturnToPlayerTurn");
         var tcp = new TestCombatParticipant();
         var start = new StartCombatUseCase();
         var startResult = start.Execute(
@@ -35,6 +36,7 @@ public class CombatSessionTests
     [Fact]
     public void CombatFlow_PlayerAttack_ShouldDamageEnemy()
     {
+        Console.WriteLine("[?] Test: CombatFlow_PlayerAttack_ShouldDamageEnemy");
         var tcp = new TestCombatParticipant();
         var enemyStartHp = tcp.Enemy1.Stats.MaxHp;
         var start = new StartCombatUseCase();
@@ -57,6 +59,7 @@ public class CombatSessionTests
     [Fact]
     public void CombatFlow_ShouldChangeState()
     {
+        Console.WriteLine("[?] Test: CombatFlow_ShouldChangeState");
         var machine = new CombatStateMachine(
             new ICombatState[] { new PlayerTurnState(), new EnemyTurnState() }
         );
@@ -70,6 +73,7 @@ public class CombatSessionTests
     [Fact]
     public void CombatFlow_PlayerAttack_ShouldTriggerEnemyTurns()
     {
+        Console.WriteLine("[?] Test: CombatFlow_PlayerAttack_ShouldTriggerEnemyTurns");
         var tcp = new TestCombatParticipant();
         var playerStartHp = tcp.Player.CurrentHp;
         var start = new StartCombatUseCase();

@@ -448,6 +448,8 @@ TR -->|mówi co dalej| SM
 
 pozostałe UseCase uruchamiaja `Update` ze stateMachine, stan wykonuje akcję, potem stan zwraca decyzję i stateMachine zmienia stan.
 
+W `StartCombatUseCase` ustawiam wszystkie state'y walki np `PlayerTurnState` itd
+
 # Gracz klika Atak
 
 ```mermaid

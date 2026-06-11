@@ -9,6 +9,8 @@ public class EnemyTurnState : ICombatState
 
     public void Enter(CombatContext ctx)
     {
+        Console.WriteLine("[?] EnemyTurnState");
+
         var player = ctx.Session.Player;
         var playerEnemies = ctx.Session.AliveEnemies;
 
@@ -22,7 +24,7 @@ public class EnemyTurnState : ICombatState
         ctx.Session.SelectAction(new AttackAction());
         ctx.Session.ExecuteSelectedAction();
 
-        return CombatStateTransition.Next(CombatStateType.PlayerTurn);
+        return CombatStateTransition.Next(CombatStateType.EnemyStatus);
     }
 
     public void Exit(CombatContext ctx)

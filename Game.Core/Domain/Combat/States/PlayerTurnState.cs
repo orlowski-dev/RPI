@@ -7,6 +7,7 @@ public class PlayerTurnState : ICombatState
 
     public void Enter(CombatContext ctx)
     {
+        Console.WriteLine("[?] PlayerTurnState");
         var player = ctx.Session.Player;
 
         if (player is null)
@@ -26,7 +27,7 @@ public class PlayerTurnState : ICombatState
 
         ctx.Session.ExecuteSelectedAction();
 
-        return CombatStateTransition.Next(CombatStateType.EnemyTurn);
+        return CombatStateTransition.Next(CombatStateType.PlayerStatus);
     }
 
     public void Exit(CombatContext ctx)

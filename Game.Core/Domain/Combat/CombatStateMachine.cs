@@ -1,11 +1,11 @@
 namespace Game.Core.Domain.Combat;
 
-public partial class CombatStateMachine
+public class CombatStateMachine
 {
     private readonly Dictionary<CombatStateType, ICombatState> _states;
-    private ICombatState? _current;
+    private ICombatState? _currentState;
 
-    public CombatStateType Current => _current?.Type ?? CombatStateType.Start;
+    public CombatStateType CurrentState => _currentState?.Type ?? CombatStateType.Start;
 
     public CombatStateMachine(IEnumerable<ICombatState> states)
     {
@@ -17,15 +17,21 @@ public partial class CombatStateMachine
         Change(CombatStateType.PlayerTurn, ctx);
     }
 
-    public void Update(CombatContext ctx)
+    public void Update(CombatContext context)
     {
-        if (_current is null)
+        if (_currentState is null)
         {
-            throw new InvalidOperationException("State machine not started");
+            throw new InvalidOperationException("Combat state is not initialized.");
         }
 
-        var transition = _current.Update(ctx);
+        var transition = _currentState.Update(context);
 
+        HandleTransition(transition, context);
+    }
+
+    private void HandleTransition(CombatStateTransition transition, CombatContext context)
+    {
+        // zostań tutaj :(
         if (!transition.ShouldChange)
         {
             return;
@@ -33,16 +39,32 @@ public partial class CombatStateMachine
 
         if (transition.NextState is null)
         {
+            throw new InvalidOperationException(
+                "Transition requested state change but next state is null."
+            );
+        }
+
+        Change(transition.NextState.Value, context);
+    }
+
+    // stary stan na nowy stano - co robić po wejsciu
+    private void Change(CombatStateType next, CombatContext ctx)
+    {
+        // opuszczam poprzedni stan
+        _currentState?.Exit(ctx);
+        //pobiream nowy stan
+        _currentState = _states[next];
+        // aktualizuje stan sesji
+        ctx.Session.State = next;
+        // przygotowuje stan
+        _currentState.Enter(ctx);
+
+        if (!_currentState.IsAutomatic)
+        {
             return;
         }
 
-        Change(transition.NextState.Value, ctx);
-    }
-
-    private void Change(CombatStateType next, CombatContext ctx)
-    {
-        _current?.Exit(ctx);
-        _current = _states[next];
-        _current.Enter(ctx);
+        var transition = _currentState.Update(ctx);
+        HandleTransition(transition, ctx);
     }
 }

@@ -416,3 +416,156 @@ EnemyStatusState
 ### MachineState
 
 Kto steruje przejściami. Nie wykonuje żadnych akcji tylko wchodzi to stanu, wykonuje stan i zmienia stan. To taki dyrygent.
+
+
+# Kto steruje czym
+
+```mermaid
+flowchart LR
+
+UC[UseCase]
+
+SM[CombatStateMachine]
+
+STATE[ICombatState]
+
+TR[CombatStateTransition]
+
+SESSION[CombatSession]
+
+UC -->|Update| SM
+
+SM -->|wywołuje| STATE
+
+STATE -->|czyta / zmienia| SESSION
+
+STATE -->|zwraca| TR
+
+TR -->|mówi co dalej| SM
+```
+
+`StartCombatUseCase` tworzy stateMachine i zwraca go w response.
+
+pozostałe UseCase uruchamiaja `Update` ze stateMachine, stan wykonuje akcję, potem stan zwraca decyzję i stateMachine zmienia stan.
+
+W `StartCombatUseCase` ustawiam wszystkie state'y walki np `PlayerTurnState` itd
+
+# Gracz klika Atak
+
+```mermaid
+sequenceDiagram  
+  
+participant UI  
+participant UseCase  
+participant Session  
+participant Machine  
+participant PlayerTurn  
+  
+UI->>UseCase: Execute()  
+  
+UseCase->>Session: SelectAction(Attack)  
+  
+UseCase->>Machine: Update(Context)  
+  
+Machine->>PlayerTurn: Update()  
+  
+PlayerTurn->>Session: ExecuteSelectedAction()  
+  
+PlayerTurn-->>Machine: Next(EnemyTurn)  
+  
+Machine->>PlayerTurn: Exit()  
+  
+Machine->>Session: State = EnemyTurn  
+  
+Machine->>Machine: Change()  
+  
+Machine->>Machine: EnemyTurn.Enter()
+```
+
+Po `Next(EnemyTurn)` nie ma jeszcze ataku przeciwnika tylko: `weszliśmy do EnemyTurn`.
+
+# Automatyczny EnemyTurn
+
+```mermaid
+flowchart TD
+
+CHANGE[Machine.Change]
+
+ENTER[EnemyTurn.Enter]
+
+AUTO{IsAutomatic?}
+
+UPDATE[EnemyTurn.Update]
+
+TRANSITION[Next PlayerTurn]
+
+NEXT[Machine.Change]
+
+CHANGE --> ENTER
+
+ENTER --> AUTO
+
+AUTO -->|false| STOP[czekaj]
+
+AUTO -->|true| UPDATE
+
+UPDATE --> TRANSITION
+
+TRANSITION --> NEXT
+```
+
+# Co robi Enter / Update / Exit
+
+```mermaid
+flowchart LR
+
+ENTER[Enter]
+
+UPDATE[Update]
+
+EXIT[Exit]
+
+ENTER -->|setup| UPDATE
+
+UPDATE -->|logika| EXIT
+
+EXIT -->|cleanup| NEXT[Next State]
+```
+
+Przykład:
+
+```text
+PlayerTurn  
+  
+Enter:  
+ustaw aktywnego gracza  
+  
+potem  
+  
+Update:  
+wykonaj Attack  
+  
+potem  
+  
+Exit:  
+wyczyść akcję
+```
+
+
+# Pełna jedna tura
+
+```mermaid
+stateDiagram-v2  
+  
+[*] --> PlayerTurn  
+  
+PlayerTurn --> EnemyTurn : Attack  
+  
+EnemyTurn --> PlayerTurn : EnemyAttack  
+  
+PlayerTurn --> Reward : LastEnemyKilled  
+  
+Reward --> [*]
+```
+
+

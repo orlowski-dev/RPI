@@ -12,7 +12,7 @@ public class TestCombatParticipant
             "enemy_1",
             CombatParticipantType.Enemy,
             "none",
-            new(10, 10, 10, 2, 2)
+            new(20, 10, 10, 2, 2)
         );
 
     public CombatParticipant Enemy2 { get; } =

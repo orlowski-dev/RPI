@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Architecture/Combat Domain.md",
+                "file": "99_Notes/Combat.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Combat Domain"
+              "title": "Combat"
             }
           }
         ]
@@ -183,30 +183,33 @@
       "bases:Stwórz nową bazę danych": false
     }
   },
-  "active": "f12dd2346b3091ce",
+  "active": "38ebbf875e195fe8",
   "lastOpenFiles": [
-    "01_Architecture/Application/Diagramy.md",
-    "01_Architecture/ADR/ADR-003.md",
-    "01_Architecture/Application",
+    "00_Project/04_Testing/Combat tests.md",
+    "00_Project/Design decision document.md",
+    "00_Project/04_Testing",
+    "00_Project/Roadmap.md",
+    "00_Project/Vision.md",
+    "00_Project/Scope.md",
     "99_Notes/Combat.md",
+    "01_Architecture/Modules.md",
     "01_Architecture/ADR/ADR-001.md",
+    "01_Architecture/Combat Domain.md",
+    "01_Architecture/Combat.md",
+    "01_Architecture/Application Model.md",
+    "01_Architecture/ADR/ADR-003.md",
+    "01_Architecture/ADR/ADR-002.md",
+    "00_Project/_roadmap_template.md",
+    "01_Architecture/Application/Diagramy.md",
+    "01_Architecture/Application",
     "99_Notes",
     "Bez nazwy.md",
     "01_Architecture/Save Model.md",
-    "01_Architecture/Application Model.md",
-    "01_Architecture/Combat.md",
     "01_Architecture/Domain Model.md",
-    "01_Architecture/Combat Domain.md",
     "01_Architecture/Events.md",
-    "01_Architecture/Modules.md",
     "01_Architecture/assets/Architektura_eventów.jpeg",
     "01_Architecture/assets/ApplicationLayer.jpeg",
     "01_Architecture/ADR/_template.md",
-    "01_Architecture/ADR/ADR-002.md",
-    "00_Project/Vision.md",
-    "00_Project/Scope.md",
-    "00_Project/Roadmap.md",
-    "00_Project/Design decision document.md",
     "01_Architecture/assets/CombatDomain.jpeg",
     "01_Architecture/assets/svg/CombatDomain.svg",
     "01_Architecture/assets/Pasted image 20260609125304.png",
@@ -225,8 +228,6 @@
     "01_Architecture/Patterns.md",
     "01_Architecture/Events",
     "01_Architecture/ADR",
-    "01_Architecture/SaveModel.md",
-    "01_Architecture/assets",
-    "00_Project/_roadmap_template.md"
+    "01_Architecture/SaveModel.md"
   ]
 }

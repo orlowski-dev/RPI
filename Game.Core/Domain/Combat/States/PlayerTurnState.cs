@@ -1,11 +1,13 @@
 namespace Game.Core.Domain.Combat.States;
 
-public partial class PlayerTurn : ICombatState
+public class PlayerTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.PlayerTurn;
+    public bool IsAutomatic { get; } = false;
 
     public void Enter(CombatContext ctx)
     {
+        Console.WriteLine("[?] PlayerTurnState");
         var player = ctx.Session.Player;
 
         if (player is null)
@@ -14,7 +16,6 @@ public partial class PlayerTurn : ICombatState
         }
 
         ctx.Session.SetActiveParticipant(player);
-        ctx.Session.SetTarget(null);
     }
 
     public CombatStateTransition Update(CombatContext ctx)
@@ -29,5 +30,8 @@ public partial class PlayerTurn : ICombatState
         return CombatStateTransition.Next(CombatStateType.PlayerStatus);
     }
 
-    public void Exit(CombatContext ctx) { }
+    public void Exit(CombatContext ctx)
+    {
+        ctx.Session.ClearTarget();
+    }
 }

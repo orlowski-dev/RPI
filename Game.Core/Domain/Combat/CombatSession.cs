@@ -1,5 +1,3 @@
-using Game.Core.Application.Results;
-
 namespace Game.Core.Domain.Combat;
 
 /// <summary>
@@ -7,12 +5,13 @@ namespace Game.Core.Domain.Combat;
 ///
 /// Odpowiada za: przechowywanie uczestników, zarządzanie aktywną turą, przechowywanie wybranej akcji oraz oznaczanie zakończenia walki. Nie odpowiada za przejścia stanów ani logikę UI.
 /// </summary>
-public partial class CombatSession
+public class CombatSession
 {
     private readonly List<CombatParticipant> _participants;
     private CombatAction? _selectedAction;
 
-    public CombatStateType State { get; private set; }
+    public CombatStateType State { get; set; }
+    public CombatContext Context { get; }
     public IReadOnlyList<CombatParticipant> Participants => _participants;
     public CombatParticipant ActiveParticipant { get; private set; }
     public CombatParticipant? Target { get; private set; }
@@ -25,8 +24,12 @@ public partial class CombatSession
         _participants.Find((x) => x.Type == CombatParticipantType.Player)
         ?? throw new InvalidOperationException();
 
+    public IReadOnlyList<CombatParticipant> AliveEnemies =>
+        _participants.FindAll((x) => x.Type == CombatParticipantType.Enemy && x.IsAlive);
+
     public CombatSession(IEnumerable<CombatParticipant> participants)
     {
+        Context = new CombatContext(this);
         _participants = participants.ToList();
         ActiveParticipant = _participants.First();
         State = CombatStateType.Start;
@@ -85,10 +88,14 @@ public partial class CombatSession
         State = CombatStateType.End;
     }
 
-    public CombatParticipant? SetTarget(CombatParticipant? target)
+    public void SetTarget(CombatParticipant? target)
     {
         Target = target;
-        return Target;
+    }
+
+    public void ClearTarget()
+    {
+        Target = null;
     }
 
     public void SetActiveParticipant(CombatParticipant participant)

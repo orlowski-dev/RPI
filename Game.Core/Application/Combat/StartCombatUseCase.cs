@@ -1,3 +1,5 @@
+using Game.Core.Domain.Combat.States;
+
 namespace Game.Core.Application.Combat;
 
 /// <summary>
@@ -7,7 +9,10 @@ public class StartCombatUseCase : IUseCase<StartCombatRequest, CombatSession>
 {
     public Result<CombatSession> Execute(StartCombatRequest request)
     {
+        var states = new List<ICombatState>() { new PlayerTurnState() };
+        var stateMachine = new CombatStateMachine(states);
         var session = new CombatSession([request.Player, .. request.Enemies]);
+        stateMachine.Start(session.Context);
 
         return Result<CombatSession>.Success(session);
     }

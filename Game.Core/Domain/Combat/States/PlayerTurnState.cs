@@ -1,6 +1,6 @@
 namespace Game.Core.Domain.Combat.States;
 
-public class PlayerTurn : ICombatState
+public class PlayerTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.PlayerTurn;
 

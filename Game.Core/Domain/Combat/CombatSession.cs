@@ -11,6 +11,7 @@ public class CombatSession
     private CombatAction? _selectedAction;
 
     public CombatStateType State { get; private set; }
+    public CombatContext Context { get; }
     public IReadOnlyList<CombatParticipant> Participants => _participants;
     public CombatParticipant ActiveParticipant { get; private set; }
     public CombatParticipant? Target { get; private set; }
@@ -25,6 +26,7 @@ public class CombatSession
 
     public CombatSession(IEnumerable<CombatParticipant> participants)
     {
+        Context = new CombatContext(this);
         _participants = participants.ToList();
         ActiveParticipant = _participants.First();
         State = CombatStateType.Start;

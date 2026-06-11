@@ -2,7 +2,7 @@ namespace Game.Core.Application.Results;
 
 public partial class Result<T> : Result
 {
-    public T? Value { get; }
+    public T Value { get; }
 
     public Result(T value)
         : base(true, null)

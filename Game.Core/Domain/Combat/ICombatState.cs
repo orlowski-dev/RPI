@@ -10,14 +10,15 @@ namespace Game.Core.Domain.Combat;
 /// </summary>
 public interface ICombatState
 {
-    CombatStateType Type { get; }
+    public CombatStateType Type { get; }
+    public bool IsAutomatic { get; }
 
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
-    void Enter(CombatContext ctx);
+    public void Enter(CombatContext ctx);
 
     // wywołuje się wiele razy - czy gracz JUŻ wykonał akcję?
-    CombatStateTransition Update(CombatContext ctx);
+    public CombatStateTransition Update(CombatContext ctx);
 
     // wywoływane raz - sprzątanie po stanie - np. kończę turę
-    void Exit(CombatContext ctx);
+    public void Exit(CombatContext ctx);
 }

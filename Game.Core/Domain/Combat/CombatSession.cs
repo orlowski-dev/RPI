@@ -10,7 +10,7 @@ public class CombatSession
     private readonly List<CombatParticipant> _participants;
     private CombatAction? _selectedAction;
 
-    public CombatStateType State { get; private set; }
+    public CombatStateType State { get; set; }
     public CombatContext Context { get; }
     public IReadOnlyList<CombatParticipant> Participants => _participants;
     public CombatParticipant ActiveParticipant { get; private set; }
@@ -23,6 +23,9 @@ public class CombatSession
     public CombatParticipant Player =>
         _participants.Find((x) => x.Type == CombatParticipantType.Player)
         ?? throw new InvalidOperationException();
+
+    public IReadOnlyList<CombatParticipant> AliveEnemies =>
+        _participants.FindAll((x) => x.Type == CombatParticipantType.Enemy && x.IsAlive);
 
     public CombatSession(IEnumerable<CombatParticipant> participants)
     {
@@ -85,10 +88,14 @@ public class CombatSession
         State = CombatStateType.End;
     }
 
-    public CombatParticipant? SetTarget(CombatParticipant? target)
+    public void SetTarget(CombatParticipant? target)
     {
         Target = target;
-        return Target;
+    }
+
+    public void ClearTarget()
+    {
+        Target = null;
     }
 
     public void SetActiveParticipant(CombatParticipant participant)

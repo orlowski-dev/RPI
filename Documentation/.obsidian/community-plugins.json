@@ -1,4 +1,5 @@
 [
   "obsidian-plugin-prettier",
-  "floating-toc"
+  "floating-toc",
+  "better-export-pdf"
 ]

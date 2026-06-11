@@ -3,6 +3,7 @@ namespace Game.Core.Domain.Combat.States;
 public class PlayerTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.PlayerTurn;
+    public bool IsAutomatic { get; } = false;
 
     public void Enter(CombatContext ctx)
     {
@@ -14,7 +15,6 @@ public class PlayerTurnState : ICombatState
         }
 
         ctx.Session.SetActiveParticipant(player);
-        ctx.Session.SetTarget(null);
     }
 
     public CombatStateTransition Update(CombatContext ctx)
@@ -26,8 +26,11 @@ public class PlayerTurnState : ICombatState
 
         ctx.Session.ExecuteSelectedAction();
 
-        return CombatStateTransition.Next(CombatStateType.PlayerStatus);
+        return CombatStateTransition.Next(CombatStateType.EnemyTurn);
     }
 
-    public void Exit(CombatContext ctx) { }
+    public void Exit(CombatContext ctx)
+    {
+        ctx.Session.ClearTarget();
+    }
 }

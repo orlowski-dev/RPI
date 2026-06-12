@@ -27,47 +27,49 @@ public class CombatSessionTests
         var resolve = new ResolveTurnUseCase();
         CombatTurnResultDto dto = default!;
 
-        var session = combat.Value.CombatSession;
+        var maxIterations = 10;
+        var iterations = 0;
+        var end = false;
 
-        session.SetTarget(enemy1);
-        var result = resolve.Execute(
-            new(
-                Session: session,
-                StateMachine: combat.Value.StateMachine,
-                Action: new AttackAction()
-            )
-        );
+        while (iterations++ < maxIterations && !end)
+        {
+            var session = combat.Value.CombatSession;
 
-        dto = result.Value;
-        Console.WriteLine(
-            $"finished: {dto.CombatFinished}, state: {dto.State}, currentActorId: {dto.CurrentActorId}"
-        );
+            if (session.State == CombatStateType.PlayerTurn)
+            {
+                var target = session.AliveEnemies.FirstOrDefault();
+                if (target is null)
+                {
+                    end = true;
+                }
+                session.SetTarget(target);
+                dto = resolve
+                    .Execute(
+                        new(
+                            Session: session,
+                            StateMachine: combat.Value.StateMachine,
+                            Action: new AttackAction()
+                        )
+                    )
+                    .Value;
+                Console.WriteLine(
+                    $"{session.ActiveParticipant.Id} atakuje {session.Target!.Id}. Next participant is: {session.NextParticipant!.Id}"
+                );
+            }
+            else
+            {
+                dto = resolve
+                    .Execute(new(Session: session, StateMachine: combat.Value.StateMachine))
+                    .Value;
+            }
 
-        var result1 = resolve.Execute(
-            new(
-                Session: session,
-                StateMachine: combat.Value.StateMachine,
-                Action: new AttackAction()
-            )
-        );
+            Console.WriteLine(DebugExtension.Dump(dto));
 
-        dto = result1.Value;
-        Console.WriteLine(
-            $"finished: {dto.CombatFinished}, state: {dto.State}, currentActorId: {dto.CurrentActorId}"
-        );
+            if (dto.CombatFinished)
+                break;
 
-        var result2 = resolve.Execute(
-            new(
-                Session: session,
-                StateMachine: combat.Value.StateMachine,
-                Action: new AttackAction()
-            )
-        );
-
-        dto = result2.Value;
-        Console.WriteLine(
-            $"finished: {dto.CombatFinished}, state: {dto.State}, currentActorId: {dto.CurrentActorId}"
-        );
+            Assert.True(iterations < maxIterations);
+        }
     }
 
     // [Fact]

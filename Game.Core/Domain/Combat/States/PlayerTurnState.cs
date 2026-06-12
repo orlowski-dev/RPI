@@ -30,8 +30,5 @@ public class PlayerTurnState : ICombatState
         return CombatStateTransition.Next(CombatStateType.PlayerStatus);
     }
 
-    public void Exit(CombatContext ctx)
-    {
-        ctx.Session.ClearTarget();
-    }
+    public void Exit(CombatContext ctx) { }
 }

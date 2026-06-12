@@ -16,13 +16,15 @@ public class EnemyStatusState : ICombatState
     // wywołuje się wiele razy - czy gracz JUŻ wykonał akcję?, co potem?
     public CombatStateTransition Update(CombatContext ctx)
     {
-        if (ctx.Session.NextParticipant.Type == CombatParticipantType.Enemy)
+        if (
+            ctx.Session.NextParticipant is not null
+            && ctx.Session.NextParticipant.Type == CombatParticipantType.Enemy
+        )
         {
-            Console.WriteLine($"[? {this.GetType().Name}]: nextState: EnemyTurn");
             return CombatStateTransition.Next(CombatStateType.EnemyTurn);
         }
 
-        Console.WriteLine($"[? {this.GetType().Name}]: nextState: PlayerTurn");
+        ctx.Session.SetActiveParticipant(ctx.Session.Player);
         return CombatStateTransition.Next(CombatStateType.PlayerTurn);
     }
 

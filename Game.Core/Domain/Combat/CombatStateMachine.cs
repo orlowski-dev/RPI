@@ -30,6 +30,13 @@ public class CombatStateMachine
 
             HandleTransition(transition, context);
 
+            //  nie było przejścia
+            if (!transition.ShouldChange)
+            {
+                return;
+            }
+
+            // dla ui
             if (_currentState.ReturnsControlToUi)
             {
                 return;
@@ -39,7 +46,6 @@ public class CombatStateMachine
 
     private void HandleTransition(CombatStateTransition transition, CombatContext context)
     {
-        // zostań tutaj :(
         if (!transition.ShouldChange)
         {
             return;

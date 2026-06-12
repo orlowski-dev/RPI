@@ -15,7 +15,7 @@ public class CombatSession
 
     public IReadOnlyList<CombatParticipant> Participants => _participants;
     public CombatParticipant ActiveParticipant { get; private set; }
-    public CombatParticipant NextParticipant { get; private set; }
+    public CombatParticipant? NextParticipant { get; private set; }
     public CombatParticipant? Target { get; private set; }
 
     public int TurnNumber { get; private set; }
@@ -45,6 +45,11 @@ public class CombatSession
     public void SelectAction(CombatAction action)
     {
         _selectedAction = action;
+    }
+
+    public void ClearSelectedAction()
+    {
+        _selectedAction = null;
     }
 
     private CombatAction ConsumeAction()

@@ -5,17 +5,19 @@ namespace Game.Core.Domain.Combat.States;
 public class EnemyTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.EnemyTurn;
-    public bool IsAutomatic { get; } = true;
+
+    // public bool IsAutomatic { get; } = true;
+    public bool ReturnsControlToUi { get; } = false;
 
     public void Enter(CombatContext ctx)
     {
         Console.WriteLine("[?] EnemyTurnState");
 
+        ctx.Session.MoveNextParticipant();
+
         var player = ctx.Session.Player;
-        var playerEnemies = ctx.Session.AliveEnemies;
 
         ctx.Session.SetTarget(player);
-        ctx.Session.SetActiveParticipant(playerEnemies.First());
     }
 
     public CombatStateTransition Update(CombatContext ctx)

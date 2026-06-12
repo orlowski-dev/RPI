@@ -11,7 +11,9 @@ namespace Game.Core.Domain.Combat;
 public interface ICombatState
 {
     public CombatStateType Type { get; }
-    public bool IsAutomatic { get; }
+
+    // public bool IsAutomatic { get; }
+    bool ReturnsControlToUi { get; } // true -> zwróc dto
 
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
     public void Enter(CombatContext ctx);

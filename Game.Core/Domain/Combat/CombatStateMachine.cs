@@ -24,9 +24,17 @@ public class CombatStateMachine
             throw new InvalidOperationException("Combat state is not initialized.");
         }
 
-        var transition = _currentState.Update(context);
+        while (true)
+        {
+            var transition = _currentState.Update(context);
 
-        HandleTransition(transition, context);
+            HandleTransition(transition, context);
+
+            if (_currentState.ReturnsControlToUi)
+            {
+                return;
+            }
+        }
     }
 
     private void HandleTransition(CombatStateTransition transition, CombatContext context)
@@ -59,12 +67,13 @@ public class CombatStateMachine
         // przygotowuje stan
         _currentState.Enter(ctx);
 
-        if (!_currentState.IsAutomatic)
-        {
-            return;
-        }
+        // wyłączone autowykonywanie
+        // if (!_currentState.IsAutomatic)
+        // {
+        //     return;
+        // }
 
-        var transition = _currentState.Update(ctx);
-        HandleTransition(transition, ctx);
+        // var transition = _currentState.Update(ctx);
+        // HandleTransition(transition, ctx);
     }
 }

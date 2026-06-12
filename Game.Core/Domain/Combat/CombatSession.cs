@@ -12,9 +12,12 @@ public class CombatSession
 
     public CombatStateType State { get; set; }
     public CombatContext Context { get; }
+
     public IReadOnlyList<CombatParticipant> Participants => _participants;
     public CombatParticipant ActiveParticipant { get; private set; }
+    public CombatParticipant NextParticipant { get; private set; }
     public CombatParticipant? Target { get; private set; }
+
     public int TurnNumber { get; private set; }
     public bool IsFinished { get; private set; }
     public CombatReward? Reward { get; private set; }
@@ -32,6 +35,7 @@ public class CombatSession
         Context = new CombatContext(this);
         _participants = participants.ToList();
         ActiveParticipant = _participants.First();
+        NextParticipant = PeekNextAliveParticipant();
         State = CombatStateType.Start;
     }
 
@@ -84,8 +88,6 @@ public class CombatSession
     public void Finish(CombatReward reward)
     {
         Reward = reward;
-        IsFinished = true;
-        State = CombatStateType.End;
     }
 
     public void SetTarget(CombatParticipant? target)
@@ -101,5 +103,42 @@ public class CombatSession
     public void SetActiveParticipant(CombatParticipant participant)
     {
         ActiveParticipant = participant;
+    }
+
+    public void UpdateStatus()
+    {
+        if (!Player.IsAlive || AliveEnemies.Count == 0)
+        {
+            IsFinished = true;
+            State = CombatStateType.End;
+        }
+    }
+
+    public CombatParticipant PeekNextAliveParticipant()
+    {
+        var current = _participants.IndexOf(ActiveParticipant);
+
+        for (var i = 1; i <= _participants.Count; i++)
+        {
+            var next = (current + i) % _participants.Count;
+
+            if (_participants[next].IsAlive)
+            {
+                return _participants[next];
+            }
+        }
+
+        throw new InvalidOperationException("No alive participants.");
+    }
+
+    public CombatParticipant MoveNextParticipant()
+    {
+        var next = PeekNextAliveParticipant();
+
+        ActiveParticipant = next;
+
+        NextParticipant = PeekNextAliveParticipant();
+
+        return ActiveParticipant;
     }
 }

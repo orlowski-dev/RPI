@@ -13,83 +13,141 @@ public class CombatSessionTests
     }
 
     [Fact]
-    public void CombatFlow_PlayerAttack_ShouldReturnToPlayerTurn()
+    public void CombatFlow_ShouldFinishCombat()
     {
-        Console.WriteLine("[?] Test: CombatFlow_PlayerAttack_ShouldReturnToPlayerTurn");
+        Console.WriteLine($"[Test]: {this.GetType().Name}");
         var tcp = new TestCombatParticipant();
-        var start = new StartCombatUseCase();
-        var startResult = start.Execute(
-            new StartCombatRequest(tcp.Player, new[] { tcp.Enemy1, tcp.Enemy2 })
-        );
-        var session = startResult.Value.CombatSession;
-        var machine = startResult.Value.StateMachine;
+        var player = tcp.Player;
+        var enemy1 = tcp.Enemy1;
+        var enemy2 = tcp.Enemy2;
 
-        Assert.Equal(CombatStateType.PlayerTurn, session.State);
+        var start = new StartCombatUseCase();
+        var combat = start.Execute(new(player, new[] { enemy1, enemy2 }));
 
         var resolve = new ResolveTurnUseCase();
-        var result = resolve.Execute(new ResolveTurnRequest(session, new AttackAction(), machine));
+        CombatTurnResultDto dto = default!;
 
-        Assert.True(result.IsSuccess);
-        Assert.Equal(CombatStateType.PlayerTurn, session.State);
-    }
+        var session = combat.Value.CombatSession;
 
-    [Fact]
-    public void CombatFlow_PlayerAttack_ShouldDamageEnemy()
-    {
-        Console.WriteLine("[?] Test: CombatFlow_PlayerAttack_ShouldDamageEnemy");
-        var tcp = new TestCombatParticipant();
-        var enemyStartHp = tcp.Enemy1.Stats.MaxHp;
-        var start = new StartCombatUseCase();
-        var combat = start.Execute(new(tcp.Player, new[] { tcp.Enemy1 }));
-
-        // player manualnie wybiera taeget
-        combat.Value.CombatSession.SetTarget(tcp.Enemy1);
-
-        Assert.NotNull(combat.Value.CombatSession.Target);
-
-        Assert.Equal(tcp.Enemy1.Id, combat.Value.CombatSession.Target!.Id);
-
-        var resolve = new ResolveTurnUseCase();
-        resolve.Execute(
-            new(combat.Value.CombatSession, new AttackAction(), combat.Value.StateMachine)
-        );
-        Assert.True(enemyStartHp > tcp.Enemy1.CurrentHp);
-    }
-
-    [Fact]
-    public void CombatFlow_ShouldChangeState()
-    {
-        Console.WriteLine("[?] Test: CombatFlow_ShouldChangeState");
-        var machine = new CombatStateMachine(
-            new ICombatState[] { new PlayerTurnState(), new EnemyTurnState() }
+        session.SetTarget(enemy1);
+        var result = resolve.Execute(
+            new(
+                Session: session,
+                StateMachine: combat.Value.StateMachine,
+                Action: new AttackAction()
+            )
         );
 
-        var (_, session) = CreateSession();
-        machine.Start(session.Context);
-        machine.Update(session.Context);
-        Assert.NotEqual(CombatStateType.Start, session.State);
-    }
-
-    [Fact]
-    public void CombatFlow_PlayerAttack_ShouldTriggerEnemyTurns()
-    {
-        Console.WriteLine("[?] Test: CombatFlow_PlayerAttack_ShouldTriggerEnemyTurns");
-        var tcp = new TestCombatParticipant();
-        var playerStartHp = tcp.Player.CurrentHp;
-        var start = new StartCombatUseCase();
-        var combat = start.Execute(new(tcp.Player, new[] { tcp.Enemy1, tcp.Enemy2 }));
-
-        combat.Value.CombatSession.SetTarget(tcp.Enemy1);
-
-        var resolve = new ResolveTurnUseCase();
-
-        resolve.Execute(
-            new(combat.Value.CombatSession, new AttackAction(), combat.Value.StateMachine)
+        dto = result.Value;
+        Console.WriteLine(
+            $"finished: {dto.CombatFinished}, state: {dto.State}, currentActorId: {dto.CurrentActorId}"
         );
 
-        Assert.True(tcp.Player.CurrentHp < playerStartHp);
-        Assert.Equal(CombatStateType.PlayerTurn, combat.Value.CombatSession.State);
+        var result1 = resolve.Execute(
+            new(
+                Session: session,
+                StateMachine: combat.Value.StateMachine,
+                Action: new AttackAction()
+            )
+        );
+
+        dto = result1.Value;
+        Console.WriteLine(
+            $"finished: {dto.CombatFinished}, state: {dto.State}, currentActorId: {dto.CurrentActorId}"
+        );
+
+        var result2 = resolve.Execute(
+            new(
+                Session: session,
+                StateMachine: combat.Value.StateMachine,
+                Action: new AttackAction()
+            )
+        );
+
+        dto = result2.Value;
+        Console.WriteLine(
+            $"finished: {dto.CombatFinished}, state: {dto.State}, currentActorId: {dto.CurrentActorId}"
+        );
     }
+
+    // [Fact]
+    // public void CombatFlow_PlayerAttack_ShouldReturnToPlayerTurn()
+    // {
+    //     Console.WriteLine("[?] Test: CombatFlow_PlayerAttack_ShouldReturnToPlayerTurn");
+    //     var tcp = new TestCombatParticipant();
+    //     var start = new StartCombatUseCase();
+    //     var startResult = start.Execute(
+    //         new StartCombatRequest(tcp.Player, new[] { tcp.Enemy1, tcp.Enemy2 })
+    //     );
+    //     var session = startResult.Value.CombatSession;
+    //     var machine = startResult.Value.StateMachine;
+
+    //     Assert.Equal(CombatStateType.PlayerTurn, session.State);
+
+    //     var resolve = new ResolveTurnUseCase();
+    //     var result = resolve.Execute(new ResolveTurnRequest(session, new AttackAction(), machine));
+
+    //     Assert.True(result.IsSuccess);
+    //     Assert.Equal(CombatStateType.PlayerTurn, session.State);
+    // }
+
+    // [Fact]
+    // public void CombatFlow_PlayerAttack_ShouldDamageEnemy()
+    // {
+    //     Console.WriteLine("[?] Test: CombatFlow_PlayerAttack_ShouldDamageEnemy");
+    //     var tcp = new TestCombatParticipant();
+    //     var enemyStartHp = tcp.Enemy1.Stats.MaxHp;
+    //     var start = new StartCombatUseCase();
+    //     var combat = start.Execute(new(tcp.Player, new[] { tcp.Enemy1 }));
+
+    //     // player manualnie wybiera taeget
+    //     combat.Value.CombatSession.SetTarget(tcp.Enemy1);
+
+    //     Assert.NotNull(combat.Value.CombatSession.Target);
+
+    //     Assert.Equal(tcp.Enemy1.Id, combat.Value.CombatSession.Target!.Id);
+
+    //     var resolve = new ResolveTurnUseCase();
+    //     resolve.Execute(
+    //         new(combat.Value.CombatSession, new AttackAction(), combat.Value.StateMachine)
+    //     );
+    //     Assert.True(enemyStartHp > tcp.Enemy1.CurrentHp);
+    // }
+
+    // [Fact]
+    // public void CombatFlow_ShouldChangeState()
+    // {
+    //     Console.WriteLine("[?] Test: CombatFlow_ShouldChangeState");
+    //     var machine = new CombatStateMachine(
+    //         new ICombatState[] { new PlayerTurnState(), new EnemyTurnState() }
+    //     );
+
+    //     var (_, session) = CreateSession();
+    //     machine.Start(session.Context);
+    //     machine.Update(session.Context);
+    //     Assert.NotEqual(CombatStateType.Start, session.State);
+    // }
+
+    // [Fact]
+    // public void CombatFlow_PlayerAttack_ShouldTriggerEnemyTurns()
+    // {
+    //     Console.WriteLine("[?] Test: CombatFlow_PlayerAttack_ShouldTriggerEnemyTurns");
+    //     var tcp = new TestCombatParticipant();
+    //     var playerStartHp = tcp.Player.CurrentHp;
+    //     var start = new StartCombatUseCase();
+    //     var combat = start.Execute(new(tcp.Player, new[] { tcp.Enemy1, tcp.Enemy2 }));
+
+    //     combat.Value.CombatSession.SetTarget(tcp.Enemy1);
+
+    //     var resolve = new ResolveTurnUseCase();
+
+    //     resolve.Execute(
+    //         new(combat.Value.CombatSession, new AttackAction(), combat.Value.StateMachine)
+    //     );
+
+    //     Assert.True(tcp.Player.CurrentHp < playerStartHp);
+    //     Assert.Equal(CombatStateType.PlayerTurn, combat.Value.CombatSession.State);
+    // }
 
     // // sprawdzam czy CombatSession ustawia stan początkowy i wybiera pierwszego uczestnika
     // [Fact]

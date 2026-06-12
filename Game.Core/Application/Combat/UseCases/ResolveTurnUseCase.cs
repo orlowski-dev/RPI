@@ -4,9 +4,15 @@ public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, CombatTurnResultD
 {
     public Result<CombatTurnResultDto> Execute(ResolveTurnRequest req)
     {
-        var currentActorId = req.Session.ActiveParticipant.Id;
-        req.Session.SelectAction(req.Action);
+        if (req.Action is not null)
+        {
+            req.Session.SelectAction(req.Action);
+        }
+
         req.StateMachine.Update(req.Session.Context);
+        req.Session.UpdateStatus();
+
+        var currentActorId = req.Session.ActiveParticipant.Id;
 
         // dto opoisuje wynik sesji, a nie wynik contextu
         // nie używaj Context.Session poza StateMachine/State!

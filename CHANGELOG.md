@@ -1,5 +1,105 @@
 # Changelog
 
+## Combat State Machine Foundation 2
+
+### Added
+
+#### Combat Runtime
+
+- dodano wykonywanie walki krokowej (step-by-step combat resolution)
+- dodano możliwość zwracania wyniku po zakończeniu pojedynczej podtury
+- dodano obsługę harmonogramu uczestników walki:
+  - `ActiveParticipant`
+  - `NextParticipant`
+  - `PeekNextAliveParticipant()`
+  - `MoveNextParticipant()`
+
+- dodano aktualizację statusu sesji (`UpdateStatus`)
+- dodano obsługę zakończenia walki bezpośrednio w `CombatSession`
+- dodano możliwość czyszczenia wybranej akcji (`ClearSelectedAction`)
+- dodano rozszerzenie developerskie `DebugExtension.Dump()`
+
+#### Combat DTO
+
+- rozszerzono `CombatTurnResultDto`
+- dodano:
+  - `ActorId`
+  - `NextActorId`
+
+- usunięto:
+  - `CurrentActorId`
+
+- DTO opisuje teraz aktualny krok runtime zamiast pełnej tury
+
+#### Combat Flow
+
+- dodano obsługę podtur:
+  - `PlayerTurn`
+  - `PlayerStatus`
+  - `EnemyTurn`
+  - `EnemyStatus`
+
+- dodano przekazywanie kontroli do UI pomiędzy podturami
+- przygotowano mechanizm pod animacje i timeouty przeciwników
+- przygotowano przepływ:
+  - gracz wykonuje ruch
+  - UI otrzymuje DTO
+  - przeciwnicy wykonują ruchy sekwencyjnie
+  - UI otrzymuje kolejne DTO
+
+#### Tests
+
+- dodano test pełnego przebiegu walki do zakończenia (`CombatFlow_ShouldFinishCombat`)
+- dodano testowanie:
+  - przejść stanów
+  - zmian aktywnego uczestnika
+  - przechodzenia po żywych uczestnikach
+  - zakończenia walki
+  - zwracania DTO pomiędzy podturami
+
+### Changed
+
+#### State Machine
+
+- usunięto automatyczne wykonywanie stanów po `Change()`
+
+- `CombatStateMachine.Update()` obsługuje teraz:
+  - wykonanie pojedynczego kroku
+  - zatrzymanie po osiągnięciu punktu zwrotu do UI
+  - obsługę `Stay()` bez zapętlania
+
+- zastąpiono:
+
+  `IsAutomatic`
+
+  przez:
+
+  `ReturnsControlToUi`
+
+- odpowiedzialność za kontynuację przepływu została przeniesiona z StateMachine do wywołań runtime
+
+#### Requests / UseCases
+
+- `ResolveTurnRequest.Action` stało się opcjonalne
+- `ResolveTurnUseCase` obsługuje:
+  - akcje gracza
+  - podtury automatyczne
+  - aktualizację statusu sesji
+  - budowanie DTO dla UI
+
+### Architecture
+
+- rozdzielono:
+  - wykonanie logiki
+  - checkpoint renderowania UI
+  - harmonogram uczestników
+
+- przygotowano architekturę pod:
+  - animacje walki
+  - timeout pomiędzy akcjami
+  - kolejkę zdarzeń combat
+  - przyszłą integrację z EventBus
+
 ## Combat State Machine Foundation
 
 ### Added

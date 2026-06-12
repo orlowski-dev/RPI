@@ -3,7 +3,9 @@ namespace Game.Core.Domain.Combat.States;
 public class PlayerStatusState : ICombatState
 {
     public CombatStateType Type => CombatStateType.PlayerStatus;
-    public bool IsAutomatic { get; } = true;
+
+    // public bool IsAutomatic { get; } = true;
+    public bool ReturnsControlToUi { get; } = true;
 
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
     public void Enter(CombatContext ctx)

@@ -2,6 +2,6 @@ namespace Game.Core.Application.Combat;
 
 public record ResolveTurnRequest(
     CombatSession Session,
-    CombatAction Action,
-    CombatStateMachine StateMachine
+    CombatStateMachine StateMachine,
+    CombatAction? Action = null
 );

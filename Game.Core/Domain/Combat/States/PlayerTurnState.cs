@@ -3,7 +3,7 @@ namespace Game.Core.Domain.Combat.States;
 public class PlayerTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.PlayerTurn;
-    public bool IsAutomatic { get; } = false;
+    public bool ReturnsControlToUi { get; } = false;
 
     public void Enter(CombatContext ctx)
     {
@@ -30,8 +30,5 @@ public class PlayerTurnState : ICombatState
         return CombatStateTransition.Next(CombatStateType.PlayerStatus);
     }
 
-    public void Exit(CombatContext ctx)
-    {
-        ctx.Session.ClearTarget();
-    }
+    public void Exit(CombatContext ctx) { }
 }

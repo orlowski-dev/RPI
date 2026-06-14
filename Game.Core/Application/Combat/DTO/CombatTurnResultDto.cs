@@ -1,4 +1,4 @@
-namespace Game.Core.Application.Combat;
+namespace Game.Core.Application.Combat.DTO;
 
 public class CombatTurnResultDto
 {

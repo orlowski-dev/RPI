@@ -46,6 +46,12 @@ public class CombatStateMachine
 
     private void HandleTransition(CombatStateTransition transition, CombatContext context)
     {
+        if (context.Session.IsFinished)
+        {
+            Change(CombatStateType.Reward, context);
+            return;
+        }
+
         if (!transition.ShouldChange)
         {
             return;

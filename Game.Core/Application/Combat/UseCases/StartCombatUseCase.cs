@@ -1,6 +1,8 @@
+using Game.Core.Application.Combat.Requests;
+using Game.Core.Application.Combat.Responses;
 using Game.Core.Domain.Combat.States;
 
-namespace Game.Core.Application.Combat;
+namespace Game.Core.Application.Combat.UseCases;
 
 /// <summary>
 /// Tworzy sesję walki.
@@ -15,6 +17,7 @@ public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatRespon
             new EnemyTurnState(),
             new PlayerStatusState(),
             new EnemyStatusState(),
+            new RewardState(),
         };
         var stateMachine = new CombatStateMachine(states);
         var session = new CombatSession([request.Player, .. request.Enemies]);

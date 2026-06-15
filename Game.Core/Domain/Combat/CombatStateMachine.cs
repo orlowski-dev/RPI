@@ -1,5 +1,3 @@
-using Game.Core.Application.Results;
-
 namespace Game.Core.Domain.Combat;
 
 public class CombatStateMachine

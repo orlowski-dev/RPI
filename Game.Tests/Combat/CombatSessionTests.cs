@@ -100,6 +100,13 @@ public class CombatSessionTests
         );
 
         Assert.True(finishRes.IsSuccess);
-        Log.Write(this, DebugExtension.Dump(finishRes.Value.Dto));
+        // Log.Write(this, DebugExtension.Dump(finishRes.Value.Dto));
+
+        Assert.Equal(0, player.Exp);
+        var claimRewardUseCase = new ClaimCombatRewardUseCase();
+        var claimRewardResponse = claimRewardUseCase.Execute(
+            new(Session: combat.Value.CombatSession, Reward: finishRes.Value.Dto.Reward)
+        );
+        Assert.True(player.Exp > 0);
     }
 }

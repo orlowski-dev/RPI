@@ -31,8 +31,6 @@ public class ClaimCombatRewardUseCase
 
         var reward = request.Reward;
 
-        // todo: dodać testy
-
         return Result<ClaimCombatRewardResponse>.Success(new());
     }
 }

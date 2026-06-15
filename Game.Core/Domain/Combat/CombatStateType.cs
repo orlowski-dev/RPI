@@ -4,9 +4,8 @@ public enum CombatStateType
 {
     Start,
     PlayerTurn,
-    PlayerStatus,
     EnemyTurn,
-    EnemyStatus,
+    ResolveTurn,
     Reward,
     End,
 }

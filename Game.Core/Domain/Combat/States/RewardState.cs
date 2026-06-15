@@ -1,22 +1,22 @@
 namespace Game.Core.Domain.Combat.States;
 
-public class PlayerStatusState : ICombatState
+public class RewardState : ICombatState
 {
-    public CombatStateType Type => CombatStateType.PlayerStatus;
+    public CombatStateType Type { get; } = CombatStateType.Reward;
 
-    // public bool IsAutomatic { get; } = true;
+    // public bool IsAutomatic { get; }
     public bool ReturnsControlToUi { get; } = true;
 
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
     public void Enter(CombatContext ctx)
     {
-        Console.WriteLine("[?] PlayerStatusState");
+        Log.Write(this, "Entering..");
     }
 
-    // wywołuje się wiele razy - czy gracz JUŻ wykonał akcję?, co potem?
+    // wywołuje się wiele razy - czy gracz JUŻ wykonał akcję? co potem?
     public CombatStateTransition Update(CombatContext ctx)
     {
-        return CombatStateTransition.Next(CombatStateType.EnemyTurn);
+        return CombatStateTransition.Stay();
     }
 
     // wywoływane raz - sprzątanie po stanie - np. kończę turę

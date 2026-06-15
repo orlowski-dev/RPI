@@ -1,4 +1,4 @@
-namespace Game.Core.Application.Combat;
+namespace Game.Core.Application.Combat.Requests;
 
 public record ResolveTurnRequest(
     CombatSession Session,

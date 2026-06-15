@@ -11,21 +11,15 @@ public class EnemyTurnState : ICombatState
 
     public void Enter(CombatContext ctx)
     {
-        Console.WriteLine("[?] EnemyTurnState");
-        ctx.Session.MoveNextParticipant();
-
-        var player = ctx.Session.Player;
-
-        ctx.Session.SetTarget(player);
+        Log.Write(this, "Entering..");
+        ctx.Session.SetTarget(ctx.Session.Player);
     }
 
     public CombatStateTransition Update(CombatContext ctx)
     {
         //tymczaowe AI
         ctx.Session.SelectAction(new AttackAction());
-        ctx.Session.ExecuteSelectedAction();
-
-        return CombatStateTransition.Next(CombatStateType.EnemyStatus);
+        return CombatStateTransition.Next(CombatStateType.ResolveTurn);
     }
 
     public void Exit(CombatContext ctx) { }

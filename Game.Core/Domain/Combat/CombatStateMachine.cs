@@ -1,3 +1,5 @@
+using Game.Core.Application.Results;
+
 namespace Game.Core.Domain.Combat;
 
 public class CombatStateMachine
@@ -21,6 +23,7 @@ public class CombatStateMachine
     {
         if (_currentState is null)
         {
+            Log.Write(this, "Combat state is not initialized.");
             throw new InvalidOperationException("Combat state is not initialized.");
         }
 
@@ -33,12 +36,14 @@ public class CombatStateMachine
             //  nie było przejścia
             if (!transition.ShouldChange)
             {
+                Log.Write(this, "State should not change!");
                 return;
             }
 
-            // dla ui
+            // dla ui - jak true to zwraca dto do ui i ui musi dalej wywołać combat
             if (_currentState.ReturnsControlToUi)
             {
+                Log.Write(this, "Returning control to ui..");
                 return;
             }
         }

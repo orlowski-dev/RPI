@@ -1,4 +1,7 @@
-namespace Game.Core.Application.Combat;
+using Game.Core.Application.Combat.DTO;
+using Game.Core.Application.Combat.Requests;
+
+namespace Game.Core.Application.Combat.UseCases;
 
 public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, CombatTurnResultDto>
 {

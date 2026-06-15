@@ -10,7 +10,7 @@ public class Player : Actor
         : base(id, baseStats)
     {
         Exp = 0;
-        ExpNextLevel = 100;
+        ExpNextLevel = CalculateExpNextLevel();
         Gold = 100;
     }
 
@@ -20,6 +20,13 @@ public class Player : Actor
             return;
 
         Exp += amount;
+
+        while (Exp >= ExpNextLevel)
+        {
+            Exp -= ExpNextLevel;
+            LevelUp();
+            ExpNextLevel = CalculateExpNextLevel();
+        }
     }
 
     public void AddGold(int amount)
@@ -28,5 +35,10 @@ public class Player : Actor
             return;
 
         Gold += amount;
+    }
+
+    private int CalculateExpNextLevel()
+    {
+        return (int)Math.Floor(100 * Math.Pow(Level, 1.5));
     }
 }

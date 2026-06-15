@@ -1,3 +1,5 @@
+namespace Game.Tests.Combat;
+
 public class CombatSessionTests
 {
     private (Player, Enemy, Enemy) GetActors()
@@ -18,7 +20,6 @@ public class CombatSessionTests
         var startCombat = new StartCombatUseCase();
         var combatRes = startCombat.Execute(new(player, new[] { enemy1, enemy2 }));
         var startResolveTurn = new ResolveTurnUseCase();
-        CombatTurnResultDto dto = default!;
 
         var session = combatRes.Value.CombatSession;
 
@@ -69,22 +70,22 @@ public class CombatSessionTests
                             Action: new AttackAction()
                         )
                     )
-                    .Value;
+                    .Value.Dto;
             }
             else
             {
                 dto = resolve
                     .Execute(new(Session: session, StateMachine: combat.Value.StateMachine))
-                    .Value;
+                    .Value.Dto;
             }
 
-            Log.Write(
-                this,
-                $"{session.PreviousAction?.GetType().Name} | "
-                    + $"{session.ActiveParticipant.Id} - "
-                    + $"{session.Target?.Id ?? "none"} | "
-                    + $"next={session.NextParticipant?.Id}"
-            );
+            // Log.Write(
+            //     this,
+            //     $"{session.PreviousAction?.GetType().Name} | "
+            //         + $"{session.ActiveParticipant.Id} - "
+            //         + $"{session.Target?.Id ?? "none"} | "
+            //         + $"next={session.NextParticipant?.Id}"
+            // );
             // Log.Write(this, DebugExtension.Dump(dto));
 
             if (dto.CombatFinished)
@@ -97,5 +98,15 @@ public class CombatSessionTests
         var finishRes = finish.Execute(
             new(Session: combat.Value.CombatSession, StateMachine: combat.Value.StateMachine)
         );
+
+        Assert.True(finishRes.IsSuccess);
+        // Log.Write(this, DebugExtension.Dump(finishRes.Value.Dto));
+
+        Assert.Equal(0, player.Exp);
+        var claimRewardUseCase = new ClaimCombatRewardUseCase();
+        var claimRewardResponse = claimRewardUseCase.Execute(
+            new(Session: combat.Value.CombatSession, Reward: finishRes.Value.Dto.Reward)
+        );
+        Assert.True(player.Exp > 0);
     }
 }

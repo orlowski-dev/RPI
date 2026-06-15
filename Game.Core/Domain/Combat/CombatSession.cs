@@ -25,6 +25,7 @@ public class CombatSession
     public bool IsFinished { get; private set; }
     public CombatReward? Reward { get; private set; }
     public bool HasSelectedAction => _selectedAction is not null;
+    public bool RewardClaimed { get; private set; } = false;
 
     public Player Player =>
         _participants.OfType<Player>().FirstOrDefault()
@@ -32,6 +33,9 @@ public class CombatSession
 
     public IReadOnlyList<Enemy> AliveEnemies =>
         _participants.OfType<Enemy>().Where(x => x.IsAlive && x is Enemy).ToList();
+
+    public IReadOnlyList<Enemy> AllEnemies =>
+        _participants.OfType<Enemy>().Where(x => x is Enemy).ToList();
 
     public CombatSession(IEnumerable<Actor> participants)
     {
@@ -154,5 +158,12 @@ public class CombatSession
     public void SetNextParticipant()
     {
         NextParticipant = PeekNextAliveParticipant();
+    }
+
+    public void ClaimReward(CombatReward reward)
+    {
+        Player.AddExperience(reward.Experience);
+        Player.AddGold(reward.Gold);
+        RewardClaimed = true;
     }
 }

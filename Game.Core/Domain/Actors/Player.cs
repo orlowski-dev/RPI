@@ -13,4 +13,20 @@ public class Player : Actor
         ExpNextLevel = 100;
         Gold = 100;
     }
+
+    public void AddExperience(int amount)
+    {
+        if (amount <= 0)
+            return;
+
+        Exp += amount;
+    }
+
+    public void AddGold(int amount)
+    {
+        if (amount <= 0)
+            return;
+
+        Gold += amount;
+    }
 }

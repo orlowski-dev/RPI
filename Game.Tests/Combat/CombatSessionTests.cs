@@ -1,3 +1,5 @@
+namespace Game.Tests.Combat;
+
 public class CombatSessionTests
 {
     private (Player, Enemy, Enemy) GetActors()
@@ -18,7 +20,6 @@ public class CombatSessionTests
         var startCombat = new StartCombatUseCase();
         var combatRes = startCombat.Execute(new(player, new[] { enemy1, enemy2 }));
         var startResolveTurn = new ResolveTurnUseCase();
-        CombatTurnResultDto dto = default!;
 
         var session = combatRes.Value.CombatSession;
 

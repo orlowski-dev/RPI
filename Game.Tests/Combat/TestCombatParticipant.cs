@@ -1,3 +1,5 @@
+namespace Game.Tests.Combat;
+
 public class TestCombatParticipant
 {
     public Player Player { get; } =
@@ -8,13 +10,21 @@ public class TestCombatParticipant
 
     public Enemy Enemy1 { get; } =
         new(
+            goldReward: 1,
+            expReward: 1,
             id: "enemy_1",
-            baseStats: new(MaxHp: 20, Attack: 5, Defense: 3, CriticalChance: 2, Luck: 3)
+            baseStats: new(MaxHp: 20, Attack: 5, Defense: 3, CriticalChance: 2, Luck: 3),
+            rank: EnemyRank.Normal,
+            type: EnemyType.Goblin
         );
 
     public Enemy Enemy2 { get; } =
         new(
+            goldReward: 1,
+            expReward: 1,
             id: "enemy_2",
-            baseStats: new(MaxHp: 10, Attack: 3, Defense: 1, CriticalChance: 2, Luck: 3)
+            baseStats: new(MaxHp: 10, Attack: 3, Defense: 1, CriticalChance: 2, Luck: 3),
+            rank: EnemyRank.Normal,
+            type: EnemyType.Goblin
         );
 }

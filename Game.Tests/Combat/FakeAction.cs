@@ -1,3 +1,5 @@
+namespace Game.Tests.Combat;
+
 public class FakeAction : CombatAction
 {
     public bool Executed { get; private set; }

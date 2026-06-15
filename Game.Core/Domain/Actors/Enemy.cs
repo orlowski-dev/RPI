@@ -4,11 +4,23 @@ public class Enemy : Actor
 {
     public int ExpReward { get; private set; }
     public int GoldReward { get; private set; }
+    public EnemyRank Rank { get; private set; }
+    public EnemyType Type { get; private set; }
 
-    public Enemy(string id, ActorBaseStats baseStats)
-        : base(id, baseStats)
+    public Enemy(
+        int expReward,
+        int goldReward,
+        string id,
+        ActorBaseStats baseStats,
+        EnemyRank rank,
+        EnemyType type,
+        int? level = null
+    )
+        : base(id: id, baseStats: baseStats, level: level)
     {
-        ExpReward = 100;
-        GoldReward = 50;
+        ExpReward = expReward;
+        GoldReward = goldReward;
+        Rank = rank;
+        Type = type;
     }
 }

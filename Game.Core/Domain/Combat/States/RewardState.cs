@@ -10,7 +10,7 @@ public class RewardState : ICombatState
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
     public void Enter(CombatContext ctx)
     {
-        Console.WriteLine("[?] RewardState");
+        Log.Write(this, "Entering..");
     }
 
     // wywołuje się wiele razy - czy gracz JUŻ wykonał akcję? co potem?

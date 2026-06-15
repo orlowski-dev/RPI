@@ -7,30 +7,33 @@ namespace Game.Core.Domain.Combat;
 /// </summary>
 public class CombatSession
 {
-    private readonly List<CombatParticipant> _participants;
+    private readonly List<Actor> _participants;
     private CombatAction? _selectedAction;
+    private CombatAction? _previousAction;
+
+    public CombatAction? PreviousAction => _previousAction;
 
     public CombatStateType State { get; set; }
     public CombatContext Context { get; }
 
-    public IReadOnlyList<CombatParticipant> Participants => _participants;
-    public CombatParticipant ActiveParticipant { get; private set; }
-    public CombatParticipant? NextParticipant { get; private set; }
-    public CombatParticipant? Target { get; private set; }
+    public IReadOnlyList<Actor> Participants => _participants;
+    public Actor ActiveParticipant { get; private set; }
+    public Actor? NextParticipant { get; private set; }
+    public Actor? Target { get; private set; }
 
     public int TurnNumber { get; private set; }
     public bool IsFinished { get; private set; }
     public CombatReward? Reward { get; private set; }
     public bool HasSelectedAction => _selectedAction is not null;
 
-    public CombatParticipant Player =>
-        _participants.Find((x) => x.Type == CombatParticipantType.Player)
-        ?? throw new InvalidOperationException();
+    public Player Player =>
+        _participants.OfType<Player>().Where(x => x.IsAlive).First()
+        ?? throw new InvalidOperationException("Player in CombatSession not found!");
 
-    public IReadOnlyList<CombatParticipant> AliveEnemies =>
-        _participants.FindAll((x) => x.Type == CombatParticipantType.Enemy && x.IsAlive);
+    public IReadOnlyList<Enemy> AliveEnemies =>
+        _participants.OfType<Enemy>().Where(x => x.IsAlive).ToList();
 
-    public CombatSession(IEnumerable<CombatParticipant> participants)
+    public CombatSession(IEnumerable<Actor> participants)
     {
         Context = new CombatContext(this);
         _participants = participants.ToList();
@@ -56,10 +59,12 @@ public class CombatSession
     {
         if (_selectedAction is null)
         {
-            throw new InvalidOperationException();
+            Log.Write(this, "Selected action is null!");
+            throw new InvalidOperationException("Selected action is null!");
         }
 
         var action = _selectedAction;
+        _previousAction = _selectedAction;
         _selectedAction = null;
 
         return action;
@@ -95,7 +100,7 @@ public class CombatSession
         Reward = reward;
     }
 
-    public void SetTarget(CombatParticipant? target)
+    public void SetTarget(Actor? target)
     {
         Target = target;
     }
@@ -105,7 +110,7 @@ public class CombatSession
         Target = null;
     }
 
-    public void SetActiveParticipant(CombatParticipant participant)
+    public void SetActiveParticipant(Actor participant)
     {
         ActiveParticipant = participant;
     }
@@ -119,7 +124,7 @@ public class CombatSession
         }
     }
 
-    public CombatParticipant PeekNextAliveParticipant()
+    public Actor PeekNextAliveParticipant()
     {
         var current = _participants.IndexOf(ActiveParticipant);
 
@@ -136,7 +141,7 @@ public class CombatSession
         throw new InvalidOperationException("No alive participants.");
     }
 
-    public CombatParticipant MoveNextParticipant()
+    public Actor MoveNextParticipant()
     {
         var next = PeekNextAliveParticipant();
 

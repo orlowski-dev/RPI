@@ -10,16 +10,13 @@ public class EnemyStatusState : ICombatState
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
     public void Enter(CombatContext ctx)
     {
-        Console.WriteLine("[?] EnemyStatusState");
+        Log.Write(this, "Entering..");
     }
 
     // wywołuje się wiele razy - czy gracz JUŻ wykonał akcję?, co potem?
     public CombatStateTransition Update(CombatContext ctx)
     {
-        if (
-            ctx.Session.NextParticipant is not null
-            && ctx.Session.NextParticipant.Type == CombatParticipantType.Enemy
-        )
+        if (ctx.Session.NextParticipant is not null && ctx.Session.NextParticipant is Enemy)
         {
             return CombatStateTransition.Next(CombatStateType.EnemyTurn);
         }

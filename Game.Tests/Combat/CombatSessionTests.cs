@@ -1,13 +1,13 @@
 public class CombatSessionTests
 {
-    private (List<CombatParticipant>, CombatSession) CreateSession()
+    private (List<Actor>, CombatSession) CreateSession()
     {
         var tcp = new TestCombatParticipant();
         var player = tcp.Player;
         var enemy1 = tcp.Enemy1;
         var enemy2 = tcp.Enemy2;
 
-        var session = new CombatSession(new[] { player, enemy1, enemy2 });
+        var session = new CombatSession(new List<Actor>() { player, enemy1, enemy2 });
 
         return (new() { player, enemy1, enemy2 }, session);
     }
@@ -38,9 +38,11 @@ public class CombatSessionTests
             if (session.State == CombatStateType.PlayerTurn)
             {
                 var target = session.AliveEnemies.FirstOrDefault();
+                Console.WriteLine(DebugExtension.Dump(session.AliveEnemies));
                 if (target is null)
                 {
                     end = true;
+                    break;
                 }
                 session.SetTarget(target);
                 dto = resolve
@@ -52,9 +54,6 @@ public class CombatSessionTests
                         )
                     )
                     .Value;
-                Console.WriteLine(
-                    $"{session.ActiveParticipant.Id} atakuje {session.Target!.Id}. Next participant is: {session.NextParticipant!.Id}"
-                );
             }
             else
             {
@@ -62,6 +61,10 @@ public class CombatSessionTests
                     .Execute(new(Session: session, StateMachine: combat.Value.StateMachine))
                     .Value;
             }
+
+            Console.WriteLine(
+                $"{session.ActiveParticipant.Id} atakuje {session.Target?.Id ?? null}. Next participant is: {session.NextParticipant?.Id}"
+            );
 
             Console.WriteLine(DebugExtension.Dump(dto));
 

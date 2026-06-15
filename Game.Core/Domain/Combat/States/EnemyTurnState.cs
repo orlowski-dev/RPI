@@ -11,7 +11,8 @@ public class EnemyTurnState : ICombatState
 
     public void Enter(CombatContext ctx)
     {
-        Console.WriteLine("[?] EnemyTurnState");
+        Log.Write(this, "Entering..");
+
         ctx.Session.MoveNextParticipant();
 
         var player = ctx.Session.Player;

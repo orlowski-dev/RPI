@@ -7,7 +7,8 @@ public class PlayerTurnState : ICombatState
 
     public void Enter(CombatContext ctx)
     {
-        Console.WriteLine("[?] PlayerTurnState");
+        Log.Write(this, "Entering..");
+
         var player = ctx.Session.Player;
 
         if (player is null)
@@ -22,6 +23,7 @@ public class PlayerTurnState : ICombatState
     {
         if (!ctx.Session.HasSelectedAction)
         {
+            Log.Write(this, "Has not selected action..");
             return CombatStateTransition.Stay();
         }
 

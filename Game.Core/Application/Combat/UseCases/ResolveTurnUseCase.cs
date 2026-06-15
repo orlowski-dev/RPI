@@ -1,7 +1,3 @@
-using Game.Core.Application.Combat.DTO;
-using Game.Core.Application.Combat.Requests;
-using Game.Core.Application.Combat.Responses;
-
 namespace Game.Core.Application.Combat.UseCases;
 
 public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, ResolveCombatResponse>

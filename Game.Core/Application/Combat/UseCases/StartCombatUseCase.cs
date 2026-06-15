@@ -1,5 +1,3 @@
-using Game.Core.Application.Combat.Requests;
-using Game.Core.Application.Combat.Responses;
 using Game.Core.Domain.Combat.States;
 
 namespace Game.Core.Application.Combat.UseCases;

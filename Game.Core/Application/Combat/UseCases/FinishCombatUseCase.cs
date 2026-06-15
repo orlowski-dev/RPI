@@ -1,5 +1,3 @@
-using Game.Core.Application.Combat.DTO;
-using Game.Core.Application.Combat.Requests;
 using Game.Core.Domain.Combat.Reward;
 
 namespace Game.Core.Application.Combat.UseCases;

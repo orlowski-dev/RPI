@@ -15,8 +15,7 @@ public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatRespon
         {
             new PlayerTurnState(),
             new EnemyTurnState(),
-            new PlayerStatusState(),
-            new EnemyStatusState(),
+            new ResolveTurnState(),
             new RewardState(),
         };
         var stateMachine = new CombatStateMachine(states);

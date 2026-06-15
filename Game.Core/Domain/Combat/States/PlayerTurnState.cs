@@ -9,14 +9,8 @@ public class PlayerTurnState : ICombatState
     {
         Log.Write(this, "Entering..");
 
-        var player = ctx.Session.Player;
-
-        if (player is null)
-        {
-            throw new InvalidOperationException();
-        }
-
-        ctx.Session.SetActiveParticipant(player);
+        ctx.Session.ClearTarget();
+        ctx.Session.ClearSelectedAction();
     }
 
     public CombatStateTransition Update(CombatContext ctx)
@@ -27,9 +21,7 @@ public class PlayerTurnState : ICombatState
             return CombatStateTransition.Stay();
         }
 
-        ctx.Session.ExecuteSelectedAction();
-
-        return CombatStateTransition.Next(CombatStateType.PlayerStatus);
+        return CombatStateTransition.Next(CombatStateType.ResolveTurn);
     }
 
     public void Exit(CombatContext ctx) { }

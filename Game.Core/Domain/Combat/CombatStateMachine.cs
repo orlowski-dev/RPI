@@ -51,13 +51,6 @@ public class CombatStateMachine
 
     private void HandleTransition(CombatStateTransition transition, CombatContext context)
     {
-        if (context.Session.IsFinished)
-        {
-            Log.Write(this, "Combat is finished. Changin state to RewardState");
-            Change(CombatStateType.Reward, context);
-            return;
-        }
-
         if (!transition.ShouldChange)
         {
             return;

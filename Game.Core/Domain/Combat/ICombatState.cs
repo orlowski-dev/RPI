@@ -12,7 +12,6 @@ public interface ICombatState
 {
     public CombatStateType Type { get; }
 
-    // public bool IsAutomatic { get; }
     public bool ReturnsControlToUi { get; } // true -> zwróc dto
 
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła

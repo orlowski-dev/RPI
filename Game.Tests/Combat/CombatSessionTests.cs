@@ -1,21 +1,37 @@
 public class CombatSessionTests
 {
-    private (List<Actor>, CombatSession) CreateSession()
+    private (Player, Enemy, Enemy) GetActors()
     {
         var tcp = new TestCombatParticipant();
-        var player = tcp.Player;
-        var enemy1 = tcp.Enemy1;
-        var enemy2 = tcp.Enemy2;
+        var player = tcp.Player as Player;
+        var enemy1 = tcp.Enemy1 as Enemy;
+        var enemy2 = tcp.Enemy2 as Enemy;
 
-        var session = new CombatSession(new List<Actor>() { player, enemy1, enemy2 });
+        return (player, enemy1, enemy2);
+    }
 
-        return (new() { player, enemy1, enemy2 }, session);
+    [Fact]
+    public void CombatFlow_ShouldBeEnemy1()
+    {
+        var (player, enemy1, enemy2) = GetActors();
+        var start = new StartCombatUseCase();
+        var startCombat = new StartCombatUseCase();
+        var combatRes = startCombat.Execute(new(player, new[] { enemy1, enemy2 }));
+        var startResolveTurn = new ResolveTurnUseCase();
+        CombatTurnResultDto dto = default!;
+
+        var session = combatRes.Value.CombatSession;
+
+        session.SetActiveParticipant(player);
+        Assert.True(session.ActiveParticipant is Player);
+        Assert.True(session.NextParticipant is Enemy);
+        Assert.Equal(enemy1.Id, session.NextParticipant.Id);
     }
 
     [Fact]
     public void CombatFlow_ShouldFinishCombat()
     {
-        Console.WriteLine($"[Test]: {this.GetType().Name}");
+        Log.Write(this, "Starting..");
         var tcp = new TestCombatParticipant();
         var player = tcp.Player;
         var enemy1 = tcp.Enemy1;
@@ -38,7 +54,7 @@ public class CombatSessionTests
             if (session.State == CombatStateType.PlayerTurn)
             {
                 var target = session.AliveEnemies.FirstOrDefault();
-                Console.WriteLine(DebugExtension.Dump(session.AliveEnemies));
+                // Console.WriteLine(DebugExtension.Dump(session.AliveEnemies));
                 if (target is null)
                 {
                     end = true;
@@ -62,11 +78,14 @@ public class CombatSessionTests
                     .Value;
             }
 
-            Console.WriteLine(
-                $"{session.ActiveParticipant.Id} atakuje {session.Target?.Id ?? null}. Next participant is: {session.NextParticipant?.Id}"
+            Log.Write(
+                this,
+                $"{session.PreviousAction?.GetType().Name} | "
+                    + $"{session.ActiveParticipant.Id} - "
+                    + $"{session.Target?.Id ?? "none"} | "
+                    + $"next={session.NextParticipant?.Id}"
             );
-
-            Console.WriteLine(DebugExtension.Dump(dto));
+            // Log.Write(this, DebugExtension.Dump(dto));
 
             if (dto.CombatFinished)
                 break;

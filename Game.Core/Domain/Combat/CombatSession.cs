@@ -27,11 +27,11 @@ public class CombatSession
     public bool HasSelectedAction => _selectedAction is not null;
 
     public Player Player =>
-        _participants.OfType<Player>().Where(x => x.IsAlive).First()
+        _participants.OfType<Player>().FirstOrDefault()
         ?? throw new InvalidOperationException("Player in CombatSession not found!");
 
     public IReadOnlyList<Enemy> AliveEnemies =>
-        _participants.OfType<Enemy>().Where(x => x.IsAlive).ToList();
+        _participants.OfType<Enemy>().Where(x => x.IsAlive && x is Enemy).ToList();
 
     public CombatSession(IEnumerable<Actor> participants)
     {
@@ -98,6 +98,7 @@ public class CombatSession
     public void Finish(CombatReward reward)
     {
         Reward = reward;
+        IsFinished = true;
     }
 
     public void SetTarget(Actor? target)
@@ -124,7 +125,7 @@ public class CombatSession
         }
     }
 
-    public Actor PeekNextAliveParticipant()
+    private Actor PeekNextAliveParticipant()
     {
         var current = _participants.IndexOf(ActiveParticipant);
 
@@ -141,14 +142,17 @@ public class CombatSession
         throw new InvalidOperationException("No alive participants.");
     }
 
-    public Actor MoveNextParticipant()
+    public Actor MoveToNextParticipant()
     {
-        var next = PeekNextAliveParticipant();
+        SetActiveParticipant(NextParticipant ?? throw new InvalidOperationException());
 
-        ActiveParticipant = next;
-
-        NextParticipant = PeekNextAliveParticipant();
+        SetNextParticipant();
 
         return ActiveParticipant;
+    }
+
+    public void SetNextParticipant()
+    {
+        NextParticipant = PeekNextAliveParticipant();
     }
 }

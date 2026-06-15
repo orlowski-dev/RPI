@@ -1,7 +1,4 @@
 namespace Game.Core.Application.Combat.Requests;
 
-public record ClaimCombatRewardRequest(
-    CombatSession Session,
-    CombatStateMachine StateMachine,
-    CombatReward Reward
-);
+// bez statemachine bo nie potrzebuje juz ruszac tur
+public record ClaimCombatRewardRequest(CombatSession Session, CombatReward Reward);

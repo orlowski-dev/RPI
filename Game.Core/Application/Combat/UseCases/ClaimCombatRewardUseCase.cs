@@ -5,11 +5,33 @@ public class ClaimCombatRewardUseCase
 {
     public Result<ClaimCombatRewardResponse> Execute(ClaimCombatRewardRequest request)
     {
-        request.StateMachine.Update(request.Session.Context);
+        if (request.Reward is null)
+        {
+            return Result<ClaimCombatRewardResponse>.Fail(
+                new Error(
+                    Code: "combat:claimReward",
+                    Message: "request.Reward is null!",
+                    Type: ErrorType.Validation
+                )
+            );
+        }
+
+        if (request.Session.RewardClaimed)
+        {
+            return Result<ClaimCombatRewardResponse>.Fail(
+                new Error(
+                    Code: "combat:claimReward",
+                    Message: "Reward already claimed!",
+                    Type: ErrorType.Validation
+                )
+            );
+        }
+
+        request.Session.ClaimReward(request.Reward);
 
         var reward = request.Reward;
 
-        // dodać reward do gracza
+        // todo: dodać testy
 
         return Result<ClaimCombatRewardResponse>.Success(new());
     }

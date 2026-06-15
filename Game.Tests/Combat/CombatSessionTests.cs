@@ -70,22 +70,22 @@ public class CombatSessionTests
                             Action: new AttackAction()
                         )
                     )
-                    .Value;
+                    .Value.Dto;
             }
             else
             {
                 dto = resolve
                     .Execute(new(Session: session, StateMachine: combat.Value.StateMachine))
-                    .Value;
+                    .Value.Dto;
             }
 
-            Log.Write(
-                this,
-                $"{session.PreviousAction?.GetType().Name} | "
-                    + $"{session.ActiveParticipant.Id} - "
-                    + $"{session.Target?.Id ?? "none"} | "
-                    + $"next={session.NextParticipant?.Id}"
-            );
+            // Log.Write(
+            //     this,
+            //     $"{session.PreviousAction?.GetType().Name} | "
+            //         + $"{session.ActiveParticipant.Id} - "
+            //         + $"{session.Target?.Id ?? "none"} | "
+            //         + $"next={session.NextParticipant?.Id}"
+            // );
             // Log.Write(this, DebugExtension.Dump(dto));
 
             if (dto.CombatFinished)
@@ -98,5 +98,8 @@ public class CombatSessionTests
         var finishRes = finish.Execute(
             new(Session: combat.Value.CombatSession, StateMachine: combat.Value.StateMachine)
         );
+
+        Assert.True(finishRes.IsSuccess);
+        Log.Write(this, DebugExtension.Dump(finishRes.Value.Dto));
     }
 }

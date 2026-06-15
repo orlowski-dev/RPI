@@ -1,11 +1,12 @@
 using Game.Core.Application.Combat.DTO;
 using Game.Core.Application.Combat.Requests;
+using Game.Core.Application.Combat.Responses;
 
 namespace Game.Core.Application.Combat.UseCases;
 
-public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, CombatTurnResultDto>
+public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, ResolveCombatResponse>
 {
-    public Result<CombatTurnResultDto> Execute(ResolveTurnRequest req)
+    public Result<ResolveCombatResponse> Execute(ResolveTurnRequest req)
     {
         if (req.Action is not null)
         {
@@ -27,8 +28,8 @@ public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, CombatTurnResultD
             nextActorId: nextActorId
         );
 
-        // todo: na razie zrwadane dto po wszystkich zakończonych podturach - zmienić filozofię..
+        var response = new ResolveCombatResponse(dto);
 
-        return Result<CombatTurnResultDto>.Success(dto);
+        return Result<ResolveCombatResponse>.Success(response);
     }
 }

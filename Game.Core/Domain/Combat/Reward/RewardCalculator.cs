@@ -19,14 +19,24 @@ public class RewardCalculator : IRewardCalculator
     {
         var exp = defeatedEnemies.Sum(CalculateExp);
         var gold = defeatedEnemies.Sum(CalculateGold);
+        int goldBonus = 0;
+        int expBonus = 0;
 
         if (defeatedEnemies.Count > 2)
         {
-            exp += (int)Math.Floor(exp * 0.1);
-            gold += (int)Math.Floor(gold * 0.1);
+            expBonus = (int)Math.Floor(exp * 0.1);
+            exp += expBonus;
+            goldBonus = (int)Math.Floor(gold * 0.1);
+            gold += goldBonus;
         }
 
-        return new(exp, gold, []);
+        return new(
+            experience: exp,
+            gold: gold,
+            goldBonus: goldBonus,
+            expBonus: expBonus,
+            items: []
+        );
     }
 
     private int CalculateExp(Enemy enemy)

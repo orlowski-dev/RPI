@@ -1,16 +1,18 @@
+using Game.Core.Application.Combat.DTO;
 using Game.Core.Application.Combat.Requests;
+using Game.Core.Domain.Combat.Reward;
 
 namespace Game.Core.Application.Combat.UseCases;
 
-public class FinishCombatUseCase : IUseCase<FinishCombatRequest>
+public class FinishCombatUseCase : IUseCase<FinishCombatRequest, FinishCombatResponse>
 {
-    public Result Execute(FinishCombatRequest request)
+    public Result<FinishCombatResponse> Execute(FinishCombatRequest request)
     {
         request.StateMachine.Update(request.Session.Context);
 
         if (!request.Session.IsFinished)
         {
-            return Result.Fail(
+            return Result<FinishCombatResponse>.Fail(
                 new(
                     "combat:finishUseCase:Execute",
                     "Combat is not finished!",
@@ -20,9 +22,9 @@ public class FinishCombatUseCase : IUseCase<FinishCombatRequest>
             ;
         }
 
-        // todo: potem przekazać reward w requescie
-        // request.Session.Finish(new CombatReward(10, 10, new[] { "sword" }));
+        var reward = new RewardCalculator().Calculate(defeatedEnemies: request.Session.AllEnemies);
+        var dto = new CombatResult(Reward: reward);
 
-        return Result.Success();
+        return Result<FinishCombatResponse>.Success(new(dto));
     }
 }

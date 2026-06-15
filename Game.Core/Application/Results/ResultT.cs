@@ -10,12 +10,18 @@ public partial class Result<T> : Result
         Value = value;
     }
 
+    public Result(Error error)
+        : base(false, error)
+    {
+        Value = default!;
+    }
+
     public static Result<T> Success(T value)
     {
         return new(value);
     }
 
-    public static Result<T> Fail(T err)
+    public static new Result<T> Fail(Error err)
     {
         return new(err);
     }

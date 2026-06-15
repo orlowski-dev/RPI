@@ -33,6 +33,9 @@ public class CombatSession
     public IReadOnlyList<Enemy> AliveEnemies =>
         _participants.OfType<Enemy>().Where(x => x.IsAlive && x is Enemy).ToList();
 
+    public IReadOnlyList<Enemy> AllEnemies =>
+        _participants.OfType<Enemy>().Where(x => x is Enemy).ToList();
+
     public CombatSession(IEnumerable<Actor> participants)
     {
         Context = new CombatContext(this);

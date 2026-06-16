@@ -10,13 +10,13 @@ public class Enemy : Actor
     public Enemy(
         int expReward,
         int goldReward,
-        string id,
         ActorStats stats,
         EnemyRank rank,
         EnemyType type,
+        string? id = null,
         int? level = null
     )
-        : base(id: id, stats: stats, level: level)
+        : base(stats: stats, level: level, id: id)
     {
         ExpReward = expReward;
         GoldReward = goldReward;

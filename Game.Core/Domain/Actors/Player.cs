@@ -7,8 +7,8 @@ public class Player : Actor
     public int ExpNextLevel { get; private set; }
     public int Gold { get; private set; }
 
-    public Player(string id, ActorStats stats, PlayerType type)
-        : base(id, stats)
+    public Player(ActorStats stats, PlayerType type, string? id = null)
+        : base(stats: stats, id: id)
     {
         Type = type;
         Exp = 0;

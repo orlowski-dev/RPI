@@ -11,12 +11,12 @@ public class Enemy : Actor
         int expReward,
         int goldReward,
         string id,
-        ActorBaseStats baseStats,
+        ActorStats stats,
         EnemyRank rank,
         EnemyType type,
         int? level = null
     )
-        : base(id: id, baseStats: baseStats, level: level)
+        : base(id: id, stats: stats, level: level)
     {
         ExpReward = expReward;
         GoldReward = goldReward;

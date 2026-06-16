@@ -3,16 +3,16 @@ namespace Game.Core.Domain.Actors;
 public abstract class Actor
 {
     public string Id { get; }
-    public ActorBaseStats BaseStats { get; }
+
     public ActorStats Stats { get; protected set; }
     public int Level { get; protected set; }
     public bool IsAlive => Stats.CurrentHp > 0;
 
-    protected Actor(string id, ActorBaseStats baseStats, int? level = null)
+    protected Actor(string id, ActorStats stats, int? level = null)
     {
         Id = id;
-        BaseStats = baseStats;
         Level = level ?? 1;
+        Stats = stats;
         Stats = RecalculateStats();
     }
 
@@ -23,17 +23,17 @@ public abstract class Actor
 
     public virtual void Heal(int value)
     {
-        Stats.CurrentHp = Math.Min(BaseStats.MaxHp, Stats.CurrentHp + value);
+        Stats.CurrentHp = Math.Min(Stats.MaxHp, Stats.CurrentHp + value);
     }
 
-    protected ActorStats RecalculateStats()
+    protected virtual ActorStats RecalculateStats()
     {
         return new(
-            currentHp: BaseStats.MaxHp * Level,
-            attack: BaseStats.Attack * Level,
-            defense: BaseStats.Defense * Level,
-            criticalChance: BaseStats.CriticalChance,
-            luck: BaseStats.Luck
+            maxHp: Stats.MaxHp + (Level * Stats.MaxHp),
+            attack: Stats.Attack + (Level * Stats.Attack),
+            defense: Stats.Defense + (Level * Stats.Defense),
+            criticalChance: Stats.CriticalChance,
+            luck: Stats.Luck
         );
     }
 

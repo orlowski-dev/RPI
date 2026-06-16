@@ -3,17 +3,14 @@ namespace Game.Tests.Combat;
 public class TestCombatParticipant
 {
     public Player Player { get; } =
-        new(
-            id: "player",
-            baseStats: new(MaxHp: 30, Attack: 10, Defense: 5, CriticalChance: 2, Luck: 3)
-        );
+        new(id: "player", stats: new(30, 10, 5, 2, 3), type: PlayerType.Warrior);
 
     public Enemy Enemy1 { get; } =
         new(
             goldReward: 1,
             expReward: 1,
             id: "enemy_1",
-            baseStats: new(MaxHp: 20, Attack: 5, Defense: 3, CriticalChance: 2, Luck: 3),
+            stats: new(20, 5, 3, 2, 3),
             rank: EnemyRank.Normal,
             type: EnemyType.Goblin
         );
@@ -23,7 +20,7 @@ public class TestCombatParticipant
             goldReward: 1,
             expReward: 1,
             id: "enemy_2",
-            baseStats: new(MaxHp: 10, Attack: 3, Defense: 1, CriticalChance: 2, Luck: 3),
+            stats: new(10, 3, 1, 2, 3),
             rank: EnemyRank.Normal,
             type: EnemyType.Goblin
         );

@@ -19,7 +19,7 @@ public class RewardTest
             rank: rank,
             type: type,
             level: level,
-            baseStats: new(MaxHp: 10, Attack: 3, Defense: 1, CriticalChance: 2, Luck: 3)
+            stats: new(10, 3, 1, 2, 3)
         );
     }
 
@@ -31,7 +31,7 @@ public class RewardTest
             expReward: 1,
             id: "enemy",
             level: 10,
-            baseStats: new(MaxHp: 10, Attack: 3, Defense: 1, CriticalChance: 2, Luck: 3),
+            stats: new(10, 3, 1, 2, 3),
             rank: EnemyRank.Normal,
             type: EnemyType.Goblin
         );

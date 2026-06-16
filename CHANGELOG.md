@@ -1,5 +1,21 @@
 # Changelog
 
+## Dungeon and encounters
+
+### Added
+
+- added dungeon encounter model
+- added combat integration for encounters
+- added encounter completion flow
+- added dungeon tests
+
+### Tests
+
+- added dungeon progression tests
+- added encounter combat tests
+
+To będzie pierwszy moment kiedy zamiast „uruchamiam test walki” będziesz mieć „gram w fragment
+
 ## Player progression
 
 ### Added

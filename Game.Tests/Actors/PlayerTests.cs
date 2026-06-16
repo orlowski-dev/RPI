@@ -10,7 +10,8 @@ public class PlayerTests
     [Fact]
     public void Player_ShouldIncreaseExp()
     {
-        Log.Write(this, "Starting..");
+        DebugExtension.Log(this, "Starting..");
+
         var player = GetPlayer();
         var prevExp = player.Exp;
         Assert.Equal(0, prevExp);
@@ -21,7 +22,7 @@ public class PlayerTests
     [Fact]
     public void Player_ShouldLevelUp()
     {
-        Log.Write(this, "Starting..");
+        DebugExtension.Log(this, "Starting..");
         var player = GetPlayer();
         var expToLvl2 = 100;
         // 100 * Level^1.5
@@ -35,7 +36,7 @@ public class PlayerTests
     [Fact]
     public void Player_LevelUpShouldIncreaseStats()
     {
-        Log.Write(this, "Starting..");
+        DebugExtension.Log(this, "Starting..");
 
         var player = GetPlayer(PlayerType.Warrior);
         var startMaxHp = player.Stats.MaxHp;
@@ -54,6 +55,8 @@ public class PlayerTests
     [Fact]
     public void Player_ShouldIncreaseManyLevelsAtOnce()
     {
+        DebugExtension.Log(this, "Starting..");
+
         var player = GetPlayer();
         // 100 * Level^1.5 = > 519 (na 4lvl)
         // 100 + 282 + 519 = 901

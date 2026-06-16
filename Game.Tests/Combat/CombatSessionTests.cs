@@ -15,6 +15,8 @@ public class CombatSessionTests
     [Fact]
     public void CombatFlow_ShouldBeEnemy1()
     {
+        DebugExtension.Log(this, "Starting..");
+
         var (player, enemy1, enemy2) = GetActors();
         var start = new StartCombatUseCase();
         var startCombat = new StartCombatUseCase();
@@ -32,7 +34,8 @@ public class CombatSessionTests
     [Fact]
     public void CombatFlow_ShouldFinishCombat()
     {
-        Log.Write(this, "Starting..");
+        DebugExtension.Log(this, "Starting..");
+
         var tcp = new TestCombatParticipant();
         var player = tcp.Player;
         var enemy1 = tcp.Enemy1;

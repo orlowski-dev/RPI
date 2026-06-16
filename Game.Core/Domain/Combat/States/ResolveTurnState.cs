@@ -9,8 +9,6 @@ public class ResolveTurnState : ICombatState
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
     public void Enter(CombatContext ctx)
     {
-        Log.Write(this, "Entering..");
-
         // wykonanie ruchu
         if (ctx.Session.HasSelectedAction)
         {

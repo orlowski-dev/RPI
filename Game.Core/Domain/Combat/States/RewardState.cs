@@ -8,10 +8,7 @@ public class RewardState : ICombatState
     public bool ReturnsControlToUi { get; } = true;
 
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
-    public void Enter(CombatContext ctx)
-    {
-        Log.Write(this, "Entering..");
-    }
+    public void Enter(CombatContext ctx) { }
 
     // wywołuje się wiele razy - czy gracz JUŻ wykonał akcję? co potem?
     public CombatStateTransition Update(CombatContext ctx)

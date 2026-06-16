@@ -7,8 +7,6 @@ public class PlayerTurnState : ICombatState
 
     public void Enter(CombatContext ctx)
     {
-        Log.Write(this, "Entering..");
-
         ctx.Session.ClearTarget();
         ctx.Session.ClearSelectedAction();
     }
@@ -17,7 +15,6 @@ public class PlayerTurnState : ICombatState
     {
         if (!ctx.Session.HasSelectedAction)
         {
-            Log.Write(this, "Has not selected action..");
             return CombatStateTransition.Stay();
         }
 

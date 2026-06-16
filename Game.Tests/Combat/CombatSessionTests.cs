@@ -111,5 +111,71 @@ public class CombatSessionTests
             new(Session: combat.Value.CombatSession, Reward: finishRes.Value.Dto.Reward)
         );
         Assert.True(player.Exp > 0);
+        Assert.True(combat.Value.CombatSession.PlayerWon);
+    }
+
+    [Fact]
+    public void CombatFlow_ShouldShouldBeDead()
+    {
+        DebugExtension.Log(this, "Starting..");
+
+        var tcp = new TestCombatParticipant();
+        var player = tcp.Player;
+        var enemy1 = tcp.Enemy1;
+        var enemy2 = tcp.Enemy2;
+
+        var start = new StartCombatUseCase();
+        var combat = start.Execute(new(player, new[] { enemy1, enemy2 }));
+
+        var resolve = new ResolveTurnUseCase();
+        CombatTurnResultDto dto = default!;
+
+        var maxIterations = 30;
+        var iterations = 0;
+
+        while (iterations++ < maxIterations)
+        {
+            var session = combat.Value.CombatSession;
+
+            if (session.State == CombatStateType.PlayerTurn)
+            {
+                var target = session.AliveEnemies.FirstOrDefault();
+                if (target is null)
+                {
+                    break;
+                }
+                session.SetTarget(target);
+
+                dto = resolve
+                    .Execute(
+                        new(
+                            Session: session,
+                            StateMachine: combat.Value.StateMachine,
+                            Action: new FakeAction()
+                        )
+                    )
+                    .Value.Dto;
+            }
+            else
+            {
+                dto = resolve
+                    .Execute(new(Session: session, StateMachine: combat.Value.StateMachine))
+                    .Value.Dto;
+            }
+
+            if (dto.CombatFinished)
+                break;
+
+            Assert.True(iterations < maxIterations);
+            Assert.False(combat.Value.CombatSession.PlayerWon);
+        }
+
+        var finish = new FinishCombatUseCase();
+        var finishRes = finish.Execute(
+            new(Session: combat.Value.CombatSession, StateMachine: combat.Value.StateMachine)
+        );
+
+        Assert.True(finishRes.IsSuccess);
+        // Log.Write(this, DebugExtension.Dump(finishRes.Value.Dto));
     }
 }

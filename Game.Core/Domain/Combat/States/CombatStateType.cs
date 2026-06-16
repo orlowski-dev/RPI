@@ -1,4 +1,4 @@
-namespace Game.Core.Domain.Combat;
+namespace Game.Core.Domain.Combat.States;
 
 public enum CombatStateType
 {
@@ -7,5 +7,6 @@ public enum CombatStateType
     EnemyTurn,
     ResolveTurn,
     Reward,
+    PlayerDeath,
     End,
 }

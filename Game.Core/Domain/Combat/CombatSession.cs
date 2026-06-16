@@ -37,6 +37,8 @@ public class CombatSession
     public IReadOnlyList<Enemy> AllEnemies =>
         _participants.OfType<Enemy>().Where(x => x is Enemy).ToList();
 
+    public bool PlayerWon => IsFinished && Player.IsAlive;
+
     public CombatSession(IEnumerable<Actor> participants)
     {
         Context = new CombatContext(this);

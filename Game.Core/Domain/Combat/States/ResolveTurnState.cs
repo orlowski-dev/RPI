@@ -28,7 +28,12 @@ public class ResolveTurnState : ICombatState
 
         if (ctx.Session.IsFinished)
         {
-            return CombatStateTransition.Next(CombatStateType.Reward);
+            if (ctx.Session.PlayerWon)
+            {
+                return CombatStateTransition.Next(CombatStateType.Reward);
+            }
+
+            return CombatStateTransition.Next(CombatStateType.PlayerDeath);
         }
 
         var next = ctx.Session.NextParticipant;

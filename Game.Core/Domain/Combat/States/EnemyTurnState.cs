@@ -1,5 +1,3 @@
-using Game.Core.Domain.Combat.Actions;
-
 namespace Game.Core.Domain.Combat.States;
 
 public class EnemyTurnState : ICombatState

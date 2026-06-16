@@ -17,7 +17,7 @@ public class Dungeon
         _encounters = GenerateEncounters();
 
         DebugExtension.Log(this, $"Dugneon {Id} created. Encounters count: {_encounters.Count()}.");
-        DebugExtension.Log(this, DebugExtension.Dump(_encounters));
+        // DebugExtension.Log(this, DebugExtension.Dump(_encounters));
     }
 
     private IReadOnlyList<Encounter> GenerateEncounters()

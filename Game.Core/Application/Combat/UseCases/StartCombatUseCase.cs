@@ -1,5 +1,3 @@
-using Game.Core.Domain.Combat.States;
-
 namespace Game.Core.Application.Combat.UseCases;
 
 /// <summary>
@@ -22,6 +20,7 @@ public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatRespon
             new EnemyTurnState(),
             new ResolveTurnState(),
             new RewardState(),
+            new PlayerDeathState(),
         };
         var stateMachine = new CombatStateMachine(states);
         var session = new CombatSession([request.Player, .. request.Enemies]);

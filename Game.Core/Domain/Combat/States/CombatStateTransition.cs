@@ -1,4 +1,4 @@
-namespace Game.Core.Domain.Combat;
+namespace Game.Core.Domain.Combat.States;
 
 /// <summary>
 /// Wynik aktualizacji stanu.

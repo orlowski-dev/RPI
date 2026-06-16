@@ -1,10 +1,9 @@
 namespace Game.Core.Domain.Combat.States;
 
-public class RewardState : ICombatState
+public class PlayerDeathState : ICombatState
 {
-    public CombatStateType Type { get; } = CombatStateType.Reward;
+    public CombatStateType Type { get; } = CombatStateType.PlayerDeath;
 
-    // public bool IsAutomatic { get; }
     public bool ReturnsControlToUi { get; } = true;
 
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła

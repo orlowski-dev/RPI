@@ -8,9 +8,9 @@ public abstract class Actor
     public int Level { get; protected set; }
     public bool IsAlive => Stats.CurrentHp > 0;
 
-    protected Actor(string id, ActorStats stats, int? level = null)
+    protected Actor(ActorStats stats, int? level = null, string? id = null)
     {
-        Id = id;
+        Id = id ?? Guid.NewGuid().ToString();
         Level = level ?? 1;
         Stats = stats;
         Stats = RecalculateStats();

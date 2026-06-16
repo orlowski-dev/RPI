@@ -1,5 +1,3 @@
-using Game.Core.Domain.Combat.Actions;
-
 namespace Game.Core.Domain.Combat.States;
 
 public class EnemyTurnState : ICombatState
@@ -11,7 +9,6 @@ public class EnemyTurnState : ICombatState
 
     public void Enter(CombatContext ctx)
     {
-        Log.Write(this, "Entering..");
         ctx.Session.SetTarget(ctx.Session.Player);
     }
 

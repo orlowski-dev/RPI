@@ -11,7 +11,13 @@ public class AttackAction : CombatAction
             );
         }
 
-        session.Target.ReceiveDamage(session.ActiveParticipant.Stats.Attack);
+        var damage = session.ActiveParticipant.Stats.Attack;
+        session.Target.ReceiveDamage(damage);
+        var target = session.Target;
+        DebugExtension.Log(
+            this,
+            $"{session.ActiveParticipant.Id} zaatakował {target.Id} i zadał {damage} damage ({target.Stats.CurrentHp}/{target.Stats.MaxHp}hp)."
+        );
 
         return Result.Success();
     }

@@ -1,16 +1,37 @@
 # Changelog
 
+## Player progression
+
+### Added
+
+- player progression system
+- automatic level up
+- stat scaling
+
+### Changed
+
+- player experience handling
+
+### Tests
+
+- progression tests
+
 ## Reward
 
 ### Added
+
 - added `ClaimCombatRewardUseCase`
 - added reward claiming flow after combat
 - added transferring EXP and GOLD from `CombatSession` to Player
 - added reward consumption protection (`RewardClaimed`)
+
 ### Changed
+
 - combat reward is no longer applied directly during combat finish
 - reward distribution moved to dedicated use case
+
 ### Tests
+
 - added tests for reward claiming
 - added validation preventing double reward claiming
 

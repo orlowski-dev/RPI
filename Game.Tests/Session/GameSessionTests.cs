@@ -10,13 +10,7 @@ public class GameSessionTests
         var factory = new GameSessionFactory();
 
         var session = factory.Create(
-            new(
-                Player: new(
-                    Name: Guid.NewGuid().ToString(),
-                    Stats: tcp.Player.Stats,
-                    Type: tcp.Player.Type
-                )
-            )
+            new(Player: new(Name: Guid.NewGuid().ToString(), Type: tcp.Player.Type))
         );
 
         return session;
@@ -54,5 +48,44 @@ public class GameSessionTests
         var s1 = CreateGameSession();
         var s2 = CreateGameSession();
         Assert.NotEqual(s1.Player.Id, s2.Player.Id);
+    }
+
+    [Fact]
+    public void PlayerFactory_ShouldAssignName()
+    {
+        DebugExtension.Log(this, "Starting..");
+        var playerF = new PlayerFactory();
+        var player = playerF.Create(new(Name: "Player", Type: PlayerType.Archer));
+        Assert.Equal("Player", player.Name);
+    }
+
+    [Fact]
+    public void PlayerFactory_ShouldGenerateUniqueIds()
+    {
+        DebugExtension.Log(this, "Starting..");
+        var playerF = new PlayerFactory();
+        var p1 = playerF.Create(new(Name: "Player", Type: PlayerType.Archer));
+        var p2 = playerF.Create(new(Name: "Player", Type: PlayerType.Archer));
+        Assert.NotEqual(p1.Id, p2.Id);
+    }
+
+    [Fact]
+    public void GameSession_ShouldGenerateUniqueIds()
+    {
+        DebugExtension.Log(this, "Starting..");
+        var s1 = CreateGameSession();
+        var s2 = CreateGameSession();
+        Assert.NotEqual(s1.Id, s2.Id);
+    }
+
+    [Fact]
+    public void CreateSession_ShouldPreservePlayerReference()
+    {
+        // żeby sesson nie tworzył kopii
+        DebugExtension.Log(this, "Starting..");
+
+        var player = new PlayerFactory().Create(new(Name: "player", Type: PlayerType.Warrior));
+        var session = new GameSession(player);
+        Assert.Same(player, session.Player);
     }
 }

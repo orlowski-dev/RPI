@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Game.Core.Domain.Save;
 using Game.Core.Infrastructure.Save.Contracts;
+using Game.Core.Infrastructure.Save.Snapshots;
 
 namespace Game.Core.Infrastructure.Save.Repositories;
 
@@ -9,9 +10,7 @@ public class JsonSaveRepository : ISaveRepository
     private const string _saveRoot = "temp";
     private const string _slot = "slot1";
 
-    // generyczny żeby zachować runtime type.. bez tego w json.serialize musi być snapshot.GetType() :)
-    public Result Save<T>(T snapshot)
-        where T : ISnapshot
+    public Result Save(GameSnapshot gameSnapshot)
     {
         var dirPath = Path.Combine(_saveRoot, _slot);
         if (!Directory.Exists(dirPath))
@@ -22,7 +21,7 @@ public class JsonSaveRepository : ISaveRepository
 
         var filePath = Path.Combine(dirPath, "save.json");
         var json = JsonSerializer.Serialize(
-            snapshot,
+            gameSnapshot,
             new JsonSerializerOptions { WriteIndented = true }
         );
 

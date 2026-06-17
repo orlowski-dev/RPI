@@ -1,8 +1,6 @@
-using Game.Core.Infrastructure.Save.Contracts;
-
 namespace Game.Core.Infrastructure.Save.Snapshots;
 
-public class PlayerSnapshot : ISnapshot
+public class PlayerSnapshot
 {
     public Guid Id { get; }
     public string Name { get; }

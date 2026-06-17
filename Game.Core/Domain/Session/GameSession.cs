@@ -17,4 +17,12 @@ public class GameSession
         State = GameSessionState.MainMenu;
         Player = player;
     }
+
+    public GameSession(Guid id, Player player, GameSessionState state, Dungeon? dungeon)
+    {
+        Id = id;
+        Player = player;
+        State = state;
+        Dungeon = dungeon;
+    }
 }

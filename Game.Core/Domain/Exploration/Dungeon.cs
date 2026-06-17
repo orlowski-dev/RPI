@@ -13,4 +13,12 @@ public class Dungeon
         _factory = new DungeonFactory();
         _encounters = _factory.Create();
     }
+
+    public Dungeon(Guid id, IReadOnlyList<Encounter> encounters)
+    {
+        _factory = new DungeonFactory();
+
+        Id = id;
+        _encounters = encounters;
+    }
 }

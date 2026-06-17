@@ -1,26 +1,10 @@
-using Game.Tests.Combat;
-
 public class GameSessionTests
 {
-    private GameSession CreateGameSession()
-    {
-        var tcp = new TestCombatParticipant();
-        var playerFactory = new PlayerFactory();
-
-        var factory = new GameSessionFactory();
-
-        var session = factory.Create(
-            new(Player: new(Name: Guid.NewGuid().ToString(), Type: tcp.Player.Type))
-        );
-
-        return session;
-    }
-
     [Fact]
     public void CreateSession_ShouldInitializePlayer()
     {
         DebugExtension.Log(this, "Starting..");
-        var session = CreateGameSession();
+        var session = Globals.CreateGameSession();
         Assert.NotNull(session.Player);
     }
 
@@ -28,7 +12,7 @@ public class GameSessionTests
     public void CreateSession_ShouldStartInMainMenu()
     {
         DebugExtension.Log(this, "Starting..");
-        var session = CreateGameSession();
+        var session = Globals.CreateGameSession();
         Assert.Equal(GameSessionState.MainMenu, session.State);
     }
 
@@ -36,7 +20,7 @@ public class GameSessionTests
     public void CreateSession_ShouldContainNoDungeonAndCombatSession()
     {
         DebugExtension.Log(this, "Starting..");
-        var session = CreateGameSession();
+        var session = Globals.CreateGameSession();
         Assert.Null(session.CombatSession);
         Assert.Null(session.Dungeon);
     }
@@ -45,8 +29,8 @@ public class GameSessionTests
     public void CreateTwoSessions_ShouldCreateDifferentPlayers()
     {
         DebugExtension.Log(this, "Starting..");
-        var s1 = CreateGameSession();
-        var s2 = CreateGameSession();
+        var s1 = Globals.CreateGameSession();
+        var s2 = Globals.CreateGameSession();
         Assert.NotEqual(s1.Player.Id, s2.Player.Id);
     }
 
@@ -73,8 +57,8 @@ public class GameSessionTests
     public void GameSession_ShouldGenerateUniqueIds()
     {
         DebugExtension.Log(this, "Starting..");
-        var s1 = CreateGameSession();
-        var s2 = CreateGameSession();
+        var s1 = Globals.CreateGameSession();
+        var s2 = Globals.CreateGameSession();
         Assert.NotEqual(s1.Id, s2.Id);
     }
 

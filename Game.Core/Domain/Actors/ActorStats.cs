@@ -9,10 +9,17 @@ public class ActorStats
     public int CriticalChance { get; set; }
     public int Luck { get; set; }
 
-    public ActorStats(int maxHp, int attack, int defense, int criticalChance, int luck)
+    public ActorStats(
+        int maxHp,
+        int attack,
+        int defense,
+        int criticalChance,
+        int luck,
+        int? currentHp = null
+    )
     {
         MaxHp = maxHp;
-        CurrentHp = maxHp;
+        CurrentHp = currentHp ?? maxHp;
         Attack = attack;
         Defense = defense;
         CriticalChance = criticalChance;

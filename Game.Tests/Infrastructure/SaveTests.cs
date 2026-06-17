@@ -2,6 +2,7 @@ using System.Text.Json;
 using Game.Core.Application.Save.Requests;
 using Game.Core.Application.Save.UseCases;
 using Game.Core.Infrastructure.Save.Mapping;
+using Game.Core.Infrastructure.Save.Repositories;
 
 namespace Game.Tests.Infrastructure;
 
@@ -67,7 +68,51 @@ public class SaveTests
         var json = JsonSerializer.Serialize(snapshot);
 
         Assert.Contains("\"Player\"", json);
-
         Assert.DoesNotContain("\"Player\":{}", json);
     }
+
+    [Fact]
+    public void Save_ShouldContainPlayer()
+    {
+        DebugExtension.Log(this, "Starting..");
+
+        var session = Globals.CreateGameSession();
+        var snapshot = new GameSnapshotAssembler().ToSnapshot(session);
+        new JsonSaveRepository().Save(snapshot);
+        var json = File.ReadAllText($"save/{snapshot.Id}.json");
+
+        Assert.Contains("\"Player\"", json);
+        Assert.DoesNotContain("\"Player\":{}", json);
+    }
+
+    [Fact]
+    public void Save_ShouldReturnResultOnLoad()
+    {
+        DebugExtension.Log(this, "Starting..");
+
+        var session = Globals.CreateGameSession();
+        var snapshot = new GameSnapshotAssembler().ToSnapshot(session);
+        new JsonSaveRepository().Save(snapshot);
+
+        var loaded = new JsonSaveRepository().Load(snapshot.Id);
+        Assert.True(loaded.IsSuccess);
+        Assert.Equivalent(snapshot, loaded.Value);
+    }
+
+    // [Fact]
+    // public void Save_ListShouldReturnGameSnapshots()
+    // {
+    //     DebugExtension.Log(this, "Starting..");
+
+    //     var s1 = Globals.CreateGameSession();
+    //     var snap1 = new GameSnapshotAssembler().ToSnapshot(s1);
+    //     new JsonSaveRepository().Save(snap1);
+
+    //     var s2 = Globals.CreateGameSession();
+    //     var snap2 = new GameSnapshotAssembler().ToSnapshot(s2);
+    //     new JsonSaveRepository().Save(snap2);
+
+    //     var saves = new JsonSaveRepository().List();
+    //     Assert.NotEmpty(saves);
+    // }
 }

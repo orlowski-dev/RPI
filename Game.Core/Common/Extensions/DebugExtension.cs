@@ -11,9 +11,18 @@ public static class DebugExtension
         return JsonSerializer.Serialize(obj, new JsonSerializerOptions { WriteIndented = true });
     }
 
+    public static string CreateLogContent(
+        this object obj,
+        string msg,
+        [CallerMemberName] string methodName = ""
+    )
+    {
+        return $"[{obj.GetType().Name}:{methodName}] {msg}";
+    }
+
     public static void Log(this object obj, string msg, [CallerMemberName] string methodName = "")
     {
-        Console.WriteLine($"[{obj.GetType().Name}:{methodName}] {msg}");
+        Console.WriteLine(CreateLogContent(obj, msg, methodName));
     }
 
     [DoesNotReturn]
@@ -26,6 +35,6 @@ public static class DebugExtension
 
     public static Error UnknowError(string? msg = null)
     {
-        return new("none", msg ?? "no message", ErrorType.Unknown);
+        return new(msg ?? "no message", ErrorType.Unknown);
     }
 }

@@ -20,7 +20,14 @@ public class PlayerMapper : IPlayerSnapshotMapper
     {
         return new(
             name: snapshot.Name,
-            stats: snapshot.Stats,
+            stats: new(
+                maxHp: snapshot.Stats.MaxHp,
+                currentHp: snapshot.Stats.CurrentHp,
+                attack: snapshot.Stats.Attack,
+                defense: snapshot.Stats.Defense,
+                luck: snapshot.Stats.Luck,
+                criticalChance: snapshot.Stats.CriticalChance
+            ),
             id: snapshot.Id,
             level: snapshot.Level,
             type: snapshot.Type

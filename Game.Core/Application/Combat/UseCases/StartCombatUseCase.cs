@@ -10,7 +10,7 @@ public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatRespon
         if (request.Enemies.Count() == 0)
         {
             return Result<StartCombatResponse>.Fail(
-                new("startCombat", "List of enemies is empty!", ErrorType.Validation)
+                new("List of enemies is empty!", ErrorType.Validation)
             );
         }
 

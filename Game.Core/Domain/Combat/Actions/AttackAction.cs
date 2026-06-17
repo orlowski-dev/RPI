@@ -6,9 +6,7 @@ public class AttackAction : CombatAction
     {
         if (session.Target is null)
         {
-            return Result.Fail(
-                new("combat_action.attact.execute", "Target is not set!", ErrorType.Validation)
-            );
+            return Result.Fail(new("Target is not set!", ErrorType.Validation));
         }
 
         var damage = session.ActiveParticipant.Stats.Attack;

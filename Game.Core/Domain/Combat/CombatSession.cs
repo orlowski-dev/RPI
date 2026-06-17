@@ -88,7 +88,7 @@ public class CombatSession
         // akcja musi być wybrana
         if (!HasSelectedAction)
         {
-            return Result.Fail(new("combat.no_action", "No action selected", ErrorType.Validation));
+            return Result.Fail(new("No action selected", ErrorType.Validation));
         }
 
         // pobierz i wyczyść aktualną akcję

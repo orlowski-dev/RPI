@@ -25,4 +25,6 @@ public class ActorStats
         CriticalChance = criticalChance;
         Luck = luck;
     }
+
+    public ActorStats() { }
 }

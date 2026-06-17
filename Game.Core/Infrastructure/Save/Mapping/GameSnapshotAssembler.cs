@@ -23,6 +23,7 @@ public class GameSnapshotAssembler
         //     $"snapshot:player {DebugExtension.Dump(_player.ToSnapshot(gameSession.Player))}"
         // );
         return new(
+            CreatedAt: DateTime.Now,
             Id: gameSession.Id,
             State: gameSession.State,
             Player: _player.ToSnapshot(gameSession.Player),

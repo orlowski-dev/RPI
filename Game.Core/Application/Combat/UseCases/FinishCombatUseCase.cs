@@ -11,11 +11,7 @@ public class FinishCombatUseCase : IUseCase<FinishCombatRequest, FinishCombatRes
         if (!request.Session.IsFinished)
         {
             return Result<FinishCombatResponse>.Fail(
-                new(
-                    "combat:finishUseCase:Execute",
-                    "Combat is not finished!",
-                    ErrorType.InvalidState
-                )
+                new("Combat is not finished!", ErrorType.InvalidState)
             );
             ;
         }

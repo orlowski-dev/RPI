@@ -8,11 +8,11 @@ public class PlayerMapper : IPlayerSnapshotMapper
     public PlayerSnapshot ToSnapshot(Player player)
     {
         return new(
-            playerId: player.Id,
-            name: player.Name,
-            type: player.Type,
-            stats: player.Stats,
-            level: player.Level
+            Id: player.Id,
+            Name: player.Name,
+            Type: player.Type,
+            Stats: player.Stats,
+            Level: player.Level
         );
     }
 

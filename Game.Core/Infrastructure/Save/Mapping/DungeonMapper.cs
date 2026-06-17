@@ -12,7 +12,7 @@ public class DungeonMapper : IDungeonSnapshotMapper
         {
             return null;
         }
-        return new(id: dungeon.Id, encounters: dungeon.Encounters);
+        return new(Id: dungeon.Id, Encounters: dungeon.Encounters);
     }
 
     public Dungeon? Restore(DungeonSnapshot? dungeonSnapshot)

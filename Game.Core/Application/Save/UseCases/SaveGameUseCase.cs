@@ -16,8 +16,8 @@ public class SaveGameUseCase : IUseCase<SaveGameRequest, SaveGameResponse>
 
     public Result<SaveGameResponse> Execute(SaveGameRequest req)
     {
-        var snapshot = new SnapshotMapper().ToSnapshot(req.GameSession);
-        _repo.Save(snapshot: snapshot);
+        var snapshot = new GameSnapshotAssembler().ToSnapshot(req.GameSession);
+        _repo.Save(snapshot);
         return Result<SaveGameResponse>.Success(new());
     }
 }

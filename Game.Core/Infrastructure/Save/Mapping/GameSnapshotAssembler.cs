@@ -9,14 +9,19 @@ public class GameSnapshotAssembler
     private IPlayerSnapshotMapper _player;
     private IDungeonSnapshotMapper _dungeon;
 
-    public GameSnapshotAssembler(IPlayerSnapshotMapper player, IDungeonSnapshotMapper dungeon)
+    public GameSnapshotAssembler()
     {
-        _player = player;
-        _dungeon = dungeon;
+        _player = new PlayerMapper();
+        _dungeon = new DungeonMapper();
     }
 
     public GameSnapshot ToSnapshot(GameSession gameSession)
     {
+        // DebugExtension.Log(this, $"gameSession:Player {DebugExtension.Dump(gameSession.Player)}");
+        // DebugExtension.Log(
+        //     this,
+        //     $"snapshot:player {DebugExtension.Dump(_player.ToSnapshot(gameSession.Player))}"
+        // );
         return new(
             Id: gameSession.Id,
             State: gameSession.State,

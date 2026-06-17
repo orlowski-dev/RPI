@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Game.Core.Application.Save.Requests;
 using Game.Core.Application.Save.UseCases;
 using Game.Core.Infrastructure.Save.Mapping;
@@ -12,7 +13,8 @@ public class SaveTests
         DebugExtension.Log(this, "Starting..");
 
         var session = Globals.CreateGameSession();
-        var snapshot = new SnapshotMapper().ToSnapshot(session);
+        // var snapshot = new SnapshotMapper().ToSnapshot(session);
+        var snapshot = new GameSnapshotAssembler().ToSnapshot(session);
 
         Assert.Equal(session.Player.Id, snapshot.Player.Id);
         Assert.Equal(session.Player.Name, snapshot.Player.Name);
@@ -25,8 +27,47 @@ public class SaveTests
         DebugExtension.Log(this, "Starting..");
 
         var saveUC = new SaveGameUseCase();
-        var saveReq = new SaveGameRequest(Globals.Player);
+        var gameSession = Globals.CreateGameSession();
+        Assert.NotNull(gameSession.Player);
+        var saveReq = new SaveGameRequest(gameSession);
         var saveUCRes = saveUC.Execute(saveReq);
         Assert.True(saveUCRes.IsSuccess);
+    }
+
+    [Fact]
+    public void PlayerMapper_ToSnapshot_ShouldReturnSnapshot()
+    {
+        DebugExtension.Log(this, "Starting..");
+
+        var player = Globals.Player;
+        var playerMapper = new PlayerMapper();
+        var playerSnapshot = playerMapper.ToSnapshot(player);
+        Assert.NotNull(playerSnapshot);
+        Assert.Equal(player.Id, playerSnapshot.Id);
+    }
+
+    [Fact]
+    public void GameSnapshotAssembler_ToSnapshot()
+    {
+        DebugExtension.Log(this, "Starting..");
+        var session = Globals.CreateGameSession();
+        var gameSnapshot = new GameSnapshotAssembler().ToSnapshot(session);
+        Assert.NotNull(gameSnapshot);
+        Assert.NotNull(gameSnapshot.Player);
+    }
+
+    [Fact]
+    public void GameSnapshot_ShouldSerialize_Player()
+    {
+        DebugExtension.Log(this, "Starting..");
+        var session = Globals.CreateGameSession();
+
+        var snapshot = new GameSnapshotAssembler().ToSnapshot(session);
+
+        var json = JsonSerializer.Serialize(snapshot);
+
+        Assert.Contains("\"Player\"", json);
+
+        Assert.DoesNotContain("\"Player\":{}", json);
     }
 }

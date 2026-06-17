@@ -113,4 +113,3 @@ Zakres:
 
 Rezultat:  
 gotowy projekt.
-

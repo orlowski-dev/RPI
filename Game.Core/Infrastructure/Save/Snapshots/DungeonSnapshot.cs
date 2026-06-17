@@ -2,14 +2,13 @@ using Game.Core.Domain.Exploration;
 
 namespace Game.Core.Infrastructure.Save.Snapshots;
 
+// co dzieje się w świecie gry
 public class DungeonSnapshot
 {
-    public Guid Id;
-    public IReadOnlyList<Encounter> Encounters;
+    public Dungeon Dungeon;
 
-    public DungeonSnapshot(Guid id, IReadOnlyList<Encounter> encounters)
+    public DungeonSnapshot(Dungeon dungeon)
     {
-        Id = id;
-        Encounters = encounters;
+        Dungeon = dungeon;
     }
 }

@@ -6,6 +6,9 @@
 *.tmp
 *.log
 
+# temp
+*temp/
+
 # testy i classlib
 *bin/
 *obj/

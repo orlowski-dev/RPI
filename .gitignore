@@ -6,9 +6,15 @@
 *.tmp
 *.log
 
+# temp
+*temp/
+
 # testy i classlib
 *bin/
 *obj/
+
+# śmietnik obsidiana
+*/.trash
 
 # katalogi testowe
 *Testing/

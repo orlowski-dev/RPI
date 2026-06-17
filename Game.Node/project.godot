@@ -10,20 +10,8 @@ config_version=5
 
 [application]
 
-config/name="RPI"
-run/main_scene="uid://b4lvjlil8h1iu"
+config/name="Abbys of Echoes"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
-config/icon="res://icon.svg"
-
-[autoload]
-
-Signals="*uid://byusc6f178ex5"
-UiManager="*uid://83t1asqgm4ww"
-CombatSignals="*uid://d2jfmo1aymyyu"
-GlobalLogger="*uid://b552tpr7h80t"
-GameManager="*uid://c1j7a0rwre15j"
-CharacterCreatorSignals="*uid://bcreenfc8pcbs"
-LevelSignals="*uid://bw5xj8bftkjga"
 
 [display]
 

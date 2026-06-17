@@ -1,6 +1,6 @@
-namespace Game.Core.Domain.Actors;
+using Game.Core.Domain.Actors.Definitions;
 
-public record StatsScaleValues(int MaxHp, int Attack, int Defense);
+namespace Game.Core.Domain.Actors;
 
 public static class PlayerProgressionMap
 {

@@ -8,15 +8,16 @@ public class Enemy : Actor
     public EnemyType Type { get; private set; }
 
     public Enemy(
+        string name,
         int expReward,
         int goldReward,
         ActorStats stats,
         EnemyRank rank,
         EnemyType type,
-        string? id = null,
+        Guid? id = null,
         int? level = null
     )
-        : base(stats: stats, level: level, id: id)
+        : base(name: name, stats: stats, level: level, id: id)
     {
         ExpReward = expReward;
         GoldReward = goldReward;

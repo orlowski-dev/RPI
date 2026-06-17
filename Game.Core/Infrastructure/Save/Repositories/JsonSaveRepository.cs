@@ -1,4 +1,6 @@
-using Game.Core.Infrastructure.Save.Abstraction;
+using Game.Core.Infrastructure.Save.Contracts;
+
+namespace Game.Core.Infrastructure.Save.Repositories;
 
 public class JsonSaveRepository : ISaveRepository
 {

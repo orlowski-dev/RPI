@@ -1,6 +1,6 @@
 namespace Game.Core.Domain.Session;
 
-public enum SessionState
+public enum GameSessionState
 {
     MainMenu,
     SafeHouse,

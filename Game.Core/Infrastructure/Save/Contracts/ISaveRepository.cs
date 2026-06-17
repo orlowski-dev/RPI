@@ -1,4 +1,4 @@
-namespace Game.Core.Infrastructure.Save.Abstraction;
+namespace Game.Core.Infrastructure.Save.Contracts;
 
 public interface ISaveRepository
 {

@@ -13,6 +13,9 @@
 *bin/
 *obj/
 
+# śmietnik obsidiana
+*/.trash
+
 # katalogi testowe
 *Testing/
 

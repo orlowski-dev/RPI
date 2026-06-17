@@ -9,7 +9,9 @@ public class JsonSaveRepository : ISaveRepository
     private const string _saveRoot = "temp";
     private const string _slot = "slot1";
 
-    public Result Save(ISnapshot snapshot)
+    // generyczny żeby zachować runtime type.. bez tego w json.serialize musi być snapshot.GetType() :)
+    public Result Save<T>(T snapshot)
+        where T : ISnapshot
     {
         var dirPath = Path.Combine(_saveRoot, _slot);
         if (!Directory.Exists(dirPath))

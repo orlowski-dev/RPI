@@ -1,8 +1,10 @@
+using Game.Core.Domain.Save;
+
 namespace Game.Core.Infrastructure.Save.Contracts;
 
 public interface ISaveRepository
 {
-    public void Save();
-    public void Load();
-    public void List();
+    Result Save(ISnapshot snapshot);
+    void Load();
+    IReadOnlyCollection<SaveSlot> List();
 }

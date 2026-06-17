@@ -1,3 +1,4 @@
+using Game.Core.Domain.Exploration;
 using Game.Core.Domain.Session;
 using Game.Core.Infrastructure.Save.Snapshots;
 
@@ -7,7 +8,11 @@ public class SnapshotMapper
 {
     public GameSnapshot ToSnapshot(GameSession gameSession)
     {
-        return new(sessionId: gameSession.Id, player: MapPlayer(gameSession.Player));
+        return new(
+            sessionId: gameSession.Id,
+            player: MapPlayer(gameSession.Player),
+            dungeon: MapDungeon(gameSession.Dungeon)
+        );
     }
 
     public void Restore()
@@ -30,5 +35,15 @@ public class SnapshotMapper
                 criticalChance: player.Stats.CriticalChance
             )
         );
+    }
+
+    private DungeonSnapshot? MapDungeon(Dungeon? dungeon)
+    {
+        if (dungeon is null)
+        {
+            return null;
+        }
+
+        return new(id: dungeon.Id, encounters: dungeon.Encounters);
     }
 }

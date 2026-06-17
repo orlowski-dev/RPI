@@ -1,3 +1,3 @@
-namespace Game.Core.Application.Save;
+namespace Game.Core.Application.Save.Requests;
 
-public record SaveGameRequest();
+public record SaveGameRequest(Player Player);

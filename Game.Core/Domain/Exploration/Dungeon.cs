@@ -6,6 +6,8 @@ public class Dungeon
     private IReadOnlyList<Encounter> _encounters;
     private DungeonFactory _factory;
 
+    public IReadOnlyList<Encounter> Encounters => _encounters;
+
     public Dungeon()
     {
         _factory = new DungeonFactory();

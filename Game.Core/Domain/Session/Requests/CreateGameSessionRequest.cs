@@ -2,4 +2,4 @@ using Game.Core.Domain.Actors.Requests;
 
 namespace Game.Core.Domain.Session.Requests;
 
-public record CreateGameSessionRequest(CreatePlayerReques Player);
+public record CreateGameSessionRequest(CreatePlayerRequest Player);

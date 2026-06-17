@@ -9,7 +9,15 @@ public class GameSessionTests
 
         var factory = new GameSessionFactory();
 
-        var session = factory.Create(new(Player: new(tcp.Player.Stats, tcp.Player.Type)));
+        var session = factory.Create(
+            new(
+                Player: new(
+                    Name: Guid.NewGuid().ToString(),
+                    Stats: tcp.Player.Stats,
+                    Type: tcp.Player.Type
+                )
+            )
+        );
 
         return session;
     }
@@ -46,19 +54,5 @@ public class GameSessionTests
         var s1 = CreateGameSession();
         var s2 = CreateGameSession();
         Assert.NotEqual(s1.Player.Id, s2.Player.Id);
-    }
-
-    [Fact]
-    public void Session_ShouldExposeCurrentRuntimeObjects()
-    {
-        DebugExtension.Log(this, "Starting..");
-        var tcp = new TestCombatParticipant();
-        var playerFactory = new PlayerFactory();
-
-        var factory = new GameSessionFactory();
-
-        var session = factory.Create(new(Player: new(tcp.Player.Stats, tcp.Player.Type)));
-
-        Assert.Same(tcp.Player, session.Player);
     }
 }

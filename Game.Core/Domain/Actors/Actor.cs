@@ -2,15 +2,16 @@ namespace Game.Core.Domain.Actors;
 
 public abstract class Actor
 {
-    public string Id { get; }
-
+    public Guid Id { get; }
+    public string Name { get; }
     public ActorStats Stats { get; protected set; }
     public int Level { get; protected set; }
     public bool IsAlive => Stats.CurrentHp > 0;
 
-    protected Actor(ActorStats stats, int? level = null, string? id = null)
+    protected Actor(string name, ActorStats stats, int? level = null, Guid? id = null)
     {
-        Id = id ?? Guid.NewGuid().ToString();
+        Name = name;
+        Id = id ?? Guid.NewGuid();
         Level = level ?? 1;
         Stats = stats;
         Stats = RecalculateStats();

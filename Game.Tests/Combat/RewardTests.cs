@@ -13,9 +13,9 @@ public class RewardTest
     )
     {
         return new Enemy(
+            name: Guid.NewGuid().ToString(),
             expReward: expReward,
             goldReward: goldReward,
-            id: "enemy",
             rank: rank,
             type: type,
             level: level,
@@ -29,9 +29,9 @@ public class RewardTest
         DebugExtension.Log(this, "Starting..");
 
         var enemy = new Enemy(
+            name: Guid.NewGuid().ToString(),
             goldReward: 1,
             expReward: 1,
-            id: "enemy",
             level: 10,
             stats: new(10, 3, 1, 2, 3),
             rank: EnemyRank.Normal,

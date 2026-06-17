@@ -20,8 +20,8 @@ public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, ResolveCombatResp
         var dto = new CombatTurnResultDto(
             state: req.Session.State,
             combatFinished: req.Session.IsFinished,
-            actorId: actorId,
-            nextActorId: nextActorId
+            actorId: actorId.ToString(),
+            nextActorId: nextActorId.ToString()
         );
 
         var response = new ResolveCombatResponse(dto);

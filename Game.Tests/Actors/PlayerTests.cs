@@ -4,7 +4,11 @@ public class PlayerTests
 {
     private static Player GetPlayer(PlayerType? type = null)
     {
-        return new(id: "player", stats: new(10, 10, 10, 10, 10), type: type ?? PlayerType.Warrior);
+        return new(
+            name: "Player",
+            stats: new(10, 10, 10, 10, 10),
+            type: type ?? PlayerType.Warrior
+        );
     }
 
     [Fact]

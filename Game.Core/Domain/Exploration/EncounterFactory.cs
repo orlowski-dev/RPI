@@ -37,6 +37,7 @@ public class EncounterFactory
     private Enemy GenerateBossEnemy()
     {
         return new(
+            name: Guid.NewGuid().ToString(),
             goldReward: 1,
             expReward: 1,
             stats: new(20, 5, 3, 2, 3),
@@ -50,6 +51,7 @@ public class EncounterFactory
         return
         [
             new(
+                name: Guid.NewGuid().ToString(),
                 goldReward: 1,
                 expReward: 1,
                 stats: new(20, 5, 3, 2, 3),
@@ -57,6 +59,7 @@ public class EncounterFactory
                 type: EnemyType.Goblin
             ),
             new(
+                name: Guid.NewGuid().ToString(),
                 goldReward: 1,
                 expReward: 1,
                 stats: new(10, 3, 1, 2, 3),

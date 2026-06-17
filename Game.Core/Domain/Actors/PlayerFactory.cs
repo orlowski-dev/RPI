@@ -1,9 +1,12 @@
+using Game.Core.Domain.Actors.Definitions;
+
 namespace Game.Core.Domain.Actors.Requests;
 
 public class PlayerFactory
 {
-    public Player Create(CreatePlayerReques req)
+    public Player Create(CreatePlayerRequest req)
     {
-        return new Player(stats: req.Stats, type: req.Type);
+        var def = PlayerDefinitions.Values[req.Type];
+        return new Player(name: req.Name, stats: def.BaseStats, type: req.Type);
     }
 }

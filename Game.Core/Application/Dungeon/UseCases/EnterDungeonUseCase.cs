@@ -2,6 +2,18 @@ public class EnterDungeonUseCase : IUseCase<EnterDungeonRequest, EnterDungeonRes
 {
     public Result<EnterDungeonResponse> Execute(EnterDungeonRequest req)
     {
-        return Result<EnterDungeonResponse>.Success(new());
+        Dungeon dungeon = default!;
+
+        if (req.GameSession.Dungeon is null)
+        {
+            dungeon = new DungeonFactory().Create();
+            req.GameSession.EnterDungeon(dungeon);
+        }
+        else
+        {
+            dungeon = req.GameSession.Dungeon;
+        }
+
+        return Result<EnterDungeonResponse>.Success(new(dungeon));
     }
 }

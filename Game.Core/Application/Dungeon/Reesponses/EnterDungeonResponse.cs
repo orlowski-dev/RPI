@@ -1,1 +1,1 @@
-public record EnterDungeonResponse();
+public record EnterDungeonResponse(Dungeon Dungeon);

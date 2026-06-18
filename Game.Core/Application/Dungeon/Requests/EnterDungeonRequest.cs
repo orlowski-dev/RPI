@@ -1,1 +1,1 @@
-public record EnterDungeonRequest();
+public record EnterDungeonRequest(GameSession GameSession);

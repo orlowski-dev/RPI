@@ -7,8 +7,8 @@ public class DungeonFactory
         _encounterF = new EncounterFactory();
     }
 
-    public IReadOnlyList<Encounter> Create()
+    public Dungeon Create()
     {
-        return _encounterF.CreateMany();
+        return new(id: Guid.NewGuid(), encounters: _encounterF.CreateMany());
     }
 }

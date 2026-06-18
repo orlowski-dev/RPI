@@ -21,4 +21,10 @@ public class GameSession
         State = state;
         Dungeon = dungeon;
     }
+
+    public void EnterDungeon(Dungeon dungeon)
+    {
+        DebugExtension.Log(this, $"Setting dungeon {dungeon.Id} in GameSession..");
+        Dungeon = dungeon;
+    }
 }

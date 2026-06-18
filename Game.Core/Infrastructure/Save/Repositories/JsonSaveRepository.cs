@@ -59,23 +59,25 @@ public class JsonSaveRepository : ISaveRepository
     private IReadOnlyList<GameSnapshot> GetSaveFiles()
     {
         List<GameSnapshot> list = new();
-        foreach (var file in Directory.GetFiles(_saveRoot))
+        foreach (var entry in Directory.GetFileSystemEntries(_saveRoot))
         {
-            var splitted = file.Split('.');
-            if (splitted[splitted.Length - 1] != "json")
+            var info = new FileInfo(entry);
+            if (info.Attributes != FileAttributes.Normal || info.Extension != ".json")
+                continue;
+
+            var name = info.Name.Split(info.Extension)[0];
+            if (name.Length == 0)
+                continue;
+
+            var savedata = Load(name);
+
+            if (savedata.IsFailure)
             {
+                DebugExtension.Log(this, $"Cannot read save: {name}. Skipping.");
                 continue;
             }
 
-            var save = Load(splitted[0]);
-
-            if (save.IsFailure)
-            {
-                DebugExtension.Log(this, $"Cannot read save: {splitted[0]}. Skipping.");
-                continue;
-            }
-
-            list.Add(save.Value);
+            list.Add(savedata.Value);
         }
 
         return list;

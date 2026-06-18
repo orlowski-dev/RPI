@@ -99,20 +99,20 @@ public class SaveTests
         Assert.Equivalent(snapshot, loaded.Value);
     }
 
-    // [Fact]
-    // public void Save_ListShouldReturnGameSnapshots()
-    // {
-    //     DebugExtension.Log(this, "Starting..");
+    [Fact]
+    public void Save_ListShouldReturnGameSnapshots()
+    {
+        DebugExtension.Log(this, "Starting..");
 
-    //     var s1 = Globals.CreateGameSession();
-    //     var snap1 = new GameSnapshotAssembler().ToSnapshot(s1);
-    //     new JsonSaveRepository().Save(snap1);
+        var s1 = Globals.CreateGameSession();
+        var snap1 = new GameSnapshotAssembler().ToSnapshot(s1);
+        new JsonSaveRepository().Save(snap1);
 
-    //     var s2 = Globals.CreateGameSession();
-    //     var snap2 = new GameSnapshotAssembler().ToSnapshot(s2);
-    //     new JsonSaveRepository().Save(snap2);
+        var s2 = Globals.CreateGameSession();
+        var snap2 = new GameSnapshotAssembler().ToSnapshot(s2);
+        new JsonSaveRepository().Save(snap2);
 
-    //     var saves = new JsonSaveRepository().List();
-    //     Assert.NotEmpty(saves);
-    // }
+        var saves = new JsonSaveRepository().List();
+        Assert.NotEmpty(saves);
+    }
 }

@@ -2,9 +2,9 @@ public class LoadGameUseCase : IUseCase<LoadGameRequest, LoadGameResponse>
 {
     private JsonSaveRepository _repo;
 
-    public LoadGameUseCase(JsonSaveRepository repo)
+    public LoadGameUseCase()
     {
-        _repo = repo;
+        _repo = new JsonSaveRepository();
     }
 
     public Result<LoadGameResponse> Execute(LoadGameRequest req)

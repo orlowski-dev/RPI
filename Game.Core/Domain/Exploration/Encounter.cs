@@ -6,16 +6,18 @@
 /// </summary>
 public class Encounter
 {
-    public readonly Guid Id = Guid.NewGuid();
+    public readonly Guid Id;
     public EncounterState State { get; private set; }
     private IReadOnlyList<Enemy> _enemies;
 
     public bool IsFinished => State == EncounterState.Completed;
     public bool RewardClaimed => State == EncounterState.RewardClaimed;
     public bool CanEnter => State == EncounterState.Available;
+    public IReadOnlyList<Enemy> Enemies => _enemies;
 
-    public Encounter(IReadOnlyList<Enemy> enemies, EncounterState? state = null)
+    public Encounter(IReadOnlyList<Enemy> enemies, EncounterState? state = null, Guid? id = null)
     {
+        Id = id ?? Guid.NewGuid();
         if (enemies.Count() == 0)
         {
             DebugExtension.Fatal(this, "Encounter requires at least one enemy!");

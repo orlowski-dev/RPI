@@ -14,7 +14,7 @@ public class GameSession
         Player = player;
     }
 
-    public GameSession(Guid id, Player player, GameSessionState state, Dungeon? dungeon)
+    public GameSession(Guid id, Player player, GameSessionState state, Dungeon? dungeon = null)
     {
         Id = id;
         Player = player;

@@ -122,4 +122,20 @@ public class SaveTests
         Assert.True(list.IsSuccess);
         Assert.NotNull(list.Value.GameSnapshots);
     }
+
+    [Fact]
+    public void GameSnapshotAssembler_ShloudNotGenereateNewGuids()
+    {
+        DebugExtension.Log(this, "Starting..");
+        var s1 = Globals.CreateGameSession();
+        var dung = new DungeonFactory().Create();
+        s1.EnterDungeon(dung);
+        var saveRes = new SaveGameUseCase().Execute(new(s1));
+        Assert.True(saveRes.IsSuccess);
+        var loadRes = new LoadGameUseCase().Execute(new(s1.Id));
+        Assert.True(loadRes.IsSuccess);
+        Assert.Equal(s1.Id, loadRes.Value.GameSession.Id);
+        Assert.NotNull(loadRes.Value.GameSession.Dungeon);
+        Assert.Equal(dung.Id, loadRes.Value.GameSession.Dungeon.Id);
+    }
 }

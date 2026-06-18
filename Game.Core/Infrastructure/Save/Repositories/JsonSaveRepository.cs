@@ -3,8 +3,9 @@ using System.Text.Json;
 public class JsonSaveRepository : ISaveRepository
 {
     private const string _saveRoot = "save";
+    private const string _meta = "meta.json";
 
-    public Result Save(GameSnapshot gameSnapshot)
+    private void MakeSaveDir()
     {
         var dirPath = Path.Combine(_saveRoot);
         if (!Directory.Exists(dirPath))
@@ -12,10 +13,15 @@ public class JsonSaveRepository : ISaveRepository
             DebugExtension.Log(this, $"Creatring dir: {dirPath}.");
             Directory.CreateDirectory(dirPath);
         }
+    }
 
+    public Result Save(GameSnapshot gameSnapshot)
+    {
+        MakeSaveDir();
         var filePath = Path.Combine(_saveRoot, $"{gameSnapshot.Id}.json");
 
         SaveFile(file: filePath, data: gameSnapshot);
+        SaveMeta(new MetaMapper().ToSnapshot(gameSnapshot.Id));
 
         return Result.Success();
     }
@@ -31,20 +37,46 @@ public class JsonSaveRepository : ISaveRepository
         File.WriteAllText(file, json);
     }
 
-    public Result<GameSnapshot> Load(string snapshotId)
+    private Result<T> LoadJsonFile<T>(string fileName)
     {
-        var path = Path.Combine(_saveRoot, $"{snapshotId}.json");
+        var path = Path.Combine(_saveRoot, fileName);
+        if (!new FileInfo(path).Exists)
+        {
+            return Result<T>.Fail(new($"Cannot find file: {path}.", ErrorType.IOError));
+        }
+
         var json = File.ReadAllText(path);
-        var snapshot = JsonSerializer.Deserialize<GameSnapshot>(json);
+        var snapshot = JsonSerializer.Deserialize<T>(json);
 
         if (snapshot is null)
         {
-            return Result<GameSnapshot>.Fail(
-                new(Message: "Cannot parse json file into GameSnapshot", Type: ErrorType.Validation)
+            return Result<T>.Fail(
+                new(
+                    Message: $"Cannot parse json file into {typeof(T)}.",
+                    Type: ErrorType.Validation
+                )
             );
         }
 
-        return Result<GameSnapshot>.Success(snapshot);
+        return Result<T>.Success(snapshot);
+    }
+
+    public Result<GameSnapshot> Load(string snapshotId)
+    {
+        return LoadJsonFile<GameSnapshot>($"{snapshotId}.json");
+    }
+
+    public Result SaveMeta(MetaSnapshot snapshot)
+    {
+        MakeSaveDir();
+        var path = Path.Combine(_saveRoot, _meta);
+        SaveFile<MetaSnapshot>(path, snapshot);
+        return Result.Success();
+    }
+
+    public Result<MetaSnapshot> LoadMeta()
+    {
+        return LoadJsonFile<MetaSnapshot>(_meta);
     }
 
     public Result<GameSnapshot> Load(Guid snapshotId)
@@ -52,7 +84,7 @@ public class JsonSaveRepository : ISaveRepository
         return Load(snapshotId.ToString());
     }
 
-    private IReadOnlyList<GameSnapshot> GetSaveFiles()
+    private IReadOnlyList<GameSnapshot> GetSavedFiles()
     {
         List<GameSnapshot> list = new();
         foreach (var entry in Directory.GetFileSystemEntries(_saveRoot))
@@ -81,6 +113,6 @@ public class JsonSaveRepository : ISaveRepository
 
     public IReadOnlyList<GameSnapshot> List()
     {
-        return GetSaveFiles();
+        return GetSavedFiles();
     }
 }

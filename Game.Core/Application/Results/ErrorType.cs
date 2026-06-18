@@ -6,4 +6,5 @@ public enum ErrorType
     Unauthorized,
     InvalidState,
     Unknown,
+    IOError,
 }

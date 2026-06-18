@@ -5,13 +5,14 @@ public class GameSession
     public GameSessionState State { get; private set; }
     public CombatSession? CombatSession { get; private set; }
     public Dungeon? Dungeon { get; private set; }
-    public List<string>? Inventory { get; private set; }
+    public Inventory Inventory { get; }
 
     public GameSession(Player player)
     {
         Id = Guid.NewGuid();
         State = GameSessionState.MainMenu;
         Player = player;
+        Inventory = new Inventory(playerType: player.Type);
     }
 
     public GameSession(Guid id, Player player, GameSessionState state, Dungeon? dungeon = null)
@@ -20,6 +21,7 @@ public class GameSession
         Player = player;
         State = state;
         Dungeon = dungeon;
+        Inventory = new Inventory(playerType: player.Type);
     }
 
     public void EnterDungeon(Dungeon dungeon)

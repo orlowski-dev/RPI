@@ -1,1 +1,1 @@
-public record ListSavesResponse(ListSavesResult Result);
+public record ListSavesResponse(IReadOnlyList<GameSnapshot> GameSnapshots);

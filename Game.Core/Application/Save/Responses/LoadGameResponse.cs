@@ -1,1 +1,1 @@
-public record LoadGameResponse(LoadGameResult Result);
+public record LoadGameResponse(GameSession GameSession);

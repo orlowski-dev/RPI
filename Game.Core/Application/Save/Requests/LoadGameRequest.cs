@@ -1,1 +1,1 @@
-public record LoadGameRequest();
+public record LoadGameRequest(Guid SnapshotId);

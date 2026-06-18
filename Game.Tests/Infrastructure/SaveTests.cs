@@ -109,4 +109,17 @@ public class SaveTests
         var saves = new JsonSaveRepository().List();
         Assert.NotEmpty(saves);
     }
+
+    [Fact]
+    public void ListSavesUseCase_ShouldReturnsValue()
+    {
+        DebugExtension.Log(this, "Starting..");
+
+        var s1 = Globals.CreateGameSession();
+        var snap1 = new GameSnapshotAssembler().ToSnapshot(s1);
+        new JsonSaveRepository().Save(snap1);
+        var list = new ListSavesUseCase().Execute(new());
+        Assert.True(list.IsSuccess);
+        Assert.NotNull(list.Value.GameSnapshots);
+    }
 }

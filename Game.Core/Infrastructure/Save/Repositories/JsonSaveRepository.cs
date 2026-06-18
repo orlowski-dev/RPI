@@ -79,7 +79,7 @@ public class JsonSaveRepository : ISaveRepository
         return list;
     }
 
-    public IReadOnlyCollection<GameSnapshot> List()
+    public IReadOnlyList<GameSnapshot> List()
     {
         return GetSaveFiles();
     }

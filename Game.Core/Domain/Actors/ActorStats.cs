@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Actors;
-
 public class ActorStats
 {
     public int MaxHp { get; set; }
@@ -25,4 +23,6 @@ public class ActorStats
         CriticalChance = criticalChance;
         Luck = luck;
     }
+
+    public ActorStats() { }
 }

@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Exploration;
-
 public class EncounterFactory
 {
     private static Random _random = new Random();

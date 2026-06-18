@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.Actions;
-
 /// <summary>
 /// Bazowa akcja możliwa do wykonania podczas pojedynczej tury.
 /// </summary>

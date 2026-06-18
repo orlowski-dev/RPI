@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Actors;
-
 public abstract class Actor
 {
     public Guid Id { get; }

@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.States;
-
 /// <summary>
 /// Wynik aktualizacji stanu.
 /// Określa czy należy przejść do kolejnego stanu.

@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Actors;
-
 public class Enemy : Actor
 {
     public int ExpReward { get; private set; }

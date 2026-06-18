@@ -1,5 +1,3 @@
-namespace Game.Core.Application.Combat.DTO;
-
 public class CombatTurnResultDto
 {
     public CombatStateType State { get; init; }

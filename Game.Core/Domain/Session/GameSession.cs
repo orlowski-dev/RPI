@@ -1,7 +1,3 @@
-using Game.Core.Domain.Exploration;
-
-namespace Game.Core.Domain.Session;
-
 public class GameSession
 {
     public readonly Guid Id;
@@ -16,5 +12,19 @@ public class GameSession
         Id = Guid.NewGuid();
         State = GameSessionState.MainMenu;
         Player = player;
+    }
+
+    public GameSession(Guid id, Player player, GameSessionState state, Dungeon? dungeon = null)
+    {
+        Id = id;
+        Player = player;
+        State = state;
+        Dungeon = dungeon;
+    }
+
+    public void EnterDungeon(Dungeon dungeon)
+    {
+        DebugExtension.Log(this, $"Setting dungeon {dungeon.Id} in GameSession..");
+        Dungeon = dungeon;
     }
 }

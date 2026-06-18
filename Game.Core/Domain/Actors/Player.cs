@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Actors;
-
 public class Player : Actor
 {
     public PlayerType Type { get; private set; }

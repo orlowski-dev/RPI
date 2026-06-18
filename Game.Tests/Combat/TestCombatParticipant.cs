@@ -1,5 +1,3 @@
-namespace Game.Tests.Combat;
-
 public class TestCombatParticipant
 {
     public Player Player { get; } =

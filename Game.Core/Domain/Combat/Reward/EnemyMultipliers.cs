@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.Reward;
-
 public static class EnemyMultipliers
 {
     public static Dictionary<EnemyRank, double> Values { get; } =

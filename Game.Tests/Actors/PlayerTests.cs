@@ -1,5 +1,3 @@
-namespace Game.Tests.Actors;
-
 public class PlayerTests
 {
     private static Player GetPlayer(PlayerType? type = null)

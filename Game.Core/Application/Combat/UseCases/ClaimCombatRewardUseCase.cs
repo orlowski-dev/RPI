@@ -1,5 +1,3 @@
-namespace Game.Core.Application.Combat.UseCases;
-
 public class ClaimCombatRewardUseCase
     : IUseCase<ClaimCombatRewardRequest, ClaimCombatRewardResponse>
 {

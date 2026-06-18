@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat;
-
 /// <summary>
 /// Reprezentuje pojedynczą sesję walki.
 ///
@@ -65,8 +63,7 @@ public class CombatSession
     {
         if (_selectedAction is null)
         {
-            Log.Write(this, "Selected action is null!");
-            throw new InvalidOperationException("Selected action is null!");
+            DebugExtension.Fatal(this, "Selected action is null!");
         }
 
         var action = _selectedAction;
@@ -88,7 +85,7 @@ public class CombatSession
         // akcja musi być wybrana
         if (!HasSelectedAction)
         {
-            return Result.Fail(new("combat.no_action", "No action selected", ErrorType.Validation));
+            return Result.Fail(new("No action selected", ErrorType.Validation));
         }
 
         // pobierz i wyczyść aktualną akcję

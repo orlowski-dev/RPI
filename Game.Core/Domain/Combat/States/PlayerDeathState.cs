@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.States;
-
 public class PlayerDeathState : ICombatState
 {
     public CombatStateType Type { get; } = CombatStateType.PlayerDeath;

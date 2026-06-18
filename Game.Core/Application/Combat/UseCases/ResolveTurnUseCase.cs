@@ -1,5 +1,3 @@
-namespace Game.Core.Application.Combat.UseCases;
-
 public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, ResolveCombatResponse>
 {
     public Result<ResolveCombatResponse> Execute(ResolveTurnRequest req)

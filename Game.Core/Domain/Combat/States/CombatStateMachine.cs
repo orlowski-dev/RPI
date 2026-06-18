@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.States;
-
 public class CombatStateMachine
 {
     private readonly Dictionary<CombatStateType, ICombatState> _states;

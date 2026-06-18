@@ -1,5 +1,3 @@
-namespace Game.Tests.Combat;
-
 public class CombatSessionTests
 {
     private (Player, Enemy, Enemy) GetActors()

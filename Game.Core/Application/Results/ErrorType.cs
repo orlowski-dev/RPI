@@ -1,5 +1,3 @@
-namespace Game.Core.Application.Results;
-
 public enum ErrorType
 {
     Validation,

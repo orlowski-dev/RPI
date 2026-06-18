@@ -1,7 +1,3 @@
-using Game.Core.Domain.Actors.Definitions;
-
-namespace Game.Core.Domain.Actors.Requests;
-
 public class PlayerFactory
 {
     public Player Create(CreatePlayerRequest req)

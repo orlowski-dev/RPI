@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.States;
-
 public class RewardState : ICombatState
 {
     public CombatStateType Type { get; } = CombatStateType.Reward;

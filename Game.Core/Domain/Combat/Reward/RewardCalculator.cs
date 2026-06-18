@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.Reward;
-
 // Punkty doświadczenia są sumowane za każdego przeciwnika w danej walce. Liczone są za
 // pomocą:
 // 𝑒𝑥𝑝𝑝𝑟𝑧1 = 𝑝𝑟𝑧1𝐿𝑣𝑙 * 10 * 𝑚𝑛𝑜ż𝑛𝑖𝑘𝑇𝑦𝑝𝑃𝑟𝑧𝑒𝑐𝑖𝑤𝑛𝑖𝑘𝑎

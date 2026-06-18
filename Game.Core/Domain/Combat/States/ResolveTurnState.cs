@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.States;
-
 public class ResolveTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.ResolveTurn;

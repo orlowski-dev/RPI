@@ -1,5 +1,3 @@
-namespace Game.Tests.Exploration;
-
 public class DungeonTests
 {
     [Fact]

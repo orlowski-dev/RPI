@@ -1,7 +1,3 @@
-using Game.Core.Domain.Actors.Definitions;
-
-namespace Game.Core.Domain.Actors;
-
 public static class PlayerProgressionMap
 {
     public static Dictionary<PlayerType, StatsScaleValues> Values { get; } =

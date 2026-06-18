@@ -1,8 +1,3 @@
-using Game.Core.Domain.Actors.Requests;
-using Game.Core.Domain.Session.Requests;
-
-namespace Game.Core.Domain.Session;
-
 public class GameSessionFactory
 {
     private PlayerFactory _playerFactory;

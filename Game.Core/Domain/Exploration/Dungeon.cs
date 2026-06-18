@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Exploration;
-
 public class Dungeon
 {
     public readonly Guid Id = Guid.NewGuid();

@@ -1,9 +1,3 @@
-using Game.Core.Domain.Session;
-using Game.Core.Infrastructure.Save.Contracts;
-using Game.Core.Infrastructure.Save.Snapshots;
-
-namespace Game.Core.Infrastructure.Save.Mapping;
-
 public class GameSnapshotAssembler
 {
     private IPlayerSnapshotMapper _player;

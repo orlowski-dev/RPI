@@ -1,5 +1,3 @@
-namespace Game.Core.Application.Combat.UseCases;
-
 /// <summary>
 /// Tworzy sesję walki.
 /// </sumary>

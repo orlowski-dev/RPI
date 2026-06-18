@@ -1,10 +1,4 @@
 using System.Text.Json;
-using Game.Core.Application.Save.Requests;
-using Game.Core.Application.Save.UseCases;
-using Game.Core.Infrastructure.Save.Mapping;
-using Game.Core.Infrastructure.Save.Repositories;
-
-namespace Game.Tests.Infrastructure;
 
 public class SaveTests
 {

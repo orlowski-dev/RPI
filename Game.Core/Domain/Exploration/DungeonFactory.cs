@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Exploration;
-
 public class DungeonFactory
 {
     private EncounterFactory _encounterF;

@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Exploration;
-
 // Dungeon != Combat
 // Encounter != CombatSession
 

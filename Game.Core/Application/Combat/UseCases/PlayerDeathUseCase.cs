@@ -1,5 +1,3 @@
-namespace Game.Core.Application.Combat.UseCases;
-
 public class PlayerDeathUseCase : IUseCase<PlayerDeathRequest, PlayerDeathResponse>
 {
     public Result<PlayerDeathResponse> Execute(PlayerDeathRequest req)

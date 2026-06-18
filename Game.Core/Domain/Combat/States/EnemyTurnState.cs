@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.States;
-
 public class EnemyTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.EnemyTurn;

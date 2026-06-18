@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Actors.Definitions;
-
 public static class PlayerDefinitions
 {
     public static Dictionary<PlayerType, ActorDefinition> Values { get; } =

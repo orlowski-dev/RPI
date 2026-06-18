@@ -1,5 +1,3 @@
-namespace Game.Tests.Combat;
-
 public class RewardTest
 {
     private readonly RewardCalculator _rewardCalculator = new();

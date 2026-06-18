@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Actors;
-
 public class ActorStats
 {
     public int MaxHp { get; set; }

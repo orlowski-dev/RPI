@@ -1,7 +1,3 @@
-using Game.Tests.Combat;
-
-namespace Game.Tests.Exploration;
-
 public class EncounterTests
 {
     public static Encounter GetNewEncounter()

@@ -1,7 +1,3 @@
-using Game.Core.Domain.Combat.Reward;
-
-namespace Game.Core.Application.Combat.UseCases;
-
 public class FinishCombatUseCase : IUseCase<FinishCombatRequest, FinishCombatResponse>
 {
     public Result<FinishCombatResponse> Execute(FinishCombatRequest request)

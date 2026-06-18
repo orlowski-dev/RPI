@@ -1,5 +1,3 @@
-namespace Game.Core.Application.Results;
-
 public partial class Result<T> : Result
 {
     public T Value { get; }

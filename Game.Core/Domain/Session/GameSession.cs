@@ -1,7 +1,3 @@
-using Game.Core.Domain.Exploration;
-
-namespace Game.Core.Domain.Session;
-
 public class GameSession
 {
     public readonly Guid Id;

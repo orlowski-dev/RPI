@@ -2,8 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 
-namespace Game.Core.Extensions;
-
 public static class DebugExtension
 {
     public static string Dump(this object obj)

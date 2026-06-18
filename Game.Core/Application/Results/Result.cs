@@ -1,5 +1,3 @@
-namespace Game.Core.Application.Results;
-
 /// <summary>
 /// Uniwersalny typ zwracania wyniku operacji.
 /// </summary>

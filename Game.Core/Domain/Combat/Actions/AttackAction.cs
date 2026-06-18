@@ -1,5 +1,3 @@
-namespace Game.Core.Domain.Combat.Actions;
-
 public class AttackAction : CombatAction
 {
     public override Result Execute(CombatSession session)

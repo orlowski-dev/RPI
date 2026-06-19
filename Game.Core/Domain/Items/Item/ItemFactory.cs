@@ -20,13 +20,14 @@ public class ItemFactory
             category: catalogItemValues.Category,
             baseStats: catalogItemValues.BaseStats,
             level: _random.Next(playerLevel - 2, playerLevel + 3),
-            rarity: RollRarity()
+            rarity: RollRarity(),
+            allowedClasses: catalogItemValues.AllowedClasses
         );
     }
 
     private ItemRarity RollRarity()
     {
-        var roll = _random.Next(0, 101);
+        var roll = _random.Next(1, 101);
         return roll switch
         {
             <= 60 => ItemRarity.Common,

@@ -12,16 +12,22 @@ public class GameSession
         Id = Guid.NewGuid();
         State = GameSessionState.MainMenu;
         Player = player;
-        Inventory = new Inventory(playerType: player.Type);
+        Inventory = new Inventory();
     }
 
-    public GameSession(Guid id, Player player, GameSessionState state, Dungeon? dungeon = null)
+    public GameSession(
+        Guid id,
+        Player player,
+        GameSessionState state,
+        Inventory inventory,
+        Dungeon? dungeon = null
+    )
     {
         Id = id;
         Player = player;
         State = state;
         Dungeon = dungeon;
-        Inventory = new Inventory(playerType: player.Type);
+        Inventory = inventory;
     }
 
     public void EnterDungeon(Dungeon dungeon)

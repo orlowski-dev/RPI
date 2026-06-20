@@ -1,1 +1,1 @@
-public record InventorySnapshot();
+public record InventorySnapshot(BackpackSnapshot Backpack, EquipmentSnapshot Equipment);

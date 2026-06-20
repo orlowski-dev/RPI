@@ -1,1 +1,1 @@
-public record EquipmentSnapshot();
+public record EquipmentSnapshot(ItemSnapshot? Weapon = null, ItemSnapshot? Armor = null);

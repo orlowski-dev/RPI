@@ -2,11 +2,13 @@ public class GameSnapshotAssembler
 {
     private IPlayerSnapshotMapper _player;
     private IDungeonSnapshotMapper _dungeon;
+    private IInventorySnapshotMapper _inventory;
 
     public GameSnapshotAssembler()
     {
         _player = new PlayerMapper();
         _dungeon = new DungeonMapper();
+        _inventory = new InventoryMapper();
     }
 
     public GameSnapshot ToSnapshot(GameSession gameSession)
@@ -21,7 +23,8 @@ public class GameSnapshotAssembler
             Id: gameSession.Id,
             State: gameSession.State,
             Player: _player.ToSnapshot(gameSession.Player),
-            Dungeon: _dungeon.ToSnapshot(gameSession.Dungeon)
+            Dungeon: _dungeon.ToSnapshot(gameSession.Dungeon),
+            Inventory: _inventory.ToSnapshot(gameSession.Inventory)
         );
     }
 
@@ -31,7 +34,8 @@ public class GameSnapshotAssembler
             id: snapshot.Id,
             state: snapshot.State,
             player: _player.Restore(snapshot.Player),
-            dungeon: _dungeon.Restore(snapshot.Dungeon)
+            dungeon: _dungeon.Restore(snapshot.Dungeon),
+            inventory: _inventory.Restore(snapshot.Inventory)
         );
     }
 }

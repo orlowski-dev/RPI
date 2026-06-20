@@ -1,17 +1,17 @@
 public class Equipment
 {
-    private PlayerType _playerType;
     public Item? Weapon { get; private set; }
     public Item? Armor { get; private set; }
 
-    public Equipment(PlayerType playerType)
+    public Equipment(Item? weapon = null, Item? armor = null)
     {
-        _playerType = playerType;
+        Weapon = weapon;
+        Armor = armor;
     }
 
-    public Result Equip(Item item)
+    public Result Equip(Item item, PlayerType playerType)
     {
-        if (!item.AllowedClasses.Contains(_playerType))
+        if (!item.AllowedClasses.Contains(playerType))
         {
             return Result.Fail(
                 new($"Cannot equip this item for this character class!", ErrorType.Validation)

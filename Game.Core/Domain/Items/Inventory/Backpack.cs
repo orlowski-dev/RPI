@@ -9,6 +9,12 @@ public class Backpack
         Items = new List<Item>();
     }
 
+    public Backpack(int capacity, List<Item> items)
+    {
+        Capacity = capacity;
+        Items = items;
+    }
+
     public void SetCapacity(int newValue)
     {
         Capacity = newValue;

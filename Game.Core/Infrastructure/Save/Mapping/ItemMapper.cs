@@ -1,6 +1,6 @@
 public class ItemMapper : IItemSnapshotMapper
 {
-    private ItemStatsMapper _stats;
+    private IItemStatsSnapshotMapper _stats;
 
     public ItemMapper()
     {

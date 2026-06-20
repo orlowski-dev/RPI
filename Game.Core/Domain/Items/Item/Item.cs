@@ -17,10 +17,11 @@ public class Item
         ItemRarity rarity,
         int level,
         ItemStats baseStats,
-        IReadOnlyList<PlayerType> allowedClasses
+        IReadOnlyList<PlayerType> allowedClasses,
+        Guid? id = null
     )
     {
-        Id = Guid.NewGuid();
+        Id = id ?? Guid.NewGuid();
         Name = name;
         Category = category;
         Rarity = rarity;

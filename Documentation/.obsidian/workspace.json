@@ -11,14 +11,10 @@
             "id": "38ebbf875e195fe8",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "99_Notes/When to return a void.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "When to return a void"
+              "title": "Nowa karta"
             }
           }
         ]
@@ -183,10 +179,17 @@
       "bases:Stwórz nową bazę danych": false
     }
   },
-  "active": "38ebbf875e195fe8",
+  "active": "f12dd2346b3091ce",
   "lastOpenFiles": [
-    "99_Notes/Combat intergration with dungeon.md",
+    "01_Architecture/Game.Core/Common.md",
+    "01_Architecture/Game.Core/Application.md",
+    "01_Architecture/Game.Core/index.md",
+    "01_Architecture/Game.Core/Infrastructure.md",
+    "01_Architecture/Game.Core/Domain.md",
     "99_Notes/When to return a void.md",
+    "01_Architecture/Game.Core/Application",
+    "01_Architecture/Game.Core",
+    "99_Notes/Combat intergration with dungeon.md",
     "99_Notes/Combat.md",
     "00_Project/04_Testing/Combat tests.md",
     "00_Project/Design decision document.md",
@@ -211,7 +214,6 @@
     "01_Architecture/Events.md",
     "01_Architecture/assets/Architektura_eventów.jpeg",
     "01_Architecture/assets/ApplicationLayer.jpeg",
-    "01_Architecture/ADR/_template.md",
     "01_Architecture/assets/CombatDomain.jpeg",
     "01_Architecture/assets/svg/CombatDomain.svg",
     "01_Architecture/assets/Pasted image 20260609125304.png",
@@ -221,15 +223,9 @@
     "01_Architecture/assets/svg/DomainModel.svg",
     "01_Architecture/assets/Przepływ_zdarzeń_przykład.jpeg",
     "01_Architecture/assets/svg",
-    "02_GameDesign/Gameplay Loop.md",
     "02_GameDesign/assets",
     "02_GameDesign",
-    "01_Architecture/ADR.md",
     "01_Architecture/SaveModel",
-    "01_Architecture/Patterns",
-    "01_Architecture/Patterns.md",
-    "01_Architecture/Events",
-    "01_Architecture/ADR",
-    "01_Architecture/SaveModel.md"
+    "01_Architecture/Patterns"
   ]
 }

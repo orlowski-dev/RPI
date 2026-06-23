@@ -5,12 +5,12 @@ public class AddItemToInventoryUseCase
     {
         if (req.Session is null)
         {
-            DebugExtension.Fatal(this, "GameSession is null.");
+            DebugExtension.Fatal(this, "GameSession in request is null.");
         }
 
         if (req.Item is null)
         {
-            DebugExtension.Fatal(this, "Item is null.");
+            DebugExtension.Fatal(this, "Item in request is null.");
         }
 
         var add = req.Session.Inventory.Backpack.Add(req.Item);
@@ -18,7 +18,7 @@ public class AddItemToInventoryUseCase
         if (add.IsFailure)
         {
             return Result<AddItemToInventoryResponse>.Fail(
-                new("Inventory is full.", ErrorType.Validation)
+                new(add.Error?.Message ?? "Unknown Error.", ErrorType.Validation)
             );
         }
 

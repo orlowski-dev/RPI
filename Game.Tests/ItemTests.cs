@@ -15,7 +15,7 @@ public class ItemTests
         var itemFactory = new ItemFactory();
         var item = itemFactory.Generate(id: catalogId, playerLevel: 1);
         Assert.NotNull(item);
-        DebugExtension.Log(this, $"Generated item: {DebugExtension.Dump(item)}");
+        // DebugExtension.Log(this, $"Generated item: {DebugExtension.Dump(item)}");
     }
 
     [Fact]
@@ -202,6 +202,7 @@ public class ItemTests
     [Fact]
     public void AddItemToBackpackUseCase_ShouldAddItem()
     {
+        DebugExtension.Log(this, "Starting..");
         var gameSession = Globals.CreateGameSession();
         var item = new ItemFactory().Generate("iron_sword", playerLevel: gameSession.Player.Level);
         Assert.Empty(gameSession.Inventory.Backpack.Items);
@@ -209,5 +210,21 @@ public class ItemTests
             new(Session: gameSession, Item: item)
         );
         Assert.NotEmpty(gameSession.Inventory.Backpack.Items);
+    }
+
+    [Fact]
+    public void RemoveItemFromInventoryUseCase_ShouldRemoveItem()
+    {
+        DebugExtension.Log(this, "Starting..");
+        var gameSession = Globals.CreateGameSession();
+        var item = new ItemFactory().Generate("iron_sword", playerLevel: gameSession.Player.Level);
+        var ucResponse = new AddItemToInventoryUseCase().Execute(
+            new(Session: gameSession, Item: item)
+        );
+        Assert.NotEmpty(gameSession.Inventory.Backpack.Items);
+        var removeResponse = new RemoveItemFromInventoryUseCase().Execute(
+            new(Session: gameSession, ItemId: item.Id)
+        );
+        Assert.Empty(gameSession.Inventory.Backpack.Items);
     }
 }

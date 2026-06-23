@@ -14,6 +14,8 @@ public class EnterDungeonUseCase : IUseCase<EnterDungeonRequest, EnterDungeonRes
             dungeon = req.GameSession.Dungeon;
         }
 
-        return Result<EnterDungeonResponse>.Success(new(dungeon));
+        var response = new EnterDungeonResponse(Dungeon: dungeon);
+
+        return Result<EnterDungeonResponse>.Success(response);
     }
 }

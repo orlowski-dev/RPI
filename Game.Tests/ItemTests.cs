@@ -232,4 +232,41 @@ public class ItemTests
         Assert.NotNull(giResponse.Value);
         Assert.NotEmpty(giResponse.Value.Items);
     }
+
+    [Fact]
+    [LogTest]
+    public void EquipItemUseCase_ShouldIncreasePlayerStats()
+    {
+        // tworzę playera w ui
+        var name = "Player1";
+        var type = PlayerType.Warrior;
+        // tworzę sesje po kliknięciu w rozpocznij grę w kreatorze potaci
+        var newGameResponse = new StartNewGameUseCase()
+            .Execute(new StartNewGameRequest(PlayerName: name, PlayerType: type))
+            .Value;
+        var player = newGameResponse.GameSession.Player;
+        var startAttack = player.Stats.Attack;
+
+        // generuje jakiś itemek
+        var item = new ItemFactory().Generate("iron_sword", playerLevel: player.Level); // ten itemek jest dla warrior tylko
+
+        // dodaje go do plecaka
+        var addItemResponse = new AddItemToInventoryUseCase().Execute(
+            new AddItemToInventoryRequest(Session: newGameResponse.GameSession, Item: item)
+        );
+
+        // zakładam przedmiot
+        var equipResult = new EquipItemUseCase().Execute(
+            new EquipItemRequest(Session: newGameResponse.GameSession, Item: item)
+        );
+
+        // skrot do game session
+        var session = newGameResponse.GameSession;
+
+        // sprawdzam czy item jest zalozony w eq
+        Assert.NotNull(session.Inventory.Equipment.Weapon);
+
+        // sprawdzam czy staty się podiosły - tu atak
+        Assert.True(startAttack < session.Player.Stats.Attack);
+    }
 }

@@ -1,1 +1,6 @@
-public record ResolveCombatResponse(CombatTurnResultDto Dto);
+public record ResolveCombatResponse(
+    CombatStateType State,
+    bool CombatFinished,
+    string ActorId,
+    string? NextActorId
+);

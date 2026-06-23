@@ -11,8 +11,15 @@ public class GameSession
     {
         Id = Guid.NewGuid();
         State = GameSessionState.MainMenu;
-        Player = player;
         Inventory = new Inventory();
+        Player = new(
+            id: player.Id,
+            name: player.Name,
+            stats: player.Stats,
+            type: player.Type,
+            inventory: Inventory,
+            level: player.Level
+        );
     }
 
     public GameSession(

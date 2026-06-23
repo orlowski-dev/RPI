@@ -32,7 +32,8 @@ public static class Globals
         var factory = new GameSessionFactory();
 
         var session = factory.Create(
-            new(Player: new(Name: Guid.NewGuid().ToString(), Type: Player.Type))
+            playerName: Guid.NewGuid().ToString(),
+            playerType: PlayerType.Warrior
         );
 
         return session;

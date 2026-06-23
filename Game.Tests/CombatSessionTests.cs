@@ -41,7 +41,7 @@ public class CombatSessionTests
         var combat = start.Execute(new(player, new[] { enemy1, enemy2 }));
 
         var resolve = new ResolveTurnUseCase();
-        CombatTurnResultDto dto = default!;
+        ResolveCombatResponse response = default!;
 
         var maxIterations = 10;
         var iterations = 0;
@@ -61,7 +61,7 @@ public class CombatSessionTests
                     break;
                 }
                 session.SetTarget(target);
-                dto = resolve
+                response = resolve
                     .Execute(
                         new(
                             Session: session,
@@ -69,13 +69,13 @@ public class CombatSessionTests
                             Action: new AttackAction()
                         )
                     )
-                    .Value.Dto;
+                    .Value;
             }
             else
             {
-                dto = resolve
+                response = resolve
                     .Execute(new(Session: session, StateMachine: combat.Value.StateMachine))
-                    .Value.Dto;
+                    .Value;
             }
 
             // Log.Write(
@@ -85,9 +85,9 @@ public class CombatSessionTests
             //         + $"{session.Target?.Id ?? "none"} | "
             //         + $"next={session.NextParticipant?.Id}"
             // );
-            // Log.Write(this, DebugExtension.Dump(dto));
+            // Log.Write(this, DebugExtension.Dump(response));
 
-            if (dto.CombatFinished)
+            if (response.CombatFinished)
                 break;
 
             Assert.True(iterations < maxIterations);
@@ -104,7 +104,7 @@ public class CombatSessionTests
         Assert.Equal(0, player.Exp);
         var claimRewardUseCase = new ClaimCombatRewardUseCase();
         var claimRewardResponse = claimRewardUseCase.Execute(
-            new(Session: combat.Value.CombatSession, Reward: finishRes.Value.Dto.Reward)
+            new(Session: combat.Value.CombatSession, Reward: finishRes.Value.Reward)
         );
         Assert.True(player.Exp > 0);
         Assert.True(combat.Value.CombatSession.PlayerWon);
@@ -123,7 +123,7 @@ public class CombatSessionTests
         var combat = start.Execute(new(player, new[] { enemy1, enemy2 }));
 
         var resolve = new ResolveTurnUseCase();
-        CombatTurnResultDto dto = default!;
+        ResolveCombatResponse response = default!;
 
         var maxIterations = 30;
         var iterations = 0;
@@ -141,7 +141,7 @@ public class CombatSessionTests
                 }
                 session.SetTarget(target);
 
-                dto = resolve
+                response = resolve
                     .Execute(
                         new(
                             Session: session,
@@ -149,16 +149,16 @@ public class CombatSessionTests
                             Action: new FakeAction()
                         )
                     )
-                    .Value.Dto;
+                    .Value;
             }
             else
             {
-                dto = resolve
+                response = resolve
                     .Execute(new(Session: session, StateMachine: combat.Value.StateMachine))
-                    .Value.Dto;
+                    .Value;
             }
 
-            if (dto.CombatFinished)
+            if (response.CombatFinished)
                 break;
 
             Assert.True(iterations < maxIterations);

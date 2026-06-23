@@ -9,11 +9,11 @@ public class Equipment
         Armor = armor;
     }
 
-    public Result Equip(Item item, PlayerType playerType)
+    public Result<Item> Equip(Item item, PlayerType playerType)
     {
         if (!item.AllowedClasses.Contains(playerType))
         {
-            return Result.Fail(
+            return Result<Item>.Fail(
                 new($"Cannot equip this item for this character class!", ErrorType.Validation)
             );
         }
@@ -27,21 +27,25 @@ public class Equipment
             Armor = item;
         }
 
-        return Result.Success();
+        return Result<Item>.Success(item);
     }
 
-    public void Remove(Guid id)
+    public Result Remove(Guid id)
     {
         if (Armor?.Id == id)
         {
             Armor = null;
-            return;
+            return Result.Success();
         }
 
         if (Weapon?.Id == id)
         {
             Weapon = null;
-            return;
+            return Result.Success();
         }
+
+        return Result.Fail(
+            new("Item with given id does not exist or isnt equipmend.", ErrorType.NotFound)
+        );
     }
 }

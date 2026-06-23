@@ -14,6 +14,8 @@ public class EquipItemUseCase : IUseCase<EquipItemRequest, EquipItemResponse>
             );
         }
 
-        return Result<EquipItemResponse>.Success(new());
+        var response = new EquipItemResponse(Item: equip.Value);
+
+        return Result<EquipItemResponse>.Success(response);
     }
 }

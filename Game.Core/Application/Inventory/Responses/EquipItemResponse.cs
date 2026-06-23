@@ -1,1 +1,1 @@
-public record EquipItemResponse();
+public record EquipItemResponse(Item Item);

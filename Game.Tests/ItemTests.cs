@@ -269,4 +269,29 @@ public class ItemTests
         // sprawdzam czy staty się podiosły - tu atak
         Assert.True(startAttack < session.Player.Stats.Attack);
     }
+
+    [Fact]
+    [LogTest]
+    public void UnequipItemUseCase_ShouldBackToOrginalStats()
+    {
+        var name = "Player1";
+        var type = PlayerType.Warrior;
+        var newGameResponse = new StartNewGameUseCase()
+            .Execute(new StartNewGameRequest(PlayerName: name, PlayerType: type))
+            .Value;
+        var player = newGameResponse.GameSession.Player;
+        var startAttack = player.Stats.Attack;
+        var item = new ItemFactory().Generate("iron_sword", playerLevel: player.Level); // ten itemek jest dla warrior tylko
+        var addItemResponse = new AddItemToInventoryUseCase().Execute(
+            new AddItemToInventoryRequest(Session: newGameResponse.GameSession, Item: item)
+        );
+        var equipResult = new EquipItemUseCase().Execute(
+            new EquipItemRequest(Session: newGameResponse.GameSession, Item: item)
+        );
+        var session = newGameResponse.GameSession;
+        var unequipResponse = new UnequipItemUseCase().Execute(
+            new UnequipItemRequest(GameSession: session, ItemId: equipResult.Value.Item.Id)
+        );
+        Assert.Equal(startAttack, session.Player.Stats.Attack);
+    }
 }

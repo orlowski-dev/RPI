@@ -5,6 +5,8 @@ public class Enemy : Actor
     public EnemyRank Rank { get; private set; }
     public EnemyType Type { get; private set; }
 
+    public new ActorStats Stats => GetStats();
+
     public Enemy(
         string name,
         int expReward,

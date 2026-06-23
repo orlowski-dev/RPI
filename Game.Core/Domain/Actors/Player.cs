@@ -5,12 +5,17 @@ public class Player : Actor
     public int ExpNextLevel { get; private set; }
     public int Gold { get; private set; }
 
+    private Inventory? _inventory;
+
+    public new ActorStats Stats => GetStats(_inventory);
+
     public Player(
         string name,
         ActorStats stats,
         PlayerType type,
         Guid? id = null,
-        int? level = null
+        int? level = null,
+        Inventory? inventory = null
     )
         : base(name: name, stats: stats, id: id, level: level)
     {
@@ -18,6 +23,7 @@ public class Player : Actor
         Exp = 0;
         ExpNextLevel = CalculateExpNextLevel();
         Gold = 100;
+        _inventory = inventory;
     }
 
     public void AddExperience(int amount)
@@ -58,6 +64,50 @@ public class Player : Actor
             defense: Stats.Defense + (Level * Stats.Defense) + map[Type].Defense,
             criticalChance: Stats.CriticalChance,
             luck: Stats.Luck
+        );
+    }
+
+    protected override ActorStats GetStats(Inventory? inventory = null)
+    {
+        if (inventory is null)
+        {
+            return base.Stats;
+        }
+
+        var maxHp = base.Stats.MaxHp;
+        var attack = base.Stats.Attack;
+        var defense = base.Stats.Defense;
+        var criticalChance = base.Stats.CriticalChance;
+        var luck = base.Stats.Luck;
+
+        Item? armor = inventory.Equipment.Armor;
+
+        if (armor is not null)
+        {
+            maxHp += armor.BaseStats.MaxHp;
+            attack += armor.BaseStats.Attack;
+            defense += armor.BaseStats.Defense;
+            luck += armor.BaseStats.Luck;
+            criticalChance += armor.BaseStats.CriticalChance;
+        }
+
+        Item? weapon = inventory.Equipment.Weapon;
+
+        if (weapon is not null)
+        {
+            maxHp += weapon.BaseStats.MaxHp;
+            attack += weapon.BaseStats.Attack;
+            defense += weapon.BaseStats.Defense;
+            luck += weapon.BaseStats.Luck;
+            criticalChance += weapon.BaseStats.CriticalChance;
+        }
+
+        return new(
+            maxHp: maxHp,
+            attack: attack,
+            defense: defense,
+            criticalChance: criticalChance,
+            luck: luck
         );
     }
 }

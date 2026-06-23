@@ -2,43 +2,50 @@ public abstract class Actor
 {
     public Guid Id { get; }
     public string Name { get; }
-    public ActorStats Stats { get; protected set; }
     public int Level { get; protected set; }
-    public bool IsAlive => Stats.CurrentHp > 0;
+    private ActorStats _stats;
+
+    public bool IsAlive => _stats.CurrentHp > 0;
+    public ActorStats Stats => _stats;
 
     protected Actor(string name, ActorStats stats, int? level = null, Guid? id = null)
     {
         Name = name;
         Id = id ?? Guid.NewGuid();
         Level = level ?? 1;
-        Stats = stats;
-        Stats = RecalculateStats();
+        _stats = stats;
+        _stats = RecalculateStats();
+    }
+
+    protected virtual ActorStats GetStats(Inventory? inventory = null)
+    {
+        return _stats;
     }
 
     public void ReceiveDamage(int value)
     {
-        Stats.CurrentHp = Math.Max(0, Stats.CurrentHp - value);
+        _stats.CurrentHp = Math.Max(0, _stats.CurrentHp - value);
     }
 
     public virtual void Heal(int value)
     {
-        Stats.CurrentHp = Math.Min(Stats.MaxHp, Stats.CurrentHp + value);
+        _stats.CurrentHp = Math.Min(_stats.MaxHp, _stats.CurrentHp + value);
     }
 
     protected virtual ActorStats RecalculateStats()
     {
         return new(
-            maxHp: Stats.MaxHp + (Level * Stats.MaxHp),
-            attack: Stats.Attack + (Level * Stats.Attack),
-            defense: Stats.Defense + (Level * Stats.Defense),
-            criticalChance: Stats.CriticalChance,
-            luck: Stats.Luck
+            maxHp: _stats.MaxHp + (Level * _stats.MaxHp),
+            attack: _stats.Attack + (Level * _stats.Attack),
+            defense: _stats.Defense + (Level * _stats.Defense),
+            criticalChance: _stats.CriticalChance,
+            luck: _stats.Luck
         );
     }
 
     protected virtual void LevelUp()
     {
         Level += 1;
-        Stats = RecalculateStats();
+        _stats = RecalculateStats();
     }
 }

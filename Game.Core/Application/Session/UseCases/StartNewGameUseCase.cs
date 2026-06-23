@@ -3,12 +3,8 @@ public class StartNewGameUseCase : IUseCase<StartNewGameRequest, StartNewGameRes
     public Result<StartNewGameResponse> Execute(StartNewGameRequest req)
     {
         var gSessionF = new GameSessionFactory();
-        var gSession = gSessionF.Create(new(req.Player));
-        var dto = new StartNewGameResult(
-            SessionId: gSession.Id,
-            PlayerId: gSession.Player.Id,
-            State: gSession.State
-        );
-        return Result<StartNewGameResponse>.Success(new(dto));
+        var gSession = gSessionF.Create(playerName: req.PlayerName, playerType: req.PlayerType);
+        var response = new StartNewGameResponse(GameSession: gSession);
+        return Result<StartNewGameResponse>.Success(response);
     }
 }

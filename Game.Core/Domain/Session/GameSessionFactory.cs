@@ -7,9 +7,9 @@ public class GameSessionFactory
         _playerFactory = new PlayerFactory();
     }
 
-    public GameSession Create(CreateGameSessionRequest req)
+    public GameSession Create(string playerName, PlayerType playerType)
     {
-        var player = _playerFactory.Create(req.Player);
+        var player = _playerFactory.Create(name: playerName, playerType: playerType);
         return new GameSession(player);
     }
 }

@@ -13,8 +13,8 @@ public class FinishCombatUseCase : IUseCase<FinishCombatRequest, FinishCombatRes
         }
 
         var reward = new RewardCalculator().Calculate(defeatedEnemies: request.Session.AllEnemies);
-        var dto = new CombatResult(Reward: reward);
+        var response = new FinishCombatResponse(Reward: reward);
 
-        return Result<FinishCombatResponse>.Success(new(dto));
+        return Result<FinishCombatResponse>.Success(response);
     }
 }

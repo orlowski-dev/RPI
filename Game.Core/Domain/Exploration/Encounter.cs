@@ -25,7 +25,7 @@ public class Encounter
 
         _enemies = enemies;
         State = state ?? EncounterState.Available;
-        DebugExtension.Log(this, $"Encounter {Id} created.");
+        // DebugExtension.Log(this, $"Encounter {Id} created.");
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public class Encounter
     public void Start()
     {
         State = EncounterState.InProgress;
-        DebugExtension.Log(this, $"Encounter {Id} started.");
+        // DebugExtension.Log(this, $"Encounter {Id} started.");
     }
 
     /// <summary>

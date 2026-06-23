@@ -1,1 +1,1 @@
-public record StartNewGameResponse(StartNewGameResult Result);
+public record StartNewGameResponse(GameSession GameSession);

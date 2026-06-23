@@ -15,14 +15,12 @@ public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, ResolveCombatResp
 
         // dto opoisuje wynik sesji, a nie wynik contextu
         // nie używaj Context.Session poza StateMachine/State!
-        var dto = new CombatTurnResultDto(
-            state: req.Session.State,
-            combatFinished: req.Session.IsFinished,
-            actorId: actorId.ToString(),
-            nextActorId: nextActorId.ToString()
+        var response = new ResolveCombatResponse(
+            State: req.Session.State,
+            CombatFinished: req.Session.IsFinished,
+            ActorId: actorId.ToString(),
+            NextActorId: nextActorId.ToString()
         );
-
-        var response = new ResolveCombatResponse(dto);
 
         return Result<ResolveCombatResponse>.Success(response);
     }

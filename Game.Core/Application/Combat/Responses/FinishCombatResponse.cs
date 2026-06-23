@@ -1,1 +1,1 @@
-public record FinishCombatResponse(CombatResult Dto);
+public record FinishCombatResponse(CombatReward Reward);

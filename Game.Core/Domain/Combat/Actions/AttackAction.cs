@@ -10,10 +10,10 @@ public class AttackAction : CombatAction
         var damage = session.ActiveParticipant.Stats.Attack;
         session.Target.ReceiveDamage(damage);
         var target = session.Target;
-        DebugExtension.Log(
-            this,
-            $"{session.ActiveParticipant.Id} zaatakował {target.Id} i zadał {damage} damage ({target.Stats.CurrentHp}/{target.Stats.MaxHp}hp)."
-        );
+        // DebugExtension.Log(
+        //     this,
+        //     $"{session.ActiveParticipant.Id} zaatakował {target.Id} i zadał {damage} damage ({target.Stats.CurrentHp}/{target.Stats.MaxHp}hp)."
+        // );
 
         return Result.Success();
     }

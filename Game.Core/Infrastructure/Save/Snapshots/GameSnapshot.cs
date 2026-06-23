@@ -4,5 +4,6 @@ public record GameSnapshot(
     Guid Id,
     GameSessionState State,
     PlayerSnapshot Player,
+    InventorySnapshot Inventory,
     DungeonSnapshot? Dungeon
 );

@@ -33,7 +33,7 @@ public class JsonSaveRepository : ISaveRepository
             new JsonSerializerOptions { WriteIndented = true }
         );
 
-        DebugExtension.Log(this, $"Saving file: {file}");
+        // DebugExtension.Log(this, $"Saving file: {file}");
         File.WriteAllText(file, json);
     }
 

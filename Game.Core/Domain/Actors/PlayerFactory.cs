@@ -1,8 +1,8 @@
 public class PlayerFactory
 {
-    public Player Create(CreatePlayerRequest req)
+    public Player Create(string name, PlayerType playerType)
     {
-        var def = PlayerDefinitions.Values[req.Type];
-        return new Player(name: req.Name, stats: def.BaseStats, type: req.Type);
+        var def = PlayerDefinitions.Values[playerType];
+        return new Player(name: name, stats: def.BaseStats, type: playerType);
     }
 }

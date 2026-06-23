@@ -198,4 +198,16 @@ public class ItemTests
         Assert.Null(eq.Weapon);
         Assert.Equal(armor, eq.Armor);
     }
+
+    [Fact]
+    public void AddItemToBackpackUseCase_ShouldAddItem()
+    {
+        var gameSession = Globals.CreateGameSession();
+        var item = new ItemFactory().Generate("iron_sword", playerLevel: gameSession.Player.Level);
+        Assert.Empty(gameSession.Inventory.Backpack.Items);
+        var ucResponse = new AddItemToInventoryUseCase().Execute(
+            new(Session: gameSession, Item: item)
+        );
+        Assert.NotEmpty(gameSession.Inventory.Backpack.Items);
+    }
 }

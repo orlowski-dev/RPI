@@ -80,10 +80,10 @@ public class PlayerTests
         backpack.Add(armor);
         var inventory = new Inventory(backpack: backpack, equipment: eq);
         var player = new TestCombatParticipant().GetPlayer(inventory);
-        DebugExtension.Log(this, "Player before: " + DebugExtension.Dump(player));
+        // DebugExtension.Log(this, "Player before: " + DebugExtension.Dump(player));
         var startHp = player.Stats.MaxHp;
         inventory.Equipment.Equip(armor, player.Type);
-        DebugExtension.Log(this, "Player after: " + DebugExtension.Dump(player));
+        // DebugExtension.Log(this, "Player after: " + DebugExtension.Dump(player));
         Assert.True(player.Stats.MaxHp > startHp);
     }
 }

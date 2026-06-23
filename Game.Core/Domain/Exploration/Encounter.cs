@@ -34,7 +34,7 @@ public class Encounter
     public void Start()
     {
         State = EncounterState.InProgress;
-        DebugExtension.Log(this, $"Encounter {Id} started.");
+        // DebugExtension.Log(this, $"Encounter {Id} started.");
     }
 
     /// <summary>

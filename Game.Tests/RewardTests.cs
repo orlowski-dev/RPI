@@ -22,10 +22,9 @@ public class RewardTest
     }
 
     [Fact]
+    [LogTest]
     public void ShouldCalculateRewardForSingleNormalEnemy()
     {
-        DebugExtension.Log(this, "Starting..");
-
         var enemy = new Enemy(
             name: Guid.NewGuid().ToString(),
             goldReward: 1,
@@ -45,10 +44,9 @@ public class RewardTest
     }
 
     [Fact]
+    [LogTest]
     public void Should_sum_rewards_from_multiple_enemies()
     {
-        DebugExtension.Log(this, "Starting..");
-
         var enemies = new[]
         {
             CreateEnemy(10, EnemyRank.Normal, EnemyType.Goblin, 1, 1),
@@ -64,9 +62,9 @@ public class RewardTest
     }
 
     [Fact]
+    [LogTest]
     public void Should_add_10_percent_bonus_when_more_than_two_enemies()
     {
-        DebugExtension.Log(this, "Starting..");
         var enemies = new[]
         {
             CreateEnemy(10, EnemyRank.Normal, EnemyType.Goblin, 1, 1),
@@ -88,9 +86,9 @@ public class RewardTest
     }
 
     [Fact]
+    [LogTest]
     public void Should_use_rank_multiplier()
     {
-        DebugExtension.Log(this, "Starting..");
         var normal = CreateEnemy(10, EnemyRank.Normal, EnemyType.Goblin, 1, 1);
         var elite = CreateEnemy(10, EnemyRank.Elite, EnemyType.Goblin, 1, 1);
         var normalReward = _rewardCalculator.Calculate([normal]);
@@ -100,9 +98,9 @@ public class RewardTest
     }
 
     [Fact]
+    [LogTest]
     public void Should_return_zero_when_no_enemies()
     {
-        DebugExtension.Log(this, "Starting..");
         var result = _rewardCalculator.Calculate([]);
         Assert.Equal(0, result.Experience);
         Assert.Equal(0, result.Gold);

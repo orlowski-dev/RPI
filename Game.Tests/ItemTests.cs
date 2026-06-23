@@ -1,10 +1,9 @@
 public class ItemTests
 {
     [Fact]
+    [LogTest]
     public void ItemFactory_ShouldGenerateItem()
     {
-        DebugExtension.Log(this, "Starting..");
-
         // ["iron_sword"] = new(
         //     Name: "Żelazny miecz",
         //     Category: ItemCategory.Weapon,
@@ -19,10 +18,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void ItemFactory_ShouldNotGenerateItem()
     {
-        DebugExtension.Log(this, "Starting..");
-
         // ["iron_sword"] = new(
         //     Name: "Żelazny miecz",
         //     Category: ItemCategory.Weapon,
@@ -37,10 +35,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void ItemBackpack_ShouldAddNewItem()
     {
-        DebugExtension.Log(this, "Starting..");
-
         // ["iron_sword"] = new(
         //     Name: "Żelazny miecz",
         //     Category: ItemCategory.Weapon,
@@ -56,10 +53,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void ItemBackpack_ShouldRemoveItem()
     {
-        DebugExtension.Log(this, "Starting..");
-
         // ["iron_sword"] = new(
         //     Name: "Żelazny miecz",
         //     Category: ItemCategory.Weapon,
@@ -77,10 +73,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void ItemBackpack_ShouldNotAddIfFull()
     {
-        DebugExtension.Log(this, "Starting..");
-
         // ["iron_sword"] = new(
         //     Name: "Żelazny miecz",
         //     Category: ItemCategory.Weapon,
@@ -98,10 +93,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void ItemBackpack_ShouldNotRemoveAnyItem()
     {
-        DebugExtension.Log(this, "Starting..");
-
         // ["iron_sword"] = new(
         //     Name: "Żelazny miecz",
         //     Category: ItemCategory.Weapon,
@@ -123,10 +117,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void ItemEquipment_ShouldEquipWeapon()
     {
-        DebugExtension.Log(this, "Starting..");
-
         // ["iron_sword"] = new(
         //     Name: "Żelazny miecz",
         //     Category: ItemCategory.Weapon,
@@ -145,10 +138,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void ItemEquipment_ShouldNotEquipWeapon()
     {
-        DebugExtension.Log(this, "Starting..");
-
         // ["iron_sword"] = new(
         //     Name: "Żelazny miecz",
         //     Category: ItemCategory.Weapon,
@@ -169,10 +161,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void ItemEquipment_ShouldRemoveItem()
     {
-        DebugExtension.Log(this, "Starting..");
-
         // ["iron_sword"] = new(
         //     Name: "Żelazny miecz",
         //     Category: ItemCategory.Weapon,
@@ -200,9 +191,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void AddItemToBackpackUseCase_ShouldAddItem()
     {
-        DebugExtension.Log(this, "Starting..");
         var gameSession = Globals.CreateGameSession();
         var item = new ItemFactory().Generate("iron_sword", playerLevel: gameSession.Player.Level);
         Assert.Empty(gameSession.Inventory.Backpack.Items);
@@ -213,9 +204,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void RemoveItemFromInventoryUseCase_ShouldRemoveItem()
     {
-        DebugExtension.Log(this, "Starting..");
         var gameSession = Globals.CreateGameSession();
         var item = new ItemFactory().Generate("iron_sword", playerLevel: gameSession.Player.Level);
         var ucResponse = new AddItemToInventoryUseCase().Execute(
@@ -229,9 +220,9 @@ public class ItemTests
     }
 
     [Fact]
+    [LogTest]
     public void GetItemsFromInventoryUseCase_ShouldReturnItems()
     {
-        DebugExtension.Log(this, "Starting..");
         var gameSession = Globals.CreateGameSession();
         var item = new ItemFactory().Generate("iron_sword", playerLevel: gameSession.Player.Level);
         var ucResponse = new AddItemToInventoryUseCase().Execute(

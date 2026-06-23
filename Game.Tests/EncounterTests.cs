@@ -7,10 +7,9 @@ public class EncounterTests
     }
 
     [Fact]
+    [LogTest]
     public void Encounter_ShouldStart()
     {
-        DebugExtension.Log(this, "Started..");
-
         var enc = GetNewEncounter();
         Assert.Equal(EncounterState.Available, enc.State);
         enc.Start();
@@ -18,10 +17,9 @@ public class EncounterTests
     }
 
     [Fact]
+    [LogTest]
     public void Encounter_ShouldBecomeCleared()
     {
-        DebugExtension.Log(this, "Started..");
-
         var enc = GetNewEncounter();
     }
 }

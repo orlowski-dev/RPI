@@ -32,7 +32,7 @@ public class GameSession
 
     public void EnterDungeon(Dungeon dungeon)
     {
-        DebugExtension.Log(this, $"Setting dungeon {dungeon.Id} in GameSession..");
+        // DebugExtension.Log(this, $"Setting dungeon {dungeon.Id} in GameSession..");
         Dungeon = dungeon;
     }
 }

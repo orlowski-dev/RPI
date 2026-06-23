@@ -3,10 +3,9 @@ using System.Text.Json;
 public class SaveTests
 {
     [Fact]
+    [LogTest]
     public void ToSnapshot_ShouldMapPlayer()
     {
-        DebugExtension.Log(this, "Starting..");
-
         var session = Globals.CreateGameSession();
         // var snapshot = new SnapshotMapper().ToSnapshot(session);
         var snapshot = new GameSnapshotAssembler().ToSnapshot(session);
@@ -17,10 +16,9 @@ public class SaveTests
     }
 
     [Fact]
+    [LogTest]
     public void SaveGame_ShouldCreateJson()
     {
-        DebugExtension.Log(this, "Starting..");
-
         var saveUC = new SaveGameUseCase();
         var gameSession = Globals.CreateGameSession();
         Assert.NotNull(gameSession.Player);
@@ -30,10 +28,9 @@ public class SaveTests
     }
 
     [Fact]
+    [LogTest]
     public void PlayerMapper_ToSnapshot_ShouldReturnSnapshot()
     {
-        DebugExtension.Log(this, "Starting..");
-
         var player = Globals.Player;
         var playerMapper = new PlayerMapper();
         var playerSnapshot = playerMapper.ToSnapshot(player);
@@ -42,9 +39,9 @@ public class SaveTests
     }
 
     [Fact]
+    [LogTest]
     public void GameSnapshotAssembler_ToSnapshot()
     {
-        DebugExtension.Log(this, "Starting..");
         var session = Globals.CreateGameSession();
         var gameSnapshot = new GameSnapshotAssembler().ToSnapshot(session);
         Assert.NotNull(gameSnapshot);
@@ -52,9 +49,9 @@ public class SaveTests
     }
 
     [Fact]
+    [LogTest]
     public void GameSnapshot_ShouldSerialize_Player()
     {
-        DebugExtension.Log(this, "Starting..");
         var session = Globals.CreateGameSession();
 
         var snapshot = new GameSnapshotAssembler().ToSnapshot(session);
@@ -66,10 +63,9 @@ public class SaveTests
     }
 
     [Fact]
+    [LogTest]
     public void Save_ShouldContainPlayer()
     {
-        DebugExtension.Log(this, "Starting..");
-
         var session = Globals.CreateGameSession();
         var snapshot = new GameSnapshotAssembler().ToSnapshot(session);
         new JsonSaveRepository().Save(snapshot);
@@ -80,10 +76,9 @@ public class SaveTests
     }
 
     [Fact]
+    [LogTest]
     public void Save_ShouldReturnResultOnLoad()
     {
-        DebugExtension.Log(this, "Starting..");
-
         var session = Globals.CreateGameSession();
         var snapshot = new GameSnapshotAssembler().ToSnapshot(session);
         new JsonSaveRepository().Save(snapshot);
@@ -94,10 +89,9 @@ public class SaveTests
     }
 
     [Fact]
+    [LogTest]
     public void Save_ListShouldReturnGameSnapshots()
     {
-        DebugExtension.Log(this, "Starting..");
-
         var s1 = Globals.CreateGameSession();
         var snap1 = new GameSnapshotAssembler().ToSnapshot(s1);
         new JsonSaveRepository().Save(snap1);
@@ -111,10 +105,9 @@ public class SaveTests
     }
 
     [Fact]
+    [LogTest]
     public void ListSavesUseCase_ShouldReturnsValue()
     {
-        DebugExtension.Log(this, "Starting..");
-
         var s1 = Globals.CreateGameSession();
         var snap1 = new GameSnapshotAssembler().ToSnapshot(s1);
         new JsonSaveRepository().Save(snap1);
@@ -124,9 +117,9 @@ public class SaveTests
     }
 
     [Fact]
+    [LogTest]
     public void GameSnapshotAssembler_ShloudNotGenereateNewGuids()
     {
-        DebugExtension.Log(this, "Starting..");
         var s1 = Globals.CreateGameSession();
         var dung = new DungeonFactory().Create();
         s1.EnterDungeon(dung);

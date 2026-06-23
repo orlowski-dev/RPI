@@ -227,4 +227,18 @@ public class ItemTests
         );
         Assert.Empty(gameSession.Inventory.Backpack.Items);
     }
+
+    [Fact]
+    public void GetItemsFromInventoryUseCase_ShouldReturnItems()
+    {
+        DebugExtension.Log(this, "Starting..");
+        var gameSession = Globals.CreateGameSession();
+        var item = new ItemFactory().Generate("iron_sword", playerLevel: gameSession.Player.Level);
+        var ucResponse = new AddItemToInventoryUseCase().Execute(
+            new(Session: gameSession, Item: item)
+        );
+        var giResponse = new GetItemsFromInventoryUseCase().Execute(new(Session: gameSession));
+        Assert.NotNull(giResponse.Value);
+        Assert.NotEmpty(giResponse.Value.Items);
+    }
 }

@@ -25,7 +25,7 @@ public class Encounter
 
         _enemies = enemies;
         State = state ?? EncounterState.Available;
-        DebugExtension.Log(this, $"Encounter {Id} created.");
+        // DebugExtension.Log(this, $"Encounter {Id} created.");
     }
 
     /// <summary>

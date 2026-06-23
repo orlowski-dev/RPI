@@ -67,4 +67,23 @@ public class PlayerTests
         // zostaje 1
         Assert.Equal(1, player.Exp);
     }
+
+    [Fact]
+    public void Player_ShouldIncreaseStatsIfWearingItem()
+    {
+        var itemFactory = new ItemFactory();
+        var weapon = itemFactory.Generate(id: "iron_sword", playerLevel: 1);
+        var armor = itemFactory.Generate(id: "plate_armor", playerLevel: 1);
+        var eq = new Equipment();
+        var backpack = new Backpack();
+        backpack.Add(weapon);
+        backpack.Add(armor);
+        var inventory = new Inventory(backpack: backpack, equipment: eq);
+        var player = new TestCombatParticipant().GetPlayer(inventory);
+        DebugExtension.Log(this, "Player before: " + DebugExtension.Dump(player));
+        var startHp = player.Stats.MaxHp;
+        inventory.Equipment.Equip(armor, player.Type);
+        DebugExtension.Log(this, "Player after: " + DebugExtension.Dump(player));
+        Assert.True(player.Stats.MaxHp > startHp);
+    }
 }

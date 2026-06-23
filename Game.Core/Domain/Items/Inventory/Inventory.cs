@@ -8,4 +8,10 @@ public class Inventory
         Backpack = new Backpack();
         Equipment = new Equipment();
     }
+
+    public Inventory(Backpack backpack, Equipment equipment)
+    {
+        Backpack = backpack;
+        Equipment = equipment;
+    }
 }

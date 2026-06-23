@@ -1,7 +1,15 @@
 public class TestCombatParticipant
 {
-    public Player Player { get; } =
+    public Player Player =>
         new(name: "Player", stats: new(30, 10, 5, 2, 3), type: PlayerType.Warrior);
+
+    public Player GetPlayer(Inventory? inventory = null) =>
+        new(
+            name: "Player",
+            stats: new(30, 10, 5, 2, 3),
+            type: PlayerType.Warrior,
+            inventory: inventory
+        );
 
     public Enemy Enemy1 { get; } =
         new(

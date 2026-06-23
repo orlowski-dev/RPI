@@ -3,7 +3,6 @@ public static class ItemCatalog
     public static Dictionary<string, CatalogItemValues> Values { get; } =
         new()
         {
-            // MaxHp, Attack, Defense, CriticalChance, Luck
             ["iron_sword"] = new(
                 Name: "Żelazny miecz",
                 Category: ItemCategory.Weapon,

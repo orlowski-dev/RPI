@@ -11,6 +11,15 @@ public class Item
     public ItemStats Stats =>
         ItemStatCalculator.Calculate(baseStats: BaseStats, rarity: Rarity, level: Level);
 
+    public string Prefix =>
+        Rarity switch
+        {
+            ItemRarity.Rare => "Rzadki",
+            ItemRarity.Epic => "Epicki",
+            ItemRarity.Legendary => "Legendarny",
+            _ => "",
+        };
+
     public Item(
         string name,
         ItemCategory category,
@@ -22,9 +31,9 @@ public class Item
     )
     {
         Id = id ?? Guid.NewGuid();
-        Name = name;
         Category = category;
         Rarity = rarity;
+        Name = string.Join(',', [Prefix, Name]);
         Level = level;
         BaseStats = baseStats;
         AllowedClasses = allowedClasses;

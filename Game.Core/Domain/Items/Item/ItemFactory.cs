@@ -15,12 +15,14 @@ public class ItemFactory
             DebugExtension.Fatal(this, $"Item with id {id} not found.");
         }
 
+        var rarity = RollRarity();
+
         return new(
             name: catalogItemValues.Name,
             category: catalogItemValues.Category,
             baseStats: catalogItemValues.BaseStats,
             level: _random.Next(playerLevel - 2, playerLevel + 3),
-            rarity: RollRarity(),
+            rarity: rarity,
             allowedClasses: catalogItemValues.AllowedClasses
         );
     }

@@ -29,4 +29,19 @@ public class Equipment
 
         return Result.Success();
     }
+
+    public void Remove(Guid id)
+    {
+        if (Armor?.Id == id)
+        {
+            Armor = null;
+            return;
+        }
+
+        if (Weapon?.Id == id)
+        {
+            Weapon = null;
+            return;
+        }
+    }
 }

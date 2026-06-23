@@ -33,7 +33,7 @@ public class Item
         Id = id ?? Guid.NewGuid();
         Category = category;
         Rarity = rarity;
-        Name = string.Join(',', [Prefix, Name]);
+        Name = string.Join(' ', [Prefix, name]);
         Level = level;
         BaseStats = baseStats;
         AllowedClasses = allowedClasses;

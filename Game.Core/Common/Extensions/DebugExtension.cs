@@ -28,7 +28,7 @@ public static class DebugExtension
     {
         var content = $"[{obj.GetType().Name}:{methodName}] {msg}";
         Console.WriteLine(content);
-        throw new InvalidCastException(content);
+        throw new Exception(content);
     }
 
     public static Error UnknowError(string? msg = null)

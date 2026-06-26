@@ -14,7 +14,6 @@ public abstract class Actor
         Id = id ?? Guid.NewGuid();
         Level = level ?? 1;
         _stats = stats;
-        _stats = RecalculateStats();
     }
 
     protected virtual ActorStats GetStats(Inventory? inventory = null)

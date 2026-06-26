@@ -1,0 +1,1 @@
+- [ ] przenieść `GameSession` do konstruktora

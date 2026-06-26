@@ -42,6 +42,8 @@ public partial class CharacterCreatorScene : Node
 	private Dictionary<Lbl, Label> _labels = new();
 	private Dictionary<Pb, TextureProgressBar> _progressBars = new();
 	private Dictionary<Tx, TextureRect> _textures = new();
+	private LineEdit _playerName = null!;
+	private GameSession _session = null!;
 
 	private CharacterCreatorPresenter _presenter = null!;
 	private PlayerType _selectedType;
@@ -49,7 +51,7 @@ public partial class CharacterCreatorScene : Node
 
 	public override void _Ready()
 	{
-		_presenter = ServiceProviderHolder.Provider.GetService<CharacterCreatorPresenter>()!;
+		_presenter = ServiceProviderHolder.Provider.GetRequiredService<CharacterCreatorPresenter>();
 		InitUI();
 		LinkUI();
 
@@ -100,6 +102,8 @@ public partial class CharacterCreatorScene : Node
 
 		_textures[Tx.ClassPreview] = GetTree()
 			.CurrentScene.GetNode<TextureRect>("%Tx_ClassPreview");
+
+		_playerName = GetTree().CurrentScene.GetNode<LineEdit>("%Le_PlayerName");
 	}
 
 	private void LinkUI()
@@ -107,6 +111,7 @@ public partial class CharacterCreatorScene : Node
 		_buttons[Btn.Warrior].Pressed += () => OnClassButtonClick(PlayerType.Warrior);
 		_buttons[Btn.Archer].Pressed += () => OnClassButtonClick(PlayerType.Archer);
 		_buttons[Btn.Mage].Pressed += () => OnClassButtonClick(PlayerType.Mage);
+		_buttons[Btn.Start].Pressed += OnStartClick;
 	}
 
 	private void OnClassButtonClick(PlayerType type)
@@ -161,5 +166,22 @@ public partial class CharacterCreatorScene : Node
 
 		var image = GD.Load<Texture2D>(_data.PreviewImages[_selectedType]);
 		_textures[Tx.ClassPreview].Texture = image;
+	}
+
+	private void OnStartClick()
+	{
+		if (_playerName.Text.Length < 3)
+		{
+			return;
+		}
+
+		var vm = _presenter.OnNewGame(playerName: _playerName.Text, playerType: _selectedType);
+
+		if (vm.Error is not null || vm.GameSession is null)
+		{
+			return;
+		}
+
+		GD.Print(DebugExtension.Dump(vm.GameSession.Player));
 	}
 }

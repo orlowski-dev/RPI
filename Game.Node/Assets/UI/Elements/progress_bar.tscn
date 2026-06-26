@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://eho40an6j2l6"]
+
+[ext_resource type="Texture2D" uid="uid://bt7qpuyav52k6" path="res://Assets/UI/Sprites/progressbar.bg.png" id="1_245ce"]
+[ext_resource type="Texture2D" uid="uid://brbave53sahi6" path="res://Assets/UI/Sprites/progressbar.value.png" id="2_t3u4e"]
+
+[node name="ProgressBar" type="TextureProgressBar" unique_id=951264996]
+custom_minimum_size = Vector2(0, 28)
+max_value = 180.0
+value = 30.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_245ce")
+texture_progress = ExtResource("2_t3u4e")
+texture_progress_offset = Vector2(22, 0)

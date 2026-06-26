@@ -182,6 +182,6 @@ public partial class CharacterCreatorScene : Node
 			return;
 		}
 
-		GD.Print(DebugExtension.Dump(vm.GameSession.Player));
+		GetTree().CallDeferred("change_scene_to_file", ScenePaths.City);
 	}
 }

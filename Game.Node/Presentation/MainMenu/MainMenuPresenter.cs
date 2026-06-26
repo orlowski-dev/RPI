@@ -7,6 +7,6 @@ public partial class MainMenuPresenter
 
     public MainMenuViewModel NewGame()
     {
-        return new(new NewGame(), null);
+        return new(new CharacterCreator(), null);
     }
 }

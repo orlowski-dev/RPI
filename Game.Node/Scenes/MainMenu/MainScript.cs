@@ -42,7 +42,7 @@ public partial class MainScript : Control
     {
         switch (navigation)
         {
-            case NewGame:
+            case CharacterCreator:
                 GetTree().CallDeferred("change_scene_to_file", ScenePaths.CharacterCreator);
                 break;
             case ExitGame:

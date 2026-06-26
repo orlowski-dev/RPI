@@ -181,7 +181,6 @@ text = "Imię postaci"
 horizontal_alignment = 1
 
 [node name="Le_PlayerName" type="LineEdit" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Bottom/VBoxContainer2" unique_id=668536294]
-unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_lnxgb")
 

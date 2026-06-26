@@ -1,12 +1,12 @@
 public partial class MainMenuPresenter
 {
-    public MainMenuViewModel NewGame()
-    {
-        throw new NotImplementedException();
-    }
-
     public MainMenuViewModel Exit()
     {
-        return new(new ExitApplication(), null);
+        return new(new ExitGame(), null);
+    }
+
+    public MainMenuViewModel NewGame()
+    {
+        return new(new CharacterCreator(), null);
     }
 }

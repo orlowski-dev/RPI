@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://4lqeaddbc7tf"]
+
+[ext_resource type="PackedScene" uid="uid://cd3k3onaqbmv7" path="res://Assets/UI/Elements/health_bar.tscn" id="1_8tqbn"]
+[ext_resource type="Script" uid="uid://rs27nbpplvx2" path="res://Scenes/City/CityViewScript.cs" id="1_muw6b"]
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="2_ntv1l"]
+[ext_resource type="PackedScene" uid="uid://eho40an6j2l6" path="res://Assets/UI/Elements/progress_bar.tscn" id="3_muw6b"]
+
+[node name="CityView" type="Control" unique_id=1047417051]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_muw6b")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2081256123]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1713880388]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Hb_CurrentHp" parent="MarginContainer/HBoxContainer" unique_id=2002488241 instance=ExtResource("1_8tqbn")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1277891506]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="L_PlayerName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=633340700]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_ntv1l")
+theme_override_font_sizes/font_size = 24
+text = "PlayerName"
+
+[node name="Pb_Exp" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=951264996 instance=ExtResource("3_muw6b")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(232, 28)
+layout_mode = 2

@@ -110,4 +110,6 @@ public class Player : Actor
             luck: luck
         );
     }
+
+    public string TypePlural => PlayerDefinitions.TypePlural[Type];
 }

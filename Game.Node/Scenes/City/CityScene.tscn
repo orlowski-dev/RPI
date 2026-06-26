@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://tela2vlscotg"]
+
+[ext_resource type="PackedScene" uid="uid://4lqeaddbc7tf" path="res://Scenes/City/CityView.tscn" id="1_6y4pt"]
+
+[node name="CityScene" type="Node2D" unique_id=210619333]
+
+[node name="CityView" parent="." unique_id=1047417051 instance=ExtResource("1_6y4pt")]

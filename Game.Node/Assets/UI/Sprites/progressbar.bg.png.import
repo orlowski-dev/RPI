@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5hkjs6f257tu"
-path="res://.godot/imported/button.normal.png-4cce3f57c657bead1c2f423c2b9bb5f1.ctex"
+uid="uid://bt7qpuyav52k6"
+path="res://.godot/imported/progressbar.bg.png-7e0d67c7349663cab2163de73858a447.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Sprites/button.normal.png"
-dest_files=["res://.godot/imported/button.normal.png-4cce3f57c657bead1c2f423c2b9bb5f1.ctex"]
+source_file="res://Assets/UI/Sprites/progressbar.bg.png"
+dest_files=["res://.godot/imported/progressbar.bg.png-7e0d67c7349663cab2163de73858a447.ctex"]
 
 [params]
 

@@ -44,30 +44,35 @@ horizontal_alignment = 1
 [node name="VBoxContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=458647625]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/v_separation = 12
+theme_override_constants/v_separation = 8
 
 [node name="NewGame" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=902021313]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_hda1k")
 text = "NOWA GRA"
 
 [node name="ContinueGame" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=189298346]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_hda1k")
 text = "KONTYNUUJ"
 
 [node name="LoadGame" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=215222061]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_hda1k")
 text = "WCZYTAJ GRĘ"
 
 [node name="Settings" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=413120303]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_hda1k")
 text = "USTAWIENIA"
 
 [node name="ExitGame" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=1992876192]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_hda1k")
 text = "WYJŚCIE"

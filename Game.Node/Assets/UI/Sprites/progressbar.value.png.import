@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c01d4a1ny0nv0"
-path="res://.godot/imported/archer_169x312.png-36b02079520f276cf6a3077967e5a284.ctex"
+uid="uid://brbave53sahi6"
+path="res://.godot/imported/progressbar.value.png-bab5762cdbeb9a857f20935946eb17e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/character select UI/buttons/archer_169x312.png"
-dest_files=["res://.godot/imported/archer_169x312.png-36b02079520f276cf6a3077967e5a284.ctex"]
+source_file="res://Assets/UI/Sprites/progressbar.value.png"
+dest_files=["res://.godot/imported/progressbar.value.png-bab5762cdbeb9a857f20935946eb17e4.ctex"]
 
 [params]
 

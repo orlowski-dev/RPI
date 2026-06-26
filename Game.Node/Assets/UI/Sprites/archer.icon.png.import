@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5hkjs6f257tu"
-path="res://.godot/imported/button.normal.png-4cce3f57c657bead1c2f423c2b9bb5f1.ctex"
+uid="uid://dql8wuii8bx1u"
+path="res://.godot/imported/archer.icon.png-960f0d807c9b1415075e7f62bb00e2b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Sprites/button.normal.png"
-dest_files=["res://.godot/imported/button.normal.png-4cce3f57c657bead1c2f423c2b9bb5f1.ctex"]
+source_file="res://Assets/UI/Sprites/archer.icon.png"
+dest_files=["res://.godot/imported/archer.icon.png-960f0d807c9b1415075e7f62bb00e2b5.ctex"]
 
 [params]
 

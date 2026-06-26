@@ -1,111 +1,165 @@
 using Godot;
-using Godot.Collections;
 using Microsoft.Extensions.DependencyInjection;
 
 public partial class CharacterCreatorScene : Node
 {
-    private CharacterCreatorPresenter _presenter = null!;
-    private PlayerType _selectedType;
-    private GetStartCharactersResponse? _data = null;
+	private enum Btn
+	{
+		Warrior,
+		Mage,
+		Archer,
+		Start,
+	}
 
-    [Export]
-    Label UI_SelectedType = null!;
+	private enum Lbl
+	{
+		WarriorDesc,
+		MageDesc,
+		ArcherDesc,
+		Hp,
+		Attack,
+		Defense,
+		Crit,
+		Luck,
+		SelectedType,
+	}
 
-    [Export]
-    Container UI_TypesButtons = null!;
+	private enum Pb
+	{
+		Hp,
+		Attack,
+		Defense,
+		Crit,
+		Luck,
+	}
 
-    [Export]
-    Label UI_HpLabel = null!;
+	private enum Tx
+	{
+		ClassPreview,
+	}
 
-    [Export]
-    Label UI_AttackLabel = null!;
+	private Dictionary<Btn, Button> _buttons = new();
+	private Dictionary<Lbl, Label> _labels = new();
+	private Dictionary<Pb, TextureProgressBar> _progressBars = new();
+	private Dictionary<Tx, TextureRect> _textures = new();
 
-    [Export]
-    Label UI_DefenseLabel = null!;
+	private CharacterCreatorPresenter _presenter = null!;
+	private PlayerType _selectedType;
+	private GetStartCharactersResponse? _data = null;
 
-    [Export]
-    Label UI_CritLabel = null!;
+	public override void _Ready()
+	{
+		_presenter = ServiceProviderHolder.Provider.GetService<CharacterCreatorPresenter>()!;
+		InitUI();
+		LinkUI();
 
-    [Export]
-    Label UI_LuckLabel = null!;
+		if (_presenter is null)
+		{
+			DebugExtension.Fatal(this, "Presenter is null.");
+		}
 
-    [Export]
-    TextureProgressBar UI_HpPb = null!;
+		if (_presenter.OnViewReady().Error is not null)
+		{
+			DebugExtension.Fatal(this, "Cannot get response from use case");
+		}
 
-    [Export]
-    TextureProgressBar UI_AttackPb = null!;
+		if (_presenter.OnViewReady().Data is null)
+		{
+			DebugExtension.Fatal(this, "Cannot get data from Presenter");
+		}
 
-    [Export]
-    TextureProgressBar UI_DefensePb = null!;
+		_data = _presenter.OnViewReady().Data;
 
-    [Export]
-    TextureProgressBar UI_CritPb = null!;
+		UpdateStatsUI();
+	}
 
-    [Export]
-    TextureProgressBar UI_LuckPb = null!;
+	private void InitUI()
+	{
+		_buttons[Btn.Warrior] = GetTree().CurrentScene.GetNode<Button>("%Btn_Warrior");
+		_buttons[Btn.Archer] = GetTree().CurrentScene.GetNode<Button>("%Btn_Archer");
+		_buttons[Btn.Mage] = GetTree().CurrentScene.GetNode<Button>("%Btn_Mage");
+		_buttons[Btn.Start] = GetTree().CurrentScene.GetNode<Button>("%Btn_StartGame");
 
-    public override void _Ready()
-    {
-        _presenter = ServiceProviderHolder.Provider.GetService<CharacterCreatorPresenter>()!;
+		_labels[Lbl.WarriorDesc] = GetTree().CurrentScene.GetNode<Label>("%L_Warrior");
+		_labels[Lbl.ArcherDesc] = GetTree().CurrentScene.GetNode<Label>("%L_Archer");
+		_labels[Lbl.MageDesc] = GetTree().CurrentScene.GetNode<Label>("%L_Mage");
 
-        if (_presenter is null)
-        {
-            DebugExtension.Fatal(this, "Presenter is null.");
-        }
+		_labels[Lbl.Hp] = GetTree().CurrentScene.GetNode<Label>("%L_HP");
+		_labels[Lbl.Attack] = GetTree().CurrentScene.GetNode<Label>("%L_Attack");
+		_labels[Lbl.Defense] = GetTree().CurrentScene.GetNode<Label>("%L_Defense");
+		_labels[Lbl.Crit] = GetTree().CurrentScene.GetNode<Label>("%L_Crit");
+		_labels[Lbl.Luck] = GetTree().CurrentScene.GetNode<Label>("%L_Luck");
+		_labels[Lbl.SelectedType] = GetTree().CurrentScene.GetNode<Label>("%L_SelectedType");
 
-        if (_presenter.OnViewReady().Error is not null)
-        {
-            DebugExtension.Fatal(this, "Cannot get response from use case");
-        }
+		_progressBars[Pb.Hp] = GetTree().CurrentScene.GetNode<TextureProgressBar>("%Pb_HP");
+		_progressBars[Pb.Attack] = GetTree().CurrentScene.GetNode<TextureProgressBar>("%Pb_Attack");
+		_progressBars[Pb.Defense] = GetTree()
+			.CurrentScene.GetNode<TextureProgressBar>("%Pb_Defense");
+		_progressBars[Pb.Crit] = GetTree().CurrentScene.GetNode<TextureProgressBar>("%Pb_Crit");
+		_progressBars[Pb.Luck] = GetTree().CurrentScene.GetNode<TextureProgressBar>("%Pb_Luck");
 
-        if (_presenter.OnViewReady().Data is null)
-        {
-            DebugExtension.Fatal(this, "Cannot get data from Presenter");
-        }
+		_textures[Tx.ClassPreview] = GetTree()
+			.CurrentScene.GetNode<TextureRect>("%Tx_ClassPreview");
+	}
 
-        _data = _presenter.OnViewReady().Data;
+	private void LinkUI()
+	{
+		_buttons[Btn.Warrior].Pressed += () => OnClassButtonClick(PlayerType.Warrior);
+		_buttons[Btn.Archer].Pressed += () => OnClassButtonClick(PlayerType.Archer);
+		_buttons[Btn.Mage].Pressed += () => OnClassButtonClick(PlayerType.Mage);
+	}
 
-        UpdateStatsUI();
+	private void OnClassButtonClick(PlayerType type)
+	{
+		if (_data is null)
+			return;
+		_selectedType = type;
+		UpdateStatsUI();
+	}
 
-        GetNode<Button>(Helpers.ConcatGodotId(UI_TypesButtons, "%Warrior")).Pressed += () =>
-            OnClassButtonClick(PlayerType.Warrior);
+	private void UpdateStatsUI()
+	{
+		if (_data is null)
+			return;
 
-        GetNode<Button>(Helpers.ConcatGodotId(UI_TypesButtons, "%Mage")).Pressed += () =>
-            OnClassButtonClick(PlayerType.Mage);
+		var current = _data.ActorDefinitions[_selectedType].BaseStats;
 
-        GetNode<Button>(Helpers.ConcatGodotId(UI_TypesButtons, "%Archer")).Pressed += () =>
-            OnClassButtonClick(PlayerType.Archer);
-    }
+		if (_selectedType == PlayerType.Warrior)
+		{
+			_labels[Lbl.WarriorDesc].Visible = true;
+			_labels[Lbl.ArcherDesc].Visible = false;
+			_labels[Lbl.MageDesc].Visible = false;
+		}
 
-    private void OnClassButtonClick(PlayerType type)
-    {
-        if (_data is null)
-            return;
-        _selectedType = type;
-        UI_SelectedType.Text = _data.TypePlurals[_selectedType];
-        UpdateStatsUI();
-    }
+		if (_selectedType == PlayerType.Archer)
+		{
+			_labels[Lbl.WarriorDesc].Visible = false;
+			_labels[Lbl.ArcherDesc].Visible = true;
+			_labels[Lbl.MageDesc].Visible = false;
+		}
 
-    private void UpdateStatsUI()
-    {
-        if (_data is null)
-            return;
+		if (_selectedType == PlayerType.Mage)
+		{
+			_labels[Lbl.WarriorDesc].Visible = false;
+			_labels[Lbl.ArcherDesc].Visible = false;
+			_labels[Lbl.MageDesc].Visible = true;
+		}
 
-        var current = _data.ActorDefinitions[_selectedType].BaseStats;
+		_labels[Lbl.Hp].Text = current.MaxHp.ToString();
+		_labels[Lbl.Attack].Text = current.Attack.ToString();
+		_labels[Lbl.Defense].Text = current.Defense.ToString();
+		_labels[Lbl.Crit].Text = current.CriticalChance + "%";
+		_labels[Lbl.Luck].Text = current.Luck + "%";
 
-        UI_HpLabel.Text = current.MaxHp.ToString();
-        UI_HpPb.Value = current.MaxHp;
+		_progressBars[Pb.Hp].Value = current.MaxHp;
+		_progressBars[Pb.Attack].Value = current.Attack;
+		_progressBars[Pb.Defense].Value = current.Defense;
+		_progressBars[Pb.Crit].Value = current.CriticalChance;
+		_progressBars[Pb.Luck].Value = current.Luck;
 
-        UI_AttackLabel.Text = current.Attack.ToString();
-        UI_AttackPb.Value = current.Attack;
+		_labels[Lbl.SelectedType].Text = _data.TypePlurals[_selectedType];
 
-        UI_DefenseLabel.Text = current.Defense.ToString();
-        UI_DefensePb.Value = current.Defense;
-
-        UI_CritLabel.Text = current.CriticalChance + "%";
-        UI_CritPb.Value = current.CriticalChance;
-
-        UI_LuckLabel.Text = current.CriticalChance + "%";
-        UI_LuckPb.Value = current.CriticalChance;
-    }
+		var image = GD.Load<Texture2D>(_data.PreviewImages[_selectedType]);
+		_textures[Tx.ClassPreview].Texture = image;
+	}
 }

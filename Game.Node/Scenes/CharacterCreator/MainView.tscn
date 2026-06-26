@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://ds05m83u3g50k" path="res://Assets/UI/Sprites/shield.icon.png" id="13_pmbch"]
 [ext_resource type="Texture2D" uid="uid://0ulcv7la4wyn" path="res://Assets/UI/Sprites/target.icon.png" id="14_73bd8"]
 [ext_resource type="Texture2D" uid="uid://cdb84rucm52hb" path="res://Assets/UI/Sprites/dice.icon.png" id="15_t8rku"]
-[ext_resource type="Texture2D" uid="uid://dr36r5txmiptu" path="res://Assets/UI/Sprites/class.warrior.icon.png" id="16_73bd8"]
 [ext_resource type="Texture2D" uid="uid://c4ru3fau3rc33" path="res://Assets/UI/character select UI/buttons/knight.png" id="17_t8rku"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_briqx"]
@@ -33,7 +32,7 @@ ProgressBar/font_sizes/font_size = 12
 ProgressBar/fonts/font = ExtResource("8_vnexh")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_ubm7t")
 
-[node name="MainView" type="Control" unique_id=1426260988 node_paths=PackedStringArray("UI_SelectedType", "UI_TypesButtons", "UI_HpLabel", "UI_AttackLabel", "UI_DefenseLabel", "UI_CritLabel", "UI_LuckLabel", "UI_HpPb", "UI_AttackPb", "UI_DefensePb", "UI_CritPb", "UI_LuckPb")]
+[node name="MainView" type="Control" unique_id=1426260988]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,18 +40,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t8rku")
-UI_SelectedType = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/VBoxContainer/SelectedType")
-UI_TypesButtons = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer/VBoxContainer/ClassButtonsContainer")
-UI_HpLabel = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HP")
-UI_AttackLabel = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/Attack")
-UI_DefenseLabel = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer/Defense")
-UI_CritLabel = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/HBoxContainer/CritChance")
-UI_LuckLabel = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer/Luck")
-UI_HpPb = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HP")
-UI_AttackPb = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Attack")
-UI_DefensePb = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/Defense")
-UI_CritPb = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/CritChance")
-UI_LuckPb = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/Luck")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1423368398]
 layout_mode = 1
@@ -83,28 +70,28 @@ layout_mode = 2
 custom_minimum_size = Vector2(346, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left" unique_id=1580083435]
+[node name="Top" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left" unique_id=1580083435]
 layout_mode = 2
 theme_override_constants/margin_left = 42
-theme_override_constants/margin_top = 81
+theme_override_constants/margin_top = 97
 theme_override_constants/margin_right = 26
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer" unique_id=1316130891]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top" unique_id=1316130891]
 layout_mode = 2
 theme_override_constants/separation = 48
 
-[node name="ClassButtonsContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer/VBoxContainer" unique_id=2079442156]
+[node name="ClassButtonsContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer" unique_id=2079442156]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer/VBoxContainer/ClassButtonsContainer" unique_id=1416268286]
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=1416268286]
 layout_mode = 2
 theme = ExtResource("3_lnxgb")
 theme_override_font_sizes/font_size = 20
 text = "Klasa postaci"
 horizontal_alignment = 1
 
-[node name="Warrior" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer/VBoxContainer/ClassButtonsContainer" unique_id=521873903]
+[node name="Btn_Warrior" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=521873903]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -113,7 +100,22 @@ text = "RYCERZ"
 icon = ExtResource("4_huq3o")
 alignment = 0
 
-[node name="Mage" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer/VBoxContainer/ClassButtonsContainer" unique_id=550982927]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=962533801]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="L_Warrior" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer/MarginContainer" unique_id=1513937180]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "Mistrz walki wręcz, wyposażony w ciężki pancerz i potężną broń. Wysoka wytrzymałość oraz obrona pozwalają mu wytrzymać nawet najtrudniejsze starcia."
+autowrap_mode = 2
+
+[node name="Btn_Mage" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=550982927]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -122,7 +124,22 @@ text = "CZARODZIEJ"
 icon = ExtResource("5_nc447")
 alignment = 0
 
-[node name="Archer" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer/VBoxContainer/ClassButtonsContainer" unique_id=1943961539]
+[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=660697722]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="L_Mage" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer/MarginContainer3" unique_id=1499068284]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "Mistrz walki wręcz, wyposażony w ciężki pancerz i potężną broń. Wysoka wytrzymałość oraz obrona pozwalają mu wytrzymać nawet najtrudniejsze starcia."
+autowrap_mode = 2
+
+[node name="Btn_Archer" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=1943961539]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -131,17 +148,39 @@ text = "ŁUCZNIK"
 icon = ExtResource("6_6sx22")
 alignment = 0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer/VBoxContainer" unique_id=1274325133]
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=799262799]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="L_Archer" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer/MarginContainer2" unique_id=912909261]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "Mistrz walki wręcz, wyposażony w ciężki pancerz i potężną broń. Wysoka wytrzymałość oraz obrona pozwalają mu wytrzymać nawet najtrudniejsze starcia."
+autowrap_mode = 2
+
+[node name="Bottom" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left" unique_id=803393188]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_left = 52
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 138
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Bottom" unique_id=1274325133]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1860794148]
+[node name="Label2" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Bottom/VBoxContainer2" unique_id=1860794148]
 layout_mode = 2
 theme = ExtResource("3_lnxgb")
 theme_override_font_sizes/font_size = 20
 text = "Imię postaci"
 horizontal_alignment = 1
 
-[node name="PlayerName" type="LineEdit" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=668536294]
+[node name="PlayerName" type="LineEdit" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Bottom/VBoxContainer2" unique_id=668536294]
 layout_mode = 2
 theme = ExtResource("3_lnxgb")
 
@@ -152,12 +191,12 @@ layout_mode = 2
 [node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center" unique_id=644069487]
 layout_mode = 2
 theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 60
+theme_override_constants/margin_top = 68
 theme_override_constants/margin_right = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2" unique_id=994744731]
 layout_mode = 2
-theme_override_constants/separation = 48
+theme_override_constants/separation = 12
 
 [node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer" unique_id=566664754]
 layout_mode = 2
@@ -205,7 +244,8 @@ theme = ExtResource("3_lnxgb")
 theme_override_font_sizes/font_size = 12
 text = "HP"
 
-[node name="HP" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2045236038]
+[node name="L_HP" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2045236038]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_lnxgb")
@@ -213,7 +253,8 @@ theme_override_font_sizes/font_size = 12
 text = "120"
 horizontal_alignment = 2
 
-[node name="HP" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=897413123]
+[node name="Pb_HP" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=897413123]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 max_value = 180.0
@@ -248,7 +289,8 @@ theme = ExtResource("3_lnxgb")
 theme_override_font_sizes/font_size = 12
 text = "Atak"
 
-[node name="Attack" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=2079114105]
+[node name="L_Attack" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=2079114105]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_lnxgb")
@@ -256,7 +298,8 @@ theme_override_font_sizes/font_size = 12
 text = "100"
 horizontal_alignment = 2
 
-[node name="Attack" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1565815399]
+[node name="Pb_Attack" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1565815399]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 max_value = 50.0
@@ -291,7 +334,8 @@ theme = ExtResource("3_lnxgb")
 theme_override_font_sizes/font_size = 12
 text = "Obrona"
 
-[node name="Defense" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer" unique_id=1786955635]
+[node name="L_Defense" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer" unique_id=1786955635]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_lnxgb")
@@ -299,7 +343,8 @@ theme_override_font_sizes/font_size = 12
 text = "100"
 horizontal_alignment = 2
 
-[node name="Defense" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer" unique_id=538507198]
+[node name="Pb_Defense" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer" unique_id=538507198]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 max_value = 50.0
@@ -337,7 +382,8 @@ theme_override_font_sizes/font_size = 12
 text = "Szansa na
 trafienie krytyczne"
 
-[node name="CritChance" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/HBoxContainer" unique_id=1037372042]
+[node name="L_Crit" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/HBoxContainer" unique_id=1037372042]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_lnxgb")
@@ -345,7 +391,8 @@ theme_override_font_sizes/font_size = 12
 text = "100"
 horizontal_alignment = 2
 
-[node name="CritChance" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer" unique_id=977764271]
+[node name="Pb_Crit" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer" unique_id=977764271]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 max_value = 50.0
@@ -381,7 +428,8 @@ theme_override_constants/line_spacing = -6
 theme_override_font_sizes/font_size = 12
 text = "Szczęście"
 
-[node name="Luck" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer" unique_id=1991372791]
+[node name="L_Luck" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer" unique_id=1991372791]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_lnxgb")
@@ -389,7 +437,8 @@ theme_override_font_sizes/font_size = 12
 text = "100"
 horizontal_alignment = 2
 
-[node name="Luck" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1884755140]
+[node name="Pb_Luck" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1884755140]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 max_value = 50.0
@@ -404,7 +453,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 theme_override_constants/margin_bottom = 21
 
-[node name="StartGame" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer" unique_id=44808352]
+[node name="Btn_StartGame" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer" unique_id=44808352]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_lnxgb")
@@ -427,23 +477,16 @@ theme_override_constants/separation = 24
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer" unique_id=1629066853]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=192124474]
-custom_minimum_size = Vector2(64, 38)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("16_73bd8")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="SelectedType" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=1371084921]
+[node name="L_SelectedType" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=1371084921]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_lnxgb")
 theme_override_font_sizes/font_size = 28
 text = "RYCERZ"
 horizontal_alignment = 1
 
-[node name="CharacterPreview" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer" unique_id=961211452]
+[node name="Tx_ClassPreview" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer" unique_id=961211452]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

@@ -8,6 +8,9 @@ public partial class MainScript : Control
     [Export]
     Button ExitButton = null!;
 
+    [Export]
+    Button NewGameButton = null!;
+
     public override void _Ready()
     {
         _presenter = ServiceProviderHolder.Provider.GetService<MainMenuPresenter>()!;
@@ -18,6 +21,7 @@ public partial class MainScript : Control
         }
 
         ExitButton.Pressed += OnExit;
+        NewGameButton.Pressed += OnNewGame;
 
         GD.Print("Main menu loaded.");
     }
@@ -28,10 +32,19 @@ public partial class MainScript : Control
         Navigate(vm.Navigation);
     }
 
+    private void OnNewGame()
+    {
+        var vm = _presenter.NewGame();
+        Navigate(vm.Navigation);
+    }
+
     private void Navigate(NavigationIntent navigation)
     {
         switch (navigation)
         {
+            case NewGame:
+                GetTree().CallDeferred("change_scene_to_file", ScenePaths.CharacterCreator);
+                break;
             case ExitGame:
                 GetTree().Quit();
                 break;

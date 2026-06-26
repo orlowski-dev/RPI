@@ -20,5 +20,6 @@ public static class DependencyInjection
 	private static void RegisterNode(IServiceCollection services)
 	{
 		services.AddTransient<MainMenuPresenter>();
+		services.AddTransient<CharacterCreatorPresenter>();
 	}
 }

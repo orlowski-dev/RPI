@@ -4,4 +4,9 @@ public partial class MainMenuPresenter
     {
         return new(new ExitGame(), null);
     }
+
+    public MainMenuViewModel NewGame()
+    {
+        return new(new NewGame(), null);
+    }
 }

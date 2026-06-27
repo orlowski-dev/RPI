@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://btabpkafmkn8j"]
+
+[ext_resource type="Script" uid="uid://xq8vmwyxhil5" path="res://Extensions/EditorOnly/EditorOnly.cs" id="1_880ni"]
+
+[node name="EditorOnly" type="Node2D" unique_id=657960893]
+script = ExtResource("1_880ni")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1775588208]

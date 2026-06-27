@@ -111,5 +111,5 @@ public class Player : Actor
         );
     }
 
-    public string TypePlural => PlayerDefinitions.TypePlural[Type];
+    public string TypePlural => PlayerDefinitions.Values[Type].TypePlural;
 }

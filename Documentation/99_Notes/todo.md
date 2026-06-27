@@ -1,1 +1,2 @@
-- [ ] przenieść `GameSession` do konstruktora
+- [x] przenieść `GameSession` do konstruktora - docelowo jest w DI
+- [ ] opis klas postaci w kreatorze

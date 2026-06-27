@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://t7b2ah44w0ng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwii3"]
+size = Vector2(353, 517)
+
+[node name="Player" type="CharacterBody2D" unique_id=1213466966]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1099263294]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=573166928]
+visibility_layer = 7
+position = Vector2(0.5, -3.5)
+shape = SubResource("RectangleShape2D_mwii3")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ecvy08eq7drn"]
+
+[ext_resource type="PackedScene" uid="uid://t7b2ah44w0ng" path="res://Scenes/Player/player.tscn" id="1_1yntu"]
+[ext_resource type="SpriteFrames" uid="uid://ckr5xpnlqcx04" path="res://Scenes/Player/sprite_frames_mage.tres" id="2_2nm2n"]
+
+[node name="Player" unique_id=1213466966 instance=ExtResource("1_1yntu")]
+
+[node name="Spirtes" type="AnimatedSprite2D" parent="." index="2" unique_id=384256622]
+sprite_frames = ExtResource("2_2nm2n")
+animation = &"idle"
+autoplay = "idle"

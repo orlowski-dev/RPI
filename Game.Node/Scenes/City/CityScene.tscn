@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://4lqeaddbc7tf" path="res://Scenes/City/CityView.tscn" id="1_6y4pt"]
 [ext_resource type="Texture2D" uid="uid://b1fij3jfdm56g" path="res://Assets/UI/Sprites/city.bg.png" id="2_ha726"]
 [ext_resource type="PackedScene" uid="uid://cq30a5fibg021" path="res://Assets/Sprites/Environ/FirePlace/fire_place.tscn" id="3_2hwqn"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hgddq"]
+[ext_resource type="PackedScene" uid="uid://ecvy08eq7drn" path="res://Scenes/Player/warrior.tscn" id="4_hgddq"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2hwqn"]
 points = PackedVector2Array(540, 437, 284, 397, 281, 223, 886, 543, 617, 905, 398, 1113, -556, 1125, -590, 320, 92, 214, 132, 411, -33, 605, -350, 839, -25, 939, 164, 1048, 632, 765)
@@ -24,15 +23,13 @@ texture = ExtResource("2_ha726")
 position = Vector2(736, 485)
 scale = Vector2(3, 3)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2062568882]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1328301836]
-position = Vector2(735, 521)
-scale = Vector2(8.344372, 7.28)
-shape = SubResource("CircleShape2D_hgddq")
-
 [node name="Area2D2" type="Area2D" parent="." unique_id=725466442]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1293218142]
+light_mask = 2
 position = Vector2(598, -182)
 shape = SubResource("ConvexPolygonShape2D_2hwqn")
+
+[node name="Player" parent="." unique_id=1213466966 instance=ExtResource("4_hgddq")]
+position = Vector2(799.99994, 382.99997)
+scale = Vector2(0.25, 0.25)

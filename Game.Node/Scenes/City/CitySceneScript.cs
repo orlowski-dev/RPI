@@ -11,12 +11,15 @@ public partial class CitySceneScript : Node
 	private Player _player =>
 		_gameSessionProvider.Current?.Player ?? throw new Exception("Player instance is null.");
 	private CharacterBody3D _playerNode = null!;
+	private Node3D _playerSpawnPoint = null!;
 
 	public override void _Ready()
 	{
 		_presenter = ServiceProviderHolder.Provider.GetRequiredService<CityPresenter>();
 		_gameSessionProvider =
 			ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
+
+		_playerSpawnPoint = GetNode<Node3D>("PlayerSpawnPoint");
 
 		SpawnPlayer();
 		SpawnCamera();
@@ -33,6 +36,12 @@ public partial class CitySceneScript : Node
 		var model = modelScene.Instantiate<Node3D>();
 		model.Name = "Model";
 		_playerNode.AddChild(model);
+
+		_playerNode.Position = new Vector3(
+			x: _playerSpawnPoint.Position.X,
+			y: 0,
+			z: _playerSpawnPoint.Position.Z
+		);
 
 		AddChild(_playerNode);
 	}

@@ -8,7 +8,7 @@ public static class PlayerDefinitions
                 PreviewImage: "res://Assets/UI/character select UI/buttons/knight.png",
                 TypeDescription: "Mistrz walki wręcz, wyposażony w ciężki pancerz i potężną broń. Wysoka wytrzymałość oraz obrona pozwalają mu wytrzymać nawet najtrudniejsze starcia.",
                 TypePlural: "Wojownik",
-                NodePath: "res://Assets/Models/Characters/Archer/erika_archer.scn"
+                NodePath: "res://Assets/Models/Characters/Warrior/warrior.scn"
             ),
             [PlayerType.Archer] = new(
                 ActorStats: new(100, 14, 6, 15, 6),
@@ -22,7 +22,7 @@ public static class PlayerDefinitions
                 PreviewImage: "res://Assets/UI/character select UI/buttons/mage.png",
                 TypeDescription: "Włada potężną magią zdolną niszczyć wielu wrogów jednocześnie. Choć dysponuje niewielką obroną, nadrabia ogromną siłą zaklęć i wszechstronnością.",
                 TypePlural: "Czarodziej",
-                NodePath: "res://Assets/Models/Characters/Archer/erika_archer.scn"
+                NodePath: "res://Assets/Models/Characters/Mage/mage.scn"
             ),
         };
 }

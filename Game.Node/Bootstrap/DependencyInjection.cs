@@ -27,5 +27,6 @@ public static class DependencyInjection
         services.AddTransient<StartNewGameUseCase>();
         services.AddTransient<GetStartCharactersUseCase>();
         services.AddTransient<CityPresenter>();
+        services.AddTransient<PlayerControllerPresenter>();
     }
 }

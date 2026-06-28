@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://tela2vlscotg"]
 
+[ext_resource type="PackedScene" uid="uid://rhhqx4ji0q6i" path="res://Assets/Models/Characters/Archer/Erika Archer.fbx" id="1_6y4pt"]
 [ext_resource type="Script" uid="uid://dy88b8c0xyn4v" path="res://Scenes/City/CitySceneScript.cs" id="1_e1la7"]
 [ext_resource type="PackedScene" uid="uid://djdim6ka1hulo" path="res://Assets/Models/Environ/Floor01/mod_floor_01_o_straight_med.tscn" id="2_ha726"]
 [ext_resource type="PackedScene" uid="uid://c41wxqiwi1dl6" path="res://Assets/Models/Environ/WallStraightMed/mod_wall_01_m_straight_med.scn" id="3_2hwqn"]
+[ext_resource type="PackedScene" uid="uid://btabpkafmkn8j" path="res://Extensions/EditorOnly/editor_only.tscn" id="4_vileb"]
 [ext_resource type="PackedScene" uid="uid://8s6ygddcnkld" path="res://Assets/Models/Characters/Seller/seller.scn" id="5_vileb"]
 [ext_resource type="PackedScene" uid="uid://b2kcbey6mkprf" path="res://Assets/Models/Environ/TableO1/table01.tscn" id="6_vileb"]
+[ext_resource type="PackedScene" uid="uid://dj2yiap6x4yvr" path="res://Assets/Models/Characters/Mage/Mage.fbx" id="7_lkw7j"]
+[ext_resource type="PackedScene" uid="uid://c5oj4eflesayq" path="res://Assets/Models/Characters/Warrior/Warrior.fbx" id="9_217pb"]
 
 [node name="CityScene" type="Node3D" unique_id=2044755375]
 script = ExtResource("1_e1la7")
@@ -408,3 +412,15 @@ transform = Transform3D(0.56568545, 0, 0.56568545, 0, 0.8, 0, -0.56568545, 0, 0.
 
 [node name="Table01" parent="." unique_id=1193513429 instance=ExtResource("6_vileb")]
 transform = Transform3D(0.7198993, 0, 0.69407856, 0, 1, 0, -0.69407856, 0, 0.7198993, -14.44296, -1.1920929e-07, -7.342381)
+
+[node name="PlayerSpawnPoint" parent="." unique_id=245595008 instance=ExtResource("4_vileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8809977, 1.2739105, -10.51884)
+
+[node name="Mage" parent="." unique_id=2042702006 instance=ExtResource("7_lkw7j")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.5193863, 0, -7.9847035)
+
+[node name="Erika Archer" parent="." unique_id=165247548 instance=ExtResource("1_6y4pt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7546916, 0, -7.564197)
+
+[node name="Warrior" parent="." unique_id=863230425 instance=ExtResource("9_217pb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18972939, 0, -8.004711)

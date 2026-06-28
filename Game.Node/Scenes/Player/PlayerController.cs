@@ -1,42 +1,67 @@
 using Godot;
+using Microsoft.Extensions.DependencyInjection;
 
 public partial class PlayerController : CharacterBody3D
 {
-    private const string AnimLib = "archer_animlib";
-
     private enum An
     {
         Idle,
         Running,
     }
 
+    private Dictionary<PlayerType, string> _animLib = new()
+    {
+        [PlayerType.Warrior] = "warrior_animlib",
+        [PlayerType.Archer] = "archer_animlib",
+        [PlayerType.Mage] = "mage_animlib",
+    };
+    private Dictionary<PlayerType, Dictionary<An, string>> _anims = new()
+    {
+        [PlayerType.Warrior] = new()
+        {
+            [An.Idle] = "anim_unarmed_idle_01",
+            [An.Running] = "anim_running",
+        },
+        [PlayerType.Archer] = new()
+        {
+            [An.Idle] = "anim_unarmed_idle_01",
+            [An.Running] = "anim_running",
+        },
+        [PlayerType.Mage] = new()
+        {
+            [An.Idle] = "anim_unarmed_idle_01",
+            [An.Running] = "anim_running",
+        },
+    };
+
     [Export]
     public float Speed { get; set; } = 5f;
 
     [Export]
-    public float RotationSpeed { get; set; } = 10f; // im wyżej, tym szybszy obrót
+    public float RotationSpeed { get; set; } = 10f;
 
     private AnimationPlayer _animationPlayer = null!;
-    private Dictionary<An, string> _anims = new()
-    {
-        { An.Running, "anim_running" },
-        { An.Idle, "anim_unarmed_idle_01" },
-    };
+
     private string _currentAnimation = string.Empty;
-    private Vector3 _facingDirection = Vector3.Forward; // zapamiętany kierunek
+    private Vector3 _facingDirection = Vector3.Forward;
+
+    private IGameSessionProvider _gsProvider = null!;
+    private Player _player =>
+        _gsProvider.Current?.Player ?? throw new Exception("Player in session is null!");
 
     public override void _Ready()
     {
+        _gsProvider = ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
         _animationPlayer = GetNode<AnimationPlayer>("Model/AnimationPlayer");
-        PlayAnimation(_anims[An.Idle]);
+        PlayAnimation(An.Idle);
     }
 
-    private void PlayAnimation(string animName)
+    private void PlayAnimation(An anim)
     {
-        if (_currentAnimation == animName)
+        if (_currentAnimation == anim.ToString())
             return;
-        _currentAnimation = animName;
-        _animationPlayer.Play(AnimLib + "/" + animName);
+        _currentAnimation = anim.ToString();
+        _animationPlayer.Play(_animLib[_player.Type] + "/" + _anims[_player.Type][anim]);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -48,12 +73,12 @@ public partial class PlayerController : CharacterBody3D
             direction = direction.Normalized();
             Velocity = direction * Speed;
             _facingDirection = direction;
-            PlayAnimation(_anims[An.Running]);
+            PlayAnimation(An.Running);
         }
         else
         {
             Velocity = Vector3.Zero;
-            PlayAnimation(_anims[An.Idle]);
+            PlayAnimation(An.Idle);
         }
 
         Basis targetBasis = Basis.LookingAt(_facingDirection, Vector3.Up);

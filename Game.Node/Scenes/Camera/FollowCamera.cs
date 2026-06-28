@@ -3,7 +3,7 @@ using Godot;
 public partial class FollowCamera : Camera3D
 {
     [Export]
-    public Vector3 Offset = new Vector3(0, 6, 8);
+    public Vector3 Offset = new Vector3(0, 4, 8);
 
     [Export]
     public float SmoothSpeed = 8f;

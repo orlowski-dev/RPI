@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dsk2eplmxrv7c"]
+
+[ext_resource type="Texture2D" uid="uid://ctv8mhniw82w3" path="res://Assets/Models/Environ/TableO1/T_wood_planks_dungeon_03_BC.png" id="1_iqeh8"]
+[ext_resource type="Texture2D" uid="uid://dafjb743my70f" path="res://Assets/Models/Environ/TableO1/T_wood_planks_dungeon_03_MTSM.png" id="2_8t2lw"]
+[ext_resource type="Texture2D" uid="uid://idi0fc22pdbk" path="res://Assets/Models/Environ/TableO1/T_wood_planks_dungeon_03_N.png" id="3_aoabl"]
+
+[resource]
+albedo_texture = ExtResource("1_iqeh8")
+metallic = 1.0
+metallic_texture = ExtResource("2_8t2lw")
+roughness_texture = ExtResource("2_8t2lw")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_aoabl")

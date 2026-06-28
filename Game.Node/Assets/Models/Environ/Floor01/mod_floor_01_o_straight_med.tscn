@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://djdim6ka1hulo"]
+
+[ext_resource type="PackedScene" uid="uid://r6oy41cpgb01" path="res://Assets/Models/Environ/Floor01/MOD_Floor_01_O_straight_med.fbx" id="1_bsuls"]
+[ext_resource type="Material" uid="uid://djkb1unylnl57" path="res://Assets/Models/Environ/Floor01/floor01.tres" id="2_hvdky"]
+
+[node name="MOD_Floor_01_O_straight_med" unique_id=1440450145 instance=ExtResource("1_bsuls")]
+
+[node name="MOD_Floor_01_O_straight_med" parent="." index="0" unique_id=1772699659]
+surface_material_override/0 = ExtResource("2_hvdky")

@@ -25,6 +25,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="RPI"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/mixabridge/plugin.cfg")
+
 [global_group]
 
 Enemy=""

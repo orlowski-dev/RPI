@@ -1,21 +1,23 @@
 [gd_scene format=3 uid="uid://tela2vlscotg"]
 
-[ext_resource type="PackedScene" uid="uid://rhhqx4ji0q6i" path="res://Assets/Models/Characters/Archer/Erika Archer.fbx" id="1_6y4pt"]
 [ext_resource type="Script" uid="uid://dy88b8c0xyn4v" path="res://Scenes/City/CitySceneScript.cs" id="1_e1la7"]
 [ext_resource type="PackedScene" uid="uid://djdim6ka1hulo" path="res://Assets/Models/Environ/Floor01/mod_floor_01_o_straight_med.tscn" id="2_ha726"]
 [ext_resource type="PackedScene" uid="uid://c41wxqiwi1dl6" path="res://Assets/Models/Environ/WallStraightMed/mod_wall_01_m_straight_med.scn" id="3_2hwqn"]
 [ext_resource type="PackedScene" uid="uid://btabpkafmkn8j" path="res://Extensions/EditorOnly/editor_only.tscn" id="4_vileb"]
 [ext_resource type="PackedScene" uid="uid://8s6ygddcnkld" path="res://Assets/Models/Characters/Seller/seller.scn" id="5_vileb"]
 [ext_resource type="PackedScene" uid="uid://b2kcbey6mkprf" path="res://Assets/Models/Environ/TableO1/table01.tscn" id="6_vileb"]
-[ext_resource type="PackedScene" uid="uid://dj2yiap6x4yvr" path="res://Assets/Models/Characters/Mage/Mage.fbx" id="7_lkw7j"]
-[ext_resource type="PackedScene" uid="uid://c5oj4eflesayq" path="res://Assets/Models/Characters/Warrior/Warrior.fbx" id="9_217pb"]
+[ext_resource type="PackedScene" uid="uid://br7ryokivf1q8" path="res://Assets/Models/Environ/Campfire01/sm_prop_campfire_dungeon_01.tscn" id="7_e1la7"]
+[ext_resource type="PackedScene" uid="uid://c1envt2fju164" path="res://Assets/Models/Environ/Flame01/Flames01.tscn" id="8_17217"]
+[ext_resource type="PackedScene" uid="uid://dr5el272qha45" path="res://Assets/Models/Environ/Gateway/mod_gateway_arc_01.tscn" id="9_lkw7j"]
+[ext_resource type="PackedScene" uid="uid://dcy2seu4ul48j" path="res://Assets/Models/Environ/Vortex/VortexBlue.tscn" id="10_217pb"]
 
 [node name="CityScene" type="Node3D" unique_id=2044755375]
 script = ExtResource("1_e1la7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=73184832]
-transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 5.658485, 7.2791786)
-light_energy = 1.883
+transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 14.286413, 7.2791786)
+light_energy = 0.228
+shadow_enabled = true
 
 [node name="Floor" type="Node3D" parent="." unique_id=2143285050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
@@ -416,11 +418,36 @@ transform = Transform3D(0.7198993, 0, 0.69407856, 0, 1, 0, -0.69407856, 0, 0.719
 [node name="PlayerSpawnPoint" parent="." unique_id=245595008 instance=ExtResource("4_vileb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8809977, 1.2739105, -10.51884)
 
-[node name="Mage" parent="." unique_id=2042702006 instance=ExtResource("7_lkw7j")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.5193863, 0, -7.9847035)
+[node name="SM_PROP_campfire_dungeon_01" parent="." unique_id=751629429 instance=ExtResource("7_e1la7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.765777, 0.03796941, -10.404093)
 
-[node name="Erika Archer" parent="." unique_id=165247548 instance=ExtResource("1_6y4pt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7546916, 0, -7.564197)
+[node name="Flames01" parent="SM_PROP_campfire_dungeon_01" unique_id=1299744500 instance=ExtResource("8_17217")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009486198, 0.222179, 0.07208109)
 
-[node name="Warrior" parent="." unique_id=863230425 instance=ExtResource("9_217pb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18972939, 0, -8.004711)
+[node name="OmniLight3D" type="OmniLight3D" parent="SM_PROP_campfire_dungeon_01/Flames01" unique_id=252688225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056423187, -0.08336675, -0.09065676)
+light_color = Color(0.61312777, 0.26290813, 9.62615e-08, 1)
+light_energy = 2.766
+light_indirect_energy = 3.538
+light_volumetric_fog_energy = 0.779
+light_size = 1.0
+light_specular = 1.383
+omni_range = 7.574
+omni_attenuation = -0.103
+
+[node name="MOD_Gateway_Arc_01" parent="." unique_id=610848581 instance=ExtResource("9_lkw7j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11.880289, 0, -17.916994)
+
+[node name="VortexBlue" parent="." unique_id=616637390 instance=ExtResource("10_217pb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.81615, 0.53146803, -17.35403)
+billboard = 0
+autoplay = "portal"
+frame = 9
+frame_progress = 0.20360267
+
+[node name="OmniLight3D" type="SpotLight3D" parent="." unique_id=2058592553]
+transform = Transform3D(-0.99875623, -0.018704623, 0.046221472, -0.011533977, 0.9884983, 0.15079261, -0.048510343, 0.15007193, -0.9874843, -7.918238, 1.9845521, -17.481054)
+light_color = Color(5.198121e-06, 0.72533065, 0.88730025, 1)
+spot_range = 7.857
+spot_attenuation = -1.48
+spot_angle = 90.0

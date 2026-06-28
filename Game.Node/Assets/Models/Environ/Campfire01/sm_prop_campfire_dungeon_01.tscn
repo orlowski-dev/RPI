@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://br7ryokivf1q8"]
+
+[ext_resource type="PackedScene" uid="uid://ba6uuyuixrinv" path="res://Assets/Models/Environ/Campfire01/SM_PROP_campfire_dungeon_01.fbx" id="1_utpne"]
+[ext_resource type="Texture2D" uid="uid://cvjudiilukc4u" path="res://Assets/Models/Environ/Campfire01/T_PROP_campfire_dungeon_BC.png" id="2_cl6xs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utpne"]
+albedo_texture = ExtResource("2_cl6xs")
+
+[node name="SM_PROP_campfire_dungeon_01" unique_id=751629429 instance=ExtResource("1_utpne")]
+
+[node name="SM_PROP_campfire_dungeon_01" parent="." index="0" unique_id=1360466488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0066900253, 0, 0.0016206503)
+surface_material_override/0 = SubResource("StandardMaterial3D_utpne")

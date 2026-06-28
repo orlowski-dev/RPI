@@ -488,7 +488,28 @@ horizontal_alignment = 1
 
 [node name="Tx_ClassPreview" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer" unique_id=961211452]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("17_t8rku")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer" unique_id=269261332]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/SubViewportContainer" unique_id=2102589046]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(286, 354)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=1832653473]
+transform = Transform3D(-1, 0, -8.742277e-08, -1.2512919e-08, 0.9897037, 0.1431311, 8.652265e-08, 0.1431311, -0.9897037, 0, 1.426998, 0.025158584)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=536364979]
+transform = Transform3D(-0.83089006, -0.3426306, -0.43843588, -0.46408528, 0.86143106, 0.20630422, 0.30699614, 0.37488776, -0.87476426, -5.618373, 1.398592, -2.1148806)
+shadow_enabled = true
+
+[node name="PlayerPreview" type="Node3D" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=2109265681]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)

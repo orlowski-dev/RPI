@@ -112,4 +112,6 @@ public class Player : Actor
     }
 
     public string TypePlural => PlayerDefinitions.Values[Type].TypePlural;
+
+    public string NodePath => PlayerDefinitions.Values[Type].NodePath;
 }

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ecvy08eq7drn"]
 
 [ext_resource type="PackedScene" uid="uid://t7b2ah44w0ng" path="res://Scenes/Player/player.tscn" id="1_1yntu"]
-[ext_resource type="SpriteFrames" uid="uid://ckr5xpnlqcx04" path="res://Scenes/Player/sprite_frames_mage.tres" id="2_2nm2n"]
+[ext_resource type="SpriteFrames" uid="uid://dnhw2x600jb1t" path="res://Scenes/Player/sprite_frames_warrior.tres" id="2_2nm2n"]
 
 [node name="Player" unique_id=1213466966 instance=ExtResource("1_1yntu")]
 

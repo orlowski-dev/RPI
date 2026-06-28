@@ -1,7 +1,7 @@
 using Godot;
 
 [Tool]
-public partial class EditorOnly : Node
+public partial class EditorOnly : Node2D
 {
     public override void _Ready()
     {

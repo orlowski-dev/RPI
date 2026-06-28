@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://tela2vlscotg"]
 
+[ext_resource type="Script" uid="uid://dy88b8c0xyn4v" path="res://Scenes/City/CitySceneScript.cs" id="1_006vu"]
 [ext_resource type="PackedScene" uid="uid://4lqeaddbc7tf" path="res://Scenes/City/CityView.tscn" id="1_6y4pt"]
 [ext_resource type="Texture2D" uid="uid://b1fij3jfdm56g" path="res://Assets/UI/Sprites/city.bg.png" id="2_ha726"]
 [ext_resource type="PackedScene" uid="uid://cq30a5fibg021" path="res://Assets/Sprites/Environ/FirePlace/fire_place.tscn" id="3_2hwqn"]
@@ -9,6 +10,7 @@
 points = PackedVector2Array(540, 437, 284, 397, 281, 223, 886, 543, 617, 905, 398, 1113, -556, 1125, -590, 320, 92, 214, 132, 411, -33, 605, -350, 839, -25, 939, 164, 1048, 632, 765)
 
 [node name="CityScene" type="Node2D" unique_id=210619333]
+script = ExtResource("1_006vu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2016884609]
 
@@ -31,4 +33,5 @@ position = Vector2(598, -182)
 shape = SubResource("ConvexPolygonShape2D_2hwqn")
 
 [node name="PlayerSpawnPoint" parent="." unique_id=432321752 instance=ExtResource("4_hgddq")]
+unique_name_in_owner = true
 position = Vector2(887, 402)

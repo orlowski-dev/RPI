@@ -8,6 +8,7 @@ public partial class DungeonScene : Node
     private DungeonPresenter _dungPresenter = null!;
     private Player _player => _gsProvider.Current!.Player;
     private Node3D _playerNode = null!;
+    private Dungeon? _dungeon => _gsProvider?.Current?.Dungeon;
 
     public override void _Ready()
     {
@@ -18,16 +19,28 @@ public partial class DungeonScene : Node
         _playerNode = new PlayerSpawner().GetNode(_player.NodePath);
 
         // create dung
-        var dung = _dungPresenter.OnViewReady().Dungeon;
-        GD.Print($"Entered dung: {dung.Id}");
+        _dungPresenter.OnViewReady();
 
         AddChild(_playerNode);
         AddChild(new FollowCameraSpawner().GetNode());
+
+        SpawnEncounters();
     }
 
     public override void _PhysicsProcess(double delta)
     {
         var old = _light.GlobalPosition;
         _light.Position = new Vector3(_playerNode.Position.X, old.Y, _playerNode.Position.Z);
+    }
+
+    private void SpawnEncounters()
+    {
+        if (_dungeon is null)
+            return;
+
+        foreach (var encounter in _dungeon.Encounters)
+        {
+            GD.Print(string.Join(',', encounter.Enemies));
+        }
     }
 }

@@ -3,13 +3,9 @@ public class GetStartCharactersUseCase
 {
     public Result<GetStartCharactersResponse> Execute(GetStartCharactersRequest req)
     {
+        var def = PlayerDefinitions.Values;
         return Result<GetStartCharactersResponse>.Success(
-            new(
-                ActorDefinitions: PlayerDefinitions.Values,
-                PreviewImages: PlayerDefinitions.PreviewImages,
-                TypeDescriptions: PlayerDefinitions.TypeDescripions,
-                TypePlurals: PlayerDefinitions.TypePlural
-            )
+            new GetStartCharactersResponse(PlayerDefinitions: def)
         );
     }
 }

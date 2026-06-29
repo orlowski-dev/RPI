@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b2kcbey6mkprf"]
+
+[ext_resource type="PackedScene" uid="uid://clnqrqvvptipp" path="res://Assets/Models/Environ/TableO1/sm_prop_table_dungeon_01.scn" id="1_ds55w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fy504"]
+size = Vector3(3.6921387, 1.5301514, 1.4901123)
+
+[node name="Table01" type="StaticBody3D" unique_id=1193513429]
+
+[node name="SM_PROP_table_dungeon_01" parent="." unique_id=1522451748 instance=ExtResource("1_ds55w")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=897369183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.446167, 0.26507568, 0.03363037)
+shape = SubResource("BoxShape3D_fy504")

@@ -56,9 +56,6 @@ omni_attenuation = -0.103
 [node name="Terrain_2" parent="." unique_id=1447633975 instance=ExtResource("9_217pb")]
 transform = Transform3D(-30, 0, -4.529874e-06, 0, 30, 0, 4.529874e-06, 0, -30, 3.368, 0.8838879, 9.452298)
 
-[node name="Terrain_3" parent="Terrain_2" unique_id=751774010 instance=ExtResource("9_217pb")]
-transform = Transform3D(-30, 0, -4.529874e-06, 0, 30, 0, 4.529874e-06, 0, -30, 3.368, 0.8838879, 9.452298)
-
 [node name="Tree_1" parent="." unique_id=523593491 instance=ExtResource("10_1k48n")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -16.594915, -0.76009727, -8.897965)
 

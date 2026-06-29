@@ -38,4 +38,11 @@ public static class Globals
 
         return session;
     }
+
+    public static GameSessionProvider TestGetGameSessionProvider()
+    {
+        var sp = new GameSessionProvider();
+        sp.Set(CreateGameSession());
+        return sp;
+    }
 }

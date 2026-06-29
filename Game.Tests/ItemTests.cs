@@ -241,7 +241,10 @@ public class ItemTests
         var name = "Player1";
         var type = PlayerType.Warrior;
         // tworzę sesje po kliknięciu w rozpocznij grę w kreatorze potaci
-        var newGameResponse = new StartNewGameUseCase()
+        var newGameResponse = new StartNewGameUseCase(
+            session: Globals.TestGetGameSessionProvider(),
+            factory: new GameSessionFactory()
+        )
             .Execute(new StartNewGameRequest(PlayerName: name, PlayerType: type))
             .Value;
         var player = newGameResponse.GameSession.Player;
@@ -276,7 +279,10 @@ public class ItemTests
     {
         var name = "Player1";
         var type = PlayerType.Warrior;
-        var newGameResponse = new StartNewGameUseCase()
+        var newGameResponse = new StartNewGameUseCase(
+            session: Globals.TestGetGameSessionProvider(),
+            factory: new GameSessionFactory()
+        )
             .Execute(new StartNewGameRequest(PlayerName: name, PlayerType: type))
             .Value;
         var player = newGameResponse.GameSession.Player;

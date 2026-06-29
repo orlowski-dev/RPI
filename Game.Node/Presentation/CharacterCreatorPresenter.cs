@@ -1,15 +1,15 @@
+using Microsoft.Extensions.DependencyInjection;
+
 public class CharacterCreatorPresenter
 {
     private readonly StartNewGameUseCase _startNewGame = null!;
     private readonly GetStartCharactersUseCase _getCharacters;
 
-    public CharacterCreatorPresenter(
-        StartNewGameUseCase startNewGame,
-        GetStartCharactersUseCase getCharacters
-    )
+    public CharacterCreatorPresenter()
     {
-        _startNewGame = startNewGame;
-        _getCharacters = getCharacters;
+        _startNewGame = ServiceProviderHolder.Provider.GetRequiredService<StartNewGameUseCase>();
+        _getCharacters =
+            ServiceProviderHolder.Provider.GetRequiredService<GetStartCharactersUseCase>();
     }
 
     public CharacterCreatorInitViewModel OnViewReady()

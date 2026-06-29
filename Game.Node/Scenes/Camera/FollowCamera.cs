@@ -23,7 +23,8 @@ public partial class FollowCamera : Camera3D
             return;
 
         Vector3 targetPosition = _target.GlobalPosition + Offset;
-        GlobalPosition = GlobalPosition.Lerp(targetPosition, SmoothSpeed * (float)delta);
+        // GlobalPosition = GlobalPosition.Lerp(targetPosition, SmoothSpeed * (float)delta); - wyłączony lerp bo gubi się między klatkami
+        GlobalPosition = _target.GlobalPosition + Offset;
         // GlobalRotation = CameraRotation;
     }
 }

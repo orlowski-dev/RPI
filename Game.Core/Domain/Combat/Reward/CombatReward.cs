@@ -5,8 +5,8 @@ public class CombatReward
 {
     public int Experience { get; }
     public int Gold { get; }
-    public int ExpBonus { get; } // do wyświetlenia na UI
-    public int GoldBonus { get; } // do wyświetlenia na UI
+    public int ExpBonus { get; } // do wyświetlenia na UI - dodatkowe bonusy
+    public int GoldBonus { get; } // do wyświetlenia na UI - dodatkowe bonusy
     public IReadOnlyList<string> ItemInstanceIds { get; }
 
     public CombatReward(

@@ -431,7 +431,6 @@ animations = [{
 }]
 
 [node name="VortexBlue" type="AnimatedSprite3D" unique_id=616637390]
-billboard = 1
 sprite_frames = SubResource("SpriteFrames_1dne4")
 animation = &"portal"
 frame_progress = 0.96871096

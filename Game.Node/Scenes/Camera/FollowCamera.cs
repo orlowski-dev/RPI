@@ -3,7 +3,7 @@ using Godot;
 public partial class FollowCamera : Camera3D
 {
     [Export]
-    public Vector3 Offset = new Vector3(0, 4, 8);
+    public Vector3 Offset = new Vector3(0, 3.6f, 4f);
 
     [Export]
     public float SmoothSpeed = 8f;
@@ -24,5 +24,6 @@ public partial class FollowCamera : Camera3D
 
         Vector3 targetPosition = _target.GlobalPosition + Offset;
         GlobalPosition = GlobalPosition.Lerp(targetPosition, SmoothSpeed * (float)delta);
+        // GlobalRotation = CameraRotation;
     }
 }

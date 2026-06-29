@@ -17,4 +17,26 @@ public class EnemyFactory
         var values = Enum.GetNames(typeof(EnemyType));
         return (EnemyType)_random.Next(0, values.Length);
     }
+
+    public Enemy CreateNonBossEnemy()
+    {
+        Enemy enemy;
+        do
+        {
+            enemy = Create();
+        } while (enemy.Rank == EnemyRank.Boss);
+
+        return enemy;
+    }
+
+    public Enemy CreateBossEnemy()
+    {
+        Enemy enemy;
+        do
+        {
+            enemy = Create();
+        } while (enemy.Rank != EnemyRank.Boss);
+
+        return enemy;
+    }
 }

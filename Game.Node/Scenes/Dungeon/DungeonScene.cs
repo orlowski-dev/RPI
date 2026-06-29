@@ -10,6 +10,8 @@ public partial class DungeonScene : Node
     private Node3D _playerNode = null!;
     private Dungeon? _dungeon => _gsProvider?.Current?.Dungeon;
 
+    private EditorOnly[] _enemySpawnPoints = new EditorOnly[5];
+
     public override void _Ready()
     {
         _gsProvider = ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
@@ -24,7 +26,10 @@ public partial class DungeonScene : Node
         AddChild(_playerNode);
         AddChild(new FollowCameraSpawner().GetNode());
 
+        GetEnemySpawnPoints();
         SpawnEncounters();
+
+        GD.Print(DebugExtension.Dump(_enemySpawnPoints[0].GetChildren().Count));
     }
 
     public override void _PhysicsProcess(double delta)
@@ -33,14 +38,33 @@ public partial class DungeonScene : Node
         _light.Position = new Vector3(_playerNode.Position.X, old.Y, _playerNode.Position.Z);
     }
 
+    private void GetEnemySpawnPoints()
+    {
+        for (var i = 0; i < 5; i++)
+        {
+            _enemySpawnPoints[i] = GetNode<EditorOnly>("EnemySpawn" + i);
+        }
+    }
+
     private void SpawnEncounters()
     {
         if (_dungeon is null)
             return;
 
-        foreach (var encounter in _dungeon.Encounters)
+        for (var i = 0; i < _dungeon.Encounters.Count; i++)
         {
-            GD.Print(string.Join(',', encounter.Enemies));
+            var current = _dungeon.Encounters[i];
+            foreach (var enemy in current.Enemies)
+            {
+                var enemyModel = GD.Load<PackedScene>(enemy.NodePath);
+                var model = enemyModel.Instantiate<Node3D>();
+                model.Position = new Vector3(
+                    _enemySpawnPoints[i].Position.X,
+                    0,
+                    _enemySpawnPoints[i].Position.Z
+                );
+                AddChild(model);
+            }
         }
     }
 }

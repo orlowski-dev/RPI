@@ -24,4 +24,6 @@ public class Enemy : Actor
         Rank = rank;
         Type = type;
     }
+
+    public string NodePath => EnemyDefinitions.Values[Type].NodePath;
 }

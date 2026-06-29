@@ -1,7 +1,7 @@
 public enum EnemyType
 {
-    Goblin,
-    Ork,
+    // Goblin,
+    // Ork,
     Jolleen,
     JolleenElite,
     JolleenChampion,

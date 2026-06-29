@@ -83,6 +83,7 @@ mouseWheelDown={
 [physics]
 
 common/physics_interpolation=true
+3d/physics_interpolation=true
 
 [rendering]
 

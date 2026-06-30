@@ -43,7 +43,8 @@ public partial class CharacterCreatorScene : Node
     private Dictionary<Pb, TextureProgressBar> _progressBars = new();
     private Dictionary<Tx, TextureRect> _textures = new();
     private LineEdit _playerName = null!;
-    private GameSession _session = null!;
+
+    // private GameSession _session = null!;
 
     private CharacterCreatorPresenter _presenter = null!;
     private PlayerType _selectedType;

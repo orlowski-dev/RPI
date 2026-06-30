@@ -6,7 +6,7 @@ public class Enemy : Actor
     public EnemyType Type { get; init; }
     public EnemySubType SubType { get; init; }
 
-    public new ActorStats Stats => GetStats();
+    public override ActorStats Stats => GetStats();
 
     public Enemy(
         string name,
@@ -28,5 +28,5 @@ public class Enemy : Actor
         SubType = subType;
     }
 
-    public string NodePath => EnemyDefinitions.Values[SubType].NodePath;
+    public override string NodePath => EnemyDefinitions.Values[SubType].NodePath;
 }

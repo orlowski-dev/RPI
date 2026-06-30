@@ -57,6 +57,7 @@ public partial class DungeonScene : Node
 			foreach (var enemy in current.Enemies)
 			{
 				var enemyNode = EnemySpawner.GetNode(enemy.NodePath);
+				enemyNode.Encounter = current;
 				GD.Print(DebugExtension.Dump(enemy));
 				var spp = _enemySpawnPoints[i].Position;
 				var offset = new Vector3(enemyIndex * 1.5f, 0, 0); // odstęp między wrogami

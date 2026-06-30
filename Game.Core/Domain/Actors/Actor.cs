@@ -6,7 +6,9 @@ public abstract class Actor
     private ActorStats _stats;
 
     public bool IsAlive => _stats.CurrentHp > 0;
-    public ActorStats Stats => _stats;
+
+    // public ActorStats Stats => _stats;
+    public virtual ActorStats Stats => _stats;
 
     protected Actor(string name, ActorStats stats, int? level = null, Guid? id = null)
     {
@@ -47,4 +49,6 @@ public abstract class Actor
         Level += 1;
         _stats = RecalculateStats();
     }
+
+    public virtual string NodePath => string.Empty;
 }

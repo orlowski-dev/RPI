@@ -8,6 +8,8 @@ public partial class EnemyScript : StaticBody3D
 	private Label3D _pressLabel = null!;
 	private IGameSessionProvider _gameSessionProvider = null!;
 	private Area3D _eventArea = null!;
+	private bool _canStartCombat = false;
+	public Encounter Encounter { get; set; } = null!; // ref żebym wiedział do którego encountera on należy
 
 	public string Label
 	{
@@ -27,11 +29,24 @@ public partial class EnemyScript : StaticBody3D
 		_eventArea.BodyExited += OnBodyExited;
 	}
 
+	public override void _PhysicsProcess(double delta)
+	{
+		if (Input.IsKeyPressed(keycode: Key.E) && _canStartCombat)
+		{
+			GD.Print("Entering combat arena..");
+			_gameSessionProvider.Current!.PendingEncounter = Encounter;
+			GetTree().CallDeferred("change_scene_to_file", ScenePaths.Arena);
+			_canStartCombat = false;
+			return;
+		}
+	}
+
 	private void OnBodyEntered(Node3D body)
 	{
 		if (body is PlayerController)
 		{
 			_pressLabel.Visible = true;
+			_canStartCombat = true;
 		}
 	}
 
@@ -40,6 +55,7 @@ public partial class EnemyScript : StaticBody3D
 		if (body is PlayerController)
 		{
 			_pressLabel.Visible = false;
+			_canStartCombat = false;
 		}
 	}
 }

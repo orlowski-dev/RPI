@@ -34,5 +34,7 @@ public static class DependencyInjection
         services.AddTransient<EnemyPresenter>();
         services.AddTransient<EnemyFactory>();
         services.AddTransient<EncounterFactory>();
+        services.AddTransient<ArenaPresenter>();
+        services.AddTransient<StartCombatUseCase>();
     }
 }

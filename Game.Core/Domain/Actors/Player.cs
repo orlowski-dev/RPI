@@ -7,7 +7,8 @@ public class Player : Actor
 
     private Inventory? _inventory;
 
-    public new ActorStats Stats => GetStats(_inventory);
+    // public new ActorStats Stats => GetStats(_inventory);
+    public override ActorStats Stats => GetStats(_inventory);
 
     public Player(
         string name,
@@ -113,5 +114,5 @@ public class Player : Actor
 
     public string TypePlural => PlayerDefinitions.Values[Type].TypePlural;
 
-    public string NodePath => PlayerDefinitions.Values[Type].NodePath;
+    public override string NodePath => PlayerDefinitions.Values[Type].NodePath;
 }

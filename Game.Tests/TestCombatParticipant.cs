@@ -18,7 +18,8 @@ public class TestCombatParticipant
             expReward: 1,
             stats: new(20, 5, 3, 2, 3),
             rank: EnemyRank.Normal,
-            type: EnemyType.Goblin
+            type: EnemyType.Jolleen,
+            subType: EnemySubType.Jolleen
         );
 
     public Enemy Enemy2 { get; } =
@@ -28,6 +29,7 @@ public class TestCombatParticipant
             expReward: 1,
             stats: new(10, 3, 1, 2, 3),
             rank: EnemyRank.Normal,
-            type: EnemyType.Ork
+            type: EnemyType.Maw,
+            subType: EnemySubType.Maw
         );
 }

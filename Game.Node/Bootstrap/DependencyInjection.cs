@@ -21,6 +21,7 @@ public static class DependencyInjection
     {
         services.AddSingleton<IGameSessionProvider, GameSessionProvider>();
         services.AddSingleton<GameSessionFactory>();
+        services.AddSingleton<Random>();
 
         services.AddTransient<MainMenuPresenter>();
         services.AddTransient<CharacterCreatorPresenter>();
@@ -30,5 +31,8 @@ public static class DependencyInjection
         services.AddTransient<PlayerControllerPresenter>();
         services.AddTransient<PortalPresenter>();
         services.AddTransient<DungeonPresenter>();
+        services.AddTransient<EnemyPresenter>();
+        services.AddTransient<EnemyFactory>();
+        services.AddTransient<EncounterFactory>();
     }
 }

@@ -1,21 +1,21 @@
 public class EnemyFactory
 {
-    private Random _random = new Random();
+    private static readonly Random _random = new Random();
 
     /// <summary>
     /// zwracam randomowego enemy z definicji
     /// </summary>
     public Enemy Create()
     {
-        var type = GetRandomType();
-        var def = EnemyDefinitions.Values[type].Enemy;
+        var subType = GetRandomSubType();
+        var def = EnemyDefinitions.Values[subType].Enemy;
         return def;
     }
 
-    private EnemyType GetRandomType()
+    private EnemySubType GetRandomSubType()
     {
-        var values = Enum.GetNames(typeof(EnemyType));
-        return (EnemyType)_random.Next(0, values.Length);
+        var values = Enum.GetNames(typeof(EnemySubType));
+        return (EnemySubType)_random.Next(0, values.Length);
     }
 
     public Enemy CreateNonBossEnemy()

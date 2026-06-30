@@ -12,7 +12,8 @@ public static class Globals
             expReward: 1,
             stats: new(20, 5, 3, 2, 3),
             rank: EnemyRank.Normal,
-            type: EnemyType.Jolleen
+            type: EnemyType.Jolleen,
+            subType: EnemySubType.Jolleen
         );
 
     public static Enemy Enemy2 =>
@@ -22,7 +23,8 @@ public static class Globals
             expReward: 1,
             stats: new(10, 3, 1, 2, 3),
             rank: EnemyRank.Normal,
-            type: EnemyType.Maw
+            type: EnemyType.Maw,
+            subType: EnemySubType.Maw
         );
 
     public static GameSession CreateGameSession()

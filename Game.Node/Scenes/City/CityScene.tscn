@@ -15,12 +15,11 @@ script = ExtResource("1_e1la7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=73184832]
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 14.286413, 7.2791786)
-light_color = Color(0.84512776, 0.95000166, 0.99999994, 1)
-light_energy = 0.5
+light_color = Color(0.112869285, 0.2851347, 0.2723934, 1)
+light_energy = 0.1
 light_bake_mode = 1
 shadow_enabled = true
-shadow_normal_bias = 0.355
-shadow_opacity = 0.23
+shadow_opacity = 0.05
 directional_shadow_mode = 0
 directional_shadow_fade_start = 0.0
 directional_shadow_max_distance = 50.0

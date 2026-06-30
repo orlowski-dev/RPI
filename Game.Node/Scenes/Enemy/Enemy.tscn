@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b4dr7l41fvqgb"]
+
+[ext_resource type="Script" uid="uid://di1q1gsgrhq0u" path="res://Scenes/Enemy/EnemyScript.cs" id="1_i1u57"]
+[ext_resource type="FontFile" uid="uid://kfw6ahlglmlx" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-Medium.ttf" id="2_e0oyi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fy504"]
+size = Vector3(0.795166, 1.77594, 0.6875)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6lmw"]
+size = Vector3(1.8232422, 2.046997, 2.5449219)
+
+[node name="Enemy" type="StaticBody3D" unique_id=2078758544]
+script = ExtResource("1_i1u57")
+
+[node name="Label" type="Label3D" parent="." unique_id=304568041]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5954208, 0)
+billboard = 1
+modulate = Color(0.84512776, 0.95000166, 0.99999994, 1)
+text = "Player name and Level"
+font = ExtResource("2_e0oyi")
+font_size = 26
+autowrap_mode = 2
+
+[node name="PressLabel" type="Label3D" parent="." unique_id=1838124781]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0207586, 0)
+visible = false
+billboard = 1
+modulate = Color(0.84512776, 0.95000166, 0.99999994, 1)
+text = "Wciśnij E, aby walczyć"
+font = ExtResource("2_e0oyi")
+font_size = 26
+autowrap_mode = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1425971894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8937073, 0)
+shape = SubResource("BoxShape3D_fy504")
+
+[node name="EventArea" type="Area3D" parent="." unique_id=1973712233]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EventArea" unique_id=1312304033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9902954, 0)
+shape = SubResource("BoxShape3D_e6lmw")

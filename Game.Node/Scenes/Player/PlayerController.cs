@@ -41,6 +41,8 @@ public partial class PlayerController : CharacterBody3D
     public float RotationSpeed { get; set; } = 10f;
 
     private AnimationPlayer _animationPlayer = null!;
+    private SpotLight3D _light = null!;
+    private Node3D _playerNode = null!;
 
     private string _currentAnimation = string.Empty;
     private Vector3 _facingDirection = Vector3.Forward;
@@ -52,7 +54,9 @@ public partial class PlayerController : CharacterBody3D
     public override void _Ready()
     {
         _gsProvider = ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
+        _playerNode = GetNode<Node3D>("Model");
         _animationPlayer = GetNode<AnimationPlayer>("Model/AnimationPlayer");
+        _light = GetNode<SpotLight3D>("Light");
         PlayAnimation(An.Idle);
     }
 
@@ -61,6 +65,7 @@ public partial class PlayerController : CharacterBody3D
         if (_currentAnimation == anim.ToString())
             return;
         _currentAnimation = anim.ToString();
+
         _animationPlayer.Play(_animLib[_player.Type] + "/" + _anims[_player.Type][anim]);
     }
 
@@ -84,6 +89,7 @@ public partial class PlayerController : CharacterBody3D
         Basis targetBasis = Basis.LookingAt(_facingDirection, Vector3.Up);
         Basis = Basis.Slerp(targetBasis, (float)(RotationSpeed * delta));
 
+        MoveLight();
         MoveAndSlide();
     }
 
@@ -99,5 +105,11 @@ public partial class PlayerController : CharacterBody3D
         if (Input.IsActionPressed("moveRight") || Input.IsKeyPressed(Key.D))
             dir.X += 1;
         return dir;
+    }
+
+    private void MoveLight()
+    {
+        var old = _light.GlobalPosition;
+        _light.Position = new Vector3(_playerNode.Position.X, old.Y, _playerNode.Position.Z);
     }
 }

@@ -1,6 +1,6 @@
 public class EncounterFactory
 {
-    private static Random _random = new Random();
+    private static readonly Random _random = new Random();
     private int _minEncounters = 1;
     private int _maxEncounter = 5;
     private int _encountersToGenerate;

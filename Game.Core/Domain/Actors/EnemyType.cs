@@ -1,20 +1,8 @@
 public enum EnemyType
 {
-    // Goblin,
-    // Ork,
     Jolleen,
-    JolleenElite,
-    JolleenChampion,
     Warrok,
-    WarrokElite,
-    WarrokChampion,
     SkeletonZombie,
-    SkeletonZombieElite,
-    SkeletonZombieChampion,
     Mutant,
-    MutantElite,
-    MutantChampion,
     Maw,
-    MawElite,
-    MawBoss,
 }

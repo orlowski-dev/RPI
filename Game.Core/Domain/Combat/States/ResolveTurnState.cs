@@ -2,7 +2,7 @@ public class ResolveTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.ResolveTurn;
 
-    public bool ReturnsControlToUi { get; } = true;
+    public bool ReturnsControlToUi { get; } = false;
 
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
     public void Enter(CombatContext ctx)

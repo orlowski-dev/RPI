@@ -1,3 +1,3 @@
 public record ArenaOnViewReadyVM(CombatSession CombatSession);
 
-public record ArenaOnAttackVM();
+public record ArenaOnAttackVM(ResolveCombatResponse TurnResponse);

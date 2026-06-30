@@ -3,11 +3,16 @@
 /// </sumary>
 public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatResponse>
 {
-    private IGameSessionProvider _gsProvider = null!;
+    private IGameSessionProvider _gsProvider;
+    private readonly CombatStateMachine _stateMachine;
 
-    public StartCombatUseCase(IGameSessionProvider gsProvider)
+    public StartCombatUseCase(
+        IGameSessionProvider gsProvider,
+        CombatStateMachine combatStateMachine
+    )
     {
         _gsProvider = gsProvider;
+        _stateMachine = combatStateMachine;
     }
 
     public Result<StartCombatResponse> Execute(StartCombatRequest request)
@@ -19,17 +24,8 @@ public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatRespon
             );
         }
 
-        var states = new List<ICombatState>()
-        {
-            new PlayerTurnState(),
-            new EnemyTurnState(),
-            new ResolveTurnState(),
-            new RewardState(),
-            new PlayerDeathState(),
-        };
-        var stateMachine = new CombatStateMachine(states);
         var session = new CombatSession([request.Player, .. request.Enemies]);
-        stateMachine.Start(session.Context);
+        _stateMachine.Start(session.Context);
 
         if (_gsProvider.Current is null)
         {
@@ -40,6 +36,6 @@ public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatRespon
 
         _gsProvider.Current.SetCombatSession(session);
 
-        return Result<StartCombatResponse>.Success(new(session, stateMachine));
+        return Result<StartCombatResponse>.Success(new(session, _stateMachine));
     }
 }

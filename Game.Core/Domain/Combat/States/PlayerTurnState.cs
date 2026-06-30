@@ -1,7 +1,7 @@
 public class PlayerTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.PlayerTurn;
-    public bool ReturnsControlToUi { get; } = false;
+    public bool ReturnsControlToUi { get; } = true;
 
     public void Enter(CombatContext ctx)
     {

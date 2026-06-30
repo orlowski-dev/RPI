@@ -25,6 +25,18 @@ public class CombatSession
     public bool HasSelectedAction => _selectedAction is not null;
     public bool RewardClaimed { get; private set; } = false;
 
+    public string StatePlural =>
+        State switch
+        {
+            CombatStateType.Start => "Start",
+            CombatStateType.PlayerTurn => "Tura gracza",
+            CombatStateType.EnemyTurn => "Tura przeciwnika",
+            CombatStateType.PlayerDeath => "Zgon gracza",
+            CombatStateType.ResolveTurn => "Przetwarzanie tury",
+            CombatStateType.Reward => "Podsumowanie z nagrodą",
+            _ => "Koniec",
+        };
+
     public Player Player =>
         _participants.OfType<Player>().FirstOrDefault()
         ?? throw new InvalidOperationException("Player in CombatSession not found!");
@@ -36,6 +48,17 @@ public class CombatSession
         _participants.OfType<Enemy>().Where(x => x is Enemy).ToList();
 
     public bool PlayerWon => IsFinished && Player.IsAlive;
+
+    public string GetInfo()
+    {
+        var temp = new List<string>();
+        temp.Add($"State: {StatePlural}");
+        temp.Add($"Participants: {DebugExtension.Dump(Participants)}");
+        temp.Add($"Active Participant: {ActiveParticipant.Name}");
+        temp.Add($"Next Participant: {NextParticipant?.Name}");
+        temp.Add($"Target: {Target?.Name}");
+        return string.Join('\n', temp);
+    }
 
     public CombatSession(IEnumerable<Actor> participants)
     {

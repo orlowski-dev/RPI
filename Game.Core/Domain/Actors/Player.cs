@@ -74,15 +74,14 @@ public class Player : Actor
         {
             return base.Stats;
         }
-
         var maxHp = base.Stats.MaxHp;
+        var currentHp = base.Stats.CurrentHp;
         var attack = base.Stats.Attack;
         var defense = base.Stats.Defense;
         var criticalChance = base.Stats.CriticalChance;
         var luck = base.Stats.Luck;
 
         Item? armor = inventory.Equipment.Armor;
-
         if (armor is not null)
         {
             maxHp += armor.BaseStats.MaxHp;
@@ -91,9 +90,7 @@ public class Player : Actor
             luck += armor.BaseStats.Luck;
             criticalChance += armor.BaseStats.CriticalChance;
         }
-
         Item? weapon = inventory.Equipment.Weapon;
-
         if (weapon is not null)
         {
             maxHp += weapon.BaseStats.MaxHp;
@@ -108,7 +105,8 @@ public class Player : Actor
             attack: attack,
             defense: defense,
             criticalChance: criticalChance,
-            luck: luck
+            luck: luck,
+            currentHp: currentHp
         );
     }
 

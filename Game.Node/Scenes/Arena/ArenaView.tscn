@@ -18,3 +18,9 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Atakuj"
+
+[node name="TurnLabel" type="Label" parent="." unique_id=11557013]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

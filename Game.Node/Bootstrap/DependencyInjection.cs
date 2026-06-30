@@ -22,6 +22,8 @@ public static class DependencyInjection
         services.AddSingleton<IGameSessionProvider, GameSessionProvider>();
         services.AddSingleton<GameSessionFactory>();
         services.AddSingleton<Random>();
+        services.AddSingleton<CombatStateMachine>();
+        services.AddSingleton<ArenaPresenter>();
 
         services.AddTransient<MainMenuPresenter>();
         services.AddTransient<CharacterCreatorPresenter>();
@@ -34,7 +36,12 @@ public static class DependencyInjection
         services.AddTransient<EnemyPresenter>();
         services.AddTransient<EnemyFactory>();
         services.AddTransient<EncounterFactory>();
-        services.AddTransient<ArenaPresenter>();
         services.AddTransient<StartCombatUseCase>();
+        services.AddTransient<ICombatState, PlayerTurnState>();
+        services.AddTransient<ICombatState, EnemyTurnState>();
+        services.AddTransient<ICombatState, ResolveTurnState>();
+        services.AddTransient<ICombatState, RewardState>();
+        services.AddTransient<ICombatState, PlayerDeathState>();
+        services.AddTransient<ResolveTurnUseCase>();
     }
 }

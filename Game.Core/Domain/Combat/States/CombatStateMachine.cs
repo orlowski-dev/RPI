@@ -15,6 +15,7 @@ public class CombatStateMachine
         Change(CombatStateType.PlayerTurn, ctx);
     }
 
+    // pełna sekwencja - zostaje dla testów, bez zmian
     public void Update(CombatContext context)
     {
         if (_currentState is null)
@@ -26,20 +27,42 @@ public class CombatStateMachine
         {
             var transition = _currentState.Update(context);
 
-            HandleTransition(transition, context);
-
-            //  nie było przejścia
             if (!transition.ShouldChange)
             {
                 return;
             }
 
-            // dla ui - jak true to zwraca dto do ui i ui musi dalej wywołać combat
+            HandleTransition(transition, context);
+
             if (_currentState.ReturnsControlToUi)
             {
                 return;
             }
         }
+    }
+
+    /// <summary>
+    /// Wykonuje pojedynczy krok maszyny stanów.
+    /// Zwraca true jeśli jest jeszcze coś do zrobienia automatycznie,
+    /// false jeśli oddano kontrolę do UI (np. czekamy na gracza).
+    /// </summary>
+    public bool Step(CombatContext context)
+    {
+        if (_currentState is null)
+        {
+            DebugExtension.Fatal(this, "Combat state is not initialized.");
+        }
+
+        var transition = _currentState.Update(context);
+
+        if (!transition.ShouldChange)
+        {
+            return false;
+        }
+
+        HandleTransition(transition, context);
+
+        return !_currentState.ReturnsControlToUi;
     }
 
     private void HandleTransition(CombatStateTransition transition, CombatContext context)
@@ -57,25 +80,11 @@ public class CombatStateMachine
         Change(transition.NextState.Value, context);
     }
 
-    // stary stan na nowy stano - co robić po wejsciu
     private void Change(CombatStateType next, CombatContext ctx)
     {
-        // opuszczam poprzedni stan
         _currentState?.Exit(ctx);
-        //pobiream nowy stan
         _currentState = _states[next];
-        // aktualizuje stan sesji
         ctx.Session.State = next;
-        // przygotowuje stan
         _currentState.Enter(ctx);
-
-        // wyłączone autowykonywanie
-        // if (!_currentState.IsAutomatic)
-        // {
-        //     return;
-        // }
-
-        // var transition = _currentState.Update(ctx);
-        // HandleTransition(transition, ctx);
     }
 }

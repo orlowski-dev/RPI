@@ -115,4 +115,6 @@ public class Player : Actor
     public string TypePlural => PlayerDefinitions.Values[Type].TypePlural;
 
     public override string NodePath => PlayerDefinitions.Values[Type].NodePath;
+
+    public override string DisplayName => $"{Name} (lvl: {Level})";
 }

@@ -58,12 +58,13 @@ public partial class DungeonScene : Node
 			{
 				var enemyNode = EnemySpawner.GetNode(enemy.NodePath);
 				enemyNode.Encounter = current;
-				GD.Print(DebugExtension.Dump(enemy));
+				enemyNode.Enemy = enemy;
 				var spp = _enemySpawnPoints[i].Position;
 				var offset = new Vector3(enemyIndex * 1.5f, 0, 0); // odstęp między wrogami
 				enemyNode.Position = new Vector3(spp.X + offset.X, 0, spp.Z + offset.Z);
+
 				AddChild(enemyNode);
-				enemyNode.Label = $"{enemy.Name}\n{new string('*', (int)enemy.Rank + 1)}";
+				enemyNode.Label = enemy.DisplayName;
 				enemyIndex++;
 			}
 		}

@@ -2,21 +2,32 @@
 
 [ext_resource type="Script" uid="uid://dc33syyymxshd" path="res://Scenes/Arena/ArenaScene.cs" id="1_lh3uc"]
 [ext_resource type="PackedScene" uid="uid://dvs7kuci3g5eg" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_floor_01_o_straight_med_v1.tscn" id="2_2fwkt"]
+[ext_resource type="PackedScene" uid="uid://bboes4t0gyldu" path="res://Scenes/Arena/ArenaView.tscn" id="2_csujq"]
 [ext_resource type="PackedScene" uid="uid://cu2fcn2pdr8jp" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_wall_01_m_corner_large.scn" id="3_ek0gv"]
 [ext_resource type="PackedScene" uid="uid://cpd27jkf0cxe0" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_wall_01_m_straight_large_v2.scn" id="4_fl7xt"]
-[ext_resource type="PackedScene" uid="uid://guef66lf8ejy" path="res://Assets/Models/Characters/Jolleen/jolleen.scn" id="6_csujq"]
 [ext_resource type="PackedScene" uid="uid://btabpkafmkn8j" path="res://Extensions/EditorOnly/editor_only.tscn" id="6_ner4r"]
 
 [node name="Arena" type="Node3D" unique_id=204982110]
 script = ExtResource("1_lh3uc")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=39775508]
+
+[node name="ArenaView" parent="CanvasLayer" unique_id=1251339973 instance=ExtResource("2_csujq")]
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1018684755]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 4, 3)
 
-[node name="TargetLight" type="SpotLight3D" parent="." unique_id=584819357]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2, 2, -2)
+[node name="CurrentParticipantLight" type="SpotLight3D" parent="." unique_id=584819357]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -8, 2, -2)
 light_color = Color(0.7316147, 0.87702423, 0.9999997, 1)
 light_energy = 4.0
+
+[node name="TargetLight" type="SpotLight3D" parent="." unique_id=1685038534]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2, 2, -2)
+light_color = Color(0.7978381, 0, 0.12954405, 1)
+light_energy = 6.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=693259982]
 transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, 5, 8)
@@ -164,6 +175,3 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 1
 
 [node name="EnemySpawn1" parent="." unique_id=969741989 instance=ExtResource("6_ner4r")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 1, -3)
-
-[node name="Jolleen" parent="." unique_id=795909780 instance=ExtResource("6_csujq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)

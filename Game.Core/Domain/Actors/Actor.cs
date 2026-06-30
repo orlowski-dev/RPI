@@ -51,4 +51,6 @@ public abstract class Actor
     }
 
     public virtual string NodePath => string.Empty;
+
+    public virtual string DisplayName => Name;
 }

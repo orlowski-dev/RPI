@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bboes4t0gyldu"]
+
+[ext_resource type="Script" uid="uid://bj3vpvgg6g38r" path="res://Scenes/Arena/ArenaViewScript.cs" id="1_j00sb"]
+
+[node name="ArenaView" type="Control" unique_id=1251339973]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_j00sb")
+
+[node name="AttackButton" type="Button" parent="." unique_id=1074248820]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Atakuj"

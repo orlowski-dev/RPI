@@ -29,4 +29,5 @@ public class Enemy : Actor
     }
 
     public override string NodePath => EnemyDefinitions.Values[SubType].NodePath;
+    public override string DisplayName => $"{Name}\n{new string('*', (int)Rank + 1)}";
 }

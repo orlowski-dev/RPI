@@ -38,6 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8937073, 0)
 shape = SubResource("BoxShape3D_fy504")
 
 [node name="EventArea" type="Area3D" parent="." unique_id=1973712233]
+unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EventArea" unique_id=1312304033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9902954, 0)

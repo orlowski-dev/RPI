@@ -10,6 +10,7 @@ public partial class EnemyScript : StaticBody3D
 	private Area3D _eventArea = null!;
 	private bool _canStartCombat = false;
 	public Encounter Encounter { get; set; } = null!; // ref żebym wiedział do którego encountera on należy
+	public Enemy? Enemy { get; set; } = null;
 
 	public string Label
 	{
@@ -23,7 +24,7 @@ public partial class EnemyScript : StaticBody3D
 			ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
 		_label = GetNode<Label3D>("%Label");
 		_pressLabel = GetNode<Label3D>("%PressLabel");
-		_eventArea = GetNode<Area3D>("EventArea");
+		_eventArea = GetNode<Area3D>("%EventArea");
 
 		_eventArea.BodyEntered += OnBodyEntered;
 		_eventArea.BodyExited += OnBodyExited;

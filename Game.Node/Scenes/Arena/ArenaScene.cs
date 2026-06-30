@@ -17,6 +17,7 @@ public partial class ArenaScene : Node3D
     private CombatSession Combat => _gameSessionProvider.Current!.CombatSession!;
     private SpotLight3D _targetLight = null!;
     private SpotLight3D _participantLight = null!;
+    private ArenaViewScript _arenaView = null!;
 
     private Dictionary<Sp, EditorOnly> _spawnPoints = new();
     private Dictionary<Actor, Sp> _actorsMap = new();
@@ -61,8 +62,8 @@ public partial class ArenaScene : Node3D
         MoveParticipantLight();
         MoveTargetLight();
 
-        var arenaView = GetNode<ArenaViewScript>("CanvasLayer/ArenaView");
-        arenaView.SetArenaScene(this);
+        _arenaView = GetNode<ArenaViewScript>("CanvasLayer/ArenaView");
+        _arenaView.Init(this);
     }
 
     public void StartCombatSteps()
@@ -82,11 +83,15 @@ public partial class ArenaScene : Node3D
 
             MoveParticipantLight();
             MoveTargetLight();
+            _arenaView.UpdateUI();
 
             if (!hasMore)
                 break;
 
-            await ToSignal(GetTree().CreateTimer(StepDelay), Godot.Timer.SignalName.Timeout);
+            if (Combat.ActiveParticipant is Enemy)
+            {
+                await ToSignal(GetTree().CreateTimer(StepDelay), Godot.Timer.SignalName.Timeout);
+            }
         }
 
         _isStepping = false;

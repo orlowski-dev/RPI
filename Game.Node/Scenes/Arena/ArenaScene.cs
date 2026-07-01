@@ -102,7 +102,26 @@ public partial class ArenaScene : Node3D
 
     private async Task PlayAnims()
     {
-        await ToSignal(GetTree().CreateTimer(1f), Godot.Timer.SignalName.Timeout);
+        var attacker = Combat.LastAttacker;
+        Combat.ClearLastAttack();
+
+        if (attacker is null)
+        {
+            await ToSignal(GetTree().CreateTimer(StepDelay), Godot.Timer.SignalName.Timeout);
+            return;
+        }
+
+        if (_modelsMap.TryGetValue(attacker, out var script))
+        {
+            if (script is EnemyScript enemyScript)
+            {
+                await enemyScript.PlayAttackAnim();
+            }
+            else if (script is PlayerController playerScript)
+            {
+                await playerScript.PlayAttackAnim();
+            }
+        }
     }
 
     private void SpawnModels()
@@ -121,6 +140,7 @@ public partial class ArenaScene : Node3D
                 if (script is null)
                     return;
 
+                script.Enemy = (Enemy)currentPart;
                 script.Label = currentPart.DisplayName;
             }
             else
@@ -148,7 +168,7 @@ public partial class ArenaScene : Node3D
 
     private void OnClickOnEnemy(Actor actor)
     {
-        if (Combat.ActiveParticipant is not Player || !actor.IsAlive)
+        if (Combat.ActiveParticipant is not Player || !actor.IsAlive || actor is Player)
             return;
         Combat.SetTarget(actor);
         MoveParticipantLight();

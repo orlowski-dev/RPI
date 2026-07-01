@@ -26,6 +26,8 @@ public class CombatSession
     public bool RewardClaimed { get; private set; } = false;
     private CombatActionResult? _lastActionResult;
     public CombatActionResult? LastActionResult { get; private set; }
+    public Actor? LastAttacker;
+    public Actor? LastTarget;
 
     public void SetLastActionResult(CombatActionResult result)
     {
@@ -128,6 +130,10 @@ public class CombatSession
             return Result<CombatActionResult>.Fail(new("No action selected", ErrorType.Validation));
         }
 
+        LastAttacker = ActiveParticipant;
+        LastTarget = Target;
+        ;
+
         // pobierz i wyczyść aktualną akcję
         var action = ConsumeAction();
 
@@ -204,5 +210,11 @@ public class CombatSession
         Player.AddExperience(reward.Experience);
         Player.AddGold(reward.Gold);
         RewardClaimed = true;
+    }
+
+    public void ClearLastAttack()
+    {
+        LastAttacker = null;
+        LastTarget = null;
     }
 }

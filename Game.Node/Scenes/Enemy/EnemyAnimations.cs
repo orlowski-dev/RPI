@@ -24,14 +24,26 @@ public class EnemyAnimations
                 [Anim.Idle] = "anim_mutant_idle",
                 [Anim.Atack] = "anim_jump_attack",
             },
-            [EnemyType.Jolleen] = new() { [Anim.Idle] = "anim_orc_idle" },
+            [EnemyType.Jolleen] = new()
+            {
+                [Anim.Idle] = "anim_orc_idle",
+                [Anim.Atack] = "anim_surprise_attack_uppercut",
+            },
             [EnemyType.Maw] = new()
             {
                 [Anim.Idle] = "anim_mutant_idle",
-                [Anim.Atack] = "anim_jump_attack",
+                [Anim.Atack] = "anim_standing_melee_attack_downward",
             },
-            [EnemyType.SkeletonZombie] = new() { [Anim.Idle] = "anim_zombie_idle" },
-            [EnemyType.Warrok] = new() { [Anim.Idle] = "anim_unarmed_idle" },
+            [EnemyType.SkeletonZombie] = new()
+            {
+                [Anim.Idle] = "anim_zombie_idle",
+                [Anim.Atack] = "standing_melee_attack_horizontal",
+            },
+            [EnemyType.Warrok] = new()
+            {
+                [Anim.Idle] = "anim_zombie_idle",
+                [Anim.Atack] = "standing_melee_attack_horizontal",
+            },
         };
 
     public string GetAnimation(EnemyType enemyType, Anim animation)

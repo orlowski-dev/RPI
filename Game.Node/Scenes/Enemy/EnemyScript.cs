@@ -30,8 +30,15 @@ public partial class EnemyScript : StaticBody3D
         _eventArea = GetNode<Area3D>("%EventArea");
         _animPlayer = GetNode<AnimationPlayer>("Model/AnimationPlayer");
 
+        if (_animPlayer is null)
+        {
+            throw new Exception("_animPlayer is null!");
+        }
+
         _eventArea.BodyEntered += OnBodyEntered;
         _eventArea.BodyExited += OnBodyExited;
+
+        GD.Print("Enemy script loaded.");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -66,7 +73,6 @@ public partial class EnemyScript : StaticBody3D
 
     public async Task PlayAttackAnim()
     {
-        await ToSignal(GetTree().CreateTimer(1f), Godot.Timer.SignalName.Timeout);
         _animPlayer.Play(_anims.GetAnimation(Enemy.Type, EnemyAnimations.Anim.Atack));
         await ToSignal(_animPlayer, AnimationPlayer.SignalName.AnimationFinished);
         _animPlayer.Play(_anims.GetAnimation(Enemy.Type, EnemyAnimations.Anim.Idle));

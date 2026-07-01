@@ -7,6 +7,7 @@ public class PlayerTurnState : ICombatState
     {
         ctx.Session.ClearTarget();
         ctx.Session.ClearSelectedAction();
+        ctx.Session.ClearLastAttack();
     }
 
     public CombatStateTransition Update(CombatContext ctx)

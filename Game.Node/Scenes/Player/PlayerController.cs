@@ -61,16 +61,11 @@ public partial class PlayerController : CharacterBody3D
         _playerNode = GetNode<Node3D>("Model");
         _animationPlayer = GetNode<AnimationPlayer>("Model/AnimationPlayer");
         _light = GetNode<SpotLight3D>("Light");
-        PlayAnimation(An.Idle);
     }
 
-    private void PlayAnimation(An anim)
+    private string GetAnimation(An anim)
     {
-        if (_currentAnimation == anim)
-            return;
-        _currentAnimation = anim;
-
-        _animationPlayer.Play(_animLib[_player.Type] + "/" + _anims[_player.Type][anim]);
+        return _animLib[_player.Type] + "/" + _anims[_player.Type][anim];
     }
 
     public override void _PhysicsProcess(double delta)
@@ -87,12 +82,12 @@ public partial class PlayerController : CharacterBody3D
             direction = direction.Normalized();
             Velocity = direction * Speed;
             _facingDirection = direction;
-            PlayAnimation(An.Running);
+            _animationPlayer.Play(GetAnimation(An.Running));
         }
         else
         {
             Velocity = Vector3.Zero;
-            PlayAnimation(An.Idle);
+            _animationPlayer.Play(GetAnimation(An.Idle));
         }
 
         Basis targetBasis = Basis.LookingAt(_facingDirection, Vector3.Up);
@@ -124,8 +119,8 @@ public partial class PlayerController : CharacterBody3D
 
     public async Task PlayAttackAnim()
     {
-        PlayAnimation(An.Attack);
+        _animationPlayer.Play(GetAnimation(An.Attack));
         await ToSignal(_animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
-        PlayAnimation(An.Idle);
+        _animationPlayer.Play(GetAnimation(An.Idle));
     }
 }

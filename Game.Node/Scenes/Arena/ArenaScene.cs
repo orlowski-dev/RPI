@@ -215,11 +215,13 @@ public partial class ArenaScene : Node3D
         _targetLight.Position = new Vector3(targSlotPos.X, _targetLight.Position.Y, targSlotPos.Z);
     }
 
-    private void CheckIfCombatIsFinished()
+    private async void CheckIfCombatIsFinished()
     {
         if (!Combat.IsFinished)
             return;
 
         GD.Print("Combat finished");
+        await ToSignal(GetTree().CreateTimer(1f), Godot.Timer.SignalName.Timeout);
+        var vm = _arenaPresenter.OnCombatFinished();
     }
 }

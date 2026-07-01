@@ -4,18 +4,21 @@ public class ArenaPresenter
     private readonly IGameSessionProvider _gsProvider;
     private readonly ResolveTurnUseCase _resolveTurnUseCase;
     private readonly CombatStateMachine _stateMachine;
+    private readonly FinishCombatUseCase _finishCombatUseCase;
 
     public ArenaPresenter(
         StartCombatUseCase scUseCase,
         IGameSessionProvider gsProvider,
         ResolveTurnUseCase resolveTurnUseCase,
-        CombatStateMachine stateMachine
+        CombatStateMachine stateMachine,
+        FinishCombatUseCase finishCombatUseCase
     )
     {
         _scUseCase = scUseCase;
         _gsProvider = gsProvider;
         _resolveTurnUseCase = resolveTurnUseCase;
         _stateMachine = stateMachine;
+        _finishCombatUseCase = finishCombatUseCase;
     }
 
     private CombatSession Session =>
@@ -66,5 +69,16 @@ public class ArenaPresenter
     {
         var ctx = Session.Context;
         return _stateMachine.Step(ctx);
+    }
+
+    public ArenaOnCombatFinishedVM OnCombatFinished()
+    {
+        var res = _finishCombatUseCase.Execute(new FinishCombatRequest());
+        if (res.IsFailure)
+        {
+            DebugExtension.Fatal(this, "Cannot get finish combat usecase response!");
+        }
+
+        return new(res.Value.Reward);
     }
 }

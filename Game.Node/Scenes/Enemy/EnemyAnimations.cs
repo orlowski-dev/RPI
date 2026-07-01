@@ -30,7 +30,7 @@ public class EnemyAnimations
             {
                 [Anim.Idle] = "orc_idle",
                 [Anim.Atack] = "ork_punching",
-                [Anim.Death] = "orc_dying_backwards",
+                [Anim.Death] = "ork_dying_backwards",
             },
             [EnemyType.Maw] = new()
             {

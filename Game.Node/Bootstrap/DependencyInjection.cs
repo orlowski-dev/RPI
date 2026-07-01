@@ -43,5 +43,7 @@ public static class DependencyInjection
         services.AddTransient<ICombatState, RewardState>();
         services.AddTransient<ICombatState, PlayerDeathState>();
         services.AddTransient<ResolveTurnUseCase>();
+        services.AddTransient<FinishCombatUseCase>();
+        services.AddTransient<RewardView>();
     }
 }

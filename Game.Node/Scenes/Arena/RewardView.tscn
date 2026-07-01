@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bqnpn6yo43k6b"]
+
+[ext_resource type="Texture2D" uid="uid://4fbowbjxvh8j" path="res://Assets/UI/Sprites/reward_bg.png" id="1_axd30"]
+[ext_resource type="Script" uid="uid://pq81k1wmt27x" path="res://Scenes/Arena/RewardView.cs" id="1_dbsjs"]
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="2_dbsjs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fy504"]
+texture = ExtResource("1_axd30")
+
+[node name="RewardView" type="Control" unique_id=127705978]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dbsjs")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1856422664]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1983825239]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Panel" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=1177832301]
+custom_minimum_size = Vector2(800, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fy504")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/Panel" unique_id=1022023400]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 46
+theme_override_constants/margin_top = 74
+theme_override_constants/margin_right = 46
+theme_override_constants/margin_bottom = 46
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Panel/MarginContainer" unique_id=1221863604]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1724137197]
+layout_mode = 2
+theme = ExtResource("2_dbsjs")
+theme_override_font_sizes/font_size = 24
+text = "Nagrody za walkę"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1701100577]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 24
+columns = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=442150732]
+layout_mode = 2
+theme = ExtResource("2_dbsjs")
+text = "Doświadczenie:"
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=1589633791]
+layout_mode = 2
+theme = ExtResource("2_dbsjs")
+text = "200"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=52465319]
+layout_mode = 2
+theme = ExtResource("2_dbsjs")
+text = "Złoto:"
+
+[node name="Label4" type="Label" parent="CenterContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=398427244]
+layout_mode = 2
+theme = ExtResource("2_dbsjs")
+text = "200"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="CenterContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=1687574546]
+layout_mode = 2
+theme = ExtResource("2_dbsjs")
+text = "Przedmioty:"
+
+[node name="Label6" type="Label" parent="CenterContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=17374779]
+layout_mode = 2
+theme = ExtResource("2_dbsjs")
+text = "200"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1891835920]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_dbsjs")
+text = "OK"

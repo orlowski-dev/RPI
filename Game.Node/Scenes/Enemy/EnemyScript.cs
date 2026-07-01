@@ -1,7 +1,7 @@
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 
-public partial class EnemyScript : StaticBody3D
+public partial class EnemyScript : StaticBody3D, ICharacterAnimationController
 {
     private Node3D _model = null!;
     private Label3D _label = null!;
@@ -71,10 +71,15 @@ public partial class EnemyScript : StaticBody3D
         }
     }
 
-    public async Task PlayAttackAnim()
+    public async Task PlayAttackAnimation()
     {
         _animPlayer.Play(_anims.GetAnimation(Enemy.Type, EnemyAnimations.Anim.Atack));
         await ToSignal(_animPlayer, AnimationPlayer.SignalName.AnimationFinished);
         _animPlayer.Play(_anims.GetAnimation(Enemy.Type, EnemyAnimations.Anim.Idle));
+    }
+
+    public async Task PlayDeathAnimation()
+    {
+        _animPlayer.Play(_anims.GetAnimation(Enemy.Type, EnemyAnimations.Anim.Death));
     }
 }

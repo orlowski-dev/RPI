@@ -14,18 +14,6 @@
 [node name="CityScene" type="Node3D" unique_id=2044755375]
 script = ExtResource("1_e1la7")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=73184832]
-transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 14.286413, 7.2791786)
-light_color = Color(0.112869285, 0.2851347, 0.2723934, 1)
-light_energy = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-shadow_opacity = 0.05
-directional_shadow_mode = 0
-directional_shadow_fade_start = 0.0
-directional_shadow_max_distance = 50.0
-directional_shadow_pancake_size = 10.0
-
 [node name="Seller" parent="." unique_id=159561386 instance=ExtResource("5_vileb")]
 transform = Transform3D(0.56568545, 0, 0.56568545, 0, 0.8, 0, -0.56568545, 0, 0.56568545, -15, -0.6807104, -8)
 

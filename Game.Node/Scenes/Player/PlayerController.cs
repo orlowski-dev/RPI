@@ -1,38 +1,44 @@
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 
-public partial class PlayerController : CharacterBody3D
+public partial class PlayerController : CharacterBody3D, ICharacterAnimationController
 {
     private enum An
     {
         Idle,
         Running,
         Attack,
+        Death,
     }
 
     private Dictionary<PlayerType, string> _animLib = new()
     {
-        [PlayerType.Warrior] = "warrior_animlib",
-        [PlayerType.Archer] = "archer_animlib",
-        [PlayerType.Mage] = "mage_animlib",
+        [PlayerType.Warrior] = "mixamo",
+        [PlayerType.Archer] = "mixamo",
+        [PlayerType.Mage] = "mixamo",
     };
     private Dictionary<PlayerType, Dictionary<An, string>> _anims = new()
     {
         [PlayerType.Warrior] = new()
         {
-            [An.Idle] = "anim_unarmed_idle_01",
-            [An.Running] = "anim_running",
+            [An.Idle] = "sword_and_shield_idle",
+            [An.Running] = "sword_and_shield_run",
+            [An.Attack] = "sword_and_shield_attack",
+            [An.Death] = "sword_and_shield_death",
         },
         [PlayerType.Archer] = new()
         {
-            [An.Idle] = "anim_unarmed_idle_01",
-            [An.Running] = "anim_running",
-            [An.Attack] = "standing_draw_arrow",
+            [An.Attack] = "archer_standing_aim_recoil",
+            [An.Idle] = "archer_standing_idle",
+            [An.Running] = "archer_standing_run_forward",
+            [An.Death] = "archer_standing_react_death_left",
         },
         [PlayerType.Mage] = new()
         {
-            [An.Idle] = "anim_unarmed_idle_01",
-            [An.Running] = "anim_running",
+            [An.Idle] = "mage_standing_idle_03",
+            [An.Running] = "mage_standing_run_forward",
+            [An.Attack] = "mage_standing_1h_magic_attack_01",
+            [An.Death] = "mage_standing_react_death_left",
         },
     };
 
@@ -117,10 +123,16 @@ public partial class PlayerController : CharacterBody3D
         _light.Position = new Vector3(_playerNode.Position.X, old.Y, _playerNode.Position.Z);
     }
 
-    public async Task PlayAttackAnim()
+    public async Task PlayAttackAnimation()
     {
         _animationPlayer.Play(GetAnimation(An.Attack));
         await ToSignal(_animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
         _animationPlayer.Play(GetAnimation(An.Idle));
+    }
+
+    public async Task PlayDeathAnimation()
+    {
+        _animationPlayer.Play(GetAnimation(An.Death));
+        await ToSignal(_animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
     }
 }

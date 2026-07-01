@@ -96,13 +96,28 @@ public partial class ArenaScene : Node3D
             _arenaView.UpdateUI();
             _arenaView.HidePlayerAction();
         }
-
         _isStepping = false;
+        // sprawdz czy ktoś wziął i umarł
+        foreach (var (actor, node) in _modelsMap)
+        {
+            GD.Print($"{actor.Name} is alive: {actor.IsAlive}");
+            if (!actor.IsAlive)
+            {
+                if (node is EnemyScript || node is PlayerController)
+                {
+                    var s = (node as ICharacterAnimationController)!;
+                    await s.PlayDeathAnimation();
+                }
+            }
+        }
+
+        CheckIfCombatIsFinished();
     }
 
     private async Task PlayAnims()
     {
         var attacker = Combat.LastAttacker;
+
         Combat.ClearLastAttack();
 
         if (attacker is null)
@@ -113,13 +128,13 @@ public partial class ArenaScene : Node3D
 
         if (_modelsMap.TryGetValue(attacker, out var script))
         {
-            if (script is EnemyScript enemyScript)
+            if (script is EnemyScript || script is PlayerController)
             {
-                await enemyScript.PlayAttackAnim();
-            }
-            else if (script is PlayerController playerScript)
-            {
-                await playerScript.PlayAttackAnim();
+                var s = (script as ICharacterAnimationController)!;
+                if (Combat?.LastActionResult?.Type == ActionType.Attack)
+                {
+                    await s.PlayAttackAnimation();
+                }
             }
         }
     }
@@ -198,5 +213,13 @@ public partial class ArenaScene : Node3D
         var targActor = _actorsMap[Combat.Target];
         var targSlotPos = _spawnPoints[targActor].Position;
         _targetLight.Position = new Vector3(targSlotPos.X, _targetLight.Position.Y, targSlotPos.Z);
+    }
+
+    private void CheckIfCombatIsFinished()
+    {
+        if (!Combat.IsFinished)
+            return;
+
+        GD.Print("Combat finished");
     }
 }

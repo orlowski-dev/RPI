@@ -132,13 +132,14 @@ public class CombatSession
 
         LastAttacker = ActiveParticipant;
         LastTarget = Target;
-        ;
 
         // pobierz i wyczyść aktualną akcję
         var action = ConsumeAction();
 
         // delegacja wykonania do konkretnej akcji
-        return action.Execute(this);
+        var result = action.Execute(this);
+
+        return result;
     }
 
     /// <summary>

@@ -130,6 +130,7 @@ public partial class ArenaViewScript : Control
             return;
         }
 
+        GD.Print("Player attack button clicked.");
         HidePlayerAction();
         _arenaPresenter.OnPlayerAttackAction();
         _arenaScene?.StartCombatSteps();

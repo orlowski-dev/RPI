@@ -19,7 +19,8 @@ public class ResolveTurnUseCase : IUseCase<ResolveTurnRequest, ResolveCombatResp
             State: req.Session.State,
             CombatFinished: req.Session.IsFinished,
             ActorId: actorId.ToString(),
-            NextActorId: nextActorId.ToString()
+            NextActorId: nextActorId.ToString(),
+            ActionResult: req.Session.LastActionResult
         );
 
         return Result<ResolveCombatResponse>.Success(response);

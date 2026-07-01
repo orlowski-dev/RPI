@@ -47,4 +47,13 @@ public static class Globals
         sp.Set(CreateGameSession());
         return sp;
     }
+
+    public static CombatStateMachine TestStateMachine =>
+        new CombatStateMachine([
+            new ResolveTurnState(),
+            new RewardState(),
+            new PlayerTurnState(),
+            new PlayerDeathState(),
+            new EnemyTurnState(),
+        ]);
 }

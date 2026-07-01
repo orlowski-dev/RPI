@@ -24,6 +24,23 @@ public class CombatSession
     public CombatReward? Reward { get; private set; }
     public bool HasSelectedAction => _selectedAction is not null;
     public bool RewardClaimed { get; private set; } = false;
+    private CombatActionResult? _lastActionResult;
+    public CombatActionResult? LastActionResult { get; private set; }
+
+    public void SetLastActionResult(CombatActionResult result)
+    {
+        _lastActionResult = result;
+        LastActionResult = result;
+    }
+
+    public CombatActionResult? ConsumeLastActionResult()
+    {
+        if (LastActionResult is null)
+            return null;
+
+        LastActionResult = null;
+        return _lastActionResult;
+    }
 
     public string StatePlural =>
         State switch
@@ -103,12 +120,12 @@ public class CombatSession
     /// <returns>
     /// Result określający sukces lub błąd wykonania.
     /// </returns>
-    public Result ExecuteSelectedAction()
+    public Result<CombatActionResult> ExecuteSelectedAction()
     {
         // akcja musi być wybrana
         if (!HasSelectedAction)
         {
-            return Result.Fail(new("No action selected", ErrorType.Validation));
+            return Result<CombatActionResult>.Fail(new("No action selected", ErrorType.Validation));
         }
 
         // pobierz i wyczyść aktualną akcję

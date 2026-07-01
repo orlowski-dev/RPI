@@ -13,7 +13,7 @@ public partial class ArenaScene : Node3D
 
     private IGameSessionProvider _gameSessionProvider = null!;
     private ArenaPresenter _arenaPresenter = null!;
-    private Player Player => _gameSessionProvider.Current!.Player;
+    private Player _Player => _gameSessionProvider.Current!.Player;
     private CombatSession Combat => _gameSessionProvider.Current!.CombatSession!;
     private SpotLight3D _targetLight = null!;
     private SpotLight3D _participantLight = null!;
@@ -21,6 +21,7 @@ public partial class ArenaScene : Node3D
 
     private Dictionary<Sp, EditorOnly> _spawnPoints = new();
     private Dictionary<Actor, Sp> _actorsMap = new();
+    private Dictionary<Actor, Node3D> _modelsMap = new();
 
     private bool _isStepping = false;
 
@@ -39,7 +40,7 @@ public partial class ArenaScene : Node3D
             return;
         }
 
-        var session = _arenaPresenter.OnViewReady(Player);
+        var session = _arenaPresenter.OnViewReady(_Player);
 
         if (_gameSessionProvider.Current.CombatSession is null)
         {
@@ -75,26 +76,33 @@ public partial class ArenaScene : Node3D
         _ = RunCombatSteps();
     }
 
-    private async System.Threading.Tasks.Task RunCombatSteps()
+    private async Task RunCombatSteps()
     {
         while (true)
         {
             var hasMore = _arenaPresenter.StepCombat();
 
+            if (!hasMore)
+            {
+                _arenaView.UpdateUI();
+                MoveParticipantLight();
+                MoveTargetLight();
+                break;
+            }
+
+            await PlayAnims();
             MoveParticipantLight();
             MoveTargetLight();
             _arenaView.UpdateUI();
-
-            if (!hasMore)
-                break;
-
-            if (Combat.ActiveParticipant is Enemy)
-            {
-                await ToSignal(GetTree().CreateTimer(StepDelay), Godot.Timer.SignalName.Timeout);
-            }
+            _arenaView.HidePlayerAction();
         }
 
         _isStepping = false;
+    }
+
+    private async Task PlayAnims()
+    {
+        await ToSignal(GetTree().CreateTimer(1f), Godot.Timer.SignalName.Timeout);
     }
 
     private void SpawnModels()
@@ -102,21 +110,46 @@ public partial class ArenaScene : Node3D
         for (var i = 0; i < Combat.Participants.Count; i++)
         {
             var currentPart = Combat.Participants[i];
-            var model = GD.Load<PackedScene>(currentPart.NodePath).Instantiate<Node3D>();
+            // var model = GD.Load<PackedScene>(currentPart.NodePath).Instantiate<Node3D>();
+            Node3D model;
+
+            if (currentPart is Enemy)
+            {
+                model = EnemySpawner.GetNode(currentPart.NodePath);
+                AddChild(model);
+                var script = (model as EnemyScript);
+                if (script is null)
+                    return;
+
+                script.Label = currentPart.DisplayName;
+            }
+            else
+            {
+                model = new PlayerSpawner().GetNode(currentPart.NodePath);
+                AddChild(model);
+                var script = (model as PlayerController);
+                if (script is null)
+                    return;
+                script.ControlEnabled = false;
+            }
             var currentSpawn = _spawnPoints[(Sp)i];
 
             model.Position = new Vector3(currentSpawn.Position.X, 0, currentSpawn.Position.Z);
             _actorsMap[currentPart] = (Sp)i;
             model.RotateY(currentSpawn.Rotation.Y);
 
+            _modelsMap[currentPart] = model;
+
             currentSpawn.OnClicked += () => OnClickOnEnemy(currentPart);
 
-            AddChild(model);
+            model.Name = "Model";
         }
     }
 
     private void OnClickOnEnemy(Actor actor)
     {
+        if (Combat.ActiveParticipant is not Player || !actor.IsAlive)
+            return;
         Combat.SetTarget(actor);
         MoveParticipantLight();
         MoveTargetLight();

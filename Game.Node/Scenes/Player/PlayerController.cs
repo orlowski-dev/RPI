@@ -7,6 +7,7 @@ public partial class PlayerController : CharacterBody3D
     {
         Idle,
         Running,
+        Attack,
     }
 
     private Dictionary<PlayerType, string> _animLib = new()
@@ -26,6 +27,7 @@ public partial class PlayerController : CharacterBody3D
         {
             [An.Idle] = "anim_unarmed_idle_01",
             [An.Running] = "anim_running",
+            [An.Attack] = "standing_draw_arrow",
         },
         [PlayerType.Mage] = new()
         {
@@ -33,6 +35,8 @@ public partial class PlayerController : CharacterBody3D
             [An.Running] = "anim_running",
         },
     };
+
+    public bool ControlEnabled { get; set; } = true;
 
     [Export]
     public float Speed { get; set; } = 5f;
@@ -44,7 +48,7 @@ public partial class PlayerController : CharacterBody3D
     private SpotLight3D _light = null!;
     private Node3D _playerNode = null!;
 
-    private string _currentAnimation = string.Empty;
+    private An? _currentAnimation = null;
     private Vector3 _facingDirection = Vector3.Forward;
 
     private IGameSessionProvider _gsProvider = null!;
@@ -62,15 +66,20 @@ public partial class PlayerController : CharacterBody3D
 
     private void PlayAnimation(An anim)
     {
-        if (_currentAnimation == anim.ToString())
+        if (_currentAnimation == anim)
             return;
-        _currentAnimation = anim.ToString();
+        _currentAnimation = anim;
 
         _animationPlayer.Play(_animLib[_player.Type] + "/" + _anims[_player.Type][anim]);
     }
 
     public override void _PhysicsProcess(double delta)
     {
+        if (!ControlEnabled)
+        {
+            return;
+        }
+
         Vector3 direction = GetInputDirection();
 
         if (direction != Vector3.Zero)
@@ -111,5 +120,12 @@ public partial class PlayerController : CharacterBody3D
     {
         var old = _light.GlobalPosition;
         _light.Position = new Vector3(_playerNode.Position.X, old.Y, _playerNode.Position.Z);
+    }
+
+    public async Task PlayAttackAnim()
+    {
+        PlayAnimation(An.Attack);
+        await ToSignal(_animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
+        PlayAnimation(An.Idle);
     }
 }

@@ -10,7 +10,13 @@ public class ResolveTurnState : ICombatState
         // wykonanie ruchu
         if (ctx.Session.HasSelectedAction)
         {
-            ctx.Session.ExecuteSelectedAction();
+            var res = ctx.Session.ExecuteSelectedAction();
+            if (res.IsFailure)
+            {
+                DebugExtension.Fatal(this, "Cannot get action result response");
+                return;
+            }
+            ctx.Session.SetLastActionResult(res.Value);
         }
 
         ctx.Session.UpdateStatus();

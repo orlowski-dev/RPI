@@ -6,5 +6,5 @@ public abstract class CombatAction
     /// <summary>
     /// Wykonuje logikę akcji dla podanej sesji walki.
     /// </summary>
-    public abstract Result Execute(CombatSession session);
+    public abstract Result<CombatActionResult> Execute(CombatSession session);
 }

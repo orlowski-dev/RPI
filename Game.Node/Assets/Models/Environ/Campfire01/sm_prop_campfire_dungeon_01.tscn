@@ -8,6 +8,6 @@ albedo_texture = ExtResource("2_cl6xs")
 
 [node name="SM_PROP_campfire_dungeon_01" unique_id=751629429 instance=ExtResource("1_utpne")]
 
-[node name="SM_PROP_campfire_dungeon_01" parent="." index="0" unique_id=1360466488]
+[node name="SM_PROP_campfire_dungeon_01" parent="." index="0" unique_id=1585808965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0066900253, 0, 0.0016206503)
 surface_material_override/0 = SubResource("StandardMaterial3D_utpne")

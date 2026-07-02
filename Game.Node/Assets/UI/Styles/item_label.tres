@@ -31,7 +31,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [resource]
-Button/font_sizes/font_size = 18
+Button/font_sizes/font_size = 14
 Button/fonts/font = ExtResource("1_qhdvb")
 Button/styles/hover = SubResource("StyleBoxFlat_qhdvb")
 Button/styles/normal = SubResource("StyleBoxFlat_g4bb2")

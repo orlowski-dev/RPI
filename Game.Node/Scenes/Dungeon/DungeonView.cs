@@ -67,6 +67,29 @@ public partial class DungeonView : Control
         GetTree().CurrentScene.AddChild(_inventoryView);
     }
 
+    private void UpdateUI()
+    {
+        if (_Player is null)
+        {
+            DebugExtension.Fatal(this, "Player is null!");
+        }
+
+        if (_Dungeon is null)
+        {
+            DebugExtension.Fatal(this, "Dungeon is null!");
+        }
+
+        _labels[Labels.Hp].Text = $"{_Player.Stats.CurrentHp} / {_Player.Stats.MaxHp}";
+        _labels[Labels.PlayerName].Text = _Player.DisplayName;
+        _labels[Labels.EncounterCount].Text =
+            $"Ukończone bitwy: {_Dungeon.FinishedEncounters} / {_Dungeon.Encounters.Count}";
+        _bars[Bars.Hp].MaxValue = _Player.Stats.MaxHp;
+        _bars[Bars.Hp].Value = _Player.Stats.CurrentHp;
+
+        _bars[Bars.Exp].MaxValue = _Player.ExpNextLevel;
+        _bars[Bars.Exp].Value = _Player.Exp;
+    }
+
     private void OnBackpackClick()
     {
         Visible = false;
@@ -77,5 +100,6 @@ public partial class DungeonView : Control
     {
         _inventoryView.SetInvisible();
         Visible = true;
+        UpdateUI();
     }
 }

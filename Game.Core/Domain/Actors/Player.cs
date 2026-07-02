@@ -115,4 +115,14 @@ public class Player : Actor
     public override string NodePath => PlayerDefinitions.Values[Type].NodePath;
 
     public override string DisplayName => $"{Name} (lvl: {Level})";
+
+    public override string Info =>
+        base.Info
+        + $"Exp: {Exp}/{ExpNextLevel}\n"
+        + $"HP: {Stats.CurrentHp}/{Stats.MaxHp}\n"
+        + $"Gold: {Gold}\n"
+        + $"Atak: {Stats.Attack}\n"
+        + $"Obrona: {Stats.Defense}\n"
+        + $"Szansa na\ntrafienie krytyczne: {Stats.Defense}%\n"
+        + $"Szczęście: {Stats.Luck}%\n";
 }

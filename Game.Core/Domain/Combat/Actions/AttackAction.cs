@@ -11,13 +11,17 @@ public class AttackAction : CombatAction
             return Result<CombatActionResult>.Fail(new("Target is not set!", ErrorType.Validation));
         }
 
-        var damage = session.ActiveParticipant.Stats.Attack;
-        session.Target.ReceiveDamage(damage);
         var target = session.Target;
         var attacker = session.ActiveParticipant;
+        var crit = attacker.RollCrit();
+        var damage = session.Target.ReceiveDamage(attacker.Stats.Attack, crit);
 
-        var msg =
-            $"{attacker.Name} zaatakował {target.Name} i zadał {damage} damage ({target.Stats.CurrentHp}/{target.Stats.MaxHp}hp).";
+        var msg = $"{attacker.Name} atakuje {target.Name} i zadaje {damage} obrażeń.";
+
+        if (crit)
+        {
+            msg += " (Crit)";
+        }
 
         var result = new CombatActionResult(
             Attacker: attacker,
@@ -26,6 +30,7 @@ public class AttackAction : CombatAction
             Type: ActionType.Attack,
             Message: msg
         );
+
         return Result<CombatActionResult>.Success(result);
     }
 }

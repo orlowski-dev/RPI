@@ -60,9 +60,9 @@ public class Player : Actor
         var map = PlayerProgressionMap.Values;
 
         return new(
-            maxHp: Stats.MaxHp + (Level * Stats.MaxHp) + map[Type].MaxHp,
-            attack: Stats.Attack + (Level * Stats.Attack) + map[Type].Attack,
-            defense: Stats.Defense + (Level * Stats.Defense) + map[Type].Defense,
+            maxHp: Stats.MaxHp + Level + map[Type].MaxHp,
+            attack: Stats.Attack + Level + map[Type].Attack,
+            defense: Stats.Defense + Level + map[Type].Defense,
             criticalChance: Stats.CriticalChance,
             luck: Stats.Luck
         );

@@ -10,6 +10,8 @@ public abstract class Actor
     // public ActorStats Stats => _stats;
     public virtual ActorStats Stats => _stats;
 
+    public bool RollCrit() => Random.Shared.Next(1, 101) <= _stats.CriticalChance;
+
     protected Actor(string name, ActorStats stats, int? level = null, Guid? id = null)
     {
         Name = name;
@@ -23,9 +25,17 @@ public abstract class Actor
         return _stats;
     }
 
-    public void ReceiveDamage(int value)
+    public int ReceiveDamage(int value, bool crit = false)
     {
-        _stats.CurrentHp = Math.Max(0, _stats.CurrentHp - value);
+        var damage = value - _stats.Defense;
+
+        if (crit)
+        {
+            damage = value * 2;
+        }
+
+        _stats.CurrentHp = Math.Max(0, _stats.CurrentHp - damage);
+        return damage;
     }
 
     public virtual void Heal(int value)

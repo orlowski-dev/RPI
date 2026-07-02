@@ -4,7 +4,8 @@ public static class EnemyMultipliers
         new()
         {
             [EnemyRank.Normal] = 1.0,
-            [EnemyRank.Elite] = 2.5,
-            [EnemyRank.Boss] = new Random().Next(5, 11),
+            [EnemyRank.Elite] = 1.5,
+            [EnemyRank.Champion] = 2,
+            [EnemyRank.Boss] = new Random().Next(2, 4),
         };
 }

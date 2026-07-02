@@ -67,7 +67,11 @@ public partial class DungeonScene : Node
                 enemyNode.Position = new Vector3(spp.X + offset.X, 0, spp.Z + offset.Z);
 
                 AddChild(enemyNode);
-                enemyNode.Label = enemy.DisplayName;
+                enemyNode.Label = enemy.IsAlive ? enemy.DisplayName : "";
+                if (!enemy.IsAlive)
+                {
+                    enemyNode.DisableCollisions();
+                }
                 enemyIndex++;
             }
         }

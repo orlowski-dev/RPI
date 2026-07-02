@@ -225,6 +225,13 @@ public partial class ArenaScene : Node3D
 
         GD.Print("Combat finished");
         await ToSignal(GetTree().CreateTimer(3f), Godot.Timer.SignalName.Timeout);
+
+        if (!_Player.IsAlive)
+        {
+            GetTree().CallDeferred("change_scene_to_file", ScenePaths.Defeat);
+            return;
+        }
+
         var vm = _arenaPresenter.OnCombatFinished();
         _arenaView.Visible = false;
         _rewardView.ShowView();

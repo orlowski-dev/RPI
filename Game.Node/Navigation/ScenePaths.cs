@@ -5,4 +5,5 @@ public static class ScenePaths
     public const string City = "res://Scenes/City/CityScene.tscn";
     public const string DungeonTest = "res://Scenes/Dungeon/DungeonTest.tscn";
     public const string Arena = "res://Scenes/Arena/Arena.tscn";
+    public const string Defeat = "res://Scenes/Arena/DefeatScene.tscn";
 }

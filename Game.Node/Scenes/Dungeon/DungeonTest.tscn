@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://btabpkafmkn8j" path="res://Extensions/EditorOnly/editor_only.tscn" id="4_x65ej"]
 [ext_resource type="PackedScene" uid="uid://ww65ccdi1ivb" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_wall_01_m_straight_large_v1.scn" id="6_fs4c7"]
 [ext_resource type="PackedScene" uid="uid://bhjwxvb6pll10" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_wall_01_m_straight_large_v3.scn" id="7_riskd"]
+[ext_resource type="PackedScene" uid="uid://b624kplflbfat" path="res://Scenes/Dungeon/DungeonView.tscn" id="8_riskd"]
 
 [node name="DungeonTest" type="Node3D" unique_id=476862789]
 script = ExtResource("1_fke6h")
@@ -15,7 +16,6 @@ script = ExtResource("1_fke6h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 4)
 
 [node name="Environ" type="Node3D" parent="." unique_id=1424756804]
-metadata/_edit_group_ = true
 
 [node name="MOD_Floor_01_O_straight_med2" parent="Environ" unique_id=573348940 instance=ExtResource("1_7kt2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
@@ -329,7 +329,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -12)
 
 [node name="MOD_Wall_01_M_straight_large17" parent="Environ" unique_id=621250302 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large31" parent="Environ" unique_id=375332413 instance=ExtResource("7_riskd")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24, 0, 20)
@@ -356,34 +356,34 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24, 
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24, 0, -8)
 
 [node name="MOD_Wall_01_M_straight_large18" parent="Environ" unique_id=641594829 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large19" parent="Environ" unique_id=393074290 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large20" parent="Environ" unique_id=1724809259 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large21" parent="Environ" unique_id=2051072430 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large22" parent="Environ" unique_id=1854421741 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large23" parent="Environ" unique_id=441536841 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large24" parent="Environ" unique_id=1891088928 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large25" parent="Environ" unique_id=1342842575 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large26" parent="Environ" unique_id=2089346397 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large27" parent="Environ" unique_id=1469400007 instance=ExtResource("7_riskd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -4, 20)
 
 [node name="MOD_Wall_01_M_straight_large28" parent="Environ" unique_id=288367117 instance=ExtResource("7_riskd")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20, 0, 20)
@@ -411,3 +411,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4054775, 1, 8.761656)
 
 [node name="EnemySpawn5" parent="." unique_id=1735660884 instance=ExtResource("4_x65ej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4054775, 1, 8.761656)
+
+[node name="EnemySpawn6" parent="." unique_id=2133654064 instance=ExtResource("4_x65ej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.063991, 1, 13.143678)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=610879134]
+
+[node name="DungeonView" parent="CanvasLayer" unique_id=1076057841 instance=ExtResource("8_riskd")]

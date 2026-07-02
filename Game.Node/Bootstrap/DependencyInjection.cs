@@ -48,5 +48,6 @@ public static class DependencyInjection
         services.AddTransient<RewardView>();
         services.AddTransient<ClaimCombatRewardUseCase>();
         services.AddTransient<AddItemToInventoryUseCase>();
+        services.AddTransient<DungeonView>();
     }
 }

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cr0xmeudlwvy6"]
+
+[ext_resource type="Texture2D" uid="uid://bhdrgu48786vg" path="res://Assets/UI/lose_screen.png" id="1_asvqh"]
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="2_hckpr"]
+
+[node name="DefeatScene" type="Control" unique_id=563410576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1264862279]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_asvqh")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1478445404]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -60.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 60
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=1803369927]
+layout_mode = 2
+theme = ExtResource("2_hckpr")
+text = "Menu główne"

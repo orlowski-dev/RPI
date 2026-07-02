@@ -31,7 +31,7 @@ public partial class PlayerController : CharacterBody3D, ICharacterAnimationCont
             [An.Attack] = "archer_standing_aim_recoil",
             [An.Idle] = "archer_standing_idle",
             [An.Running] = "archer_standing_run_forward",
-            [An.Death] = "archer_standing_react_death_left",
+            [An.Death] = "archer_standing_death_forward_01",
         },
         [PlayerType.Mage] = new()
         {

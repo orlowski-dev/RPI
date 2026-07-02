@@ -2,11 +2,17 @@ public class FinishCombatUseCase : IUseCase<FinishCombatRequest, FinishCombatRes
 {
     private readonly IGameSessionProvider _gsProvider;
     private readonly CombatStateMachine _stateMachine;
+    private readonly ClaimCombatRewardUseCase _crUseCase;
 
-    public FinishCombatUseCase(IGameSessionProvider gsProvider, CombatStateMachine stateMachine)
+    public FinishCombatUseCase(
+        IGameSessionProvider gsProvider,
+        CombatStateMachine stateMachine,
+        ClaimCombatRewardUseCase claimCombatRewardUseCase
+    )
     {
         _gsProvider = gsProvider;
         _stateMachine = stateMachine;
+        _crUseCase = claimCombatRewardUseCase;
     }
 
     public Result<FinishCombatResponse> Execute(FinishCombatRequest request)
@@ -27,10 +33,12 @@ public class FinishCombatUseCase : IUseCase<FinishCombatRequest, FinishCombatRes
         }
 
         var reward = new RewardCalculator().Calculate(
-            defeatedEnemies: _gsProvider.Current.CombatSession.AllEnemies
+            defeatedEnemies: _gsProvider.Current.CombatSession.AllEnemies,
+            playerLevel: _gsProvider.Current.Player.Level
         );
         _gsProvider.Current.CombatSession.Finish(reward);
         var response = new FinishCombatResponse(Reward: reward);
+        _crUseCase.Execute(new());
 
         return Result<FinishCombatResponse>.Success(response);
     }

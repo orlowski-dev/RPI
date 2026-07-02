@@ -3,7 +3,7 @@ public class AddItemToInventoryUseCase
 {
     public Result<AddItemToInventoryResponse> Execute(AddItemToInventoryRequest req)
     {
-        if (req.Session is null)
+        if (req.GameSession is null)
         {
             DebugExtension.Fatal(this, "GameSession in request is null.");
         }
@@ -13,7 +13,7 @@ public class AddItemToInventoryUseCase
             DebugExtension.Fatal(this, "Item in request is null.");
         }
 
-        var add = req.Session.Inventory.Backpack.Add(req.Item);
+        var add = req.GameSession.Inventory.Backpack.Add(req.Item);
 
         if (add.IsFailure)
         {

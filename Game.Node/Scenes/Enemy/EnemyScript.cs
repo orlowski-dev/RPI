@@ -35,10 +35,20 @@ public partial class EnemyScript : StaticBody3D, ICharacterAnimationController
             throw new Exception("_animPlayer is null!");
         }
 
+        if (Enemy is not null && !Enemy.IsAlive)
+        {
+            _canStartCombat = false;
+            GD.Print("Enemy is dead.");
+            _animPlayer.Play(_anims.GetAnimation(Enemy.Type, EnemyAnimations.Anim.Death));
+            _animPlayer.Seek(_animPlayer.CurrentAnimationLength, true);
+            _animPlayer.Pause();
+            _pressLabel.Visible = false;
+            _eventArea.Monitoring = false; // wyłącz kolizje
+            return;
+        }
+
         _eventArea.BodyEntered += OnBodyEntered;
         _eventArea.BodyExited += OnBodyExited;
-
-        GD.Print("Enemy script loaded.");
     }
 
     public override void _PhysicsProcess(double delta)

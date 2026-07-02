@@ -13,7 +13,7 @@ public class RewardCalculator : IRewardCalculator
     private static readonly IReadOnlyDictionary<EnemyRank, double> _multipliers =
         EnemyMultipliers.Values;
 
-    public CombatReward Calculate(IReadOnlyCollection<Enemy> defeatedEnemies)
+    public CombatReward Calculate(IReadOnlyCollection<Enemy> defeatedEnemies, int playerLevel)
     {
         var exp = defeatedEnemies.Sum(CalculateExp);
         var gold = defeatedEnemies.Sum(CalculateGold);
@@ -33,14 +33,14 @@ public class RewardCalculator : IRewardCalculator
             gold: gold,
             goldBonus: goldBonus,
             expBonus: expBonus,
-            items: []
+            items: GetRandomItems(playerLevel)
         );
     }
 
     private int CalculateExp(Enemy enemy)
     {
         double exp = enemy.ExpReward;
-        exp = exp * enemy.Level * 10 * _multipliers[enemy.Rank];
+        exp = exp * enemy.Level * 1 * _multipliers[enemy.Rank];
         exp = Math.Floor(exp);
 
         return (int)exp;
@@ -52,5 +52,10 @@ public class RewardCalculator : IRewardCalculator
         gold = gold * enemy.Level * 5 * _multipliers[enemy.Rank];
 
         return (int)Math.Floor(gold);
+    }
+
+    private IReadOnlyList<Item> GetRandomItems(int playerLevel)
+    {
+        return [new ItemFactory(new Random()).GenerateRandom(playerLevel)];
     }
 }

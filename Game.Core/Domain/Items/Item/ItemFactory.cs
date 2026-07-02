@@ -2,9 +2,9 @@ public class ItemFactory
 {
     private Random _random;
 
-    public ItemFactory()
+    public ItemFactory(Random random)
     {
-        _random = new Random();
+        _random = random;
     }
 
     /// <summary>

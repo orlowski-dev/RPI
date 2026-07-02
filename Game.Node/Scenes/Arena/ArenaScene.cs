@@ -15,9 +15,11 @@ public partial class ArenaScene : Node3D
     private ArenaPresenter _arenaPresenter = null!;
     private Player _Player => _gameSessionProvider.Current!.Player;
     private CombatSession Combat => _gameSessionProvider.Current!.CombatSession!;
+    private GameSession _GameSession => _gameSessionProvider.Current!;
     private SpotLight3D _targetLight = null!;
     private SpotLight3D _participantLight = null!;
     private ArenaViewScript _arenaView = null!;
+    private RewardView _rewardView = null!;
 
     private Dictionary<Sp, EditorOnly> _spawnPoints = new();
     private Dictionary<Actor, Sp> _actorsMap = new();
@@ -65,6 +67,8 @@ public partial class ArenaScene : Node3D
 
         _arenaView = GetNode<ArenaViewScript>("CanvasLayer/ArenaView");
         _arenaView.Init(this);
+
+        _rewardView = GetNode<RewardView>("CanvasLayer/RewardView");
     }
 
     public void StartCombatSteps()
@@ -100,7 +104,6 @@ public partial class ArenaScene : Node3D
         // sprawdz czy ktoś wziął i umarł
         foreach (var (actor, node) in _modelsMap)
         {
-            GD.Print($"{actor.Name} is alive: {actor.IsAlive}");
             if (!actor.IsAlive)
             {
                 if (node is EnemyScript || node is PlayerController)
@@ -156,7 +159,7 @@ public partial class ArenaScene : Node3D
                     return;
 
                 script.Enemy = (Enemy)currentPart;
-                script.Label = currentPart.DisplayName;
+                script.Label = currentPart.IsAlive ? currentPart.DisplayName : "";
             }
             else
             {
@@ -221,7 +224,11 @@ public partial class ArenaScene : Node3D
             return;
 
         GD.Print("Combat finished");
-        await ToSignal(GetTree().CreateTimer(1f), Godot.Timer.SignalName.Timeout);
+        await ToSignal(GetTree().CreateTimer(3f), Godot.Timer.SignalName.Timeout);
         var vm = _arenaPresenter.OnCombatFinished();
+        _arenaView.Visible = false;
+        _rewardView.ShowView();
+        _GameSession.PendingEncounter?.MarkRewardClaimed();
+        _GameSession.PendingEncounter?.End();
     }
 }

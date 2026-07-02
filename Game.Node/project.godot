@@ -80,6 +80,12 @@ mouseWheelDown={
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Items"
 
+[physics]
+
+common/physics_interpolation=true
+3d/physics_interpolation=true
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

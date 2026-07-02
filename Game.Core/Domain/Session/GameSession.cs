@@ -6,6 +6,7 @@ public class GameSession
     public CombatSession? CombatSession { get; private set; }
     public Dungeon? Dungeon { get; private set; }
     public Inventory Inventory { get; }
+    public Encounter? PendingEncounter { get; set; }
 
     public GameSession(Player player)
     {
@@ -41,5 +42,10 @@ public class GameSession
     {
         // DebugExtension.Log(this, $"Setting dungeon {dungeon.Id} in GameSession..");
         Dungeon = dungeon;
+    }
+
+    public void SetCombatSession(CombatSession combatSession)
+    {
+        CombatSession = combatSession;
     }
 }

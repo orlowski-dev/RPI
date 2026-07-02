@@ -1,5 +1,8 @@
 public enum EnemyType
 {
-    Goblin,
-    Ork,
+    Jolleen,
+    Warrok,
+    SkeletonZombie,
+    Mutant,
+    Maw,
 }

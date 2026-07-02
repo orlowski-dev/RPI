@@ -1,9 +1,22 @@
 public class ClaimCombatRewardUseCase
     : IUseCase<ClaimCombatRewardRequest, ClaimCombatRewardResponse>
 {
+    private readonly IGameSessionProvider _gs;
+    private CombatSession? CombatSession => _gs.Current?.CombatSession;
+
+    public ClaimCombatRewardUseCase(IGameSessionProvider gs)
+    {
+        _gs = gs;
+    }
+
     public Result<ClaimCombatRewardResponse> Execute(ClaimCombatRewardRequest request)
     {
-        if (request.Reward is null)
+        if (_gs.Current is null || CombatSession is null)
+        {
+            DebugExtension.Fatal(this, "Game or Combat session is null!");
+        }
+
+        if (CombatSession.Reward is null)
         {
             return Result<ClaimCombatRewardResponse>.Fail(
                 new Error(
@@ -14,7 +27,7 @@ public class ClaimCombatRewardUseCase
             );
         }
 
-        if (request.Session.RewardClaimed)
+        if (CombatSession.RewardClaimed)
         {
             return Result<ClaimCombatRewardResponse>.Fail(
                 new Error(
@@ -25,9 +38,13 @@ public class ClaimCombatRewardUseCase
             );
         }
 
-        request.Session.ClaimReward(request.Reward);
-
-        var reward = request.Reward;
+        foreach (var item in CombatSession.Reward.Items)
+        {
+            new AddItemToInventoryUseCase().Execute(
+                new AddItemToInventoryRequest(_gs.Current, item)
+            );
+        }
+        CombatSession.ClaimReward(CombatSession.Reward);
 
         return Result<ClaimCombatRewardResponse>.Success(new());
     }

@@ -6,5 +6,6 @@ public record EnemySnapshot(
     ActorStats Stats,
     int Level,
     int ExpReward,
-    int GoldReward
+    int GoldReward,
+    EnemySubType SubType
 ) : ARActorSnapshot(Id, Name, Stats, Level);

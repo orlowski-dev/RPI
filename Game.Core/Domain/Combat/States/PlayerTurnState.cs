@@ -1,12 +1,13 @@
 public class PlayerTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.PlayerTurn;
-    public bool ReturnsControlToUi { get; } = false;
+    public bool ReturnsControlToUi { get; } = true;
 
     public void Enter(CombatContext ctx)
     {
         ctx.Session.ClearTarget();
         ctx.Session.ClearSelectedAction();
+        ctx.Session.ClearLastAttack();
     }
 
     public CombatStateTransition Update(CombatContext ctx)

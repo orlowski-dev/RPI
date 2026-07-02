@@ -2,7 +2,7 @@ public class ResolveTurnState : ICombatState
 {
     public CombatStateType Type => CombatStateType.ResolveTurn;
 
-    public bool ReturnsControlToUi { get; } = true;
+    public bool ReturnsControlToUi { get; } = false;
 
     // wywoływane raz - wchodzę do stanu np. tura gracza się zaczęła
     public void Enter(CombatContext ctx)
@@ -10,7 +10,13 @@ public class ResolveTurnState : ICombatState
         // wykonanie ruchu
         if (ctx.Session.HasSelectedAction)
         {
-            ctx.Session.ExecuteSelectedAction();
+            var res = ctx.Session.ExecuteSelectedAction();
+            if (res.IsFailure)
+            {
+                DebugExtension.Fatal(this, "Cannot get action result response");
+                return;
+            }
+            ctx.Session.SetLastActionResult(res.Value);
         }
 
         ctx.Session.UpdateStatus();

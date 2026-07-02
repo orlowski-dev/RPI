@@ -15,8 +15,14 @@ public class CombatSessionTests
     public void CombatFlow_ShouldBeEnemy1()
     {
         var (player, enemy1, enemy2) = GetActors();
-        var start = new StartCombatUseCase();
-        var startCombat = new StartCombatUseCase();
+        var start = new StartCombatUseCase(
+            Globals.TestGetGameSessionProvider(),
+            Globals.TestStateMachine
+        );
+        var startCombat = new StartCombatUseCase(
+            Globals.TestGetGameSessionProvider(),
+            Globals.TestStateMachine
+        );
         var combatRes = startCombat.Execute(new(player, new[] { enemy1, enemy2 }));
         var startResolveTurn = new ResolveTurnUseCase();
 
@@ -37,7 +43,10 @@ public class CombatSessionTests
         var enemy1 = tcp.Enemy1;
         var enemy2 = tcp.Enemy2;
 
-        var start = new StartCombatUseCase();
+        var start = new StartCombatUseCase(
+            Globals.TestGetGameSessionProvider(),
+            Globals.TestStateMachine
+        );
         var combat = start.Execute(new(player, new[] { enemy1, enemy2 }));
 
         var resolve = new ResolveTurnUseCase();
@@ -119,7 +128,10 @@ public class CombatSessionTests
         var enemy1 = tcp.Enemy1;
         var enemy2 = tcp.Enemy2;
 
-        var start = new StartCombatUseCase();
+        var start = new StartCombatUseCase(
+            Globals.TestGetGameSessionProvider(),
+            Globals.TestStateMachine
+        );
         var combat = start.Execute(new(player, new[] { enemy1, enemy2 }));
 
         var resolve = new ResolveTurnUseCase();
@@ -142,13 +154,7 @@ public class CombatSessionTests
                 session.SetTarget(target);
 
                 response = resolve
-                    .Execute(
-                        new(
-                            Session: session,
-                            StateMachine: combat.Value.StateMachine,
-                            Action: new FakeAction()
-                        )
-                    )
+                    .Execute(new(Session: session, StateMachine: combat.Value.StateMachine))
                     .Value;
             }
             else

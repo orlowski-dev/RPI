@@ -5,5 +5,5 @@
 
 [node name="MOD_Floor_01_O_straight_med" unique_id=573348940 instance=ExtResource("1_70dyb")]
 
-[node name="MOD_Floor_01_O_straight_med" parent="." index="0" unique_id=202168338]
+[node name="MOD_Floor_01_O_straight_med" parent="." index="0" unique_id=674782254]
 surface_material_override/0 = ExtResource("2_xmu1l")

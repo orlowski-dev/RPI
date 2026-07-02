@@ -17,7 +17,8 @@ public class RewardTest
             rank: rank,
             type: type,
             level: level,
-            stats: new(10, 3, 1, 2, 3)
+            stats: new(10, 3, 1, 2, 3),
+            subType: EnemySubType.Jolleen
         );
     }
 
@@ -32,7 +33,8 @@ public class RewardTest
             level: 10,
             stats: new(10, 3, 1, 2, 3),
             rank: EnemyRank.Normal,
-            type: EnemyType.Goblin
+            type: EnemyType.Jolleen,
+            subType: EnemySubType.Jolleen
         );
 
         // exp = 1 * 10 * 10 * 1 = 100
@@ -49,8 +51,8 @@ public class RewardTest
     {
         var enemies = new[]
         {
-            CreateEnemy(10, EnemyRank.Normal, EnemyType.Goblin, 1, 1),
-            CreateEnemy(5, EnemyRank.Normal, EnemyType.Goblin, 1, 1),
+            CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
+            CreateEnemy(5, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
         };
 
         // exp = 100 + 50
@@ -67,9 +69,9 @@ public class RewardTest
     {
         var enemies = new[]
         {
-            CreateEnemy(10, EnemyRank.Normal, EnemyType.Goblin, 1, 1),
-            CreateEnemy(10, EnemyRank.Normal, EnemyType.Goblin, 1, 1),
-            CreateEnemy(10, EnemyRank.Normal, EnemyType.Goblin, 1, 1),
+            CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
+            CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
+            CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
         };
 
         // base exp = 300
@@ -89,8 +91,8 @@ public class RewardTest
     [LogTest]
     public void Should_use_rank_multiplier()
     {
-        var normal = CreateEnemy(10, EnemyRank.Normal, EnemyType.Goblin, 1, 1);
-        var elite = CreateEnemy(10, EnemyRank.Elite, EnemyType.Goblin, 1, 1);
+        var normal = CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1);
+        var elite = CreateEnemy(10, EnemyRank.Elite, EnemyType.Jolleen, 1, 1);
         var normalReward = _rewardCalculator.Calculate([normal]);
         var eliteReward = _rewardCalculator.Calculate([elite]);
         Assert.True(eliteReward.Experience > normalReward.Experience);

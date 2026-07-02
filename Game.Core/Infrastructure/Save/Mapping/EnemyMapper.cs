@@ -10,7 +10,8 @@ public class EnemyMapper : IEnemySnapshotMapper
             Level: enemy.Level,
             Rank: enemy.Rank,
             ExpReward: enemy.ExpReward,
-            GoldReward: enemy.GoldReward
+            GoldReward: enemy.GoldReward,
+            SubType: enemy.SubType
         );
     }
 
@@ -24,7 +25,8 @@ public class EnemyMapper : IEnemySnapshotMapper
             type: enemySnapshot.Type,
             rank: enemySnapshot.Rank,
             goldReward: enemySnapshot.GoldReward,
-            expReward: enemySnapshot.ExpReward
+            expReward: enemySnapshot.ExpReward,
+            subType: enemySnapshot.SubType
         );
     }
 }

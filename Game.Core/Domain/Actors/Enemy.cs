@@ -1,11 +1,12 @@
 public class Enemy : Actor
 {
-    public int ExpReward { get; private set; }
-    public int GoldReward { get; private set; }
-    public EnemyRank Rank { get; private set; }
-    public EnemyType Type { get; private set; }
+    public int ExpReward { get; init; }
+    public int GoldReward { get; init; }
+    public EnemyRank Rank { get; init; }
+    public EnemyType Type { get; init; }
+    public EnemySubType SubType { get; init; }
 
-    public new ActorStats Stats => GetStats();
+    public override ActorStats Stats => GetStats();
 
     public Enemy(
         string name,
@@ -14,6 +15,7 @@ public class Enemy : Actor
         ActorStats stats,
         EnemyRank rank,
         EnemyType type,
+        EnemySubType subType,
         Guid? id = null,
         int? level = null
     )
@@ -23,5 +25,9 @@ public class Enemy : Actor
         GoldReward = goldReward;
         Rank = rank;
         Type = type;
+        SubType = subType;
     }
+
+    public override string NodePath => EnemyDefinitions.Values[SubType].NodePath;
+    public override string DisplayName => $"{Name}\n{new string('*', (int)Rank + 1)}";
 }

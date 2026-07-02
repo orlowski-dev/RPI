@@ -7,3 +7,4 @@
 script = ExtResource("1_880ni")
 
 [node name="cube" parent="." unique_id=1607026402 instance=ExtResource("2_xkvkf")]
+unique_name_in_owner = true

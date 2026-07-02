@@ -7,7 +7,8 @@ public class Player : Actor
 
     private Inventory? _inventory;
 
-    public new ActorStats Stats => GetStats(_inventory);
+    // public new ActorStats Stats => GetStats(_inventory);
+    public override ActorStats Stats => GetStats(_inventory);
 
     public Player(
         string name,
@@ -59,9 +60,9 @@ public class Player : Actor
         var map = PlayerProgressionMap.Values;
 
         return new(
-            maxHp: Stats.MaxHp + (Level * Stats.MaxHp) + map[Type].MaxHp,
-            attack: Stats.Attack + (Level * Stats.Attack) + map[Type].Attack,
-            defense: Stats.Defense + (Level * Stats.Defense) + map[Type].Defense,
+            maxHp: Stats.MaxHp + Level + map[Type].MaxHp,
+            attack: Stats.Attack + Level + map[Type].Attack,
+            defense: Stats.Defense + Level + map[Type].Defense,
             criticalChance: Stats.CriticalChance,
             luck: Stats.Luck
         );
@@ -73,15 +74,14 @@ public class Player : Actor
         {
             return base.Stats;
         }
-
         var maxHp = base.Stats.MaxHp;
+        var currentHp = base.Stats.CurrentHp;
         var attack = base.Stats.Attack;
         var defense = base.Stats.Defense;
         var criticalChance = base.Stats.CriticalChance;
         var luck = base.Stats.Luck;
 
         Item? armor = inventory.Equipment.Armor;
-
         if (armor is not null)
         {
             maxHp += armor.BaseStats.MaxHp;
@@ -90,9 +90,7 @@ public class Player : Actor
             luck += armor.BaseStats.Luck;
             criticalChance += armor.BaseStats.CriticalChance;
         }
-
         Item? weapon = inventory.Equipment.Weapon;
-
         if (weapon is not null)
         {
             maxHp += weapon.BaseStats.MaxHp;
@@ -107,11 +105,24 @@ public class Player : Actor
             attack: attack,
             defense: defense,
             criticalChance: criticalChance,
-            luck: luck
+            luck: luck,
+            currentHp: currentHp
         );
     }
 
     public string TypePlural => PlayerDefinitions.Values[Type].TypePlural;
 
-    public string NodePath => PlayerDefinitions.Values[Type].NodePath;
+    public override string NodePath => PlayerDefinitions.Values[Type].NodePath;
+
+    public override string DisplayName => $"{Name} (lvl: {Level})";
+
+    public override string Info =>
+        base.Info
+        + $"Exp: {Exp}/{ExpNextLevel}\n"
+        + $"HP: {Stats.CurrentHp}/{Stats.MaxHp}\n"
+        + $"Gold: {Gold}\n"
+        + $"Atak: {Stats.Attack}\n"
+        + $"Obrona: {Stats.Defense}\n"
+        + $"Szansa na\ntrafienie krytyczne: {Stats.Defense}%\n"
+        + $"Szczęście: {Stats.Luck}%\n";
 }

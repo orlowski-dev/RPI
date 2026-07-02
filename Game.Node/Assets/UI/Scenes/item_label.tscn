@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b0qxycpw4fv0c"]
+
+[ext_resource type="Theme" uid="uid://da66nubn2twu7" path="res://Assets/UI/Styles/item_label.tres" id="1_dcg3o"]
+
+[node name="ItemLabel" type="Button" unique_id=774488111]
+offset_right = 80.0
+offset_bottom = 30.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_dcg3o")
+theme_override_font_sizes/font_size = 13
+text = "ItemLabel"
+alignment = 0

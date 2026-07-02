@@ -1,10 +1,11 @@
 public class EncounterFactory
 {
-    private static Random _random = new Random();
+    private static readonly Random _random = Random.Shared;
     private int _minEncounters = 1;
     private int _maxEncounter = 5;
     private int _encountersToGenerate;
-    private bool _hasBossEncounter = false;
+    private EnemyFactory _enemyFactory = new();
+    private bool _hasBoss = false;
 
     public IReadOnlyList<Encounter> CreateMany()
     {
@@ -17,53 +18,35 @@ public class EncounterFactory
         List<Encounter> temp = new();
         for (var i = 0; i < _encountersToGenerate; i++)
         {
-            if (!_hasBossEncounter)
-            {
-                temp.Add(
-                    new([.. GenerateEnemies(), GenerateBossEnemy()], state: EncounterState.Locked)
-                );
-                _hasBossEncounter = true;
-                continue;
-            }
-
-            temp.Add(new(GenerateEnemies()));
+            var enemies = GetEnemies();
+            var hasBoss = enemies.Any((enemy) => enemy.Rank == EnemyRank.Boss);
+            temp.Add(
+                new Encounter(
+                    enemies: enemies,
+                    state: hasBoss ? EncounterState.Locked : EncounterState.Available
+                )
+            );
         }
 
         return temp;
     }
 
-    private Enemy GenerateBossEnemy()
+    private IReadOnlyList<Enemy> GetEnemies()
     {
-        return new(
-            name: Guid.NewGuid().ToString(),
-            goldReward: 1,
-            expReward: 1,
-            stats: new(20, 5, 3, 2, 3),
-            rank: EnemyRank.Boss,
-            type: EnemyType.Goblin
-        );
-    }
+        var count = Random.Shared.Next(1, 4);
+        var enemies = new List<Enemy>();
 
-    private IReadOnlyList<Enemy> GenerateEnemies()
-    {
-        return
-        [
-            new(
-                name: Guid.NewGuid().ToString(),
-                goldReward: 1,
-                expReward: 1,
-                stats: new(20, 5, 3, 2, 3),
-                rank: EnemyRank.Normal,
-                type: EnemyType.Goblin
-            ),
-            new(
-                name: Guid.NewGuid().ToString(),
-                goldReward: 1,
-                expReward: 1,
-                stats: new(10, 3, 1, 2, 3),
-                rank: EnemyRank.Normal,
-                type: EnemyType.Ork
-            ),
-        ];
+        for (var i = 0; i < count; i++)
+        {
+            if (!_hasBoss)
+            {
+                enemies.Add(_enemyFactory.CreateBossEnemy());
+                _hasBoss = true;
+                continue;
+            }
+            enemies.Add(_enemyFactory.CreateNonBossEnemy());
+        }
+
+        return enemies;
     }
 }

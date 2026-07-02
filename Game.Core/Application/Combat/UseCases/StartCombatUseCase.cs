@@ -3,6 +3,18 @@
 /// </sumary>
 public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatResponse>
 {
+    private IGameSessionProvider _gsProvider;
+    private readonly CombatStateMachine _stateMachine;
+
+    public StartCombatUseCase(
+        IGameSessionProvider gsProvider,
+        CombatStateMachine combatStateMachine
+    )
+    {
+        _gsProvider = gsProvider;
+        _stateMachine = combatStateMachine;
+    }
+
     public Result<StartCombatResponse> Execute(StartCombatRequest request)
     {
         if (request.Enemies.Count() == 0)
@@ -12,18 +24,18 @@ public class StartCombatUseCase : IUseCase<StartCombatRequest, StartCombatRespon
             );
         }
 
-        var states = new List<ICombatState>()
-        {
-            new PlayerTurnState(),
-            new EnemyTurnState(),
-            new ResolveTurnState(),
-            new RewardState(),
-            new PlayerDeathState(),
-        };
-        var stateMachine = new CombatStateMachine(states);
         var session = new CombatSession([request.Player, .. request.Enemies]);
-        stateMachine.Start(session.Context);
+        _stateMachine.Start(session.Context);
 
-        return Result<StartCombatResponse>.Success(new(session, stateMachine));
+        if (_gsProvider.Current is null)
+        {
+            return Result<StartCombatResponse>.Fail(
+                new("Game session provider has no session!", ErrorType.InvalidState)
+            );
+        }
+
+        _gsProvider.Current.SetCombatSession(session);
+
+        return Result<StartCombatResponse>.Success(new(session, _stateMachine));
     }
 }

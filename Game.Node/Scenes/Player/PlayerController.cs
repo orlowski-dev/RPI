@@ -1,38 +1,48 @@
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 
-public partial class PlayerController : CharacterBody3D
+public partial class PlayerController : CharacterBody3D, ICharacterAnimationController
 {
     private enum An
     {
         Idle,
         Running,
+        Attack,
+        Death,
     }
 
     private Dictionary<PlayerType, string> _animLib = new()
     {
-        [PlayerType.Warrior] = "warrior_animlib",
-        [PlayerType.Archer] = "archer_animlib",
-        [PlayerType.Mage] = "mage_animlib",
+        [PlayerType.Warrior] = "mixamo",
+        [PlayerType.Archer] = "mixamo",
+        [PlayerType.Mage] = "mixamo",
     };
     private Dictionary<PlayerType, Dictionary<An, string>> _anims = new()
     {
         [PlayerType.Warrior] = new()
         {
-            [An.Idle] = "anim_unarmed_idle_01",
-            [An.Running] = "anim_running",
+            [An.Idle] = "sword_and_shield_idle",
+            [An.Running] = "sword_and_shield_run",
+            [An.Attack] = "sword_and_shield_attack",
+            [An.Death] = "sword_and_shield_death",
         },
         [PlayerType.Archer] = new()
         {
-            [An.Idle] = "anim_unarmed_idle_01",
-            [An.Running] = "anim_running",
+            [An.Attack] = "archer_standing_aim_recoil",
+            [An.Idle] = "archer_standing_idle",
+            [An.Running] = "archer_standing_run_forward",
+            [An.Death] = "archer_standing_death_forward_01react_death_left",
         },
         [PlayerType.Mage] = new()
         {
-            [An.Idle] = "anim_unarmed_idle_01",
-            [An.Running] = "anim_running",
+            [An.Idle] = "mage_standing_idle_03",
+            [An.Running] = "mage_standing_run_forward",
+            [An.Attack] = "mage_standing_1h_magic_attack_01",
+            [An.Death] = "mage_standing_react_death_left",
         },
     };
+
+    public bool ControlEnabled { get; set; } = true;
 
     [Export]
     public float Speed { get; set; } = 5f;
@@ -41,31 +51,38 @@ public partial class PlayerController : CharacterBody3D
     public float RotationSpeed { get; set; } = 10f;
 
     private AnimationPlayer _animationPlayer = null!;
+    private SpotLight3D _light = null!;
+    private Node3D _playerNode = null!;
 
-    private string _currentAnimation = string.Empty;
+    private An? _currentAnimation = null;
     private Vector3 _facingDirection = Vector3.Forward;
 
     private IGameSessionProvider _gsProvider = null!;
     private Player _player =>
         _gsProvider.Current?.Player ?? throw new Exception("Player in session is null!");
 
+    public bool DeathAnimPlayed { get; private set; } = false;
+
     public override void _Ready()
     {
         _gsProvider = ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
+        _playerNode = GetNode<Node3D>("Model");
         _animationPlayer = GetNode<AnimationPlayer>("Model/AnimationPlayer");
-        PlayAnimation(An.Idle);
+        _light = GetNode<SpotLight3D>("Light");
     }
 
-    private void PlayAnimation(An anim)
+    private string GetAnimation(An anim)
     {
-        if (_currentAnimation == anim.ToString())
-            return;
-        _currentAnimation = anim.ToString();
-        _animationPlayer.Play(_animLib[_player.Type] + "/" + _anims[_player.Type][anim]);
+        return _animLib[_player.Type] + "/" + _anims[_player.Type][anim];
     }
 
     public override void _PhysicsProcess(double delta)
     {
+        if (!ControlEnabled)
+        {
+            return;
+        }
+
         Vector3 direction = GetInputDirection();
 
         if (direction != Vector3.Zero)
@@ -73,17 +90,18 @@ public partial class PlayerController : CharacterBody3D
             direction = direction.Normalized();
             Velocity = direction * Speed;
             _facingDirection = direction;
-            PlayAnimation(An.Running);
+            _animationPlayer.Play(GetAnimation(An.Running));
         }
         else
         {
             Velocity = Vector3.Zero;
-            PlayAnimation(An.Idle);
+            _animationPlayer.Play(GetAnimation(An.Idle));
         }
 
         Basis targetBasis = Basis.LookingAt(_facingDirection, Vector3.Up);
         Basis = Basis.Slerp(targetBasis, (float)(RotationSpeed * delta));
 
+        MoveLight();
         MoveAndSlide();
     }
 
@@ -99,5 +117,25 @@ public partial class PlayerController : CharacterBody3D
         if (Input.IsActionPressed("moveRight") || Input.IsKeyPressed(Key.D))
             dir.X += 1;
         return dir;
+    }
+
+    private void MoveLight()
+    {
+        var old = _light.GlobalPosition;
+        _light.Position = new Vector3(_playerNode.Position.X, old.Y, _playerNode.Position.Z);
+    }
+
+    public async Task PlayAttackAnimation()
+    {
+        _animationPlayer.Play(GetAnimation(An.Attack));
+        await ToSignal(_animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
+        _animationPlayer.Play(GetAnimation(An.Idle));
+    }
+
+    public async Task PlayDeathAnimation()
+    {
+        _animationPlayer.Play(GetAnimation(An.Death));
+        await ToSignal(_animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
+        DeathAnimPlayed = true;
     }
 }

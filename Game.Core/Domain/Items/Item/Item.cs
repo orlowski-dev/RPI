@@ -38,4 +38,34 @@ public class Item
         BaseStats = baseStats;
         AllowedClasses = allowedClasses;
     }
+
+    public string GetInfo()
+    {
+        var msg = "";
+        msg += $"{Name}\nRzadkość: {Prefix}\n";
+
+        if (Stats.MaxHp > 0)
+        {
+            msg += $"+{Stats.MaxHp} HP\n";
+        }
+
+        if (Stats.Attack > 0)
+        {
+            msg += $"+{Stats.Attack} atak\n";
+        }
+        if (Stats.Defense > 0)
+        {
+            msg += $"+{Stats.Defense} obrona\n";
+        }
+        if (Stats.CriticalChance > 0)
+        {
+            msg += $"+{Stats.CriticalChance}% szansa na trafienie kryt.\n";
+        }
+        if (Stats.Luck > 0)
+        {
+            msg += $"+{Stats.Luck}% szczęście\n";
+        }
+
+        return msg;
+    }
 }

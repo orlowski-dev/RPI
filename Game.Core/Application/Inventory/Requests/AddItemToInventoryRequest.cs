@@ -1,1 +1,1 @@
-public record AddItemToInventoryRequest(GameSession Session, Item Item);
+public record AddItemToInventoryRequest(GameSession GameSession, Item Item);

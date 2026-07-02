@@ -1,191 +1,289 @@
 public static class EnemyDefinitions
 {
+    private const float GlobalHpMult = 1.0f;
+    private const float GlobalAttackMult = 1.0f;
+    private const float GlobalDefenseMult = 1.0f;
+    private const float GlobalRewardMult = 1.0f;
+
+    // Mnożniki wynikające z rangi przeciwnika
+    private static readonly Dictionary<EnemyRank, RankScale> RankScales = new()
+    {
+        [EnemyRank.Normal] = new(Hp: 1.0f, Attack: 1.0f, Defense: 1.0f, Crit: 1.0f, Reward: 1.0f),
+        [EnemyRank.Elite] = new(Hp: 1.4f, Attack: 1.25f, Defense: 1.3f, Crit: 1.3f, Reward: 2.0f),
+        [EnemyRank.Champion] = new(Hp: 1.8f, Attack: 1.5f, Defense: 1.6f, Crit: 1.6f, Reward: 3.5f),
+        [EnemyRank.Boss] = new(Hp: 2.5f, Attack: 1.75f, Defense: 2.0f, Crit: 2.0f, Reward: 4.0f),
+    };
+
+    private sealed record RankScale(
+        float Hp,
+        float Attack,
+        float Defense,
+        float Crit,
+        float Reward
+    );
+
+    private static int Scale(float baseValue, float rankMult, float globalMult = 1f) =>
+        Math.Max(0, (int)MathF.Round(baseValue * rankMult * globalMult));
+
+    private static EnemyDefinition Define(
+        string name,
+        EnemyType type,
+        EnemySubType subType,
+        EnemyRank rank,
+        int baseHp,
+        int baseAttack,
+        int baseDefense,
+        int baseCrit,
+        int luck,
+        int baseExp,
+        int baseGold,
+        string nodePath
+    )
+    {
+        var s = RankScales[rank];
+        return new(
+            Enemy: new(
+                name: name,
+                expReward: Scale(baseExp, s.Reward, GlobalRewardMult),
+                goldReward: Scale(baseGold, s.Reward, GlobalRewardMult),
+                stats: new(
+                    maxHp: Scale(baseHp, s.Hp, GlobalHpMult),
+                    attack: Scale(baseAttack, s.Attack, GlobalAttackMult),
+                    defense: Scale(baseDefense, s.Defense, GlobalDefenseMult),
+                    criticalChance: Scale(baseCrit, s.Crit),
+                    luck: luck
+                ),
+                rank: rank,
+                type: type,
+                subType: subType
+            ),
+            NodePath: nodePath
+        );
+    }
+
+    private const string JolleenScn = "res://Assets/Models/Characters/Jolleen/jolleen.scn";
+    private const string WarrokScn = "res://Assets/Models/Characters/Warrok/warrok_w_kurniawan.scn";
+    private const string SkeletonScn =
+        "res://Assets/Models/Characters/SkeletonZombie/skeletonzombie_t_avelange.scn";
+    private const string MutantScn = "res://Assets/Models/Characters/Mutant/mutant.scn";
+    private const string MawScn = "res://Assets/Models/Characters/Maw/maw.scn";
+
     public static Dictionary<EnemySubType, EnemyDefinition> Values { get; } =
         new()
         {
-            [EnemySubType.Jolleen] = new(
-                Enemy: new(
-                    name: "Jolleen",
-                    expReward: 25,
-                    goldReward: 8,
-                    stats: new(maxHp: 60, attack: 8, defense: 3, criticalChance: 12, luck: 8),
-                    rank: EnemyRank.Normal,
-                    type: EnemyType.Jolleen,
-                    subType: EnemySubType.Jolleen
-                ),
-                NodePath: "res://Assets/Models/Characters/Jolleen/jolleen.scn"
+            [EnemySubType.Jolleen] = Define(
+                "Jolleen",
+                EnemyType.Jolleen,
+                EnemySubType.Jolleen,
+                EnemyRank.Normal,
+                baseHp: 40,
+                baseAttack: 6,
+                baseDefense: 1,
+                baseCrit: 10,
+                luck: 8,
+                baseExp: 25,
+                baseGold: 8,
+                nodePath: JolleenScn
             ),
-            [EnemySubType.JolleenElite] = new(
-                Enemy: new(
-                    name: "Elitarna Jolleen",
-                    expReward: 55,
-                    goldReward: 18,
-                    stats: new(maxHp: 90, attack: 12, defense: 6, criticalChance: 18, luck: 12),
-                    rank: EnemyRank.Elite,
-                    type: EnemyType.Jolleen,
-                    subType: EnemySubType.JolleenElite
-                ),
-                NodePath: "res://Assets/Models/Characters/Jolleen/jolleen.scn"
+            [EnemySubType.JolleenElite] = Define(
+                "Elitarna Jolleen",
+                EnemyType.Jolleen,
+                EnemySubType.JolleenElite,
+                EnemyRank.Elite,
+                baseHp: 40,
+                baseAttack: 6,
+                baseDefense: 1,
+                baseCrit: 10,
+                luck: 12,
+                baseExp: 25,
+                baseGold: 8,
+                nodePath: JolleenScn
             ),
-            [EnemySubType.JolleenChampion] = new(
-                Enemy: new(
-                    name: "Jolleen Mistrzyni",
-                    expReward: 110,
-                    goldReward: 35,
-                    stats: new(maxHp: 130, attack: 16, defense: 9, criticalChance: 24, luck: 16),
-                    rank: EnemyRank.Champion,
-                    type: EnemyType.Jolleen,
-                    subType: EnemySubType.JolleenChampion
-                ),
-                NodePath: "res://Assets/Models/Characters/Jolleen/jolleen.scn"
-            ),
-
-            [EnemySubType.Warrok] = new(
-                Enemy: new(
-                    name: "Warrok",
-                    expReward: 90,
-                    goldReward: 22,
-                    stats: new(maxHp: 120, attack: 13, defense: 7, criticalChance: 6, luck: 3),
-                    rank: EnemyRank.Normal,
-                    type: EnemyType.Warrok,
-                    subType: EnemySubType.Warrok
-                ),
-                NodePath: "res://Assets/Models/Characters/Warrok/warrok_w_kurniawan.scn"
-            ),
-            [EnemySubType.WarrokElite] = new(
-                Enemy: new(
-                    name: "Elitarny Warrok",
-                    expReward: 180,
-                    goldReward: 48,
-                    stats: new(maxHp: 175, attack: 18, defense: 11, criticalChance: 10, luck: 5),
-                    rank: EnemyRank.Elite,
-                    type: EnemyType.Warrok,
-                    subType: EnemySubType.WarrokElite
-                ),
-                NodePath: "res://Assets/Models/Characters/Warrok/warrok_w_kurniawan.scn"
-            ),
-            [EnemySubType.WarrokChampion] = new(
-                Enemy: new(
-                    name: "Warrok Mistrz",
-                    expReward: 300,
-                    goldReward: 80,
-                    stats: new(maxHp: 240, attack: 22, defense: 15, criticalChance: 13, luck: 6),
-                    rank: EnemyRank.Champion,
-                    type: EnemyType.Warrok,
-                    subType: EnemySubType.WarrokChampion
-                ),
-                NodePath: "res://Assets/Models/Characters/Warrok/warrok_w_kurniawan.scn"
+            [EnemySubType.JolleenChampion] = Define(
+                "Jolleen Mistrzyni",
+                EnemyType.Jolleen,
+                EnemySubType.JolleenChampion,
+                EnemyRank.Champion,
+                baseHp: 40,
+                baseAttack: 6,
+                baseDefense: 1,
+                baseCrit: 10,
+                luck: 16,
+                baseExp: 25,
+                baseGold: 8,
+                nodePath: JolleenScn
             ),
 
-            [EnemySubType.SkeletonZombie] = new(
-                Enemy: new(
-                    name: "Szkielet Zombie",
-                    expReward: 80,
-                    goldReward: 18,
-                    stats: new(maxHp: 100, attack: 14, defense: 5, criticalChance: 8, luck: 2),
-                    rank: EnemyRank.Normal,
-                    type: EnemyType.SkeletonZombie,
-                    subType: EnemySubType.SkeletonZombie
-                ),
-                NodePath: "res://Assets/Models/Characters/SkeletonZombie/skeletonzombie_t_avelange.scn"
+            [EnemySubType.Warrok] = Define(
+                "Warrok",
+                EnemyType.Warrok,
+                EnemySubType.Warrok,
+                EnemyRank.Normal,
+                baseHp: 70,
+                baseAttack: 9,
+                baseDefense: 3,
+                baseCrit: 6,
+                luck: 3,
+                baseExp: 90,
+                baseGold: 22,
+                nodePath: WarrokScn
             ),
-            [EnemySubType.SkeletonZombieElite] = new(
-                Enemy: new(
-                    name: "Elitarny Szkielet Zombie",
-                    expReward: 160,
-                    goldReward: 40,
-                    stats: new(maxHp: 150, attack: 19, defense: 8, criticalChance: 13, luck: 4),
-                    rank: EnemyRank.Elite,
-                    type: EnemyType.SkeletonZombie,
-                    subType: EnemySubType.SkeletonZombieElite
-                ),
-                NodePath: "res://Assets/Models/Characters/SkeletonZombie/skeletonzombie_t_avelange.scn"
+            [EnemySubType.WarrokElite] = Define(
+                "Elitarny Warrok",
+                EnemyType.Warrok,
+                EnemySubType.WarrokElite,
+                EnemyRank.Elite,
+                baseHp: 70,
+                baseAttack: 9,
+                baseDefense: 3,
+                baseCrit: 6,
+                luck: 5,
+                baseExp: 90,
+                baseGold: 22,
+                nodePath: WarrokScn
             ),
-            [EnemySubType.SkeletonZombieChampion] = new(
-                Enemy: new(
-                    name: "Szkielet Zombie Mistrz",
-                    expReward: 270,
-                    goldReward: 70,
-                    stats: new(maxHp: 210, attack: 24, defense: 11, criticalChance: 17, luck: 5),
-                    rank: EnemyRank.Champion,
-                    type: EnemyType.SkeletonZombie,
-                    subType: EnemySubType.SkeletonZombieChampion
-                ),
-                NodePath: "res://Assets/Models/Characters/SkeletonZombie/skeletonzombie_t_avelange.scn"
-            ),
-
-            [EnemySubType.Mutant] = new(
-                Enemy: new(
-                    name: "Mutant",
-                    expReward: 200,
-                    goldReward: 55,
-                    stats: new(maxHp: 180, attack: 16, defense: 9, criticalChance: 5, luck: 1),
-                    rank: EnemyRank.Normal,
-                    type: EnemyType.Mutant,
-                    subType: EnemySubType.Mutant
-                ),
-                NodePath: "res://Assets/Models/Characters/Mutant/mutant.scn"
-            ),
-            [EnemySubType.MutantElite] = new(
-                Enemy: new(
-                    name: "Elitarny Mutant",
-                    expReward: 380,
-                    goldReward: 105,
-                    stats: new(maxHp: 260, attack: 22, defense: 14, criticalChance: 9, luck: 2),
-                    rank: EnemyRank.Elite,
-                    type: EnemyType.Mutant,
-                    subType: EnemySubType.MutantElite
-                ),
-                NodePath: "res://Assets/Models/Characters/Mutant/mutant.scn"
-            ),
-            [EnemySubType.MutantChampion] = new(
-                Enemy: new(
-                    name: "Mutant Mistrz",
-                    expReward: 600,
-                    goldReward: 165,
-                    stats: new(maxHp: 350, attack: 28, defense: 18, criticalChance: 12, luck: 3),
-                    rank: EnemyRank.Champion,
-                    type: EnemyType.Mutant,
-                    subType: EnemySubType.MutantChampion
-                ),
-                NodePath: "res://Assets/Models/Characters/Mutant/mutant.scn"
+            [EnemySubType.WarrokChampion] = Define(
+                "Warrok Mistrz",
+                EnemyType.Warrok,
+                EnemySubType.WarrokChampion,
+                EnemyRank.Champion,
+                baseHp: 70,
+                baseAttack: 9,
+                baseDefense: 3,
+                baseCrit: 6,
+                luck: 6,
+                baseExp: 90,
+                baseGold: 22,
+                nodePath: WarrokScn
             ),
 
-            [EnemySubType.Maw] = new(
-                Enemy: new(
-                    name: "Maw",
-                    expReward: 600,
-                    goldReward: 180,
-                    stats: new(maxHp: 280, attack: 20, defense: 12, criticalChance: 10, luck: 4),
-                    rank: EnemyRank.Normal,
-                    type: EnemyType.Maw,
-                    subType: EnemySubType.Maw
-                ),
-                NodePath: "res://Assets/Models/Characters/Maw/maw.scn"
+            [EnemySubType.SkeletonZombie] = Define(
+                "Szkielet Zombie",
+                EnemyType.SkeletonZombie,
+                EnemySubType.SkeletonZombie,
+                EnemyRank.Normal,
+                baseHp: 55,
+                baseAttack: 10,
+                baseDefense: 2,
+                baseCrit: 8,
+                luck: 2,
+                baseExp: 80,
+                baseGold: 18,
+                nodePath: SkeletonScn
             ),
-            [EnemySubType.MawElite] = new(
-                Enemy: new(
-                    name: "Elitarny Maw",
-                    expReward: 1000,
-                    goldReward: 300,
-                    stats: new(maxHp: 400, attack: 27, defense: 17, criticalChance: 14, luck: 6),
-                    rank: EnemyRank.Elite,
-                    type: EnemyType.Maw,
-                    subType: EnemySubType.MutantElite
-                ),
-                NodePath: "res://Assets/Models/Characters/Maw/maw.scn"
+            [EnemySubType.SkeletonZombieElite] = Define(
+                "Elitarny Szkielet Zombie",
+                EnemyType.SkeletonZombie,
+                EnemySubType.SkeletonZombieElite,
+                EnemyRank.Elite,
+                baseHp: 55,
+                baseAttack: 10,
+                baseDefense: 2,
+                baseCrit: 8,
+                luck: 4,
+                baseExp: 80,
+                baseGold: 18,
+                nodePath: SkeletonScn
             ),
-            [EnemySubType.MawBoss] = new(
-                Enemy: new(
-                    name: "Maw Władca Otchłani",
-                    expReward: 2000,
-                    goldReward: 600,
-                    stats: new(maxHp: 600, attack: 35, defense: 22, criticalChance: 18, luck: 8),
-                    rank: EnemyRank.Boss,
-                    type: EnemyType.Maw,
-                    subType: EnemySubType.MawBoss
-                ),
-                NodePath: "res://Assets/Models/Characters/Maw/maw.scn"
+            [EnemySubType.SkeletonZombieChampion] = Define(
+                "Szkielet Zombie Mistrz",
+                EnemyType.SkeletonZombie,
+                EnemySubType.SkeletonZombieChampion,
+                EnemyRank.Champion,
+                baseHp: 55,
+                baseAttack: 10,
+                baseDefense: 2,
+                baseCrit: 8,
+                luck: 5,
+                baseExp: 80,
+                baseGold: 18,
+                nodePath: SkeletonScn
+            ),
+
+            [EnemySubType.Mutant] = Define(
+                "Mutant",
+                EnemyType.Mutant,
+                EnemySubType.Mutant,
+                EnemyRank.Normal,
+                baseHp: 95,
+                baseAttack: 12,
+                baseDefense: 4,
+                baseCrit: 5,
+                luck: 1,
+                baseExp: 200,
+                baseGold: 55,
+                nodePath: MutantScn
+            ),
+            [EnemySubType.MutantElite] = Define(
+                "Elitarny Mutant",
+                EnemyType.Mutant,
+                EnemySubType.MutantElite,
+                EnemyRank.Elite,
+                baseHp: 95,
+                baseAttack: 12,
+                baseDefense: 4,
+                baseCrit: 5,
+                luck: 2,
+                baseExp: 200,
+                baseGold: 55,
+                nodePath: MutantScn
+            ),
+            [EnemySubType.MutantChampion] = Define(
+                "Mutant Mistrz",
+                EnemyType.Mutant,
+                EnemySubType.MutantChampion,
+                EnemyRank.Champion,
+                baseHp: 95,
+                baseAttack: 12,
+                baseDefense: 4,
+                baseCrit: 5,
+                luck: 3,
+                baseExp: 200,
+                baseGold: 55,
+                nodePath: MutantScn
+            ),
+
+            [EnemySubType.Maw] = Define(
+                "Maw",
+                EnemyType.Maw,
+                EnemySubType.Maw,
+                EnemyRank.Normal,
+                baseHp: 120,
+                baseAttack: 13,
+                baseDefense: 5,
+                baseCrit: 10,
+                luck: 4,
+                baseExp: 600,
+                baseGold: 180,
+                nodePath: MawScn
+            ),
+            [EnemySubType.MawElite] = Define(
+                "Elitarny Maw",
+                EnemyType.Maw,
+                EnemySubType.MawElite,
+                EnemyRank.Elite,
+                baseHp: 120,
+                baseAttack: 13,
+                baseDefense: 5,
+                baseCrit: 10,
+                luck: 6,
+                baseExp: 600,
+                baseGold: 180,
+                nodePath: MawScn
+            ),
+            [EnemySubType.MawBoss] = Define(
+                "Maw Władca Otchłani",
+                EnemyType.Maw,
+                EnemySubType.MawBoss,
+                EnemyRank.Boss,
+                baseHp: 120,
+                baseAttack: 13,
+                baseDefense: 5,
+                baseCrit: 10,
+                luck: 8,
+                baseExp: 600,
+                baseGold: 180,
+                nodePath: MawScn
             ),
         };
 }

@@ -70,7 +70,7 @@ public partial class ArenaViewScript : Control
         var lastAction = CombatSession.ConsumeLastActionResult();
         if (lastAction is not null)
         {
-            _labels[Lb.LogLabel].Text += $"\n{lastAction.Message}";
+            _labels[Lb.LogLabel].Text = $"{lastAction.Message}";
         }
         _labels[Lb.TurnLabel].Text = $"Ruch: {CombatSession.ActiveParticipant.Name}";
 
@@ -91,7 +91,7 @@ public partial class ArenaViewScript : Control
         {
             var scene = GD.Load<PackedScene>(EnemyStatsScene).Instantiate<EnemyStatsListItem>();
             _containers[Ct.EnemyStats].AddChild(scene);
-            scene.Init(name: enemy.Name, maxHp: enemy.Stats.MaxHp);
+            scene.Init(name: enemy.DisplayName, maxHp: enemy.Stats.MaxHp);
             _enemyStats[enemy] = scene;
         }
 

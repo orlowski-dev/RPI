@@ -1,7 +1,5 @@
 public class EnemyFactory
 {
-    private static readonly Random _random = new Random();
-
     /// <summary>
     /// zwracam randomowego enemy z definicji
     /// </summary>
@@ -9,13 +7,27 @@ public class EnemyFactory
     {
         var subType = GetRandomSubType();
         var def = EnemyDefinitions.Values[subType].Enemy;
-        return def;
+        return new Enemy(
+            name: def.Name,
+            expReward: def.ExpReward,
+            goldReward: def.GoldReward,
+            stats: new ActorStats(
+                maxHp: def.Stats.MaxHp,
+                attack: def.Stats.Attack,
+                defense: def.Stats.Defense,
+                criticalChance: def.Stats.CriticalChance,
+                luck: def.Stats.Luck
+            ),
+            rank: def.Rank,
+            type: def.Type,
+            subType: def.SubType
+        );
     }
 
     private EnemySubType GetRandomSubType()
     {
         var values = Enum.GetNames(typeof(EnemySubType));
-        return (EnemySubType)_random.Next(0, values.Length);
+        return (EnemySubType)Random.Shared.Next(0, values.Length);
     }
 
     public Enemy CreateNonBossEnemy()

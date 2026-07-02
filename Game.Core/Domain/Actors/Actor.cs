@@ -27,11 +27,11 @@ public abstract class Actor
 
     public int ReceiveDamage(int value, bool crit = false)
     {
-        var damage = value - _stats.Defense;
+        var damage = Math.Max(0, value - _stats.Defense);
 
         if (crit)
         {
-            damage = value * 2;
+            damage = damage * 2;
         }
 
         _stats.CurrentHp = Math.Max(0, _stats.CurrentHp - damage);

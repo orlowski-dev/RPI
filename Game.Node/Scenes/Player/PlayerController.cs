@@ -61,6 +61,8 @@ public partial class PlayerController : CharacterBody3D, ICharacterAnimationCont
     private Player _player =>
         _gsProvider.Current?.Player ?? throw new Exception("Player in session is null!");
 
+    public bool DeathAnimPlayed { get; private set; } = false;
+
     public override void _Ready()
     {
         _gsProvider = ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
@@ -134,5 +136,6 @@ public partial class PlayerController : CharacterBody3D, ICharacterAnimationCont
     {
         _animationPlayer.Play(GetAnimation(An.Death));
         await ToSignal(_animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
+        DeathAnimPlayed = true;
     }
 }

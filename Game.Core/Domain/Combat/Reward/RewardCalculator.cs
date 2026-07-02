@@ -40,7 +40,7 @@ public class RewardCalculator : IRewardCalculator
     private int CalculateExp(Enemy enemy)
     {
         double exp = enemy.ExpReward;
-        exp = exp * enemy.Level * 1 * _multipliers[enemy.Rank];
+        exp = exp + (enemy.Level * 1 * _multipliers[enemy.Rank]);
         exp = Math.Floor(exp);
 
         return (int)exp;
@@ -49,7 +49,7 @@ public class RewardCalculator : IRewardCalculator
     private int CalculateGold(Enemy enemy)
     {
         double gold = enemy.GoldReward;
-        gold = gold * enemy.Level * 5 * _multipliers[enemy.Rank];
+        gold = gold + (enemy.Level * 5 * _multipliers[enemy.Rank]);
 
         return (int)Math.Floor(gold);
     }

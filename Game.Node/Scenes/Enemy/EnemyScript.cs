@@ -7,11 +7,14 @@ public partial class EnemyScript : StaticBody3D, ICharacterAnimationController
 	private Label3D _label = null!;
 	private Label3D _pressLabel = null!;
 	private IGameSessionProvider _gameSessionProvider = null!;
+	private CombatSession? _CombatSession => _gameSessionProvider.Current?.CombatSession;
 	private Area3D _eventArea = null!;
 	private bool _canStartCombat = false;
 	private EnemyAnimations _anims = new EnemyAnimations();
 	private AnimationPlayer _animPlayer = null!;
 	private CollisionShape3D _collision = null!;
+	private Area3D _clickArea = null!;
+	public bool DeathAnimPlayed { get; private set; } = false;
 
 	public Encounter Encounter { get; set; } = null!; // ref żebym wiedział do którego encountera on należy
 	public Enemy Enemy { get; set; } = null!;
@@ -51,6 +54,10 @@ public partial class EnemyScript : StaticBody3D, ICharacterAnimationController
 
 		_eventArea.BodyEntered += OnBodyEntered;
 		_eventArea.BodyExited += OnBodyExited;
+
+		_clickArea = GetNode<Area3D>("%ClickArea");
+		_clickArea.InputRayPickable = true;
+		_clickArea.InputEvent += OnAreaInputEvent;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -92,11 +99,36 @@ public partial class EnemyScript : StaticBody3D, ICharacterAnimationController
 
 	public async Task PlayDeathAnimation()
 	{
+		if (DeathAnimPlayed)
+			return;
 		_animPlayer.Play(_anims.GetAnimation(Enemy.Type, EnemyAnimations.Anim.Death));
+		await ToSignal(_animPlayer, AnimationPlayer.SignalName.AnimationFinished);
+		DeathAnimPlayed = true;
 	}
 
 	public void DisableCollisions()
 	{
 		_collision.Disabled = true;
+	}
+
+	private void OnAreaInputEvent(
+		Node camera,
+		InputEvent @event,
+		Vector3 position,
+		Vector3 normal,
+		long shapeIdx
+	)
+	{
+		if (@event is InputEventMouseButton mb && mb.Pressed && mb.ButtonIndex == MouseButton.Left)
+		{
+			if (!Enemy.IsAlive)
+				return;
+			_CombatSession?.SetTarget(Enemy);
+		}
+	}
+
+	public void DisableEventArea()
+	{
+		_eventArea.QueueFree();
 	}
 }

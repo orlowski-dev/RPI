@@ -1,17 +1,10 @@
 [gd_scene format=3 uid="uid://btabpkafmkn8j"]
 
 [ext_resource type="Script" uid="uid://xq8vmwyxhil5" path="res://Extensions/EditorOnly/EditorOnly.cs" id="1_880ni"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fy504"]
-size = Vector3(1, 2.0015259, 2.0014648)
+[ext_resource type="PackedScene" uid="uid://cbmk878bqulvj" path="res://Assets/Models/Others/cube.scn" id="2_xkvkf"]
 
 [node name="EditorOnly" type="Node3D" unique_id=245595008]
 script = ExtResource("1_880ni")
 
-[node name="EventArea" type="Area3D" parent="." unique_id=1277691170]
+[node name="cube" parent="." unique_id=1607026402 instance=ExtResource("2_xkvkf")]
 unique_name_in_owner = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EventArea" unique_id=1334567081]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.0155334, 0.0036621094)
-shape = SubResource("BoxShape3D_fy504")
-debug_color = Color(1, 0, 0, 1)

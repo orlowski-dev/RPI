@@ -9,9 +9,9 @@ public static class EnemyDefinitions
     private static readonly Dictionary<EnemyRank, RankScale> RankScales = new()
     {
         [EnemyRank.Normal] = new(Hp: 1.0f, Attack: 1.0f, Defense: 1.0f, Crit: 1.0f, Reward: 1.0f),
-        [EnemyRank.Elite] = new(Hp: 1.4f, Attack: 1.25f, Defense: 1.3f, Crit: 1.3f, Reward: 2.0f),
-        [EnemyRank.Champion] = new(Hp: 1.8f, Attack: 1.5f, Defense: 1.6f, Crit: 1.6f, Reward: 3.5f),
-        [EnemyRank.Boss] = new(Hp: 2.5f, Attack: 1.75f, Defense: 2.0f, Crit: 2.0f, Reward: 4.0f),
+        [EnemyRank.Elite] = new(Hp: 1.2f, Attack: 1.2f, Defense: 1.2f, Crit: 1.2f, Reward: 1.2f),
+        [EnemyRank.Champion] = new(Hp: 1.8f, Attack: 1.5f, Defense: 1.6f, Crit: 1.6f, Reward: 2.0f),
+        [EnemyRank.Boss] = new(Hp: 2.0f, Attack: 1.75f, Defense: 2.0f, Crit: 2.0f, Reward: 2.5f),
     };
 
     private sealed record RankScale(
@@ -124,7 +124,7 @@ public static class EnemyDefinitions
                 baseDefense: 3,
                 baseCrit: 6,
                 luck: 3,
-                baseExp: 90,
+                baseExp: 45,
                 baseGold: 22,
                 nodePath: WarrokScn
             ),
@@ -138,7 +138,7 @@ public static class EnemyDefinitions
                 baseDefense: 3,
                 baseCrit: 6,
                 luck: 5,
-                baseExp: 90,
+                baseExp: 45,
                 baseGold: 22,
                 nodePath: WarrokScn
             ),
@@ -152,7 +152,7 @@ public static class EnemyDefinitions
                 baseDefense: 3,
                 baseCrit: 6,
                 luck: 6,
-                baseExp: 90,
+                baseExp: 45,
                 baseGold: 22,
                 nodePath: WarrokScn
             ),
@@ -167,7 +167,7 @@ public static class EnemyDefinitions
                 baseDefense: 2,
                 baseCrit: 8,
                 luck: 2,
-                baseExp: 80,
+                baseExp: 40,
                 baseGold: 18,
                 nodePath: SkeletonScn
             ),
@@ -181,7 +181,7 @@ public static class EnemyDefinitions
                 baseDefense: 2,
                 baseCrit: 8,
                 luck: 4,
-                baseExp: 80,
+                baseExp: 40,
                 baseGold: 18,
                 nodePath: SkeletonScn
             ),
@@ -195,7 +195,7 @@ public static class EnemyDefinitions
                 baseDefense: 2,
                 baseCrit: 8,
                 luck: 5,
-                baseExp: 80,
+                baseExp: 40,
                 baseGold: 18,
                 nodePath: SkeletonScn
             ),
@@ -210,7 +210,7 @@ public static class EnemyDefinitions
                 baseDefense: 4,
                 baseCrit: 5,
                 luck: 1,
-                baseExp: 200,
+                baseExp: 80,
                 baseGold: 55,
                 nodePath: MutantScn
             ),
@@ -224,7 +224,7 @@ public static class EnemyDefinitions
                 baseDefense: 4,
                 baseCrit: 5,
                 luck: 2,
-                baseExp: 200,
+                baseExp: 80,
                 baseGold: 55,
                 nodePath: MutantScn
             ),
@@ -238,7 +238,7 @@ public static class EnemyDefinitions
                 baseDefense: 4,
                 baseCrit: 5,
                 luck: 3,
-                baseExp: 200,
+                baseExp: 80,
                 baseGold: 55,
                 nodePath: MutantScn
             ),
@@ -253,7 +253,7 @@ public static class EnemyDefinitions
                 baseDefense: 5,
                 baseCrit: 10,
                 luck: 4,
-                baseExp: 600,
+                baseExp: 86,
                 baseGold: 180,
                 nodePath: MawScn
             ),
@@ -267,7 +267,7 @@ public static class EnemyDefinitions
                 baseDefense: 5,
                 baseCrit: 10,
                 luck: 6,
-                baseExp: 600,
+                baseExp: 86,
                 baseGold: 180,
                 nodePath: MawScn
             ),
@@ -281,7 +281,7 @@ public static class EnemyDefinitions
                 baseDefense: 5,
                 baseCrit: 10,
                 luck: 8,
-                baseExp: 600,
+                baseExp: 86,
                 baseGold: 180,
                 nodePath: MawScn
             ),

@@ -101,18 +101,6 @@ public partial class ArenaScene : Node3D
             _arenaView.HidePlayerAction();
         }
         _isStepping = false;
-        // sprawdz czy ktoś wziął i umarł
-        foreach (var (actor, node) in _modelsMap)
-        {
-            if (!actor.IsAlive)
-            {
-                if (node is EnemyScript || node is PlayerController)
-                {
-                    var s = (node as ICharacterAnimationController)!;
-                    await s.PlayDeathAnimation();
-                }
-            }
-        }
 
         CheckIfCombatIsFinished();
     }
@@ -120,12 +108,12 @@ public partial class ArenaScene : Node3D
     private async Task PlayAnims()
     {
         var attacker = Combat.LastAttacker;
+        var target = Combat.LastTarget;
 
         Combat.ClearLastAttack();
 
-        if (attacker is null)
+        if (attacker is null || !attacker.IsAlive)
         {
-            await ToSignal(GetTree().CreateTimer(StepDelay), Godot.Timer.SignalName.Timeout);
             return;
         }
 
@@ -139,6 +127,29 @@ public partial class ArenaScene : Node3D
                     await s.PlayAttackAnimation();
                 }
             }
+        }
+
+        // sprawdza czy zginął
+        if (
+            target is not null
+            && !target.IsAlive
+            && _modelsMap.TryGetValue(target, out var targetNode)
+        )
+        {
+            if (targetNode is EnemyScript || targetNode is PlayerController)
+            {
+                var s = (targetNode as ICharacterAnimationController)!;
+                await s.PlayDeathAnimation();
+            }
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        if (Combat.ActiveParticipant.IsAlive && !Combat.IsFinished)
+        {
+            MoveParticipantLight();
+            MoveTargetLight();
         }
     }
 
@@ -159,6 +170,7 @@ public partial class ArenaScene : Node3D
                     return;
 
                 script.Enemy = (Enemy)currentPart;
+                script.DisableEventArea();
                 script.Label = currentPart.IsAlive ? currentPart.DisplayName : "";
             }
             else
@@ -178,7 +190,7 @@ public partial class ArenaScene : Node3D
 
             _modelsMap[currentPart] = model;
 
-            currentSpawn.OnClicked += () => OnClickOnEnemy(currentPart);
+            // currentSpawn.OnClicked += () => OnClickOnEnemy(currentPart);
 
             model.Name = "Model";
         }
@@ -218,13 +230,12 @@ public partial class ArenaScene : Node3D
         _targetLight.Position = new Vector3(targSlotPos.X, _targetLight.Position.Y, targSlotPos.Z);
     }
 
-    private async void CheckIfCombatIsFinished()
+    private void CheckIfCombatIsFinished()
     {
         if (!Combat.IsFinished)
             return;
 
         GD.Print("Combat finished");
-        await ToSignal(GetTree().CreateTimer(3f), Godot.Timer.SignalName.Timeout);
 
         if (!_Player.IsAlive)
         {

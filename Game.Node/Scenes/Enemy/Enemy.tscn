@@ -4,10 +4,13 @@
 [ext_resource type="FontFile" uid="uid://kfw6ahlglmlx" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-Medium.ttf" id="2_e0oyi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fy504"]
-size = Vector3(0.795166, 1.77594, 0.6875)
+size = Vector3(0.795166, 1.77594, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6lmw"]
 size = Vector3(1.8232422, 2.046997, 2.5449219)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5gjqb"]
+size = Vector3(1.4140625, 2.6775513, 1.4042969)
 
 [node name="Enemy" type="StaticBody3D" unique_id=2078758544]
 script = ExtResource("1_i1u57")
@@ -36,6 +39,7 @@ autowrap_mode = 2
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1425971894]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8937073, 0)
 shape = SubResource("BoxShape3D_fy504")
+debug_color = Color(0.65803254, 0.49222547, 0.43226174, 0.41960785)
 
 [node name="EventArea" type="Area3D" parent="." unique_id=1973712233]
 unique_name_in_owner = true
@@ -43,3 +47,10 @@ unique_name_in_owner = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EventArea" unique_id=1312304033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9902954, 0)
 shape = SubResource("BoxShape3D_e6lmw")
+
+[node name="ClickArea" type="Area3D" parent="." unique_id=1680101283]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickArea" unique_id=259064245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3434753, 0)
+shape = SubResource("BoxShape3D_5gjqb")

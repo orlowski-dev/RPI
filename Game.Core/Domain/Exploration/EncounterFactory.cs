@@ -33,7 +33,7 @@ public class EncounterFactory
 
     private IReadOnlyList<Enemy> GetEnemies()
     {
-        var count = _random.Next(1, 4);
+        var count = Random.Shared.Next(1, 4);
         var enemies = new List<Enemy>();
 
         for (var i = 0; i < count; i++)

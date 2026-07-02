@@ -19,7 +19,6 @@ public partial class DungeonScene : Node
 
         _playerNode = new PlayerSpawner().GetNode(_player.NodePath);
         _view = GetNode<DungeonView>("CanvasLayer/DungeonView");
-
         // create dung
         _dungPresenter.OnViewReady();
 

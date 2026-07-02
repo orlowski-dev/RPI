@@ -6,6 +6,7 @@ public partial class DungeonView : Control
     private IGameSessionProvider _gs = null!;
     private Player? _Player => _gs.Current?.Player;
     private Dungeon? _Dungeon => _gs.Current?.Dungeon;
+    private InventoryView _inventoryView = null!;
 
     private enum Labels
     {
@@ -35,6 +36,9 @@ public partial class DungeonView : Control
         _bars[Bars.Hp] = GetNode<TextureProgressBar>("%Hpbar");
         _bars[Bars.Exp] = GetNode<TextureProgressBar>("%Exp");
         _backpackBtn = GetNode<Button>("%BackpackButton");
+        _inventoryView = GD.Load<PackedScene>(ScenePaths.Inventory).Instantiate<InventoryView>();
+        _inventoryView.SetInvisible();
+        _inventoryView.OnCloseAction = OnCloseInventoryClick;
     }
 
     public void InitUI()
@@ -58,5 +62,20 @@ public partial class DungeonView : Control
 
         _bars[Bars.Exp].MaxValue = _Player.ExpNextLevel;
         _bars[Bars.Exp].Value = _Player.Exp;
+
+        _backpackBtn.Pressed += OnBackpackClick;
+        GetTree().CurrentScene.AddChild(_inventoryView);
+    }
+
+    private void OnBackpackClick()
+    {
+        Visible = false;
+        _inventoryView.SetVisible();
+    }
+
+    private void OnCloseInventoryClick()
+    {
+        _inventoryView.SetInvisible();
+        Visible = true;
     }
 }

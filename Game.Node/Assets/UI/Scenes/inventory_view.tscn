@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://c6hv52iud7jcl"]
+
+[ext_resource type="Script" uid="uid://b50riec5rkou8" path="res://Assets/UI/Scenes/InventoryView.cs" id="1_knkd1"]
+[ext_resource type="PackedScene" uid="uid://bvrqixrrx0l4s" path="res://Assets/UI/Scenes/box.tscn" id="1_r3qh0"]
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="2_knkd1"]
+
+[node name="InventoryView" type="Control" unique_id=512531712]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_knkd1")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2105505033]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=101729641]
+layout_mode = 2
+
+[node name="Box" parent="CenterContainer/VBoxContainer" unique_id=135960334 instance=ExtResource("1_r3qh0")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/Box/Panel2" parent_id_path=PackedInt32Array(135960334, 467618456) index="0" unique_id=664263129]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer" unique_id=101192848]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer" unique_id=402134831]
+layout_mode = 2
+theme = ExtResource("2_knkd1")
+theme_override_font_sizes/font_size = 26
+text = "Inwentarz"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer" unique_id=684599168]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1324970975]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+columns = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=760603314]
+layout_mode = 2
+theme = ExtResource("2_knkd1")
+text = "Zbroja:"
+
+[node name="ArmorLabel" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=922701967]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_knkd1")
+text = "Zbroja"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=242544560]
+layout_mode = 2
+theme = ExtResource("2_knkd1")
+text = "Broń:"
+
+[node name="WeaponLabel" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=1978787974]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_knkd1")
+text = "Broń"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer" unique_id=1574657693]
+layout_mode = 2
+theme = ExtResource("2_knkd1")
+theme_override_font_sizes/font_size = 26
+text = "Plecak"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer" unique_id=779239971]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1391855926]
+custom_minimum_size = Vector2(-1, 206)
+custom_maximum_size = Vector2(-1, 206)
+layout_mode = 2
+
+[node name="ItemsContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer" unique_id=1539631488]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 24
+
+[node name="CloseButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=580463457]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_knkd1")
+text = "Zamknij"
+
+[editable path="CenterContainer/VBoxContainer/Box"]

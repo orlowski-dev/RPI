@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://dr6xb7l23p2w"]
+[gd_scene format=3 uid="uid://cdbyajaauekmr"]
 
-[ext_resource type="Theme" path="res://Assets/UI/Styles/inventory_item_button.tres" id="1_jjt46"]
-[ext_resource type="Script" path="res://Assets/UI/Elements/InventoryItemButton.cs" id="2_6mbwq"]
+[ext_resource type="Theme" uid="uid://drsf2n40cnidd" path="res://Assets/UI/Styles/inventory_item_button.tres" id="1_jjt46"]
+[ext_resource type="Script" uid="uid://5vohae7ttmaq" path="res://Assets/UI/Elements/InventoryItemButton.cs" id="2_6mbwq"]
 
 [node name="InventoryItemButton" type="Button" unique_id=1392459255]
 custom_minimum_size = Vector2(126, 126)

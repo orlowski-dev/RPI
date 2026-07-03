@@ -20,14 +20,12 @@ public class StartNewGameUseCase : IUseCase<StartNewGameRequest, StartNewGameRes
         var gSession = _factory.Create(playerName: req.PlayerName, playerType: req.PlayerType);
         _session.Set(gSession);
 
-        Item startItem = default!;
-
-        do
-        {
-            startItem = _itemFactory.GenerateRandom(gSession.Player.Level);
-        } while (!startItem.AllowedClasses.Any((cl) => cl == gSession.Player.Type));
-
-        gSession.Inventory.Backpack.Add(startItem);
+        gSession.Inventory.Backpack.Add(
+            _itemFactory.GenerateStartItem(ItemCategory.Armor, gSession.Player.Type)
+        );
+        gSession.Inventory.Backpack.Add(
+            _itemFactory.GenerateStartItem(ItemCategory.Weapon, gSession.Player.Type)
+        );
 
         return Result<StartNewGameResponse>.Success(
             new StartNewGameResponse(GameSession: gSession)

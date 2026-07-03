@@ -17,7 +17,7 @@ public class Item
             ItemRarity.Rare => "Rzadki",
             ItemRarity.Epic => "Epicki",
             ItemRarity.Legendary => "Legendarny",
-            _ => "",
+            _ => "Pospolity",
         };
 
     public Item(

@@ -88,7 +88,6 @@ public partial class ArenaScene : Node3D
 
             if (!hasMore)
             {
-                _arenaView.UpdateUI();
                 MoveParticipantLight();
                 MoveTargetLight();
                 break;
@@ -97,12 +96,11 @@ public partial class ArenaScene : Node3D
             await PlayAnims();
             MoveParticipantLight();
             MoveTargetLight();
-            _arenaView.UpdateUI();
             _arenaView.HidePlayerAction();
         }
         _isStepping = false;
 
-        CheckIfCombatIsFinished();
+        await CheckIfCombatIsFinished();
     }
 
     private async Task PlayAnims()
@@ -139,17 +137,27 @@ public partial class ArenaScene : Node3D
             if (targetNode is EnemyScript || targetNode is PlayerController)
             {
                 var s = (targetNode as ICharacterAnimationController)!;
-                await s.PlayDeathAnimation();
+                await s.PlayDeathAnimation(); // samo się pilnuje w tasku
             }
         }
     }
 
-    public override void _Process(double delta)
+    public override async void _Process(double delta)
     {
+        _arenaView.UpdateUI();
         if (Combat.ActiveParticipant.IsAlive && !Combat.IsFinished)
         {
             MoveParticipantLight();
             MoveTargetLight();
+        }
+
+        foreach (var (actor, node) in _modelsMap)
+        {
+            var s = (node as ICharacterAnimationController)!;
+            if (!actor.IsAlive)
+            {
+                await s.PlayDeathAnimation();
+            }
         }
     }
 
@@ -230,8 +238,10 @@ public partial class ArenaScene : Node3D
         _targetLight.Position = new Vector3(targSlotPos.X, _targetLight.Position.Y, targSlotPos.Z);
     }
 
-    private void CheckIfCombatIsFinished()
+    private async Task CheckIfCombatIsFinished()
     {
+        await ToSignal(GetTree().CreateTimer(1f), Godot.Timer.SignalName.Timeout); // delay między turami;
+
         if (!Combat.IsFinished)
             return;
 

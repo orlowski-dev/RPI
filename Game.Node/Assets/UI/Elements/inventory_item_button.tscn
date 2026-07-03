@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dr6xb7l23p2w"]
+
+[ext_resource type="Theme" path="res://Assets/UI/Styles/inventory_item_button.tres" id="1_jjt46"]
+[ext_resource type="Script" path="res://Assets/UI/Elements/InventoryItemButton.cs" id="2_6mbwq"]
+
+[node name="InventoryItemButton" type="Button" unique_id=1392459255]
+custom_minimum_size = Vector2(126, 126)
+custom_maximum_size = Vector2(126, 126)
+offset_right = 145.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_jjt46")
+text = "Super fajny miecz"
+autowrap_mode = 2
+script = ExtResource("2_6mbwq")

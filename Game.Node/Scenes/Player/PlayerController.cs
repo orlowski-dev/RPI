@@ -31,7 +31,7 @@ public partial class PlayerController : CharacterBody3D, ICharacterAnimationCont
             [An.Attack] = "archer_standing_aim_recoil",
             [An.Idle] = "archer_standing_idle",
             [An.Running] = "archer_standing_run_forward",
-            [An.Death] = "archer_standing_death_forward_01react_death_left",
+            [An.Death] = "archer_standing_death_forward_01",
         },
         [PlayerType.Mage] = new()
         {
@@ -61,7 +61,7 @@ public partial class PlayerController : CharacterBody3D, ICharacterAnimationCont
     private Player _player =>
         _gsProvider.Current?.Player ?? throw new Exception("Player in session is null!");
 
-    public bool DeathAnimPlayed { get; private set; } = false;
+    private bool _deathAnimStarted = false;
 
     public override void _Ready()
     {
@@ -134,8 +134,11 @@ public partial class PlayerController : CharacterBody3D, ICharacterAnimationCont
 
     public async Task PlayDeathAnimation()
     {
+        if (_deathAnimStarted)
+            return;
+        _deathAnimStarted = true;
+
         _animationPlayer.Play(GetAnimation(An.Death));
         await ToSignal(_animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
-        DeathAnimPlayed = true;
     }
 }

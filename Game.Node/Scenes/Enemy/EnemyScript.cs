@@ -14,7 +14,7 @@ public partial class EnemyScript : StaticBody3D, ICharacterAnimationController
 	private AnimationPlayer _animPlayer = null!;
 	private CollisionShape3D _collision = null!;
 	private Area3D _clickArea = null!;
-	public bool DeathAnimPlayed { get; private set; } = false;
+	private bool _deathAnimStarted = false;
 
 	public Encounter Encounter { get; set; } = null!; // ref żebym wiedział do którego encountera on należy
 	public Enemy Enemy { get; set; } = null!;
@@ -99,11 +99,17 @@ public partial class EnemyScript : StaticBody3D, ICharacterAnimationController
 
 	public async Task PlayDeathAnimation()
 	{
-		if (DeathAnimPlayed)
+		if (_deathAnimStarted)
 			return;
+		_deathAnimStarted = true;
+
 		_animPlayer.Play(_anims.GetAnimation(Enemy.Type, EnemyAnimations.Anim.Death));
 		await ToSignal(_animPlayer, AnimationPlayer.SignalName.AnimationFinished);
-		DeathAnimPlayed = true;
+	}
+
+	public void DisableEventArea()
+	{
+		_eventArea.QueueFree();
 	}
 
 	public void DisableCollisions()
@@ -125,10 +131,5 @@ public partial class EnemyScript : StaticBody3D, ICharacterAnimationController
 				return;
 			_CombatSession?.SetTarget(Enemy);
 		}
-	}
-
-	public void DisableEventArea()
-	{
-		_eventArea.QueueFree();
 	}
 }

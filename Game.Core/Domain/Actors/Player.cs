@@ -84,20 +84,20 @@ public class Player : Actor
         Item? armor = inventory.Equipment.Armor;
         if (armor is not null)
         {
-            maxHp += armor.BaseStats.MaxHp;
-            attack += armor.BaseStats.Attack;
-            defense += armor.BaseStats.Defense;
-            luck += armor.BaseStats.Luck;
-            criticalChance += armor.BaseStats.CriticalChance;
+            maxHp += armor.Stats.MaxHp;
+            attack += armor.Stats.Attack;
+            defense += armor.Stats.Defense;
+            luck += armor.Stats.Luck;
+            criticalChance += armor.Stats.CriticalChance;
         }
         Item? weapon = inventory.Equipment.Weapon;
         if (weapon is not null)
         {
-            maxHp += weapon.BaseStats.MaxHp;
-            attack += weapon.BaseStats.Attack;
-            defense += weapon.BaseStats.Defense;
-            luck += weapon.BaseStats.Luck;
-            criticalChance += weapon.BaseStats.CriticalChance;
+            maxHp += weapon.Stats.MaxHp;
+            attack += weapon.Stats.Attack;
+            defense += weapon.Stats.Defense;
+            luck += weapon.Stats.Luck;
+            criticalChance += weapon.Stats.CriticalChance;
         }
 
         return new(
@@ -123,6 +123,6 @@ public class Player : Actor
         + $"Gold: {Gold}\n"
         + $"Atak: {Stats.Attack}\n"
         + $"Obrona: {Stats.Defense}\n"
-        + $"Szansa na\ntrafienie krytyczne: {Stats.Defense}%\n"
+        + $"Szansa na\ntrafienie krytyczne: {Stats.CriticalChance}%\n"
         + $"Szczęście: {Stats.Luck}%\n";
 }

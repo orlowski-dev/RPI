@@ -3,148 +3,133 @@ using Microsoft.Extensions.DependencyInjection;
 
 public partial class InventoryView : Control
 {
-    private IGameSessionProvider _gs = null!;
-    private Inventory? _Inventory => _gs.Current?.Inventory;
-    private Player? _Player => _gs.Current?.Player;
+	private IGameSessionProvider _gs = null!;
+	private Inventory? _Inventory => _gs.Current?.Inventory;
+	private Equipment? _Equipment => _gs.Current?.Inventory.Equipment;
+	private Player? _Player => _gs.Current?.Player;
 
-    private enum Containers
-    {
-        Items,
-        Description,
-    }
+	private enum Containers
+	{
+		Items,
+	}
 
-    private enum Labels
-    {
-        Description,
-        PlayerInfo,
-        Armor,
-        Weapon,
-    }
+	private enum Labels
+	{
+		PlayerInfo,
+	}
 
-    private enum Buttons
-    {
-        Close,
-        Equip,
-        n,
-    }
+	private enum Buttons
+	{
+		Close,
+	}
 
-    private Dictionary<Containers, Container> _containers = new();
-    private Dictionary<Labels, Label> _labels = new();
-    private Dictionary<Buttons, Button> _buttons = new();
-    private Item? _selectedItem;
+	private Dictionary<Containers, Container> _containers = new();
+	private Dictionary<Labels, Label> _labels = new();
+	private Dictionary<Buttons, Button> _buttons = new();
 
-    public Action? OnCloseAction;
+	public Action? OnCloseAction;
 
-    public override void _Ready()
-    {
-        _gs = ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
+	public override void _Ready()
+	{
+		_gs = ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
 
-        _containers[Containers.Items] = GetNode<Container>("%ItemsContainer");
+		_containers[Containers.Items] = GetNode<Container>("%ItemsContainer");
 
-        _labels[Labels.Description] = GetNode<Label>("%ItemDesc");
-        _labels[Labels.PlayerInfo] = GetNode<Label>("%PlayerInfo");
-        _labels[Labels.Armor] = GetNode<Label>("%ArmorLabel");
-        _labels[Labels.Weapon] = GetNode<Label>("%WeaponLabel");
-        _containers[Containers.Description] = GetNode<Container>("%DescContainer");
+		_labels[Labels.PlayerInfo] = GetNode<Label>("%PlayerInfo");
 
-        _buttons[Buttons.Close] = GetNode<Button>("%CloseButton");
-        _buttons[Buttons.Equip] = GetNode<Button>("%EquipButton");
+		_buttons[Buttons.Close] = GetNode<Button>("%CloseButton");
 
-        _buttons[Buttons.Equip].Pressed += OnEquipClick;
+		_buttons[Buttons.Close].Pressed += () =>
+		{
+			OnCloseAction?.Invoke();
+		};
+	}
 
-        _buttons[Buttons.Close].Pressed += () =>
-        {
-            OnCloseAction?.Invoke();
-        };
-    }
+	private void UpdateUI()
+	{
+		if (_Inventory is null || _Player is null)
+		{
+			DebugExtension.Fatal(this, "Inventory or Player is null!");
+			return;
+		}
 
-    private void UpdateUI()
-    {
-        if (_Inventory is null || _Player is null)
-        {
-            DebugExtension.Fatal(this, "Inventory or Player is null!");
-            return;
-        }
+		_labels[Labels.PlayerInfo].Text = _Player.Info;
 
-        if (_selectedItem is null)
-        {
-            _containers[Containers.Description].Visible = false;
-        }
+		// clear item list
+		ClearSlot(_containers[Containers.Items]);
 
-        _labels[Labels.Armor].Text = _Inventory.Equipment?.Armor is not null
-            ? _Inventory.Equipment.Armor.Name
-            : "";
-        _labels[Labels.Weapon].Text = _Inventory.Equipment?.Weapon is not null
-            ? _Inventory.Equipment.Weapon.Name
-            : "";
+		// add items to the list
+		foreach (var item in _Inventory.Backpack.Items)
+		{
+			var btn = SpawnItemButton(item, _containers[Containers.Items]);
+			var equiped = false;
 
-        _labels[Labels.PlayerInfo].Text = _Player.Info;
+			if (item == _Inventory.Equipment?.Armor || item == _Inventory.Equipment?.Weapon)
+			{
+				btn.ThemeTypeVariation = "Equiped";
+				equiped = true;
+			}
 
-        // clear item list
-        foreach (var child in _containers[Containers.Items].GetChildren())
-        {
-            child.QueueFree();
-        }
+			btn.SetMeta("itemID", item.Id.ToString());
 
-        // add items to the list
-        foreach (var item in _Inventory.Backpack.Items)
-        {
-            if (item == _Inventory.Equipment?.Armor || item == _Inventory.Equipment?.Weapon)
-            {
-                return;
-            }
+			var desc = item.GetInfo();
+			if (!item.AllowedClasses.Contains(_Player.Type))
+			{
+				btn.ThemeTypeVariation = "Invalid";
+				desc += "Nie można użyć tego przedmiotu";
+			}
 
-            var itemLabel = GD.Load<PackedScene>(ScenePaths.ItemLabel).Instantiate<Button>();
-            itemLabel.Text = item.Name;
+			btn.TooltipText = desc;
 
-            _containers[Containers.Items].AddChild(itemLabel);
-            itemLabel.SetMeta("itemID", item.Id.ToString());
+			var btnScript = (btn as InventoryItemButton)!;
+			btnScript.OnDoubleClick = () => OnItemSelect(item, equiped);
+		}
+	}
 
-            itemLabel.Pressed += () => OnItemSelect(item);
-        }
-    }
+	private void ClearSlot(Container container)
+	{
+		foreach (var child in container.GetChildren())
+		{
+			child.QueueFree();
+		}
+	}
 
-    private void OnItemSelect(Item item)
-    {
-        if (_Player is null)
-        {
-            DebugExtension.Fatal(this, "Player is null!");
-        }
+	private void OnItemSelect(Item item, bool equiped)
+	{
+		if (_Player is null)
+		{
+			DebugExtension.Fatal(this, "Player is null!");
+		}
 
-        _selectedItem = item;
-        var desc = item.GetInfo();
-        if (!item.AllowedClasses.Any((cl) => cl == _Player.Type))
-        {
-            desc += "Nie można użyć tego przedmiotu";
-        }
+		if (!equiped)
+		{
+			_Inventory?.Equipment.Equip(item, _Player.Type);
+		}
+		else
+		{
+			_Inventory?.Equipment.Remove(item.Id);
+		}
 
-        _labels[Labels.Description].Text = desc;
-        _containers[Containers.Description].Visible = true;
+		UpdateUI();
+		GD.Print($"Załóżono {item.Name}");
+	}
 
-        UpdateUI();
-    }
+	public void SetVisible()
+	{
+		UpdateUI();
+		Visible = true;
+	}
 
-    private void OnEquipClick()
-    {
-        if (_selectedItem is null || _Player is null)
-        {
-            DebugExtension.Fatal(this, "selected item or player is null");
-        }
+	public void SetInvisible()
+	{
+		Visible = false;
+	}
 
-        _Inventory?.Equipment.Equip(_selectedItem, _Player.Type);
-        _selectedItem = null;
-        UpdateUI();
-    }
-
-    public void SetVisible()
-    {
-        UpdateUI();
-        Visible = true;
-    }
-
-    public void SetInvisible()
-    {
-        _selectedItem = null;
-        Visible = false;
-    }
+	private Button SpawnItemButton(Item item, Container container)
+	{
+		var btn = GD.Load<PackedScene>(ScenePaths.InventoryItemButton).Instantiate<Button>();
+		container.AddChild(btn);
+		btn.Text = item.Name;
+		return btn;
+	}
 }

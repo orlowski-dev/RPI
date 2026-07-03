@@ -7,5 +7,5 @@ public static class ScenePaths
     public const string Arena = "res://Scenes/Arena/Arena.tscn";
     public const string Defeat = "res://Scenes/Arena/DefeatScene.tscn";
     public const string Inventory = "res://Assets/UI/Scenes/inventory_view.tscn";
-    public const string ItemLabel = "res://Assets/UI/Scenes/item_label.tscn";
+    public const string InventoryItemButton = "res://Assets/UI/Elements/inventory_item_button.tscn";
 }

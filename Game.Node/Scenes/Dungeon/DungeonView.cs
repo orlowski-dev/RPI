@@ -64,7 +64,7 @@ public partial class DungeonView : Control
         _bars[Bars.Exp].Value = _Player.Exp;
 
         _backpackBtn.Pressed += OnBackpackClick;
-        GetTree().CurrentScene.AddChild(_inventoryView);
+        GetTree().CurrentScene.GetNode<CanvasLayer>("CanvasLayer").AddChild(_inventoryView);
     }
 
     private void UpdateUI()

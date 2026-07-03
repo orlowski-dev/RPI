@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://b50riec5rkou8" path="res://Assets/UI/Scenes/InventoryView.cs" id="1_knkd1"]
 [ext_resource type="PackedScene" uid="uid://bvrqixrrx0l4s" path="res://Assets/UI/Scenes/box.tscn" id="1_r3qh0"]
 [ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="2_knkd1"]
-[ext_resource type="FontFile" uid="uid://kfw6ahlglmlx" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-Medium.ttf" id="4_8yhmi"]
-[ext_resource type="Theme" uid="uid://da66nubn2twu7" path="res://Assets/UI/Styles/item_label.tres" id="4_v7u04"]
+[ext_resource type="PackedScene" uid="uid://cdbyajaauekmr" path="res://Assets/UI/Elements/inventory_item_button.tscn" id="4_v7u04"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6lmw"]
 bg_color = Color(0.08627451, 0.10980392, 0.12941177, 0.78431374)
@@ -85,103 +84,108 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer" unique_id=46228398]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer" unique_id=221161317]
+custom_minimum_size = Vector2(416, 356)
+custom_maximum_size = Vector2(416, 356)
 layout_mode = 2
-theme_override_constants/separation = 24
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1324970975]
-custom_minimum_size = Vector2(364, 0)
-layout_mode = 2
-theme_override_constants/h_separation = 24
-columns = 2
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=760603314]
-layout_mode = 2
-theme = ExtResource("2_knkd1")
-theme_override_font_sizes/font_size = 16
-text = "Zbroja:"
-
-[node name="ArmorLabel" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=922701967]
-unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("2_knkd1")
-theme_override_font_sizes/font_size = 16
-text = "Zbroja"
-horizontal_alignment = 2
-
-[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=242544560]
-layout_mode = 2
-theme = ExtResource("2_knkd1")
-theme_override_font_sizes/font_size = 16
-text = "Broń:"
-
-[node name="WeaponLabel" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=1978787974]
-unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("2_knkd1")
-theme_override_font_sizes/font_size = 16
-text = "Broń"
-horizontal_alignment = 2
-
-[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=885651452]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1570102668]
-custom_minimum_size = Vector2(260, 280)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="ItemsContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer" unique_id=1854050355]
+[node name="ItemsContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer" unique_id=1514573]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("4_v7u04")
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 4
 
-[node name="DescContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1496083526]
-unique_name_in_owner = true
+[node name="InventoryItemButton3" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1392459255 instance=ExtResource("4_v7u04")]
 layout_mode = 2
-size_flags_horizontal = 3
+text = "Pospolity pancerz płytkowy
+"
 
-[node name="Container" type="ScrollContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/DescContainer" unique_id=1524913122]
-custom_minimum_size = Vector2(0, 240)
-custom_maximum_size = Vector2(-1, 240)
+[node name="InventoryItemButton4" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=43422858 instance=ExtResource("4_v7u04")]
 layout_mode = 2
-size_flags_vertical = 3
+text = "Pospolity pancerz płytkowy
+"
 
-[node name="ItemDesc" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/DescContainer/Container" unique_id=478120872]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 0)
+[node name="InventoryItemButton5" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=892057026 instance=ExtResource("4_v7u04")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("2_knkd1")
-theme_override_font_sizes/font_size = 13
-text = "l;adl;dsa
-dasadsopda
-adsdas
-asd
-asdasdgfgdg
-t
-wefw
-ew
-fwe
-efw
-fwe
-fwe
-f"
-autowrap_mode = 2
+text = "Pospolity pancerz płytkowy
+"
 
-[node name="EquipButton" type="Button" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/DescContainer" unique_id=372596922]
-unique_name_in_owner = true
+[node name="InventoryItemButton6" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=40962700 instance=ExtResource("4_v7u04")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("4_8yhmi")
-theme_override_font_sizes/font_size = 12
-text = "Wyposaż"
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton7" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1916088427 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton8" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=777457956 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton9" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=426585214 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton10" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=895624592 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton11" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1972265559 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton12" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1442091407 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton13" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=633453281 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton14" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1312130180 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton15" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=62278190 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton16" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=345689408 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton17" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=895072880 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton18" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=840761680 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton19" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=831665409 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton20" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=70524913 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
 
 [node name="Panel2" type="Panel" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer" unique_id=552213131]
 custom_minimum_size = Vector2(200, 0)

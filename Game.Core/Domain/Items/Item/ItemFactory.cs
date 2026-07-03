@@ -51,4 +51,22 @@ public class ItemFactory
             _ => ItemRarity.Legendary,
         };
     }
+
+    public Item GenerateStartItem(ItemCategory category, PlayerType playerType)
+    {
+        var candidates = ItemCatalog
+            .Values.Where(kv =>
+                kv.Value.Category == category && kv.Value.AllowedClasses.Contains(playerType)
+            )
+            .Select(kv => kv.Key)
+            .ToList();
+
+        if (candidates.Count == 0)
+            throw new InvalidOperationException(
+                $"Brak itemów w katalogu: {category} dla {playerType}."
+            );
+
+        var id = candidates[_random.Next(candidates.Count)];
+        return Generate(id: id, playerLevel: 1);
+    }
 }

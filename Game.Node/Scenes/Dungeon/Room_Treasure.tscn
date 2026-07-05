@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cxq750brm3gd3"]
+
+[ext_resource type="PackedScene" uid="uid://ctf234xefb381" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_floor_01_o_straight_med_v3.tscn" id="1_xsdsn"]
+[ext_resource type="PackedScene" uid="uid://dhmk87jiy6gxc" path="res://Assets/Models/Environ/mod_column_01_large.scn" id="2_0xslq"]
+[ext_resource type="PackedScene" uid="uid://cpd27jkf0cxe0" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_wall_01_m_straight_large_v2.scn" id="3_uwgjx"]
+[ext_resource type="PackedScene" uid="uid://cjxlgcndv2goo" path="res://Assets/Models/Environ/arch_door.scn" id="4_sgyn6"]
+[ext_resource type="PackedScene" uid="uid://c5s8pprwsg3o7" path="res://Assets/Models/Environ/wall_corner.scn" id="5_xun51"]
+[ext_resource type="PackedScene" uid="uid://kssyw3eokqcv" path="res://Assets/Models/Environ/chest.scn" id="6_0xslq"]
+[ext_resource type="PackedScene" uid="uid://b34kp66wndnha" path="res://Assets/Models/Characters/Archer/erika_archer.scn" id="6_smnnu"]
+
+[node name="RoomTreasure" type="Node3D" unique_id=1068982096]
+
+[node name="MOD_Floor_01_O_straight_med14" parent="." unique_id=573348940 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="MOD_Floor_01_O_straight_med15" parent="." unique_id=1949597238 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="MOD_Floor_01_O_straight_med16" parent="." unique_id=882802241 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="MOD_Floor_01_O_straight_med17" parent="." unique_id=1440311896 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+
+[node name="MOD_Floor_01_O_straight_med18" parent="." unique_id=311126768 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
+
+[node name="MOD_Floor_01_O_straight_med19" parent="." unique_id=785961069 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+
+[node name="MOD_Floor_01_O_straight_med20" parent="." unique_id=1721092086 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="MOD_Floor_01_O_straight_med21" parent="." unique_id=1315500359 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="MOD_Floor_01_O_straight_med22" parent="." unique_id=1146708046 instance=ExtResource("1_xsdsn")]
+
+[node name="MOD_Floor_01_O_straight_med23" parent="." unique_id=1310056927 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="MOD_Floor_01_O_straight_med24" parent="." unique_id=384607957 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="MOD_Floor_01_O_straight_med25" parent="." unique_id=1002643370 instance=ExtResource("1_xsdsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="MOD_Column_01_large7" parent="." unique_id=1417043109 instance=ExtResource("2_0xslq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.942448, -1, 4.1416864)
+
+[node name="MOD_Column_01_large8" parent="." unique_id=1837745393 instance=ExtResource("2_0xslq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.086193, -1.304431, 10.406549)
+
+[node name="MOD_Wall_01_M_straight_large10" parent="." unique_id=93212529 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.9712038, 4)
+
+[node name="MOD_Wall_01_M_straight_large11" parent="." unique_id=1587015561 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.9388876, 8)
+
+[node name="MOD_Wall_01_M_straight_large12" parent="." unique_id=1880445820 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 12)
+
+[node name="MOD_Wall_01_M_straight_large13" parent="." unique_id=778755508 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 4, -4, 12)
+
+[node name="MOD_Wall_01_M_straight_large14" parent="." unique_id=836930145 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 8, -4, 12)
+
+[node name="MOD_Wall_01_M_straight_large15" parent="." unique_id=1495596967 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 12, -4, 12)
+
+[node name="MOD_Wall_01_M_straight_large16" parent="." unique_id=393670300 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 3.631918, -1, 0.24377994)
+
+[node name="MOD_Wall_01_M_straight_large18" parent="." unique_id=134700299 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 8.581639, -0.97558594, 0.2680109)
+
+[node name="MOD_Wall_01_M_straight_large19" parent="." unique_id=270343848 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 7.613472, -0.97558594, 0.2680109)
+
+[node name="MOD_WallCover_01_E_convex4" parent="." unique_id=1491030878 instance=ExtResource("4_sgyn6")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 15.974829, 1.5712452, 7.2267246)
+
+[node name="MOD_Wall_01_M_straight_large17" parent="." unique_id=1466547107 instance=ExtResource("3_uwgjx")]
+transform = Transform3D(-2.1855694e-08, 0, 1, 0, 1, 0, -0.5, 0, -4.371139e-08, 16.05408, -1.0978792, 12.41581)
+
+[node name="MOD_Wall_01_E_corner_concave_large2" parent="." unique_id=79819298 instance=ExtResource("5_xun51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24798298, -0.9985533, 0)
+
+[node name="MOD_Wall_01_E_corner_concave_large6" parent="." unique_id=916559021 instance=ExtResource("5_xun51")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 16, -1, -0.00022220612)
+
+[node name="SM_PROP_chest_dungeon_02" parent="." unique_id=855980072 instance=ExtResource("6_0xslq")]
+transform = Transform3D(-0.002905969, 0, 1.4999973, 0, 1.5, 0, -1.4999973, 0, -0.002905969, 5.6476192, -0.028915405, 6.0754538)
+
+[node name="Erika Archer2" parent="." unique_id=2085331752 instance=ExtResource("6_smnnu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, 2)

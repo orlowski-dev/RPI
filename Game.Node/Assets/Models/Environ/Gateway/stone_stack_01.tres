@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://brysesfvglfps"]
 
-[ext_resource type="Texture2D" uid="uid://c0olycv706gcq" path="res://Assets/Models/Environ/Gateway/T_ENV_MOD_StoneStack_01_v1_BC.png" id="1_tjb3f"]
-[ext_resource type="Texture2D" uid="uid://dtswb54b86as7" path="res://Assets/Models/Environ/Gateway/T_ENV_MOD_StoneStack_01_v1_N.png" id="2_oh4tf"]
-[ext_resource type="Texture2D" uid="uid://7rivn8rloxlf" path="res://Assets/Models/Environ/Gateway/T_ENV_MOD_StoneStack_01_v1_MTSM.png" id="3_8pwbu"]
+[ext_resource type="Texture2D" uid="uid://1iaxcib5ent4" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/2d/Textures/T_PROP_orevein_dungeon_BC.png" id="1_tjb3f"]
+[ext_resource type="Texture2D" uid="uid://mmwdqt3k8vx3" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/2d/Textures/T_PROP_orevein_dungeon_MTSM.png" id="2_oh4tf"]
+[ext_resource type="Texture2D" uid="uid://df5e2gan70gs5" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/2d/Textures/T_PROP_orevein_dungeon_N.png" id="3_8pwbu"]
 
 [resource]
 albedo_texture = ExtResource("1_tjb3f")

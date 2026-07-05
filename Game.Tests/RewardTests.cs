@@ -1,0 +1,110 @@
+public class RewardTest
+{
+    private readonly RewardCalculator _rewardCalculator = new();
+
+    private static Enemy CreateEnemy(
+        int level,
+        EnemyRank rank,
+        EnemyType type,
+        int expReward,
+        int goldReward
+    )
+    {
+        return new Enemy(
+            name: Guid.NewGuid().ToString(),
+            expReward: expReward,
+            goldReward: goldReward,
+            rank: rank,
+            type: type,
+            level: level,
+            stats: new(10, 3, 1, 2, 3),
+            subType: EnemySubType.Jolleen
+        );
+    }
+
+    [Fact]
+    [LogTest]
+    public void ShouldCalculateRewardForSingleNormalEnemy()
+    {
+        var enemy = new Enemy(
+            name: Guid.NewGuid().ToString(),
+            goldReward: 1,
+            expReward: 1,
+            level: 10,
+            stats: new(10, 3, 1, 2, 3),
+            rank: EnemyRank.Normal,
+            type: EnemyType.Jolleen,
+            subType: EnemySubType.Jolleen
+        );
+
+        // exp = 1 * 10 * 10 * 1 = 100
+        // gold = 1 * 10 * 5 * 1 = 50
+
+        var result = _rewardCalculator.Calculate([enemy]);
+        Assert.Equal(100, result.Experience);
+        Assert.Equal(50, result.Gold);
+    }
+
+    [Fact]
+    [LogTest]
+    public void Should_sum_rewards_from_multiple_enemies()
+    {
+        var enemies = new[]
+        {
+            CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
+            CreateEnemy(5, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
+        };
+
+        // exp = 100 + 50
+        // gold = 50 + 25
+
+        var result = _rewardCalculator.Calculate(enemies);
+        Assert.Equal(150, result.Experience);
+        Assert.Equal(75, result.Gold);
+    }
+
+    [Fact]
+    [LogTest]
+    public void Should_add_10_percent_bonus_when_more_than_two_enemies()
+    {
+        var enemies = new[]
+        {
+            CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
+            CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
+            CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1),
+        };
+
+        // base exp = 300
+        // bonus = 30
+        // total = 330
+
+        // base gold = 150
+        // bonus = 15
+        // total = 165
+
+        var result = _rewardCalculator.Calculate(enemies);
+        Assert.Equal(330, result.Experience);
+        Assert.Equal(165, result.Gold);
+    }
+
+    [Fact]
+    [LogTest]
+    public void Should_use_rank_multiplier()
+    {
+        var normal = CreateEnemy(10, EnemyRank.Normal, EnemyType.Jolleen, 1, 1);
+        var elite = CreateEnemy(10, EnemyRank.Elite, EnemyType.Jolleen, 1, 1);
+        var normalReward = _rewardCalculator.Calculate([normal]);
+        var eliteReward = _rewardCalculator.Calculate([elite]);
+        Assert.True(eliteReward.Experience > normalReward.Experience);
+        Assert.True(eliteReward.Gold > normalReward.Gold);
+    }
+
+    [Fact]
+    [LogTest]
+    public void Should_return_zero_when_no_enemies()
+    {
+        var result = _rewardCalculator.Calculate([]);
+        Assert.Equal(0, result.Experience);
+        Assert.Equal(0, result.Gold);
+    }
+}

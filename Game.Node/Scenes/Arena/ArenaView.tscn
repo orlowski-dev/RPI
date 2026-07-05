@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://bboes4t0gyldu"]
+
+[ext_resource type="Script" uid="uid://bj3vpvgg6g38r" path="res://Scenes/Arena/ArenaViewScript.cs" id="1_j00sb"]
+[ext_resource type="PackedScene" uid="uid://cd3k3onaqbmv7" path="res://Assets/UI/Elements/health_bar.tscn" id="2_gswkx"]
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="3_qw25i"]
+
+[node name="ArenaView" type="Control" unique_id=1251339973]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_j00sb")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=833419926]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=674013527]
+layout_mode = 2
+
+[node name="PlayerHealthBar" parent="MarginContainer/VBoxContainer" unique_id=2002488241 instance=ExtResource("2_gswkx")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="PlayerHPLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2063150239]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_qw25i")
+theme_override_font_sizes/font_size = 22
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="." unique_id=1100176133]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -330.0
+offset_top = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="LogLabel" type="Label" parent="MarginContainer4" unique_id=1374986188]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme = ExtResource("3_qw25i")
+theme_override_font_sizes/font_size = 12
+text = "Log"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="ActionButtons" type="MarginContainer" parent="." unique_id=1399493938]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ActionButtons" unique_id=1747960821]
+layout_mode = 2
+
+[node name="AttackButton" type="Button" parent="ActionButtons/VBoxContainer" unique_id=2121891749]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_qw25i")
+text = "Atakuj"
+
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=90497487]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+
+[node name="EnemyStatsContainer" type="VBoxContainer" parent="MarginContainer3" unique_id=233052706]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1954672480]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 30
+
+[node name="TurnLabel" type="Label" parent="MarginContainer2" unique_id=1553809499]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_qw25i")
+theme_override_font_sizes/font_size = 24
+text = "Tura Player1"

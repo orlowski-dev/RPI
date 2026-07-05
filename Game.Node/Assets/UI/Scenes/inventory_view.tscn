@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://c6hv52iud7jcl"]
+
+[ext_resource type="Script" uid="uid://b50riec5rkou8" path="res://Assets/UI/Scenes/InventoryView.cs" id="1_knkd1"]
+[ext_resource type="PackedScene" uid="uid://bvrqixrrx0l4s" path="res://Assets/UI/Scenes/box.tscn" id="1_r3qh0"]
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="2_knkd1"]
+[ext_resource type="PackedScene" uid="uid://cdbyajaauekmr" path="res://Assets/UI/Elements/inventory_item_button.tscn" id="4_v7u04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6lmw"]
+bg_color = Color(0.08627451, 0.10980392, 0.12941177, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gjqb"]
+bg_color = Color(0.08627451, 0.10980392, 0.12941177, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="InventoryView" type="Control" unique_id=512531712]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_knkd1")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2105505033]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=101729641]
+layout_mode = 2
+
+[node name="Box" parent="CenterContainer/VBoxContainer" unique_id=135960334 instance=ExtResource("1_r3qh0")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer/Box/Panel2" parent_id_path=PackedInt32Array(135960334, 467618456) index="0" unique_id=77934711]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2" unique_id=1894053160]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer" unique_id=1108749097]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_e6lmw")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel" unique_id=494687162]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer" unique_id=221161317]
+custom_minimum_size = Vector2(416, 356)
+custom_maximum_size = Vector2(416, 356)
+layout_mode = 2
+
+[node name="ItemsContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer" unique_id=1514573]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="InventoryItemButton3" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1392459255 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton4" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=43422858 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton5" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=892057026 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton6" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=40962700 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton7" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1916088427 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton8" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=777457956 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton9" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=426585214 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton10" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=895624592 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton11" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1972265559 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton12" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1442091407 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton13" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=633453281 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton14" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=1312130180 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton15" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=62278190 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton16" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=345689408 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton17" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=895072880 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton18" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=840761680 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton19" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=831665409 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton20" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel/MarginContainer/ScrollContainer/ItemsContainer" unique_id=70524913 instance=ExtResource("4_v7u04")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="Panel2" type="Panel" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer" unique_id=552213131]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5gjqb")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel2" unique_id=1288143913]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PlayerInfo" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel2/MarginContainer2" unique_id=1001975950]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("2_knkd1")
+theme_override_font_sizes/font_size = 15
+text = "asdas
+asdas
+asdasd
+asdasd
+asda
+asd
+ad"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=580463457]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_knkd1")
+text = "Zamknij"
+
+[editable path="CenterContainer/VBoxContainer/Box"]

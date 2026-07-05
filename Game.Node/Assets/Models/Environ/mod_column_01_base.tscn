@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://48d032qnmx8v"]
+
+[ext_resource type="PackedScene" uid="uid://dq6rvscf4c45c" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/3d/modular/Column/MOD_Column_01_base.fbx" id="1_a3rxr"]
+[ext_resource type="Material" uid="uid://b4jvijp8r2cad" path="res://Assets/Models/Environ/stonestack_01_v1.material" id="2_2y1sw"]
+
+[node name="MOD_Column_01_base" unique_id=650685702 instance=ExtResource("1_a3rxr")]
+
+[node name="MOD_Column_01_base" parent="." index="0" unique_id=923113034]
+surface_material_override/0 = ExtResource("2_2y1sw")

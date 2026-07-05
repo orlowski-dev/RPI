@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://tela2vlscotg"]
+
+[ext_resource type="Script" uid="uid://dy88b8c0xyn4v" path="res://Scenes/City/CitySceneScript.cs" id="1_e1la7"]
+[ext_resource type="PackedScene" uid="uid://btabpkafmkn8j" path="res://Extensions/EditorOnly/editor_only.tscn" id="4_vileb"]
+[ext_resource type="PackedScene" uid="uid://8s6ygddcnkld" path="res://Assets/Models/Characters/Seller/seller.scn" id="5_vileb"]
+[ext_resource type="PackedScene" uid="uid://b2kcbey6mkprf" path="res://Assets/Models/Environ/TableO1/table01.tscn" id="6_vileb"]
+[ext_resource type="PackedScene" uid="uid://dmn0qrfs0a6y6" path="res://Assets/Models/Environ/portal/portal.scn" id="8_17217"]
+[ext_resource type="PackedScene" uid="uid://c6kqqngrhcfoe" path="res://Assets/Models/Environ/campfire.tscn" id="9_1k48n"]
+[ext_resource type="PackedScene" uid="uid://bmnetiirm4w8l" path="res://Assets/Models/Environ/LowPoly Environment Pack/terrain_2.scn" id="9_217pb"]
+[ext_resource type="PackedScene" uid="uid://cyy67f1n80v3x" path="res://Assets/Models/Environ/LowPoly Environment Pack/tree_1.scn" id="10_1k48n"]
+
+[node name="CityScene" type="Node3D" unique_id=2044755375]
+script = ExtResource("1_e1la7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1472913872]
+
+[node name="Seller" parent="." unique_id=159561386 instance=ExtResource("5_vileb")]
+transform = Transform3D(0.56568545, 0, 0.56568545, 0, 0.8, 0, -0.56568545, 0, 0.56568545, -15, -0.6807104, -8)
+
+[node name="Table01" parent="." unique_id=1193513429 instance=ExtResource("6_vileb")]
+transform = Transform3D(0.7198993, 0, 0.69407856, 0, 1, 0, -0.69407856, 0, 0.7198993, -14.44296, -0.5697201, -7.342381)
+
+[node name="PlayerSpawnPoint" parent="." unique_id=245595008 instance=ExtResource("4_vileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8809977, 1.2739105, -10.51884)
+
+[node name="Terrain_2" parent="." unique_id=1447633975 instance=ExtResource("9_217pb")]
+transform = Transform3D(-30, 0, -4.529874e-06, 0, 30, 0, 4.529874e-06, 0, -30, 3.368, 0.8838879, 9.452298)
+
+[node name="Tree_1" parent="." unique_id=523593491 instance=ExtResource("10_1k48n")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -16.594915, -0.76009727, -8.897965)
+
+[node name="Campfire" parent="." unique_id=947691244 instance=ExtResource("9_1k48n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.290854, -0.3492428, -12.704727)
+
+[node name="Portal" parent="." unique_id=1900588255 instance=ExtResource("8_17217")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5501714, -0.17455482, -17.111944)

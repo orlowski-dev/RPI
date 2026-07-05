@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c1envt2fju164"]
+
+[ext_resource type="Texture2D" uid="uid://d1nwpy2cijsn0" path="res://Assets/Models/Environ/Flame01/flame_02_15x4.tga" id="1_vrexb"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3vntc"]
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.1999999
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrexb"]
+transparency = 1
+albedo_texture = ExtResource("1_vrexb")
+billboard_mode = 3
+particles_anim_h_frames = 15
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_3vntc"]
+material = SubResource("StandardMaterial3D_vrexb")
+
+[node name="Flames01" type="GPUParticles3D" unique_id=1299744500]
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_3vntc")
+draw_pass_1 = SubResource("QuadMesh_3vntc")

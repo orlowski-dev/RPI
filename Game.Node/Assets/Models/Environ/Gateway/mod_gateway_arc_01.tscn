@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dr5el272qha45"]
+
+[ext_resource type="PackedScene" uid="uid://s8q4x1it6x2n" path="res://Assets/Models/Environ/Gateway/MOD_Gateway_Arc_01.fbx" id="1_vje55"]
+[ext_resource type="Material" uid="uid://brysesfvglfps" path="res://Assets/Models/Environ/Gateway/stone_stack_01.tres" id="2_mg401"]
+
+[node name="MOD_Gateway_Arc_01" unique_id=610848581 instance=ExtResource("1_vje55")]
+
+[node name="MOD_Gateway_Arc_01" parent="." index="0" unique_id=1569760632]
+surface_material_override/0 = ExtResource("2_mg401")

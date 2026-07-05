@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://ey1d5dpcd1a1"]
+
+[ext_resource type="PackedScene" uid="uid://ctf234xefb381" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_floor_01_o_straight_med_v3.tscn" id="1_8boq0"]
+[ext_resource type="PackedScene" uid="uid://dhmk87jiy6gxc" path="res://Assets/Models/Environ/mod_column_01_large.scn" id="2_67lvx"]
+[ext_resource type="PackedScene" uid="uid://cpd27jkf0cxe0" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_wall_01_m_straight_large_v2.scn" id="3_s2i8f"]
+[ext_resource type="PackedScene" uid="uid://cjxlgcndv2goo" path="res://Assets/Models/Environ/arch_door.scn" id="4_n8hnm"]
+[ext_resource type="PackedScene" uid="uid://c5s8pprwsg3o7" path="res://Assets/Models/Environ/wall_corner.scn" id="5_jpavq"]
+[ext_resource type="PackedScene" uid="uid://cpms4bb8gpbbb" path="res://Assets/Models/Environ/stones_03.scn" id="6_sc47s"]
+[ext_resource type="PackedScene" uid="uid://ceuh1ib6l8bid" path="res://Assets/Models/Environ/stones_02.scn" id="7_vx0jv"]
+[ext_resource type="PackedScene" uid="uid://cqota3wnpatpn" path="res://Assets/Models/Environ/stones_01.scn" id="8_ia7rk"]
+[ext_resource type="PackedScene" uid="uid://b34kp66wndnha" path="res://Assets/Models/Characters/Archer/erika_archer.scn" id="9_ipdfi"]
+
+[node name="RoomCombatSmall01" type="Node3D" unique_id=922564163]
+
+[node name="MOD_Floor_01_O_straight_med14" parent="." unique_id=573348940 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="MOD_Floor_01_O_straight_med15" parent="." unique_id=71951032 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.031847954, 4)
+
+[node name="MOD_Floor_01_O_straight_med16" parent="." unique_id=1978859051 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="MOD_Floor_01_O_straight_med17" parent="." unique_id=469660983 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+
+[node name="MOD_Floor_01_O_straight_med18" parent="." unique_id=1474990707 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
+
+[node name="MOD_Floor_01_O_straight_med19" parent="." unique_id=1662154045 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+
+[node name="MOD_Floor_01_O_straight_med20" parent="." unique_id=273616000 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="MOD_Floor_01_O_straight_med21" parent="." unique_id=2132213640 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="MOD_Floor_01_O_straight_med22" parent="." unique_id=1734480235 instance=ExtResource("1_8boq0")]
+
+[node name="MOD_Floor_01_O_straight_med23" parent="." unique_id=1818931844 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="MOD_Floor_01_O_straight_med24" parent="." unique_id=1114401895 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="MOD_Floor_01_O_straight_med25" parent="." unique_id=158009772 instance=ExtResource("1_8boq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="MOD_Wall_01_M_straight_large10" parent="." unique_id=93212529 instance=ExtResource("3_s2i8f")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.0093102455, -1.31773, 3.9877162)
+
+[node name="MOD_Wall_01_M_straight_large11" parent="." unique_id=683572506 instance=ExtResource("3_s2i8f")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -1.3130333, 8)
+
+[node name="MOD_Wall_01_M_straight_large12" parent="." unique_id=1831493198 instance=ExtResource("3_s2i8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2885175, 12)
+
+[node name="MOD_Wall_01_M_straight_large13" parent="." unique_id=881753667 instance=ExtResource("3_s2i8f")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 4, -1.2885175, 12)
+
+[node name="MOD_Wall_01_M_straight_large14" parent="." unique_id=1583398815 instance=ExtResource("3_s2i8f")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 8, -1.2885175, 12)
+
+[node name="MOD_Wall_01_M_straight_large15" parent="." unique_id=1544192282 instance=ExtResource("3_s2i8f")]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 12, -1.2885175, 12)
+
+[node name="MOD_Wall_01_M_straight_large18" parent="." unique_id=632098057 instance=ExtResource("3_s2i8f")]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 10.169147, -0.98305464, 0.28679085)
+
+[node name="MOD_Wall_01_M_straight_large19" parent="." unique_id=46364140 instance=ExtResource("3_s2i8f")]
+transform = Transform3D(-2.1855694e-08, 0, 1, 0, 1, 0, -0.5, 0, -4.371139e-08, 15.835682, -1.2631357, 12.528459)
+
+[node name="MOD_Wall_01_E_corner_concave_large2" parent="." unique_id=79819298 instance=ExtResource("5_jpavq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3960576, -1.3593733, 0.004591942)
+
+[node name="MOD_Wall_01_E_corner_concave_large6" parent="." unique_id=633645450 instance=ExtResource("5_jpavq")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 16, -1, -0.00022220612)
+
+[node name="SM_PROP_debris_stones_dungeon_03" parent="." unique_id=1428198749 instance=ExtResource("6_sc47s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8641996, 0, 4.7465363)
+
+[node name="SM_PROP_debris_stones_dungeon_04" parent="." unique_id=890320687 instance=ExtResource("6_sc47s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0932913, 0, 3.166275)
+
+[node name="SM_PROP_debris_stones_dungeon_05" parent="." unique_id=708833288 instance=ExtResource("6_sc47s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.335725, 0, 2.5029554)
+
+[node name="SM_PROP_debris_stones_dungeon_06" parent="." unique_id=587327652 instance=ExtResource("6_sc47s")]
+transform = Transform3D(0.0873122, 0, -0.996181, 0, 1, 0, 0.996181, 0, 0.0873122, 3.7783031, 0, 10.552724)
+
+[node name="SM_PROP_debris_stones_dungeon_07" parent="." unique_id=1226988665 instance=ExtResource("6_sc47s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6165056, 0, 10.552724)
+
+[node name="SM_PROP_debris_stones_dungeon_02" parent="." unique_id=50620827 instance=ExtResource("7_vx0jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.191452, 0, 4.116603)
+
+[node name="SM_PROP_debris_stones_dungeon_08" parent="." unique_id=895865993 instance=ExtResource("7_vx0jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4245853, 0, 2.9752822)
+
+[node name="SM_PROP_debris_stones_dungeon_01" parent="." unique_id=1481333434 instance=ExtResource("8_ia7rk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90276337, 0, 8.774868)
+
+[node name="Erika Archer2" parent="." unique_id=2085331752 instance=ExtResource("9_ipdfi")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, 2)
+
+[node name="Socket_N" type="Marker3D" parent="." unique_id=2010769160]
+
+[node name="MOD_Column_01_large5" parent="Socket_N" unique_id=1417043109 instance=ExtResource("2_67lvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
+
+[node name="MOD_Column_01_large6" parent="Socket_N" unique_id=453254082 instance=ExtResource("2_67lvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 0)
+
+[node name="MOD_WallCover_01_E_convex3" parent="Socket_N" unique_id=1491030878 instance=ExtResource("4_n8hnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.4936547, 0)
+
+[node name="Socket_E" type="Marker3D" parent="." unique_id=700397904]
+
+[node name="MOD_Column_01_large7" parent="Socket_E" unique_id=2068607024 instance=ExtResource("2_67lvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.942448, -1, 4.1416864)
+
+[node name="MOD_Column_01_large8" parent="Socket_E" unique_id=330242712 instance=ExtResource("2_67lvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.87159, -1.304431, 10.406549)
+
+[node name="MOD_WallCover_01_E_convex4" parent="Socket_E" unique_id=1937663667 instance=ExtResource("4_n8hnm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 15.971819, 1.4597425, 7.268482)

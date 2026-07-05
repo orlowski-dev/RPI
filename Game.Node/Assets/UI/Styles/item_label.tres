@@ -1,0 +1,38 @@
+[gd_resource type="Theme" format=3 uid="uid://da66nubn2twu7"]
+
+[ext_resource type="FontFile" uid="uid://kfw6ahlglmlx" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-Medium.ttf" id="1_qhdvb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhdvb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4bb2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kn33u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.654902, 0.94509804, 1, 0.1254902)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[resource]
+Button/font_sizes/font_size = 14
+Button/fonts/font = ExtResource("1_qhdvb")
+Button/styles/hover = SubResource("StyleBoxFlat_qhdvb")
+Button/styles/normal = SubResource("StyleBoxFlat_g4bb2")
+Button/styles/pressed = SubResource("StyleBoxFlat_kn33u")

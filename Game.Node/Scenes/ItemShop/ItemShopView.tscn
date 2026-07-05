@@ -1,0 +1,327 @@
+[gd_scene format=3 uid="uid://db412hh3uth5w"]
+
+[ext_resource type="Script" uid="uid://cn4sqs8ec8k8v" path="res://Scenes/ItemShop/ItemShopView.cs" id="1_upfg1"]
+[ext_resource type="PackedScene" uid="uid://bvrqixrrx0l4s" path="res://Assets/UI/Scenes/box.tscn" id="2_ygq03"]
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="3_dxauc"]
+[ext_resource type="PackedScene" uid="uid://cdbyajaauekmr" path="res://Assets/UI/Elements/inventory_item_button.tscn" id="3_o6fkq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygq03"]
+bg_color = Color(0.08627451, 0.10980392, 0.12941177, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ItemShopView" type="Control" unique_id=2037817807]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_upfg1")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1862493773]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1976299126]
+layout_mode = 2
+
+[node name="Box" parent="CenterContainer/VBoxContainer" unique_id=1296101031 instance=ExtResource("2_ygq03")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer/Box/Panel2" parent_id_path=PackedInt32Array(1296101031, 467618456) index="0" unique_id=1836819374]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2" unique_id=1719390493]
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer" unique_id=64091412]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ygq03")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3" unique_id=1052589312]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="TabContainer" type="TabContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2" unique_id=404415596]
+layout_mode = 2
+current_tab = 0
+
+[node name="Sklep" type="ScrollContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer" unique_id=580245941]
+custom_minimum_size = Vector2(416, 280)
+custom_maximum_size = Vector2(416, 356)
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="SklItemsContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep" unique_id=1742819806]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="InventoryItemButton3" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=1392459255 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton4" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=885313521 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton5" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=1657148590 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton6" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=357800891 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton7" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=1385114760 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton8" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=560867026 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton9" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=622563874 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton10" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=610396845 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton11" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=707385416 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton12" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=2098089001 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton13" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=1430969758 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton14" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=196176925 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton15" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=807524959 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton16" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=1784679321 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton17" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=537306334 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton18" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=604839360 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton19" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=1093548190 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton20" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Sklep/SklItemsContainer" unique_id=1125559328 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="Ekwipunek" type="ScrollContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer" unique_id=660234695]
+visible = false
+custom_minimum_size = Vector2(416, 280)
+custom_maximum_size = Vector2(416, 356)
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="EkwItemsContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek" unique_id=1853659416]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="InventoryItemButton3" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=1245640656 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton4" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=751513743 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton5" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=1150541788 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton6" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=1137253806 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton7" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=443816497 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton8" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=1194759846 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton9" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=1146517255 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton10" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=1483822097 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton11" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=667811781 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton12" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=686934189 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton13" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=1059332811 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton14" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=2068420844 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton15" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=1476140108 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton16" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=310672158 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton17" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=752478353 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton18" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=237437390 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton19" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=1990824482 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="InventoryItemButton20" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel3/MarginContainer2/TabContainer/Ekwipunek/EkwItemsContainer" unique_id=517617190 instance=ExtResource("3_o6fkq")]
+layout_mode = 2
+text = "Pospolity pancerz płytkowy
+"
+
+[node name="Panel2" type="Panel" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer" unique_id=787867924]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ygq03")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel2" unique_id=1375566063]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PlayerInfo" type="Label" parent="CenterContainer/VBoxContainer/Box/Panel2/MarginContainer2/HBoxContainer/Panel2/MarginContainer2" unique_id=2138000713]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_dxauc")
+theme_override_font_sizes/font_size = 15
+text = "asdas
+asdas
+asdasd
+asdasd
+asda
+asd
+ad"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1229375106]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_dxauc")
+text = "Zamknij"
+
+[editable path="CenterContainer/VBoxContainer/Box"]

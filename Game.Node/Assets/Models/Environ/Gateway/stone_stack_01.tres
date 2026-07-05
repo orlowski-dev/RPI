@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://brysesfvglfps"]
+
+[ext_resource type="Texture2D" uid="uid://1iaxcib5ent4" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/2d/Textures/T_PROP_orevein_dungeon_BC.png" id="1_tjb3f"]
+[ext_resource type="Texture2D" uid="uid://mmwdqt3k8vx3" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/2d/Textures/T_PROP_orevein_dungeon_MTSM.png" id="2_oh4tf"]
+[ext_resource type="Texture2D" uid="uid://df5e2gan70gs5" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/2d/Textures/T_PROP_orevein_dungeon_N.png" id="3_8pwbu"]
+
+[resource]
+albedo_texture = ExtResource("1_tjb3f")
+metallic = 1.0
+metallic_texture = ExtResource("2_oh4tf")
+roughness_texture = ExtResource("2_oh4tf")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_8pwbu")

@@ -1,0 +1,515 @@
+[gd_scene format=3 uid="uid://3jk1ssu6vlnx"]
+
+[ext_resource type="Texture2D" uid="uid://cb7gen1iavk1t" path="res://Assets/UI/Sprites/creator.bg.png" id="1_h7pdf"]
+[ext_resource type="Script" uid="uid://tdhr2dfxhsrh" path="res://Scenes/CharacterCreator/CharacterCreatorScene.cs" id="1_t8rku"]
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="3_lnxgb"]
+[ext_resource type="Theme" uid="uid://ctq2gxw1cbnyd" path="res://Assets/UI/Styles/character_class_button.tres" id="4_h7pdf"]
+[ext_resource type="Texture2D" uid="uid://bt62of6xfg4i7" path="res://Assets/UI/Sprites/warrior.icon.png" id="4_huq3o"]
+[ext_resource type="Texture2D" uid="uid://b3v7d04n5hc3b" path="res://Assets/UI/Sprites/mage.icon.png" id="5_nc447"]
+[ext_resource type="Texture2D" uid="uid://dql8wuii8bx1u" path="res://Assets/UI/Sprites/archer.icon.png" id="6_6sx22"]
+[ext_resource type="FontFile" uid="uid://4nde8xulshc6" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-Black.ttf" id="7_73bd8"]
+[ext_resource type="Texture2D" uid="uid://rkmx635qofvc" path="res://Assets/UI/Sprites/heart.icon.png" id="8_6sx22"]
+[ext_resource type="FontFile" uid="uid://kfw6ahlglmlx" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-Medium.ttf" id="8_vnexh"]
+[ext_resource type="Texture2D" uid="uid://bt7qpuyav52k6" path="res://Assets/UI/Sprites/progressbar.bg.png" id="9_pxlb1"]
+[ext_resource type="Texture2D" uid="uid://brbave53sahi6" path="res://Assets/UI/Sprites/progressbar.value.png" id="11_ubm7t"]
+[ext_resource type="Texture2D" uid="uid://8fwl11e6ha6s" path="res://Assets/UI/Sprites/sword.icon.png" id="12_v6j36"]
+[ext_resource type="Texture2D" uid="uid://ds05m83u3g50k" path="res://Assets/UI/Sprites/shield.icon.png" id="13_pmbch"]
+[ext_resource type="Texture2D" uid="uid://0ulcv7la4wyn" path="res://Assets/UI/Sprites/target.icon.png" id="14_73bd8"]
+[ext_resource type="Texture2D" uid="uid://cdb84rucm52hb" path="res://Assets/UI/Sprites/dice.icon.png" id="15_t8rku"]
+[ext_resource type="Texture2D" uid="uid://c4ru3fau3rc33" path="res://Assets/UI/character select UI/buttons/knight.png" id="17_t8rku"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_briqx"]
+texture = ExtResource("1_h7pdf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ubm7t"]
+texture = ExtResource("9_pxlb1")
+
+[sub_resource type="Theme" id="Theme_6sx22"]
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("7_73bd8")
+ProgressBar/constants/outline_size = 4
+ProgressBar/font_sizes/font_size = 12
+ProgressBar/fonts/font = ExtResource("8_vnexh")
+ProgressBar/styles/background = SubResource("StyleBoxTexture_ubm7t")
+
+[node name="MainView" type="Control" unique_id=1426260988]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t8rku")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1423368398]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=903387790]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="PanelContainer" parent="CenterContainer" unique_id=870741128]
+custom_minimum_size = Vector2(1018, 678)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_briqx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer" unique_id=885769060]
+layout_mode = 2
+
+[node name="Left" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer" unique_id=1592860730]
+custom_minimum_size = Vector2(346, 0)
+layout_mode = 2
+
+[node name="Top" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left" unique_id=1580083435]
+layout_mode = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 97
+theme_override_constants/margin_right = 26
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top" unique_id=1316130891]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="ClassButtonsContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer" unique_id=2079442156]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=1416268286]
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 20
+text = "Klasa postaci"
+horizontal_alignment = 1
+
+[node name="Btn_Warrior" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=521873903]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_h7pdf")
+text = "RYCERZ"
+icon = ExtResource("4_huq3o")
+alignment = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=962533801]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="L_Warrior" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer/MarginContainer" unique_id=1513937180]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "Mistrz walki wręcz, wyposażony w ciężki pancerz i potężną broń. Wysoka wytrzymałość oraz obrona pozwalają mu wytrzymać nawet najtrudniejsze starcia."
+autowrap_mode = 2
+
+[node name="Btn_Mage" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=550982927]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_h7pdf")
+text = "CZARODZIEJ"
+icon = ExtResource("5_nc447")
+alignment = 0
+
+[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=660697722]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="L_Mage" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer/MarginContainer3" unique_id=1499068284]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "Mistrz walki wręcz, wyposażony w ciężki pancerz i potężną broń. Wysoka wytrzymałość oraz obrona pozwalają mu wytrzymać nawet najtrudniejsze starcia."
+autowrap_mode = 2
+
+[node name="Btn_Archer" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=1943961539]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_h7pdf")
+text = "ŁUCZNIK"
+icon = ExtResource("6_6sx22")
+alignment = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer" unique_id=799262799]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="L_Archer" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Top/VBoxContainer/ClassButtonsContainer/MarginContainer2" unique_id=912909261]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "Mistrz walki wręcz, wyposażony w ciężki pancerz i potężną broń. Wysoka wytrzymałość oraz obrona pozwalają mu wytrzymać nawet najtrudniejsze starcia."
+autowrap_mode = 2
+
+[node name="Bottom" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left" unique_id=803393188]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_left = 52
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 138
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Bottom" unique_id=1274325133]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Bottom/VBoxContainer2" unique_id=1860794148]
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 20
+text = "Imię postaci"
+horizontal_alignment = 1
+
+[node name="Le_PlayerName" type="LineEdit" parent="CenterContainer/HBoxContainer/HBoxContainer/Left/Bottom/VBoxContainer2" unique_id=668536294]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+
+[node name="Center" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer" unique_id=1886130834]
+custom_minimum_size = Vector2(346, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center" unique_id=644069487]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 68
+theme_override_constants/margin_right = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2" unique_id=994744731]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer" unique_id=566664754]
+layout_mode = 2
+theme = SubResource("Theme_6sx22")
+text = "Kreator postaci"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer" unique_id=1539694384]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label2" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=795560407]
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 20
+text = "Statystyki"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=1898295530]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1790880403]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=627361833]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("8_6sx22")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1684864078]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2072562276]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=833862384]
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "HP"
+
+[node name="L_HP" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2045236038]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "120"
+horizontal_alignment = 2
+
+[node name="Pb_HP" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=897413123]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+max_value = 180.0
+value = 30.0
+nine_patch_stretch = true
+texture_under = ExtResource("9_pxlb1")
+texture_progress = ExtResource("11_ubm7t")
+texture_progress_offset = Vector2(22, 0)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=423601275]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=2011658545]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("12_v6j36")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=603290197]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1804371338]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=952275829]
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "Atak"
+
+[node name="L_Attack" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=2079114105]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "100"
+horizontal_alignment = 2
+
+[node name="Pb_Attack" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1565815399]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+max_value = 50.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("9_pxlb1")
+texture_progress = ExtResource("11_ubm7t")
+texture_progress_offset = Vector2(22, 0)
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=278434520]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=149310077]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("13_pmbch")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=170150978]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer" unique_id=100488802]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer" unique_id=468949147]
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "Obrona"
+
+[node name="L_Defense" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer" unique_id=1786955635]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "100"
+horizontal_alignment = 2
+
+[node name="Pb_Defense" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer" unique_id=538507198]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+max_value = 50.0
+value = 45.0
+nine_patch_stretch = true
+texture_under = ExtResource("9_pxlb1")
+texture_progress = ExtResource("11_ubm7t")
+texture_progress_offset = Vector2(22, 0)
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1546289534]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1929189736]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("14_73bd8")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1568142187]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer" unique_id=1929312938]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/HBoxContainer" unique_id=1392122598]
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_constants/line_spacing = -6
+theme_override_font_sizes/font_size = 12
+text = "Szansa na
+trafienie krytyczne"
+
+[node name="L_Crit" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/HBoxContainer" unique_id=1037372042]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "100"
+horizontal_alignment = 2
+
+[node name="Pb_Crit" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer" unique_id=977764271]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+max_value = 50.0
+value = 2.0
+nine_patch_stretch = true
+texture_under = ExtResource("9_pxlb1")
+texture_progress = ExtResource("11_ubm7t")
+texture_progress_offset = Vector2(22, 0)
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=765026718]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=2034126981]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("15_t8rku")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=1749508376]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=518908104]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer" unique_id=1843682711]
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_constants/line_spacing = -6
+theme_override_font_sizes/font_size = 12
+text = "Szczęście"
+
+[node name="L_Luck" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer" unique_id=1991372791]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 12
+text = "100"
+horizontal_alignment = 2
+
+[node name="Pb_Luck" type="TextureProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer2/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1884755140]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+max_value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("9_pxlb1")
+texture_progress = ExtResource("11_ubm7t")
+texture_progress_offset = Vector2(22, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Center" unique_id=665960700]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/margin_bottom = 21
+
+[node name="Btn_StartGame" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer/Center/MarginContainer" unique_id=44808352]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_lnxgb")
+text = "ROZPOCZNIJ GRĘ"
+
+[node name="Right" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer" unique_id=664208816]
+custom_minimum_size = Vector2(346, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Right" unique_id=1544931272]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 82
+theme_override_constants/margin_right = 38
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2" unique_id=1853302076]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer" unique_id=1629066853]
+layout_mode = 2
+
+[node name="L_SelectedType" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=1371084921]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_lnxgb")
+theme_override_font_sizes/font_size = 28
+text = "RYCERZ"
+horizontal_alignment = 1
+
+[node name="Tx_ClassPreview" type="TextureRect" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer" unique_id=961211452]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("17_t8rku")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer" unique_id=269261332]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/SubViewportContainer" unique_id=2102589046]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(286, 354)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=1832653473]
+transform = Transform3D(-1, 0, -8.742277e-08, -1.2512919e-08, 0.9897037, 0.1431311, 8.652265e-08, 0.1431311, -0.9897037, 0, 1.426998, 0.025158584)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=536364979]
+transform = Transform3D(-0.83089006, -0.3426306, -0.43843588, -0.46408528, 0.86143106, 0.20630422, 0.30699614, 0.37488776, -0.87476426, -5.618373, 1.398592, -2.1148806)
+shadow_enabled = true
+
+[node name="PlayerPreview" type="Node3D" parent="CenterContainer/HBoxContainer/HBoxContainer/Right/MarginContainer2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=2109265681]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)

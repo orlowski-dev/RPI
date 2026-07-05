@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cq30a5fibg021"]
+
+[ext_resource type="Texture2D" uid="uid://dc0gv7ttdid0f" path="res://Assets/Sprites/Environ/FirePlace/fire.png" id="1_o5ln0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0fbb"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoowa"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpkux"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrghf"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neepo"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vprn5"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv8ah"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm71v"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw6en"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(256, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skbvv"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(288, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2htk"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(320, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggo80"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(352, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j28bb"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(384, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5orl"]
+atlas = ExtResource("1_o5ln0")
+region = Rect2(416, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4qbsy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0fbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoowa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpkux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrghf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neepo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vprn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv8ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm71v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw6en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skbvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2htk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggo80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j28bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5orl")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 13.0
+}]
+
+[node name="FirePlace" type="Node2D" unique_id=2084075598]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=804043737]
+sprite_frames = SubResource("SpriteFrames_4qbsy")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.10963879

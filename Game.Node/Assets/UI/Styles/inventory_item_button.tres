@@ -1,0 +1,65 @@
+[gd_resource type="Theme" format=3 uid="uid://drsf2n40cnidd"]
+
+[ext_resource type="FontFile" uid="uid://cnvucwdeqiphf" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-BlackItalic.ttf" id="1_0uuw0"]
+[ext_resource type="FontFile" uid="uid://c6ick7vfa2njg" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-Regular.ttf" id="2_0uuw0"]
+[ext_resource type="FontFile" uid="uid://dte6mngcgygf5" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-Italic.ttf" id="3_8jy6j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6mbwq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4tia7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tia7"]
+bg_color = Color(0.5058824, 0.5058824, 0.5058824, 0.5176471)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.31801978, 0.31801984, 0.31801954, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mbwq"]
+bg_color = Color(0.41000003, 0.41000003, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tera"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jy6j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.007843138, 0.5529412, 0.8784314, 1)
+
+[resource]
+Button/font_sizes/font_size = 13
+Button/fonts/font = ExtResource("2_0uuw0")
+Button/styles/disabled = SubResource("StyleBoxEmpty_6mbwq")
+Button/styles/focus = SubResource("StyleBoxEmpty_4tia7")
+Button/styles/hover = SubResource("StyleBoxFlat_4tia7")
+Button/styles/normal = SubResource("StyleBoxFlat_6mbwq")
+Button/styles/pressed = SubResource("StyleBoxFlat_3tera")
+Equiped/base_type = &"Button"
+Equiped/colors/font_color = Color(0.007843138, 0.5529412, 0.8784314, 1)
+Equiped/font_sizes/font_size = 13
+Equiped/fonts/font = ExtResource("1_0uuw0")
+Equiped/styles/normal = SubResource("StyleBoxFlat_8jy6j")
+Invalid/base_type = &"Button"
+Invalid/colors/font_color = Color(0.8357183, 3.2247603e-06, 7.70092e-07, 1)
+Invalid/fonts/font = ExtResource("3_8jy6j")

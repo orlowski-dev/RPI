@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cdcq6cdhkb8ja"]
+
+[ext_resource type="Script" uid="uid://d1i655y5uj4yi" path="res://Scenes/Enemy/EnemyStatsListItem.cs" id="1_bnfub"]
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="1_edp5a"]
+[ext_resource type="PackedScene" uid="uid://cd3k3onaqbmv7" path="res://Assets/UI/Elements/health_bar.tscn" id="2_bnfub"]
+
+[node name="EnemyStats" type="HBoxContainer" unique_id=106392849]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -149.0
+offset_bottom = 59.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+script = ExtResource("1_bnfub")
+
+[node name="EnemyName" type="Label" parent="." unique_id=946466389]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_edp5a")
+text = "Enemy 1"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=811067015]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="EnemyHealthBar" parent="VBoxContainer" unique_id=2002488241 instance=ExtResource("2_bnfub")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="EnemyHP" type="Label" parent="VBoxContainer" unique_id=186588412]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_edp5a")
+theme_override_font_sizes/font_size = 16
+text = "100/100"
+horizontal_alignment = 1

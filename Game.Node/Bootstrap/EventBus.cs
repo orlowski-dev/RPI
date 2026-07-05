@@ -12,4 +12,18 @@ public class EventBus
     {
         OnPlayerExitedSellerArea?.Invoke();
     }
+
+    public event Action? OnPlayerEnteredCamfire;
+
+    public void PlayerEnteredCamfire()
+    {
+        OnPlayerEnteredCamfire?.Invoke();
+    }
+
+    public event Action? OnPlayerExitedCamfire;
+
+    public void PlayerExitedCamfire()
+    {
+        OnPlayerExitedCamfire?.Invoke();
+    }
 }

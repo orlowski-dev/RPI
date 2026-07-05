@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c6kqqngrhcfoe"]
+
+[ext_resource type="Script" uid="uid://d7iwhc0fl33g" path="res://Assets/Models/Environ/Campfire.cs" id="1_diy5o"]
+[ext_resource type="PackedScene" uid="uid://br7ryokivf1q8" path="res://Assets/Models/Environ/Campfire01/sm_prop_campfire_dungeon_01.tscn" id="1_n2r36"]
+[ext_resource type="PackedScene" uid="uid://c1envt2fju164" path="res://Assets/Models/Environ/Flame01/Flames01.tscn" id="2_diy5o"]
+[ext_resource type="FontFile" uid="uid://kfw6ahlglmlx" path="res://Assets/UI/Fonts/Alegreya/static/Alegreya-Medium.ttf" id="4_ts6fd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fy504"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6lmw"]
+size = Vector3(3.3435059, 1, 2.9873047)
+
+[node name="Campfire" type="StaticBody3D" unique_id=947691244]
+script = ExtResource("1_diy5o")
+
+[node name="SM_PROP_campfire_dungeon_01" parent="." unique_id=751629429 instance=ExtResource("1_n2r36")]
+
+[node name="Flames01" parent="SM_PROP_campfire_dungeon_01" unique_id=1299744500 instance=ExtResource("2_diy5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009486198, 0.222179, 0.07208109)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SM_PROP_campfire_dungeon_01/Flames01" unique_id=1292628769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056423187, -0.08336675, -0.09065676)
+light_color = Color(0.61312777, 0.26290813, 9.62615e-08, 1)
+light_energy = 2.766
+light_indirect_energy = 3.538
+light_volumetric_fog_energy = 0.779
+light_size = 1.0
+light_specular = 1.383
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 7.574
+omni_attenuation = -0.103
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1904231626]
+shape = SubResource("BoxShape3D_fy504")
+
+[node name="EventArea" type="Area3D" parent="." unique_id=862231532]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EventArea" unique_id=2124658818]
+shape = SubResource("BoxShape3D_e6lmw")
+
+[node name="InteractionLabel" type="Label3D" parent="." unique_id=61664780]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1306076, 0)
+visible = false
+billboard = 1
+text = "Interaction"
+font = ExtResource("4_ts6fd")

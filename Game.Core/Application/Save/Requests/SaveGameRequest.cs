@@ -1,1 +1,1 @@
-public record SaveGameRequest(GameSession GameSession);
+public record SaveGameRequest();

@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://btabpkafmkn8j" path="res://Extensions/EditorOnly/editor_only.tscn" id="4_vileb"]
 [ext_resource type="PackedScene" uid="uid://8s6ygddcnkld" path="res://Assets/Models/Characters/Seller/seller.scn" id="5_vileb"]
 [ext_resource type="PackedScene" uid="uid://b2kcbey6mkprf" path="res://Assets/Models/Environ/TableO1/table01.tscn" id="6_vileb"]
-[ext_resource type="PackedScene" uid="uid://br7ryokivf1q8" path="res://Assets/Models/Environ/Campfire01/sm_prop_campfire_dungeon_01.tscn" id="7_e1la7"]
-[ext_resource type="PackedScene" uid="uid://c1envt2fju164" path="res://Assets/Models/Environ/Flame01/Flames01.tscn" id="8_17217"]
+[ext_resource type="PackedScene" uid="uid://c6kqqngrhcfoe" path="res://Assets/Models/Environ/campfire.tscn" id="9_1k48n"]
 [ext_resource type="PackedScene" uid="uid://bmnetiirm4w8l" path="res://Assets/Models/Environ/LowPoly Environment Pack/terrain_2.scn" id="9_217pb"]
 [ext_resource type="PackedScene" uid="uid://0ofos6rsnpkn" path="res://Assets/Models/Environ/PortlaBlue/portal_blue.scn" id="9_lkw7j"]
 [ext_resource type="PackedScene" uid="uid://cyy67f1n80v3x" path="res://Assets/Models/Environ/LowPoly Environment Pack/tree_1.scn" id="10_1k48n"]
@@ -13,6 +12,10 @@
 
 [node name="CityScene" type="Node3D" unique_id=2044755375]
 script = ExtResource("1_e1la7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1472913872]
+
+[node name="CityView" parent="CanvasLayer" unique_id=1047417051 instance=ExtResource("11_1k48n")]
 
 [node name="Seller" parent="." unique_id=159561386 instance=ExtResource("5_vileb")]
 transform = Transform3D(0.56568545, 0, 0.56568545, 0, 0.8, 0, -0.56568545, 0, 0.56568545, -15, -0.6807104, -8)
@@ -23,24 +26,6 @@ transform = Transform3D(0.7198993, 0, 0.69407856, 0, 1, 0, -0.69407856, 0, 0.719
 [node name="PlayerSpawnPoint" parent="." unique_id=245595008 instance=ExtResource("4_vileb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8809977, 1.2739105, -10.51884)
 
-[node name="SM_PROP_campfire_dungeon_01" parent="." unique_id=751629429 instance=ExtResource("7_e1la7")]
-transform = Transform3D(0.9831868, 0.18260269, 0, -0.1821398, 0.9806944, -0.0711588, -0.012993787, 0.06996239, 0.997465, -12.927868, -0.48882622, -10.404093)
-
-[node name="Flames01" parent="SM_PROP_campfire_dungeon_01" unique_id=1299744500 instance=ExtResource("8_17217")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009486198, 0.222179, 0.07208109)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SM_PROP_campfire_dungeon_01/Flames01" unique_id=252688225]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056423187, -0.08336675, -0.09065676)
-light_color = Color(0.61312777, 0.26290813, 9.62615e-08, 1)
-light_energy = 2.766
-light_indirect_energy = 3.538
-light_volumetric_fog_energy = 0.779
-light_size = 1.0
-light_specular = 1.383
-shadow_enabled = true
-omni_range = 7.574
-omni_attenuation = -0.103
-
 [node name="Terrain_2" parent="." unique_id=1447633975 instance=ExtResource("9_217pb")]
 transform = Transform3D(-30, 0, -4.529874e-06, 0, 30, 0, 4.529874e-06, 0, -30, 3.368, 0.8838879, 9.452298)
 
@@ -50,6 +35,5 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -16.594915, -0.76009727
 [node name="PortalBlue" parent="." unique_id=183437876 instance=ExtResource("9_lkw7j")]
 transform = Transform3D(0.88893116, 0, -0.45804074, 0, 1, 0, 0.45804074, 0, 0.88893116, -4.4918146, 0.031352997, -19.4472)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1472913872]
-
-[node name="CityView" parent="CanvasLayer" unique_id=1047417051 instance=ExtResource("11_1k48n")]
+[node name="Campfire" parent="." unique_id=947691244 instance=ExtResource("9_1k48n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.290854, -0.3492428, -12.704727)

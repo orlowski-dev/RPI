@@ -1,15 +1,11 @@
 [gd_scene format=3 uid="uid://cmue48qgsmkgl"]
 
-[ext_resource type="PackedScene" uid="uid://b34kp66wndnha" path="res://Assets/Models/Characters/Archer/erika_archer.scn" id="1_xd060"]
 [ext_resource type="PackedScene" uid="uid://ctf234xefb381" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_floor_01_o_straight_med_v3.tscn" id="2_vhs7q"]
 [ext_resource type="PackedScene" uid="uid://cpd27jkf0cxe0" path="res://Assets/Models/Environ/fbx_and_textures_fantastic_dungeon_pack/Scenes/mod_wall_01_m_straight_large_v2.scn" id="3_xuf16"]
 [ext_resource type="PackedScene" uid="uid://cjxlgcndv2goo" path="res://Assets/Models/Environ/arch_door.scn" id="4_x2oaw"]
 [ext_resource type="PackedScene" uid="uid://dhmk87jiy6gxc" path="res://Assets/Models/Environ/mod_column_01_large.scn" id="5_fefb7"]
 
 [node name="CorridorCorner" type="Node3D" unique_id=576273852]
-
-[node name="Erika Archer3" parent="." unique_id=2085331752 instance=ExtResource("1_xd060")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, 2)
 
 [node name="MOD_Floor_01_O_straight_med10" parent="." unique_id=573348940 instance=ExtResource("2_vhs7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021050498, 0.002524985, 3.996046)

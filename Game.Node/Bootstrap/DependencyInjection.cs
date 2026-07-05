@@ -56,5 +56,6 @@ public static class DependencyInjection
         services.AddTransient<SaveGameUseCase>();
         services.AddTransient<LoadMetaUseCase>();
         services.AddTransient<LoadGameUseCase>();
+        services.AddTransient<ListSavesUseCase>();
     }
 }

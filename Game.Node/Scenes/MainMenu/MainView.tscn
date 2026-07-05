@@ -5,18 +5,18 @@
 [ext_resource type="Theme" uid="uid://lluw86elgop6" path="res://Assets/UI/Styles/title.tres" id="2_6rw2d"]
 [ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="3_hda1k"]
 
-[node name="MainView" type="Control" unique_id=2137225543 node_paths=PackedStringArray("ExitButton", "NewGameButton")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1459047653]
+script = ExtResource("1_hrj7n")
+
+[node name="MainView" type="Control" parent="." unique_id=2137225543]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hrj7n")
-ExitButton = NodePath("CenterContainer/VBoxContainer/VBoxContainer/ExitGame")
-NewGameButton = NodePath("CenterContainer/VBoxContainer/VBoxContainer/NewGame")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=528724104]
+[node name="TextureRect" type="TextureRect" parent="MainView" unique_id=528724104]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -24,7 +24,7 @@ offset_bottom = 940.0
 grow_horizontal = 2
 texture = ExtResource("1_6rw2d")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1175451289]
+[node name="CenterContainer" type="CenterContainer" parent="MainView" unique_id=1175451289]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,22 +32,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1849976380]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainView/CenterContainer" unique_id=1849976380]
 layout_mode = 2
 theme_override_constants/separation = 48
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1282908164]
+[node name="Label" type="Label" parent="MainView/CenterContainer/VBoxContainer" unique_id=1282908164]
 layout_mode = 2
 theme = ExtResource("2_6rw2d")
 text = "Abyss of Echoes"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=458647625]
+[node name="VBoxContainer" type="GridContainer" parent="MainView/CenterContainer/VBoxContainer" unique_id=458647625]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/v_separation = 8
 
-[node name="NewGame" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=902021313]
+[node name="NewGame" type="Button" parent="MainView/CenterContainer/VBoxContainer/VBoxContainer" unique_id=902021313]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
@@ -55,28 +55,28 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("3_hda1k")
 text = "NOWA GRA"
 
-[node name="ContinueGame" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=189298346]
+[node name="ContinueGame" type="Button" parent="MainView/CenterContainer/VBoxContainer/VBoxContainer" unique_id=189298346]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_hda1k")
 text = "KONTYNUUJ"
 
-[node name="LoadGame" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=215222061]
+[node name="LoadGame" type="Button" parent="MainView/CenterContainer/VBoxContainer/VBoxContainer" unique_id=215222061]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_hda1k")
 text = "WCZYTAJ GRĘ"
 
-[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=413120303]
+[node name="Settings" type="Button" parent="MainView/CenterContainer/VBoxContainer/VBoxContainer" unique_id=413120303]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_hda1k")
 text = "USTAWIENIA"
 
-[node name="ExitGame" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=1992876192]
+[node name="ExitGame" type="Button" parent="MainView/CenterContainer/VBoxContainer/VBoxContainer" unique_id=1992876192]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2

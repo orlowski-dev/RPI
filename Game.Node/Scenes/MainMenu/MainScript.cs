@@ -1,15 +1,18 @@
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 
-public partial class MainScript : Control
+public partial class MainScript : CanvasLayer
 {
     private MainMenuPresenter _presenter = null!;
+    private Control _loadGameView = null!;
+    private LoadGameView _loadGameViewScript = null!;
 
     private enum Buttons
     {
         Exit,
         NewGame,
         Contunue,
+        LoadGame,
     }
 
     private Dictionary<Buttons, Button> _buttons = new();
@@ -28,14 +31,17 @@ public partial class MainScript : Control
         _buttons[Buttons.NewGame] = GetNode<Button>("%NewGame");
         _buttons[Buttons.Contunue] = GetNode<Button>("%ContinueGame");
         _buttons[Buttons.Exit] = GetNode<Button>("%ExitGame");
+        _buttons[Buttons.LoadGame] = GetNode<Button>("%LoadGame");
 
         _buttons[Buttons.Exit].Pressed += OnExit;
         _buttons[Buttons.NewGame].Pressed += OnNewGame;
         _buttons[Buttons.Contunue].Pressed += OnContinueGame;
-
-        GD.Print("Main menu loaded.");
+        _buttons[Buttons.LoadGame].Pressed += OnLoadGame;
 
         _lastSession = _presenter.OnViewLoad().MetaSnapshot;
+
+        SpawnLoadGameView();
+        GD.Print("Main menu loaded.");
     }
 
     public override void _ExitTree()
@@ -43,6 +49,7 @@ public partial class MainScript : Control
         _buttons[Buttons.Exit].Pressed -= OnExit;
         _buttons[Buttons.NewGame].Pressed -= OnNewGame;
         _buttons[Buttons.Contunue].Pressed -= OnContinueGame;
+        _buttons[Buttons.LoadGame].Pressed -= OnLoadGame;
     }
 
     private void OnExit()
@@ -65,6 +72,11 @@ public partial class MainScript : Control
         GetTree().CallDeferred("change_scene_to_file", ScenePaths.City);
     }
 
+    private void OnLoadGame()
+    {
+        _loadGameViewScript.SetVisible();
+    }
+
     private void Navigate(NavigationIntent navigation)
     {
         switch (navigation)
@@ -76,5 +88,13 @@ public partial class MainScript : Control
                 GetTree().Quit();
                 break;
         }
+    }
+
+    private void SpawnLoadGameView()
+    {
+        _loadGameView = GD.Load<PackedScene>(ScenePaths.LoadGameView).Instantiate<Control>();
+        _loadGameViewScript = (_loadGameView as LoadGameView)!;
+        AddChild(_loadGameView);
+        _loadGameViewScript.SetInvisible();
     }
 }

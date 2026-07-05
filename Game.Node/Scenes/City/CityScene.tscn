@@ -8,14 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://bmnetiirm4w8l" path="res://Assets/Models/Environ/LowPoly Environment Pack/terrain_2.scn" id="9_217pb"]
 [ext_resource type="PackedScene" uid="uid://0ofos6rsnpkn" path="res://Assets/Models/Environ/PortlaBlue/portal_blue.scn" id="9_lkw7j"]
 [ext_resource type="PackedScene" uid="uid://cyy67f1n80v3x" path="res://Assets/Models/Environ/LowPoly Environment Pack/tree_1.scn" id="10_1k48n"]
-[ext_resource type="PackedScene" uid="uid://4lqeaddbc7tf" path="res://Scenes/City/CityView.tscn" id="11_1k48n"]
 
 [node name="CityScene" type="Node3D" unique_id=2044755375]
 script = ExtResource("1_e1la7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1472913872]
-
-[node name="CityView" parent="CanvasLayer" unique_id=1047417051 instance=ExtResource("11_1k48n")]
 
 [node name="Seller" parent="." unique_id=159561386 instance=ExtResource("5_vileb")]
 transform = Transform3D(0.56568545, 0, 0.56568545, 0, 0.8, 0, -0.56568545, 0, 0.56568545, -15, -0.6807104, -8)

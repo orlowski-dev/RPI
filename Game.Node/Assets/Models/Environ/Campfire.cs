@@ -1,19 +1,20 @@
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 
-public partial class Seller : StaticBody3D
+public partial class Campfire : StaticBody3D
 {
     private Area3D _eventArea = null!;
-    private EventBus _eventBus = null!;
     private Label3D _interactionLabel = null!;
+    private EventBus _eventBus = null!;
 
     public override void _Ready()
     {
         _eventBus = ServiceProviderHolder.Provider.GetRequiredService<EventBus>();
-        _eventArea = GetNode<Area3D>("EventArea");
+        _eventArea = GetNode<Area3D>("%EventArea");
         _interactionLabel = GetNode<Label3D>("%InteractionLabel");
         _interactionLabel.Text =
-            "[" + ActionKey.GetLabel("interaction") + "] aby wejść w interakcję";
+            "Wciśnij [" + ActionKey.GetLabel("interaction") + "] aby zapisać grę";
+        _interactionLabel.Visible = false;
 
         _eventArea.BodyEntered += OnBodyEntered;
         _eventArea.BodyExited += OnBodyExited;
@@ -27,19 +28,15 @@ public partial class Seller : StaticBody3D
 
     private void OnBodyEntered(Node3D body)
     {
-        if (body is PlayerController)
-        {
-            _interactionLabel.Visible = true;
-            _eventBus.PlayerEnteredSellerArea();
-        }
+        if (body is not PlayerController)
+            return;
+        _interactionLabel.Visible = true;
+        _eventBus.PlayerEnteredCamfire();
     }
 
     private void OnBodyExited(Node3D body)
     {
-        if (body is PlayerController)
-        {
-            _interactionLabel.Visible = false;
-            _eventBus.PlayerExitedSellerArea();
-        }
+        _interactionLabel.Visible = false;
+        _eventBus.PlayerExitedCamfire();
     }
 }

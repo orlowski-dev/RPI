@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://pl1e3moyngy5"]
+
+[ext_resource type="Theme" uid="uid://buc14pmplplmw" path="res://Assets/UI/Styles/main_theme.tres" id="1_teftm"]
+
+[node name="SaveEntry" type="HBoxContainer" unique_id=1168708424]
+theme_override_constants/separation = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=92593540]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1593878841]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_teftm")
+theme_override_font_sizes/font_size = 24
+text = "Zapis #1"
+
+[node name="Description" type="Label" parent="VBoxContainer" unique_id=229188111]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_teftm")
+theme_override_font_sizes/font_size = 16
+text = "Sylwia lvl 1 - 05.07.2026, 19:53"
+
+[node name="LoadButton" type="Button" parent="." unique_id=396903290]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_teftm")
+text = "Wczytaj"

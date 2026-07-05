@@ -1,15 +1,22 @@
 public class SaveGameUseCase : IUseCase<SaveGameRequest, SaveGameResponse>
 {
-    private ISaveRepository _repo;
+    private JsonSaveRepository _repo;
+    private IGameSessionProvider _gs;
 
-    public SaveGameUseCase()
+    public SaveGameUseCase(JsonSaveRepository repo, IGameSessionProvider gs)
     {
-        _repo = new JsonSaveRepository();
+        _repo = repo;
+        _gs = gs;
     }
 
     public Result<SaveGameResponse> Execute(SaveGameRequest req)
     {
-        var snapshot = new GameSnapshotAssembler().ToSnapshot(req.GameSession);
+        if (_gs.Current is null)
+        {
+            DebugExtension.Fatal(this, "Game session is null!");
+        }
+
+        var snapshot = new GameSnapshotAssembler().ToSnapshot(_gs.Current);
         _repo.Save(snapshot);
         return Result<SaveGameResponse>.Success(new());
     }

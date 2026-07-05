@@ -19,6 +19,9 @@ public class InventoryMapper : IInventorySnapshotMapper
 
     public Inventory Restore(InventorySnapshot snapshot)
     {
-        return new();
+        return new(
+            backpack: _backpack.Restore(snapshot.Backpack),
+            equipment: _eq.Restore(snapshot.Equipment)
+        );
     }
 }

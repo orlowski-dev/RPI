@@ -8,5 +8,8 @@ public static class ScenePaths
     public const string Defeat = "res://Scenes/Arena/DefeatScene.tscn";
     public const string Inventory = "res://Assets/UI/Scenes/inventory_view.tscn";
     public const string InventoryItemButton = "res://Assets/UI/Elements/inventory_item_button.tscn";
+    public const string PauseView = "res://Scenes/MainMenu/PauseView.tscn";
     public const string ItemShopView = "res://Scenes/ItemShop/ItemShopView.tscn";
+    public const string LoadGameView = "res://Scenes/MainMenu/LoadGameView.tscn";
+    public const string SaveEntry = "res://Assets/UI/Elements/save_entry.tscn";
 }

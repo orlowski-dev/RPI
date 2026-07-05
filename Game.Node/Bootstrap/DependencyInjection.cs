@@ -26,6 +26,7 @@ public static class DependencyInjection
         services.AddSingleton<ArenaPresenter>();
         services.AddSingleton<ItemFactory>();
         services.AddSingleton<EventBus>();
+        services.AddSingleton<JsonSaveRepository>();
 
         services.AddTransient<MainMenuPresenter>();
         services.AddTransient<CharacterCreatorPresenter>();
@@ -52,5 +53,9 @@ public static class DependencyInjection
         services.AddTransient<ItemShopPresenter>();
         services.AddTransient<BuyItemUseCase>();
         services.AddTransient<SellItemUseCase>();
+        services.AddTransient<SaveGameUseCase>();
+        services.AddTransient<LoadMetaUseCase>();
+        services.AddTransient<LoadGameUseCase>();
+        services.AddTransient<ListSavesUseCase>();
     }
 }

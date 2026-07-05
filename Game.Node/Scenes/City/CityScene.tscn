@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://btabpkafmkn8j" path="res://Extensions/EditorOnly/editor_only.tscn" id="4_vileb"]
 [ext_resource type="PackedScene" uid="uid://8s6ygddcnkld" path="res://Assets/Models/Characters/Seller/seller.scn" id="5_vileb"]
 [ext_resource type="PackedScene" uid="uid://b2kcbey6mkprf" path="res://Assets/Models/Environ/TableO1/table01.tscn" id="6_vileb"]
+[ext_resource type="PackedScene" uid="uid://dmn0qrfs0a6y6" path="res://Assets/Models/Environ/portal/portal.scn" id="8_17217"]
 [ext_resource type="PackedScene" uid="uid://c6kqqngrhcfoe" path="res://Assets/Models/Environ/campfire.tscn" id="9_1k48n"]
 [ext_resource type="PackedScene" uid="uid://bmnetiirm4w8l" path="res://Assets/Models/Environ/LowPoly Environment Pack/terrain_2.scn" id="9_217pb"]
-[ext_resource type="PackedScene" uid="uid://0ofos6rsnpkn" path="res://Assets/Models/Environ/PortlaBlue/portal_blue.scn" id="9_lkw7j"]
 [ext_resource type="PackedScene" uid="uid://cyy67f1n80v3x" path="res://Assets/Models/Environ/LowPoly Environment Pack/tree_1.scn" id="10_1k48n"]
 
 [node name="CityScene" type="Node3D" unique_id=2044755375]
@@ -29,8 +29,8 @@ transform = Transform3D(-30, 0, -4.529874e-06, 0, 30, 0, 4.529874e-06, 0, -30, 3
 [node name="Tree_1" parent="." unique_id=523593491 instance=ExtResource("10_1k48n")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -16.594915, -0.76009727, -8.897965)
 
-[node name="PortalBlue" parent="." unique_id=183437876 instance=ExtResource("9_lkw7j")]
-transform = Transform3D(0.88893116, 0, -0.45804074, 0, 1, 0, 0.45804074, 0, 0.88893116, -4.4918146, 0.031352997, -19.4472)
-
 [node name="Campfire" parent="." unique_id=947691244 instance=ExtResource("9_1k48n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.290854, -0.3492428, -12.704727)
+
+[node name="Portal" parent="." unique_id=1900588255 instance=ExtResource("8_17217")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5501714, -0.17455482, -17.111944)

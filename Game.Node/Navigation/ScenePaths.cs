@@ -12,4 +12,5 @@ public static class ScenePaths
     public const string ItemShopView = "res://Scenes/ItemShop/ItemShopView.tscn";
     public const string LoadGameView = "res://Scenes/MainMenu/LoadGameView.tscn";
     public const string SaveEntry = "res://Assets/UI/Elements/save_entry.tscn";
+    public const string Portal = "res://Assets/Models/Environ/portal/portal.scn";
 }

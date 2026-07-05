@@ -50,6 +50,11 @@ public class Player : Actor
         Gold += amount;
     }
 
+    public void SubstractGold(int amount)
+    {
+        Gold -= amount;
+    }
+
     private int CalculateExpNextLevel()
     {
         return (int)Math.Floor(100 * Math.Pow(Level, 1.5));

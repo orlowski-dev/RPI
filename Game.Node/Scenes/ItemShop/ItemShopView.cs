@@ -25,12 +25,14 @@ public partial class ItemShopView : Control
 
     private IGameSessionProvider _gs = null!;
     private Inventory? _Inventory => _gs.Current?.Inventory;
+    private ItemShopPresenter _isPrsenter = null!;
     private Player? _Player => _gs.Current?.Player;
     public Action? OnCloseAction;
 
     public override void _Ready()
     {
         _gs = ServiceProviderHolder.Provider.GetRequiredService<IGameSessionProvider>();
+        _isPrsenter = ServiceProviderHolder.Provider.GetRequiredService<ItemShopPresenter>();
 
         _containers[Containers.Shop] = GetNode<Container>("%SklItemsContainer");
         _containers[Containers.Inventory] = GetNode<Container>("%EkwItemsContainer");
@@ -114,27 +116,29 @@ public partial class ItemShopView : Control
                 }
                 else
                 {
-                    btnScript.OnDoubleClick += () => OnShopItemDoubleClick(item, price);
+                    btnScript.OnDoubleClick += () => OnShopItemDoubleClick(item);
                 }
             }
 
             if (tab == _containers[Containers.Inventory])
             {
                 desc += $"Sprzedaj za {sellPrice}\n";
-                btnScript.OnDoubleClick += () => OnInventoryItemDoubleClick(item, sellPrice);
+                btnScript.OnDoubleClick += () => OnInventoryItemDoubleClick(item);
             }
 
             btn.TooltipText = desc;
         }
     }
 
-    private void OnShopItemDoubleClick(Item item, int price)
+    private void OnShopItemDoubleClick(Item item)
     {
+        _isPrsenter.BuyItem(item);
         UpdateUI();
     }
 
-    private void OnInventoryItemDoubleClick(Item item, int sellPrice)
+    private void OnInventoryItemDoubleClick(Item item)
     {
+        _isPrsenter.SellItem(item);
         UpdateUI();
     }
 

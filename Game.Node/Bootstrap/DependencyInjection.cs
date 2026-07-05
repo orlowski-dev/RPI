@@ -49,5 +49,8 @@ public static class DependencyInjection
         services.AddTransient<ClaimCombatRewardUseCase>();
         services.AddTransient<AddItemToInventoryUseCase>();
         services.AddTransient<GenerateShopItemsUseCase>();
+        services.AddTransient<ItemShopPresenter>();
+        services.AddTransient<BuyItemUseCase>();
+        services.AddTransient<SellItemUseCase>();
     }
 }

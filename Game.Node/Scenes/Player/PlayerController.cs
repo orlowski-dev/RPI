@@ -54,7 +54,6 @@ public partial class PlayerController : CharacterBody3D, ICharacterAnimationCont
     private SpotLight3D _light = null!;
     private Node3D _playerNode = null!;
 
-    private An? _currentAnimation = null;
     private Vector3 _facingDirection = Vector3.Forward;
 
     private IGameSessionProvider _gsProvider = null!;

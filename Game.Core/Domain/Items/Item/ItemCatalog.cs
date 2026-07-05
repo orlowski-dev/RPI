@@ -1,5 +1,27 @@
+// Wycena statystyk:
+// Attack = 8 gold
+// Defense = 6 gold
+// CriticalChance = 10 gold
+// Luck = 5 gold
+// MaxHp = 3 gold
+
 public static class ItemCatalog
 {
+    public static int CalcultePrice(ItemStats stats)
+    {
+        return (stats.Attack * 8)
+            + (stats.Defense * 6)
+            + (stats.CriticalChance * 10)
+            + (stats.Luck * 5)
+            + (stats.MaxHp * 3);
+    }
+
+    public static int CalculateSellPrice(ItemStats stats)
+    {
+        var price = CalcultePrice(stats);
+        return price - (int)(price * 0.6);
+    }
+
     public static Dictionary<string, CatalogItemValues> Values { get; } =
         new()
         {

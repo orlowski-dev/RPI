@@ -45,6 +45,11 @@ public class GameSession
         Dungeon = dungeon;
     }
 
+    public void ClearDungeon()
+    {
+        Dungeon = null;
+    }
+
     public void SetCombatSession(CombatSession combatSession)
     {
         CombatSession = combatSession;

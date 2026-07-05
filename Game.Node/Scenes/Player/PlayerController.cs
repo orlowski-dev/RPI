@@ -120,8 +120,7 @@ public partial class PlayerController : CharacterBody3D, ICharacterAnimationCont
 
     private void MoveLight()
     {
-        var old = _light.GlobalPosition;
-        _light.Position = new Vector3(_playerNode.Position.X, old.Y, _playerNode.Position.Z);
+        _light.Position = new Vector3(_playerNode.Position.X, 9f, _playerNode.Position.Z);
     }
 
     public async Task PlayAttackAnimation()

@@ -57,5 +57,6 @@ public static class DependencyInjection
         services.AddTransient<LoadMetaUseCase>();
         services.AddTransient<LoadGameUseCase>();
         services.AddTransient<ListSavesUseCase>();
+        services.AddTransient<ResetDungeonUseCase>();
     }
 }

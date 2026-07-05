@@ -16,7 +16,7 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [node name="MOD_Floor_01_O_straight_med15" parent="." unique_id=71951032 instance=ExtResource("1_8boq0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.031847954, 4)
 
 [node name="MOD_Floor_01_O_straight_med16" parent="." unique_id=1978859051 instance=ExtResource("1_8boq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
@@ -47,18 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 [node name="MOD_Floor_01_O_straight_med25" parent="." unique_id=158009772 instance=ExtResource("1_8boq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
-[node name="MOD_Column_01_large5" parent="." unique_id=1417043109 instance=ExtResource("2_67lvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
-
-[node name="MOD_Column_01_large6" parent="." unique_id=453254082 instance=ExtResource("2_67lvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 0)
-
-[node name="MOD_Column_01_large7" parent="." unique_id=2068607024 instance=ExtResource("2_67lvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.942448, -1, 4.1416864)
-
-[node name="MOD_Column_01_large8" parent="." unique_id=330242712 instance=ExtResource("2_67lvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.87159, -1.304431, 10.406549)
-
 [node name="MOD_Wall_01_M_straight_large10" parent="." unique_id=93212529 instance=ExtResource("3_s2i8f")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.0093102455, -1.31773, 3.9877162)
 
@@ -76,12 +64,6 @@ transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0,
 
 [node name="MOD_Wall_01_M_straight_large15" parent="." unique_id=1544192282 instance=ExtResource("3_s2i8f")]
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 12, -1.2885175, 12)
-
-[node name="MOD_WallCover_01_E_convex3" parent="." unique_id=1491030878 instance=ExtResource("4_n8hnm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.4936547, 0)
-
-[node name="MOD_WallCover_01_E_convex4" parent="." unique_id=1937663667 instance=ExtResource("4_n8hnm")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 15.971819, 1.4597425, 7.268482)
 
 [node name="MOD_Wall_01_M_straight_large18" parent="." unique_id=632098057 instance=ExtResource("3_s2i8f")]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 10.169147, -0.98305464, 0.28679085)
@@ -121,3 +103,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90276337, 0, 8.774868)
 
 [node name="Erika Archer2" parent="." unique_id=2085331752 instance=ExtResource("9_ipdfi")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, 2)
+
+[node name="Socket_N" type="Marker3D" parent="." unique_id=2010769160]
+
+[node name="MOD_Column_01_large5" parent="Socket_N" unique_id=1417043109 instance=ExtResource("2_67lvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
+
+[node name="MOD_Column_01_large6" parent="Socket_N" unique_id=453254082 instance=ExtResource("2_67lvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 0)
+
+[node name="MOD_WallCover_01_E_convex3" parent="Socket_N" unique_id=1491030878 instance=ExtResource("4_n8hnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.4936547, 0)
+
+[node name="Socket_E" type="Marker3D" parent="." unique_id=700397904]
+
+[node name="MOD_Column_01_large7" parent="Socket_E" unique_id=2068607024 instance=ExtResource("2_67lvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.942448, -1, 4.1416864)
+
+[node name="MOD_Column_01_large8" parent="Socket_E" unique_id=330242712 instance=ExtResource("2_67lvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.87159, -1.304431, 10.406549)
+
+[node name="MOD_WallCover_01_E_convex4" parent="Socket_E" unique_id=1937663667 instance=ExtResource("4_n8hnm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 15.971819, 1.4597425, 7.268482)

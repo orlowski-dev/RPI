@@ -24,7 +24,7 @@ public class ItemFactory
             name: catalogItemValues.Name,
             category: catalogItemValues.Category,
             baseStats: catalogItemValues.BaseStats,
-            level: _random.Next(playerLevel - 2, playerLevel + 3),
+            level: playerLevel == 1 ? 1 : _random.Next(playerLevel - 1, playerLevel + 3),
             rarity: rarity,
             allowedClasses: catalogItemValues.AllowedClasses
         );

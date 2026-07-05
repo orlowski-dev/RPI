@@ -7,6 +7,7 @@ public class GameSession
     public Dungeon? Dungeon { get; private set; }
     public Inventory Inventory { get; }
     public Encounter? PendingEncounter { get; set; }
+    public List<Item> ShopItems { get; set; } = new();
 
     public GameSession(Player player)
     {

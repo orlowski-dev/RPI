@@ -25,6 +25,7 @@ public static class DependencyInjection
         services.AddSingleton<CombatStateMachine>();
         services.AddSingleton<ArenaPresenter>();
         services.AddSingleton<ItemFactory>();
+        services.AddSingleton<EventBus>();
 
         services.AddTransient<MainMenuPresenter>();
         services.AddTransient<CharacterCreatorPresenter>();
@@ -45,9 +46,11 @@ public static class DependencyInjection
         services.AddTransient<ICombatState, PlayerDeathState>();
         services.AddTransient<ResolveTurnUseCase>();
         services.AddTransient<FinishCombatUseCase>();
-        services.AddTransient<RewardView>();
         services.AddTransient<ClaimCombatRewardUseCase>();
         services.AddTransient<AddItemToInventoryUseCase>();
-        services.AddTransient<DungeonView>();
+        services.AddTransient<GenerateShopItemsUseCase>();
+        services.AddTransient<ItemShopPresenter>();
+        services.AddTransient<BuyItemUseCase>();
+        services.AddTransient<SellItemUseCase>();
     }
 }

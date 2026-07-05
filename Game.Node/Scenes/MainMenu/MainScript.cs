@@ -5,11 +5,16 @@ public partial class MainScript : Control
 {
     private MainMenuPresenter _presenter = null!;
 
-    [Export]
-    Button ExitButton = null!;
+    private enum Buttons
+    {
+        Exit,
+        NewGame,
+        Contunue,
+    }
 
-    [Export]
-    Button NewGameButton = null!;
+    private Dictionary<Buttons, Button> _buttons = new();
+
+    private MetaSnapshot? _lastSession;
 
     public override void _Ready()
     {
@@ -20,10 +25,24 @@ public partial class MainScript : Control
             DebugExtension.Fatal(this, "Presenter is null.");
         }
 
-        ExitButton.Pressed += OnExit;
-        NewGameButton.Pressed += OnNewGame;
+        _buttons[Buttons.NewGame] = GetNode<Button>("%NewGame");
+        _buttons[Buttons.Contunue] = GetNode<Button>("%ContinueGame");
+        _buttons[Buttons.Exit] = GetNode<Button>("%ExitGame");
+
+        _buttons[Buttons.Exit].Pressed += OnExit;
+        _buttons[Buttons.NewGame].Pressed += OnNewGame;
+        _buttons[Buttons.Contunue].Pressed += OnContinueGame;
 
         GD.Print("Main menu loaded.");
+
+        _lastSession = _presenter.OnViewLoad().MetaSnapshot;
+    }
+
+    public override void _ExitTree()
+    {
+        _buttons[Buttons.Exit].Pressed -= OnExit;
+        _buttons[Buttons.NewGame].Pressed -= OnNewGame;
+        _buttons[Buttons.Contunue].Pressed -= OnContinueGame;
     }
 
     private void OnExit()
@@ -36,6 +55,14 @@ public partial class MainScript : Control
     {
         var vm = _presenter.NewGame();
         Navigate(vm.Navigation);
+    }
+
+    private void OnContinueGame()
+    {
+        if (_lastSession is null)
+            return;
+        _presenter.OnContinueGame(_lastSession.LastSessionId);
+        GetTree().CallDeferred("change_scene_to_file", ScenePaths.City);
     }
 
     private void Navigate(NavigationIntent navigation)

@@ -54,5 +54,7 @@ public static class DependencyInjection
         services.AddTransient<BuyItemUseCase>();
         services.AddTransient<SellItemUseCase>();
         services.AddTransient<SaveGameUseCase>();
+        services.AddTransient<LoadMetaUseCase>();
+        services.AddTransient<LoadGameUseCase>();
     }
 }

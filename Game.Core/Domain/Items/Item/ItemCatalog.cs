@@ -53,7 +53,7 @@ public static class ItemCatalog
                 Name: "Różdżka",
                 Category: ItemCategory.Weapon,
                 BaseStats: new(0, 16, 1, 8, 2),
-                AllowedClasses: [PlayerType.Archer]
+                AllowedClasses: [PlayerType.Mage]
             ),
             ["plate_armor"] = new(
                 Name: "Pancerz płytkowy",
